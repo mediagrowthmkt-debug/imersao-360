@@ -309,14 +309,16 @@
     .esg-cert h4 { font-family:var(--fh); font-size:.84rem; font-weight:700; margin-bottom:.18rem; }
     .esg-cert p { font-size:.76rem; color:var(--muted); line-height:1.55; }
 
-    /* === CREDIBILIDADE — branco === */
-    #credibilidade { padding:4.5rem 1.5rem; background:var(--white); text-align:center; border-top:1px solid #eaeeef; }
-    .cred-lbl { font-size:.66rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--ink-lt); margin-bottom:2.25rem; display:block; }
-    .cred-row { display:flex; justify-content:center; align-items:center; gap:2.5rem; flex-wrap:wrap; }
-    .cred-item { display:flex; flex-direction:column; align-items:center; gap:.42rem; opacity:.58; transition:opacity .2s; }
-    .cred-item:hover { opacity:1; }
-    .cred-ico { width:50px; height:50px; border-radius:11px; background:var(--fog); border:1px solid #dde4e8; display:grid; place-items:center; font-size:1.35rem; }
-    .cred-item span { font-size:.68rem; font-weight:600; color:var(--ink-md); text-align:center; max-width:110px; line-height:1.4; }
+    /* === CREDIBILIDADE / PARCEIROS === */
+    #credibilidade { padding:5rem 1.5rem; background:var(--white); text-align:center; border-top:1px solid #eaeeef; }
+    .cred-lbl { font-size:.66rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; display:block; }
+    .parceiros-grid { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; max-width:900px; margin:0 auto; }
+    .parceiro-card { background:var(--white); border:1px solid #e2e8ec; border-radius:16px; padding:2rem 1.75rem; width:240px; box-shadow:0 4px 20px rgba(0,0,0,.07); transition:transform .25s, box-shadow .25s; display:flex; flex-direction:column; align-items:center; gap:.85rem; }
+    .parceiro-card:hover { transform:translateY(-5px); box-shadow:0 12px 36px rgba(0,0,0,.12); }
+    .parceiro-logo { width:100%; height:120px; display:flex; align-items:center; justify-content:center; }
+    .parceiro-logo img { max-width:100%; max-height:110px; object-fit:contain; }
+    .parceiro-card h4 { font-family:var(--fh); font-size:.92rem; font-weight:700; color:var(--ink); margin:0; }
+    .parceiro-card p { font-size:.78rem; color:var(--ink-md); line-height:1.6; text-align:center; margin:0; }
 
     /* === CTA FINAL === */
     #cta { padding:7rem 1.5rem; position:relative; overflow:hidden; text-align:center; }
@@ -417,8 +419,7 @@
 <nav id="navbar">
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo">
-      <div class="lm">🌊</div>
-      <div class="lw">Imersão Azul 360<small>EdTech Oceânica</small></div>
+      <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.54.jpeg" alt="Imersão Azul 360" style="height:44px;width:auto;border-radius:6px;" />
     </a>
     <ul class="nav-links">
       <li><a href="#inovacao">Para Escolas</a></li>
@@ -1052,17 +1053,35 @@
 </section>
 
 
-<!-- ========== CREDIBILIDADE ========== -->
+<!-- ========== PARCEIROS ========== -->
 <section id="credibilidade">
   <div class="container">
-    <span class="cred-lbl fade-up">Alinhamentos Institucionais &amp; Parceiros</span>
-    <div class="cred-row fade-up">
-      <div class="cred-item"><div class="cred-ico">🌊</div><span>UNESCO Década do Oceano</span></div>
-      <div class="cred-item"><div class="cred-ico">🌱</div><span>Plenum Brazil</span></div>
-      <div class="cred-item"><div class="cred-ico">🐋</div><span>Instituto Baleia Jubarte</span></div>
-      <div class="cred-item"><div class="cred-ico">📚</div><span>BNCC Curricular</span></div>
-      <div class="cred-item"><div class="cred-ico">🌎</div><span>Instituto Gaia Soul</span></div>
+    <span class="cred-lbl fade-up">Parceiros Oficiais</span>
+    <h2 class="h2 h2-dk fade-up" style="margin-bottom:2.5rem;">Parceiros Institucionais</h2>
+    <div class="parceiros-grid fade-up">
+      <div class="parceiro-card">
+        <div class="parceiro-logo">
+          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.53.jpeg" alt="UNESCO" />
+        </div>
+        <h4>UNESCO</h4>
+        <p>Década das Nações Unidas para a Ciência Oceânica (2021–2030)</p>
+      </div>
+      <div class="parceiro-card">
+        <div class="parceiro-logo">
+          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.540.jpeg" alt="AOCEANO" />
+        </div>
+        <h4>AOCEANO</h4>
+        <p>Associação Brasileira de Oceanografia</p>
+      </div>
+      <div class="parceiro-card">
+        <div class="parceiro-logo">
+          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.57.jpeg" alt="Instituto Baleia Jubarte" />
+        </div>
+        <h4>Instituto Baleia Jubarte</h4>
+        <p>Conservação e pesquisa de baleias jubarte</p>
+      </div>
     </div>
+    <div style="text-align:center;margin-top:2.5rem;"><div style="width:48px;height:3px;background:var(--teal);border-radius:2px;display:inline-block;"></div></div>
   </div>
 </section>
 
@@ -1143,7 +1162,7 @@
 <footer>
   <div class="ft-g container">
     <div class="ft-brand fade-up">
-      <div class="ft-brand-name"><div class="fm">🌊</div> Imersão Azul 360</div>
+      <div class="ft-brand-name"><img src="imagens/WhatsApp Image 2026-04-02 at 17.04.54.jpeg" alt="Imersão Azul 360" style="height:48px;width:auto;border-radius:8px;" /></div>
       <p>A plataforma de cultura oceânica que transforma escolas em referências de inovação, ESG e educação imersiva no Brasil.</p>
       <div class="ft-soc">
         <a href="#" class="sb" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
