@@ -18,7 +18,7 @@
       --deep2:   #0b1e30;
       --teal:    #1a8fa0;
       --teal2:   #147a8a;
-      --teal-lt: #d0edf2;
+      --teal-lt: #7dd4e8;
       --sand:    #f0ebe3;
       --fog:     #f5f7f6;
       --white:   #ffffff;
@@ -171,19 +171,19 @@
     .quiz-ocean-fact strong { font-weight:600; }
 
     /* === IMAGE GRID / GALERIA === */
-    #galeria { padding:0; background:var(--deep2); }
-    .gal-hd { padding:5rem 1.5rem 3rem; text-align:center; max-width:680px; margin:0 auto; }
-    .img-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:auto; gap:3px; }
-    .ig { overflow:hidden; position:relative; aspect-ratio:4/3; }
+    #galeria { padding:5rem 1.5rem 5rem; background:var(--deep2); }
+    .gal-hd { padding:0 0 3rem; text-align:center; max-width:680px; margin:0 auto; }
+    .img-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:240px 240px; gap:1rem; max-width:1160px; margin:0 auto; }
+    .ig { overflow:hidden; position:relative; border-radius:16px; box-shadow:0 10px 36px rgba(0,0,0,.45); transition:transform .3s, box-shadow .3s; }
+    .ig:hover { transform:translateY(-5px); box-shadow:0 18px 50px rgba(0,0,0,.55); }
     .ig img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.4,0,.2,1); }
     .ig:hover img { transform:scale(1.06); }
-    .ig-tall { grid-row:span 2; aspect-ratio:auto; }
+    .ig-tall { grid-row:span 2; }
     .ig-wide { grid-column:span 2; }
-    .ig-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(9,24,38,.65) 0%,transparent 55%); display:flex; align-items:flex-end; padding:1.2rem; opacity:0; transition:opacity .3s; }
-    .ig:hover .ig-overlay { opacity:1; }
-    .ig-overlay span { font-family:var(--fh); font-size:.78rem; font-weight:600; color:var(--white); letter-spacing:.5px; }
-    .gal-caption { padding:2rem 1.5rem 5rem; text-align:center; }
-    .gal-caption p { font-size:.88rem; color:var(--muted); line-height:1.7; max-width:560px; margin:0 auto; }
+    .ig-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(9,24,38,.78) 0%,transparent 52%); display:flex; align-items:flex-end; padding:1.2rem 1.4rem; }
+    .ig-overlay span { font-family:var(--fh); font-size:.8rem; font-weight:700; color:var(--white); letter-spacing:.8px; text-shadow:0 1px 6px rgba(0,0,0,.5); }
+    .gal-caption { padding:2.5rem 0 0; text-align:center; }
+    .gal-caption p { font-size:1.05rem; font-family:var(--fh); font-weight:600; color:var(--teal-lt); line-height:1.8; max-width:580px; margin:0 auto; letter-spacing:.2px; text-shadow:0 0 28px rgba(125,212,232,.25); }
 
     /* === IMPACT COUNTER — escuro === */
     #impacto { padding:5.5rem 1.5rem; background:var(--deep2); text-align:center; border-top:1px solid rgba(255,255,255,.06); }
@@ -215,7 +215,7 @@
     .cs-card { position:absolute; border-radius:18px; overflow:hidden; box-shadow:0 16px 48px rgba(0,0,0,.14); transition:transform .4s; }
     .cs-card img { width:100%; height:100%; object-fit:cover; display:block; }
     .cs-card-1 { width:88%; height:75%; top:0; left:0; z-index:3; }
-    .cs-card-2 { width:72%; height:60%; bottom:0; right:0; z-index:2; border:4px solid var(--white); }
+    .cs-card-2 { width:72%; height:60%; bottom:0; right:0; z-index:2; box-shadow:0 20px 60px rgba(0,0,0,.28); }
     .cs-badge { position:absolute; top:1.25rem; right:1.25rem; z-index:4; background:var(--white); border-radius:12px; padding:.7rem 1rem; box-shadow:0 4px 18px rgba(0,0,0,.12); display:flex; align-items:center; gap:.5rem; }
     .cs-badge .cb-icon { font-size:1.3rem; }
     .cs-badge p { font-family:var(--fh); font-size:.72rem; font-weight:700; color:var(--ink); line-height:1.3; }
@@ -383,7 +383,7 @@
       .pillars { grid-template-columns:1fr 1fr; }
       .ft-g { grid-template-columns:1fr 1fr; }
       .ft-brand { grid-column:1/-1; }
-      .img-grid { grid-template-columns:1fr 1fr; }
+      .img-grid { grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,220px); gap:.75rem; }
       .ig-tall { grid-row:span 1; }
       .ig-wide { grid-column:span 1; }
     }
@@ -398,7 +398,7 @@
       .pillars { grid-template-columns:1fr; }
       .ft-g { grid-template-columns:1fr; }
       .ct-grid { grid-template-columns:1fr; }
-      .img-grid { grid-template-columns:1fr; }
+      .img-grid { grid-template-columns:1fr; grid-template-rows:repeat(6,200px); gap:.65rem; }
       .counters { gap:1.75rem; }
       .ctr-divider { display:none; }
     }
@@ -454,14 +454,14 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-c">
-    <div class="hero-badge fade-up"><span class="dot"></span>Plataforma Educacional — Inovação &amp; ESG</div>
+    <div class="hero-badge fade-up"><span class="dot"></span>🥽 Óculos VR em sala de aula — Inovação &amp; ESG</div>
     <h1 class="hero-h1 fade-up">
       A escola que leva os alunos<br>
       ao <span class="accent">fundo do oceano</span><br>
       <span class="accent-g">lidera o futuro.</span>
     </h1>
     <p class="hero-p fade-up">
-      A <strong>Imersão Azul 360</strong> é a plataforma que transforma sua escola em referência de inovação pedagógica — com realidade virtual, conteúdo BNCC e experiências que os pais vão perceber, valorizar e contar para outros.
+      A <strong>Imersão Azul 360</strong> coloca <strong>óculos de Realidade Virtual</strong> nas mãos dos seus alunos — e os leva ao fundo do oceano sem sair da sala de aula. Uma experiência 360° que une tecnologia VR, conteúdo BNCC e engajamento real, transformando sua escola em referência de inovação.
     </p>
     <div class="hero-ctas fade-up">
       <a href="#cta" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Agendar Apresentação Gratuita</a>
@@ -475,6 +475,34 @@
     </div>
   </div>
   <div class="scroll-hint"><span>Explorar</span><i class="fa-solid fa-chevron-down"></i></div>
+</section>
+
+
+<!-- ========== VR STRIP ========== -->
+<section id="vr-strip" style="background:var(--teal);padding:0;">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;padding-top:2.5rem;padding-bottom:2.5rem;">
+    <div style="display:flex;align-items:center;gap:1.25rem;">
+      <div style="font-size:2.8rem;line-height:1;">🥽</div>
+      <div>
+        <p style="font-family:var(--fh);font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:.25rem;">Como funciona na prática?</p>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.6;max-width:560px;">O aluno veste os <strong style="color:var(--white);">óculos de Realidade Virtual</strong>, a sala escurece e — em segundos — ele está mergulhando em um recife de coral, nadando ao lado de baleias ou explorando o abismo oceânico. Tudo dentro da escola, durante a aula normal.</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0;">
+      <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
+        <div style="font-size:1.4rem;">🌊</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Oceano em 360°</p>
+      </div>
+      <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
+        <div style="font-size:1.4rem;">📚</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Alinhado à BNCC</p>
+      </div>
+      <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
+        <div style="font-size:1.4rem;">🏫</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Qualquer série</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 
@@ -526,9 +554,9 @@
     <p class="sol-desc fade-up">Não é um projeto pontual. Não é um curso avulso. É um ecossistema de aprendizado que combina tecnologia imersiva, conteúdo pedagógico profundo e uma jornada que engaja alunos o ano inteiro.</p>
     <div class="pillars">
       <div class="pillar fade-up">
-        <div class="p-ico" style="background:rgba(26,143,160,.14);color:#d0edf2;"><i class="fa-solid fa-vr-cardboard"></i></div>
-        <h3>Realidade Virtual Oceânica</h3>
-        <p>Experiências de 5–10 min que transportam o aluno para recifes, oceano profundo e ecossistemas costeiros reais.</p>
+        <div class="p-ico" style="background:rgba(26,143,160,.14);color:#7dd4e8;"><i class="fa-solid fa-vr-cardboard"></i></div>
+        <h3>🥽 Óculos VR em Sala de Aula</h3>
+        <p>O aluno veste o óculos de Realidade Virtual e mergulha no oceano em 360° — recifes, baleias, oceano profundo — tudo dentro da escola, em experiências de 5 a 10 minutos por aula.</p>
       </div>
       <div class="pillar fade-up">
         <div class="p-ico" style="background:rgba(196,154,60,.14);color:#e8c97a;"><i class="fa-solid fa-book-open"></i></div>
@@ -595,7 +623,7 @@
   </div>
   <div class="img-grid">
     <div class="ig ig-tall">
-      <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=800&q=82" alt="Mergulhador explorando recife de coral" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=82" alt="Mergulhador explorando recife de coral" loading="lazy"/>
       <div class="ig-overlay"><span>Recifes de Coral</span></div>
     </div>
     <div class="ig">
@@ -603,7 +631,7 @@
       <div class="ig-overlay"><span>Tartarugas Marinhas</span></div>
     </div>
     <div class="ig">
-      <img src="https://images.unsplash.com/photo-1565799557186-3c8e93f1f89a?auto=format&fit=crop&w=800&q=82" alt="Cardume de peixes" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=82" alt="Tartaruga marinha fofa nadando no oceano" loading="lazy"/>
       <div class="ig-overlay"><span>Vida em Cardume</span></div>
     </div>
     <div class="ig ig-wide">
@@ -700,10 +728,10 @@
     <div class="inov-visual fade-up">
       <div class="card-stack">
         <div class="cs-card cs-card-1">
-          <img src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?auto=format&fit=crop&w=700&q=82" alt="Aluno com óculos de realidade virtual" />
+          <img src="imagens/Gemini_Generated_Image_7tsx987tsx987tsx.png" alt="Aluno com óculos de realidade virtual explorando o oceano" />
         </div>
         <div class="cs-card cs-card-2">
-          <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b6580?auto=format&fit=crop&w=700&q=82" alt="Alunos em sala de aula inovadora" />
+          <img src="imagens/segundafoto.png" alt="Alunos em sala de aula inovadora" />
         </div>
         <div class="cs-badge">
           <div class="cb-icon">🏆</div>
