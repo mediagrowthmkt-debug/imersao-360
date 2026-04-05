@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imersão Azul 360 — A Escola que Lidera o Futuro</title>
+  <title>Imersão Azul 360  A Escola que Lidera o Futuro</title>
   <meta name="description" content="A plataforma que posiciona sua escola como referência em inovação, ESG e educação do futuro. Realidade virtual + conteúdo oceânico para escolas privadas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,18 +69,15 @@
     .btn-outline-dk:hover { border-color:var(--teal); color:var(--teal); }
 
     /* === NAVBAR === */
-    #navbar { position:fixed; inset:0 0 auto; z-index:999; padding:.85rem 0; transition:background .35s, box-shadow .3s, padding .3s; }
-    #navbar.scrolled { background:rgba(255,255,255,.97); box-shadow:0 1px 20px rgba(0,0,0,.09); padding:.5rem 0; backdrop-filter:blur(12px); }
+    #navbar { position:fixed; inset:0 0 auto; z-index:999; padding:.6rem 0; transition:background .35s, box-shadow .3s, padding .3s; }
+    #navbar.scrolled { background:rgba(255,255,255,.97); box-shadow:0 1px 20px rgba(0,0,0,.09); padding:.4rem 0; backdrop-filter:blur(12px); }
     #navbar.scrolled .nav-links a { color:var(--ink-md); }
     #navbar.scrolled .nav-links a:hover { color:var(--teal); }
-    #navbar.scrolled .nav-logo .lw { color:var(--ink); }
-    #navbar.scrolled .nav-logo .lw small { color:var(--teal); }
     #navbar.scrolled .hamburger span { background:var(--ink); }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; }
-    .nav-logo { display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--white); }
-    .nav-logo .lm { width:36px; height:36px; border-radius:9px; background:var(--teal); display:grid; place-items:center; font-size:1.1rem; }
-    .nav-logo .lw { font-family:var(--fh); font-size:.92rem; font-weight:700; line-height:1.2; }
-    .nav-logo .lw small { display:block; font-family:var(--fb); font-size:.57rem; font-weight:400; letter-spacing:1.8px; text-transform:uppercase; color:rgba(255,255,255,.5); }
+    .nav-logo-spacer { width:130px; flex-shrink:0; }
+    .nav-logo { display:block; text-decoration:none; position:absolute; top:0; left:calc((100vw - min(1160px,92%)) / 2); z-index:1000; }
+    .nav-logo img { height:110px; width:auto; display:block; }
     .nav-links { display:flex; list-style:none; gap:1.85rem; }
     .nav-links a { color:rgba(255,255,255,.82); text-decoration:none; font-size:.84rem; font-weight:500; transition:color .2s; }
     .nav-links a:hover { color:var(--teal-lt); }
@@ -90,14 +87,15 @@
     .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
     .hamburger.open span:nth-child(2){opacity:0}
     .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .mob-menu { display:none; position:fixed; top:58px; left:0; right:0; background:rgba(255,255,255,.98); backdrop-filter:blur(14px); padding:1.5rem 1.5rem 2rem; flex-direction:column; gap:.55rem; z-index:998; border-top:1px solid rgba(0,0,0,.06); }
+    .mob-menu { display:none; position:fixed; top:70px; left:0; right:0; background:rgba(255,255,255,.98); backdrop-filter:blur(14px); padding:1.5rem 1.5rem 2rem; flex-direction:column; gap:.55rem; z-index:998; border-top:1px solid rgba(0,0,0,.06); }
     .mob-menu.open { display:flex; }
     .mob-menu a { color:var(--ink-md); text-decoration:none; font-size:.95rem; font-weight:500; padding:.48rem 0; border-bottom:1px solid rgba(0,0,0,.05); }
+    .mob-cta a { color:var(--white) !important; border-bottom:none; padding:0; }
     .mob-cta { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:.6rem; }
 
     /* === HERO === */
     #hero { min-height:100vh; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 1.5rem 5rem; overflow:hidden; }
-    .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(9,24,38,.45) 0%, rgba(9,24,38,.7) 55%, rgba(9,24,38,.97) 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=85') center/cover no-repeat; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(9,24,38,.35) 0%, rgba(9,24,38,.6) 55%, rgba(9,24,38,.97) 100%), url('imagens/hero-capa.jpg') center/cover no-repeat; }
     .hero-c { position:relative; z-index:1; max-width:920px; }
     .hero-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:6px; padding:.35rem .95rem; font-size:.68rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.88); margin-bottom:1.6rem; }
     .hero-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); }
@@ -116,7 +114,7 @@
     .scroll-hint span { font-size:.58rem; letter-spacing:1.5px; text-transform:uppercase; }
     @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 
-    /* === PAIN POINTS — seção clara === */
+    /* === PAIN POINTS  seção clara === */
     #pain { background:var(--fog); padding:6rem 1.5rem; }
     .pain-intro { text-align:center; max-width:680px; margin:0 auto 3.5rem; }
     .pain-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.25rem; max-width:1100px; margin:0 auto; }
@@ -128,7 +126,7 @@
     .pain-cta-strip { text-align:center; margin-top:3rem; }
     .pain-cta-strip p { font-size:.92rem; color:var(--ink-md); margin-bottom:1rem; }
 
-    /* === SOLUÇÃO / PILARES — escuro === */
+    /* === SOLUÇÃO / PILARES  escuro === */
     #solucao { padding:6.5rem 1.5rem; background:var(--deep); text-align:center; }
     .sol-hd { max-width:760px; margin:0 auto 1.5rem; }
     .sol-desc { font-size:1rem; line-height:1.9; color:var(--muted); max-width:640px; margin:0 auto 3.5rem; }
@@ -185,7 +183,7 @@
     .gal-caption { padding:2.5rem 0 0; text-align:center; }
     .gal-caption p { font-size:1.05rem; font-family:var(--fh); font-weight:600; color:var(--teal-lt); line-height:1.8; max-width:580px; margin:0 auto; letter-spacing:.2px; text-shadow:0 0 28px rgba(125,212,232,.25); }
 
-    /* === IMPACT COUNTER — escuro === */
+    /* === IMPACT COUNTER  escuro === */
     #impacto { padding:5.5rem 1.5rem; background:var(--deep2); text-align:center; border-top:1px solid rgba(255,255,255,.06); }
     .imp-intro { max-width:580px; margin:0 auto 3.5rem; }
     .counters { display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
@@ -195,7 +193,7 @@
     .ctr-lbl { font-size:.7rem; font-weight:500; color:rgba(255,255,255,.45); letter-spacing:.5px; text-transform:uppercase; max-width:140px; text-align:center; line-height:1.45; }
     .ctr-divider { width:1px; background:rgba(255,255,255,.1); align-self:stretch; }
 
-    /* === ESCOLA INOVADORA — valor percebido, clara === */
+    /* === ESCOLA INOVADORA  valor percebido, clara === */
     #inovacao { padding:6.5rem 1.5rem; background:var(--fog); }
     .inov-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; max-width:1100px; margin:0 auto; }
     .inov-text { display:flex; flex-direction:column; }
@@ -221,7 +219,7 @@
     .cs-badge p { font-family:var(--fh); font-size:.72rem; font-weight:700; color:var(--ink); line-height:1.3; }
     .cs-badge span { font-size:.62rem; color:var(--ink-lt); }
 
-    /* === FLIP CARDS — O que sua escola ganha === */
+    /* === FLIP CARDS  O que sua escola ganha === */
     #ganhos { padding:6.5rem 1.5rem; background:var(--white); text-align:center; }
     .ganhos-hd { max-width:680px; margin:0 auto 1rem; }
     .ganhos-sub { font-size:.95rem; color:var(--ink-md); max-width:520px; margin:0 auto 3.5rem; line-height:1.8; }
@@ -255,7 +253,7 @@
     .jor-box { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:2rem 2.5rem; max-width:640px; margin:0 auto; }
     .jor-box p { font-size:.95rem; color:var(--muted); line-height:1.8; margin-bottom:1.5rem; }
 
-    /* === CONTEÚDO PEDAGÓGICO — areia === */
+    /* === CONTEÚDO PEDAGÓGICO  areia === */
     #conteudo { padding:6.5rem 1.5rem; background:var(--sand); }
     .cnt-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; max-width:1100px; margin:0 auto; }
     .bncc-tag { display:inline-flex; align-items:center; gap:.45rem; background:rgba(196,154,60,.1); border:1px solid rgba(196,154,60,.26); color:var(--gold); border-radius:6px; padding:.3rem .85rem; font-size:.69rem; font-weight:600; margin-bottom:1.2rem; }
@@ -277,7 +275,7 @@
     .tlist li { display:flex; align-items:center; gap:.55rem; font-size:.83rem; color:var(--ink-md); }
     .tlist li i { color:var(--teal); font-size:.62rem; flex-shrink:0; }
 
-    /* === BENEFÍCIOS / PARA QUEM — fog === */
+    /* === BENEFÍCIOS / PARA QUEM  fog === */
     #beneficios { padding:6.5rem 1.5rem; background:var(--fog); }
     .ben-hd { text-align:center; max-width:620px; margin:0 auto 3rem; }
     .ben-tabs { display:flex; justify-content:center; gap:.5rem; flex-wrap:wrap; margin-bottom:2.5rem; }
@@ -292,7 +290,7 @@
     .bi h4 { font-family:var(--fh); font-size:.86rem; font-weight:700; margin-bottom:.32rem; color:var(--ink); }
     .bi p { font-size:.78rem; color:var(--ink-md); line-height:1.68; }
 
-    /* === ESG STRIP — escuro === */
+    /* === ESG STRIP  escuro === */
     #esg { padding:5.5rem 1.5rem; background:linear-gradient(135deg,#0a2238 0%,#0d3048 100%); border-top:1px solid rgba(255,255,255,.06); }
     .esg-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; max-width:1060px; margin:0 auto; }
     .esg-text .h2 { margin-bottom:1rem; }
@@ -333,7 +331,7 @@
     /* Urgency bar */
     .urgency { display:inline-flex; align-items:center; gap:.5rem; background:rgba(196,154,60,.15); border:1px solid rgba(196,154,60,.28); border-radius:8px; padding:.45rem 1rem; font-size:.76rem; color:#e8c97a; font-weight:500; margin-bottom:2rem; }
 
-    /* === CONTATO — deep2 === */
+    /* === CONTATO  deep2 === */
     #contato { padding:6rem 1.5rem; background:var(--deep2); }
     .ct-hd { text-align:center; max-width:580px; margin:0 auto 3rem; }
     .ct-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; max-width:960px; margin:0 auto; }
@@ -390,8 +388,14 @@
       .ig-wide { grid-column:span 1; }
     }
     @media(max-width:768px) {
-      .nav-links, .nav-cta { display:none; }
+      .nav-links, .nav-cta, .nav-logo-spacer { display:none; }
       .hamburger { display:flex; }
+      /* Mobile: navbar compacta, logo clipada pelo overflow:hidden do nav-inner */
+      #navbar { padding:0; overflow:hidden; }
+      #navbar.scrolled { padding:0; }
+      .nav-inner { height:60px; overflow:hidden; align-items:center; }
+      .nav-logo { position:static; left:auto; top:auto; line-height:0; }
+      .nav-logo img { height:80px; position:static; margin-top:4px; }
       .jor-track { grid-template-columns:1fr 1fr; gap:1.75rem; }
       .jor-track::before { display:none; }
       .jor-step { flex-direction:row; gap:.75rem; align-items:flex-start; text-align:left; }
@@ -418,9 +422,12 @@
 <!-- ========== NAVBAR ========== -->
 <nav id="navbar">
   <div class="container nav-inner">
+    <!-- Logo absoluto — fora do fluxo -->
     <a href="#hero" class="nav-logo">
-      <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.54.jpeg" alt="Imersão Azul 360" style="height:44px;width:auto;border-radius:6px;" />
+      <img src="imagens/logo.png" alt="Imersão Azul 360" />
     </a>
+    <!-- Espaçador invisível que ocupa o lugar do logo no fluxo -->
+    <div class="nav-logo-spacer"></div>
     <ul class="nav-links">
       <li><a href="#inovacao">Para Escolas</a></li>
       <li><a href="#ganhos">Diferenciais</a></li>
@@ -429,7 +436,7 @@
       <li><a href="#contato">Contato</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#contato" class="btn btn-ghost" style="padding:.44rem 1.1rem;font-size:.81rem;">Falar com Consultor</a>
+      <a href="https://wa.me/5571999972427" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:.44rem 1.1rem;font-size:.81rem;">Falar com Consultor</a>
       <a href="#cta" class="btn btn-primary" style="padding:.44rem 1.25rem;font-size:.81rem;">Agendar Apresentação</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
@@ -445,7 +452,7 @@
   <a href="#esg">ESG</a>
   <a href="#contato">Contato</a>
   <div class="mob-cta">
-    <a href="#contato" class="btn btn-ink" style="padding:.6rem 1.1rem;font-size:.82rem;">Consultor</a>
+    <a href="https://wa.me/5571999972427" target="_blank" rel="noopener" class="btn btn-ink" style="padding:.6rem 1.1rem;font-size:.82rem;">Consultor</a>
     <a href="#cta" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.82rem;">Agendar</a>
   </div>
 </div>
@@ -455,14 +462,14 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-c">
-    <div class="hero-badge fade-up"><span class="dot"></span>🥽 Óculos VR em sala de aula — Inovação &amp; ESG</div>
+    <div class="hero-badge fade-up"><span class="dot"></span>🥽 Óculos VR em sala de aula  Inovação &amp; ESG</div>
     <h1 class="hero-h1 fade-up">
       A escola que leva os alunos<br>
       ao <span class="accent">fundo do oceano</span><br>
       <span class="accent-g">lidera o futuro.</span>
     </h1>
     <p class="hero-p fade-up">
-      A <strong>Imersão Azul 360</strong> coloca <strong>óculos de Realidade Virtual</strong> nas mãos dos seus alunos — e os leva ao fundo do oceano sem sair da sala de aula. Uma experiência 360° que une tecnologia VR, conteúdo BNCC e engajamento real, transformando sua escola em referência de inovação.
+      A <strong>Imersão Azul 360</strong> coloca <strong>óculos de Realidade Virtual</strong> nas mãos dos seus alunos  e os leva ao fundo do oceano sem sair da sala de aula. Uma experiência 360° que une tecnologia VR, conteúdo BNCC e engajamento real, transformando sua escola em referência de inovação.
     </p>
     <div class="hero-ctas fade-up">
       <a href="#cta" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Agendar Apresentação Gratuita</a>
@@ -486,7 +493,7 @@
       <div style="font-size:2.8rem;line-height:1;">🥽</div>
       <div>
         <p style="font-family:var(--fh);font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:.25rem;">Como funciona na prática?</p>
-        <p style="font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.6;max-width:560px;">O aluno veste os <strong style="color:var(--white);">óculos de Realidade Virtual</strong>, a sala escurece e — em segundos — ele está mergulhando em um recife de coral, nadando ao lado de baleias ou explorando o abismo oceânico. Tudo dentro da escola, durante a aula normal.</p>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.6;max-width:560px;">O aluno veste os <strong style="color:var(--white);">óculos de Realidade Virtual</strong>, a sala escurece e  em segundos  ele está mergulhando em um recife de coral, nadando ao lado de baleias ou explorando o abismo oceânico. Tudo dentro da escola, durante a aula normal.</p>
       </div>
     </div>
     <div style="display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0;">
@@ -519,7 +526,7 @@
       <div class="pain-card fade-up">
         <div class="pain-icon">📊</div>
         <h3>Captação cada vez mais competitiva</h3>
-        <p>Pais estão comparando escolas com base em inovação, projetos especiais e diferenciação real — não só nota.</p>
+        <p>Pais estão comparando escolas com base em inovação, projetos especiais e diferenciação real  não só nota.</p>
       </div>
       <div class="pain-card fade-up">
         <div class="pain-icon">🌿</div>
@@ -550,19 +557,19 @@
   <div class="container">
     <div class="sol-hd">
       <span class="lbl fade-up">A Solução</span>
-      <h2 class="h2 fade-up">Uma plataforma educacional completa —<br>que sua escola apresenta com orgulho.</h2>
+      <h2 class="h2 fade-up">Uma plataforma educacional completa <br>que sua escola apresenta com orgulho.</h2>
     </div>
     <p class="sol-desc fade-up">Não é um projeto pontual. Não é um curso avulso. É um ecossistema de aprendizado que combina tecnologia imersiva, conteúdo pedagógico profundo e uma jornada que engaja alunos o ano inteiro.</p>
     <div class="pillars">
       <div class="pillar fade-up">
         <div class="p-ico" style="background:rgba(26,143,160,.14);color:#7dd4e8;"><i class="fa-solid fa-vr-cardboard"></i></div>
         <h3>🥽 Óculos VR em Sala de Aula</h3>
-        <p>O aluno veste o óculos de Realidade Virtual e mergulha no oceano em 360° — recifes, baleias, oceano profundo — tudo dentro da escola, em experiências de 5 a 10 minutos por aula.</p>
+        <p>O aluno veste o óculos de Realidade Virtual e mergulha no oceano em 360°  recifes, baleias, oceano profundo  tudo dentro da escola, em experiências de 5 a 10 minutos por aula.</p>
       </div>
       <div class="pillar fade-up">
         <div class="p-ico" style="background:rgba(196,154,60,.14);color:#e8c97a;"><i class="fa-solid fa-book-open"></i></div>
         <h3>Conteúdo Pedagógico Autoral</h3>
-        <p>Mais de 1.300 páginas de material alinhado à BNCC, por série, por disciplina — pronto para o professor usar.</p>
+        <p>Mais de 1.300 páginas de material alinhado à BNCC, por série, por disciplina  pronto para o professor usar.</p>
       </div>
       <div class="pillar fade-up">
         <div class="p-ico" style="background:rgba(122,171,138,.16);color:#aacdb5;"><i class="fa-solid fa-route"></i></div>
@@ -578,7 +585,7 @@
 <section id="quiz">
   <div class="container">
     <div class="quiz-hd">
-      <span class="lbl lbl-dk fade-up">Teste seus alunos — e você</span>
+      <span class="lbl lbl-dk fade-up">Teste seus alunos  e você</span>
       <h2 class="h2 h2-dk fade-up">O oceano está mais perto do que você imagina.</h2>
       <p class="sub sub-dk fade-up" style="margin:.8rem auto 0;">Responda 5 perguntas e descubra o quanto você sabe sobre o oceano. É exatamente esse nível de curiosidade que a Imersão Azul desperta nos alunos.</p>
     </div>
@@ -620,36 +627,36 @@
 <section id="galeria">
   <div class="gal-hd container">
     <span class="lbl fade-up">O Mundo que Seus Alunos Vão Conhecer</span>
-    <h2 class="h2 fade-up" style="margin-bottom:.75rem;">Do litoral ao abismo —<br>em cada aula.</h2>
+    <h2 class="h2 fade-up" style="margin-bottom:.75rem;">Do litoral ao abismo <br>em cada aula.</h2>
   </div>
   <div class="img-grid">
     <div class="ig ig-tall">
-      <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=82" alt="Mergulhador explorando recife de coral" loading="lazy"/>
-      <div class="ig-overlay"><span>Recifes de Coral</span></div>
-    </div>
-    <div class="ig">
-      <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?auto=format&fit=crop&w=800&q=82" alt="Tartaruga marinha" loading="lazy"/>
-      <div class="ig-overlay"><span>Tartarugas Marinhas</span></div>
-    </div>
-    <div class="ig">
-      <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=800&q=82" alt="Tartaruga marinha fofa nadando no oceano" loading="lazy"/>
-      <div class="ig-overlay"><span>Vida em Cardume</span></div>
-    </div>
-    <div class="ig ig-wide">
-      <img src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=1200&q=82" alt="Baleia jubarte" loading="lazy"/>
-      <div class="ig-overlay"><span>Baleias — Oceano Aberto</span></div>
-    </div>
-    <div class="ig">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=82" alt="Litoral brasileiro" loading="lazy"/>
+      <img src="imagens 2/costa.jpg" alt="Costa brasileira" loading="lazy"/>
       <div class="ig-overlay"><span>Costa Brasileira</span></div>
     </div>
     <div class="ig">
-      <img src="https://images.unsplash.com/photo-1544552866-d3ed42536cfd?auto=format&fit=crop&w=800&q=82" alt="Oceano profundo" loading="lazy"/>
+      <img src="imagens 2/recife rocal.jpeg" alt="Recife de coral" loading="lazy"/>
+      <div class="ig-overlay"><span>Recifes de Coral</span></div>
+    </div>
+    <div class="ig">
+      <img src="imagens 2/tartatura marinhas.jpeg" alt="Tartarugas marinhas" loading="lazy"/>
+      <div class="ig-overlay"><span>Tartarugas Marinhas</span></div>
+    </div>
+    <div class="ig ig-wide">
+      <img src="imagens 2/whalesdiver.jpeg.webp" alt="Baleia e mergulhador" loading="lazy"/>
+      <div class="ig-overlay"><span>Baleias — Oceano Aberto</span></div>
+    </div>
+    <div class="ig">
+      <img src="imagens 2/cardume.webp" alt="Cardume de peixes" loading="lazy"/>
+      <div class="ig-overlay"><span>Vida em Cardume</span></div>
+    </div>
+    <div class="ig">
+      <img src="imagens 2/fundo do oceano.jpg" alt="Fundo do oceano" loading="lazy"/>
       <div class="ig-overlay"><span>Oceano Profundo</span></div>
     </div>
   </div>
   <div class="gal-caption container">
-    <p>Cada ecossistema explorado na plataforma é documentado com imagens reais e dados científicos — trazendo o oceano para dentro da sala de aula com profundidade e beleza.</p>
+    <p>Cada ecossistema explorado na plataforma é documentado com imagens reais e dados científicos  trazendo o oceano para dentro da sala de aula com profundidade e beleza.</p>
   </div>
 </section>
 
@@ -691,7 +698,7 @@
 </section>
 
 
-<!-- ========== ESCOLA INOVADORA — Posicionamento ========== -->
+<!-- ========== ESCOLA INOVADORA  Posicionamento ========== -->
 <section id="inovacao">
   <div class="container inov-inner">
     <div class="inov-text">
@@ -700,28 +707,28 @@
         <span class="tag tag-gold"><i class="fa-solid fa-star"></i> Valor Percebido</span>
         <span class="tag tag-sage"><i class="fa-solid fa-leaf"></i> ESG Educacional</span>
       </div>
-      <h2 class="h2 h2-dk fade-up">A Imersão Azul transforma o que os pais veem — e o que sentem.</h2>
+      <h2 class="h2 h2-dk fade-up">A Imersão Azul transforma o que os pais veem  e o que sentem.</h2>
       <p class="sub sub-dk fade-up" style="margin:.9rem 0 0;">Quando um pai vê o filho saindo de um mergulho virtual no oceano profundo e falando sobre acidificação dos mares, ele não pensa "educação ambiental". Ele pensa: <em>"essa escola é diferente."</em></p>
       <div class="inov-list">
         <div class="inov-item fade-up">
           <div class="inov-ico" style="background:rgba(26,143,160,.12);color:var(--teal);"><i class="fa-solid fa-trophy"></i></div>
           <div>
             <h4>Diferenciação real na captação</h4>
-            <p>Um projeto estruturado e exclusivo que aparece em open house, materiais de marketing e redes sociais — com resultado visual imediato.</p>
+            <p>Um projeto estruturado e exclusivo que aparece em open house, materiais de marketing e redes sociais  com resultado visual imediato.</p>
           </div>
         </div>
         <div class="inov-item fade-up">
           <div class="inov-ico" style="background:rgba(196,154,60,.12);color:var(--gold);"><i class="fa-solid fa-users"></i></div>
           <div>
             <h4>Retenção de famílias que valorizam inovação</h4>
-            <p>Escolas com projetos únicos e experiências memoráveis têm menor evasão — os pais não trocam o que é especial por preço.</p>
+            <p>Escolas com projetos únicos e experiências memoráveis têm menor evasão  os pais não trocam o que é especial por preço.</p>
           </div>
         </div>
         <div class="inov-item fade-up">
           <div class="inov-ico" style="background:rgba(122,171,138,.14);color:var(--sage);"><i class="fa-solid fa-seedling"></i></div>
           <div>
-            <h4>ESG que se prova — não apenas se declara</h4>
-            <p>A plataforma documenta o aprendizado, os dados de engajamento e o impacto ambiental — conteúdo real para relatórios ESG da escola.</p>
+            <h4>ESG que se prova  não apenas se declara</h4>
+            <p>A plataforma documenta o aprendizado, os dados de engajamento e o impacto ambiental  conteúdo real para relatórios ESG da escola.</p>
           </div>
         </div>
       </div>
@@ -729,10 +736,10 @@
     <div class="inov-visual fade-up">
       <div class="card-stack">
         <div class="cs-card cs-card-1">
-          <img src="imagens/Gemini_Generated_Image_7tsx987tsx987tsx.png" alt="Aluno com óculos de realidade virtual explorando o oceano" />
+          <img src="imagens/gemini.jpg" alt="Aluno com óculos de realidade virtual explorando o oceano" />
         </div>
         <div class="cs-card cs-card-2">
-          <img src="imagens/segundafoto.png" alt="Alunos em sala de aula inovadora" />
+          <img src="imagens/segundafoto.jpg" alt="Alunos em sala de aula inovadora" />
         </div>
         <div class="cs-badge">
           <div class="cb-icon">🏆</div>
@@ -747,7 +754,7 @@
 </section>
 
 
-<!-- ========== FLIP CARDS — O que sua escola ganha ========== -->
+<!-- ========== FLIP CARDS  O que sua escola ganha ========== -->
 <section id="ganhos">
   <div class="container">
     <div class="ganhos-hd">
@@ -783,13 +790,13 @@
       <div class="flip-card fade-up">
         <div class="flip-inner">
           <div class="flip-f"><div class="fi">📊</div><h4>Dados e Relatórios</h4><small>Passe o mouse</small></div>
-          <div class="flip-b"><div class="fb-icon">📊</div><p>Painel completo com engajamento, desempenho e progressão por aluno — subsídio real para reuniões pedagógicas.</p></div>
+          <div class="flip-b"><div class="fb-icon">📊</div><p>Painel completo com engajamento, desempenho e progressão por aluno  subsídio real para reuniões pedagógicas.</p></div>
         </div>
       </div>
       <div class="flip-card fade-up">
         <div class="flip-inner">
           <div class="flip-f"><div class="fi">🔁</div><h4>Retenção de Alunos</h4><small>Passe o mouse</small></div>
-          <div class="flip-b"><div class="fb-icon">🔁</div><p>Experiências memoráveis criam vínculo emocional com a escola. Alunos que sentem o oceano ficam — e recomendam.</p></div>
+          <div class="flip-b"><div class="fb-icon">🔁</div><p>Experiências memoráveis criam vínculo emocional com a escola. Alunos que sentem o oceano ficam  e recomendam.</p></div>
         </div>
       </div>
     </div>
@@ -834,10 +841,10 @@
       </div>
     </div>
     <div class="jor-detail" id="jorDetail">
-      <p id="jorText"><strong>Praia &amp; Costa</strong> — O aluno começa onde o oceano toca a terra. Explora manguezais, costões rochosos e zonas de maré. Conteúdo integrado com Ciências e Geografia do Ensino Fundamental I.</p>
+      <p id="jorText"><strong>Praia &amp; Costa</strong>  O aluno começa onde o oceano toca a terra. Explora manguezais, costões rochosos e zonas de maré. Conteúdo integrado com Ciências e Geografia do Ensino Fundamental I.</p>
     </div>
     <div class="jor-box fade-up">
-      <p>Cada etapa inclui <strong>conquistas desbloqueáveis</strong>, missões interativas e material pedagógico pronto para o professor. O aluno progride ao longo do ano — e a escola acompanha cada passo.</p>
+      <p>Cada etapa inclui <strong>conquistas desbloqueáveis</strong>, missões interativas e material pedagógico pronto para o professor. O aluno progride ao longo do ano  e a escola acompanha cada passo.</p>
       <a href="#cta" class="btn btn-primary">Conhecer a Plataforma Completa</a>
     </div>
   </div>
@@ -850,7 +857,7 @@
     <div class="cnt-text">
       <div class="bncc-tag fade-up"><i class="fa-solid fa-certificate"></i> Alinhado à BNCC</div>
       <h2 class="h2 h2-dk fade-up">Mais de 1.300 páginas.<br>Cada uma pronta para a sala de aula.</h2>
-      <p class="sub sub-dk fade-up" style="margin:.85rem 0 0;">Material autoral desenvolvido por especialistas em educação oceânica — organizado por segmento, disciplina e competência curricular.</p>
+      <p class="sub sub-dk fade-up" style="margin:.85rem 0 0;">Material autoral desenvolvido por especialistas em educação oceânica  organizado por segmento, disciplina e competência curricular.</p>
       <div class="cnt-nums fade-up">
         <div class="cnum"><div class="v">1.300<sup style="font-size:.55em">+</sup></div><div class="l">Páginas de conteúdo autoral</div></div>
         <div class="cnum"><div class="v">5</div><div class="l">Segmentos (Fund. I, II e EM)</div></div>
@@ -873,7 +880,7 @@
         <button class="ti" data-tp="t4">🌊 Ens. Médio</button>
       </div>
       <div id="t0" class="tp active">
-        <h4>Fundamental I — 1º ao 3º ano</h4>
+        <h4>Fundamental I  1º ao 3º ano</h4>
         <ul class="tlist">
           <li><i class="fa-solid fa-circle-dot"></i>Animais do Mar e seus habitats</li>
           <li><i class="fa-solid fa-circle-dot"></i>A Água: origem, ciclo e importância</li>
@@ -884,7 +891,7 @@
         </ul>
       </div>
       <div id="t1" class="tp">
-        <h4>Fundamental I — 4º ao 5º ano</h4>
+        <h4>Fundamental I  4º ao 5º ano</h4>
         <ul class="tlist">
           <li><i class="fa-solid fa-circle-dot"></i>Ecossistemas Marinhos Brasileiros</li>
           <li><i class="fa-solid fa-circle-dot"></i>Correntes Oceânicas e Clima</li>
@@ -895,7 +902,7 @@
         </ul>
       </div>
       <div id="t2" class="tp">
-        <h4>Fundamental II — 6º e 7º ano</h4>
+        <h4>Fundamental II  6º e 7º ano</h4>
         <ul class="tlist">
           <li><i class="fa-solid fa-circle-dot"></i>Biomas Marinhos e características</li>
           <li><i class="fa-solid fa-circle-dot"></i>Cadeia Alimentar Oceânica</li>
@@ -906,7 +913,7 @@
         </ul>
       </div>
       <div id="t3" class="tp">
-        <h4>Fundamental II — 8º e 9º ano</h4>
+        <h4>Fundamental II  8º e 9º ano</h4>
         <ul class="tlist">
           <li><i class="fa-solid fa-circle-dot"></i>Oceanografia: conceitos e aplicações</li>
           <li><i class="fa-solid fa-circle-dot"></i>Química dos Oceanos e Acidificação</li>
@@ -917,7 +924,7 @@
         </ul>
       </div>
       <div id="t4" class="tp">
-        <h4>Ensino Médio — 1ª à 3ª série</h4>
+        <h4>Ensino Médio  1ª à 3ª série</h4>
         <ul class="tlist">
           <li><i class="fa-solid fa-circle-dot"></i>Oceanografia Avançada</li>
           <li><i class="fa-solid fa-circle-dot"></i>Biotecnologia e Recursos Marinhos</li>
@@ -947,34 +954,34 @@
     </div>
     <div id="be0" class="bp active">
       <div class="ben-g">
-        <div class="bi fade-up"><div class="icon">🏆</div><h4>Diferenciação Pedagógica</h4><p>Posicione sua escola como referência em inovação com um projeto de alto valor percebido — e mensurável.</p></div>
-        <div class="bi fade-up"><div class="icon">📐</div><h4>Alinhamento à BNCC</h4><p>Todo o conteúdo alinhado às competências da base nacional — sem adaptação extra para o coordenador pedagógico.</p></div>
-        <div class="bi fade-up"><div class="icon">📊</div><h4>Dados e Gestão</h4><p>Relatórios de engajamento e evolução por aluno — dados reais para tomada de decisão pedagógica.</p></div>
+        <div class="bi fade-up"><div class="icon">🏆</div><h4>Diferenciação Pedagógica</h4><p>Posicione sua escola como referência em inovação com um projeto de alto valor percebido  e mensurável.</p></div>
+        <div class="bi fade-up"><div class="icon">📐</div><h4>Alinhamento à BNCC</h4><p>Todo o conteúdo alinhado às competências da base nacional  sem adaptação extra para o coordenador pedagógico.</p></div>
+        <div class="bi fade-up"><div class="icon">📊</div><h4>Dados e Gestão</h4><p>Relatórios de engajamento e evolução por aluno  dados reais para tomada de decisão pedagógica.</p></div>
         <div class="bi fade-up"><div class="icon">🌱</div><h4>ESG e Sustentabilidade</h4><p>Projeto documentado que integra o compromisso ambiental da escola ao currículo de forma genuína.</p></div>
       </div>
     </div>
     <div id="be1" class="bp">
       <div class="ben-g">
-        <div class="bi fade-up"><div class="icon">📋</div><h4>Material Pronto para Usar</h4><p>Planos de aula, atividades e avaliações que facilitam a preparação — sem trabalho extra para o professor.</p></div>
+        <div class="bi fade-up"><div class="icon">📋</div><h4>Material Pronto para Usar</h4><p>Planos de aula, atividades e avaliações que facilitam a preparação  sem trabalho extra para o professor.</p></div>
         <div class="bi fade-up"><div class="icon">🎯</div><h4>Engajamento Garantido</h4><p>A experiência VR funciona como catalisador: os alunos chegam curiosos e prontos para aprender.</p></div>
-        <div class="bi fade-up"><div class="icon">🔗</div><h4>Integração Interdisciplinar</h4><p>Conecte oceano com Ciências, Geografia, Biologia, Física e mais — de forma natural e curricular.</p></div>
+        <div class="bi fade-up"><div class="icon">🔗</div><h4>Integração Interdisciplinar</h4><p>Conecte oceano com Ciências, Geografia, Biologia, Física e mais  de forma natural e curricular.</p></div>
         <div class="bi fade-up"><div class="icon">👁️</div><h4>Acompanhamento Individual</h4><p>Visualize o progresso de cada aluno e identifique quem precisa de atenção ou se destaca.</p></div>
       </div>
     </div>
     <div id="be2" class="bp">
       <div class="ben-g">
-        <div class="bi fade-up"><div class="icon">🥽</div><h4>Imersão Real</h4><p>Mergulhos virtuais em ecossistemas que a maioria nunca teria acesso — criando memória emocional com o tema.</p></div>
+        <div class="bi fade-up"><div class="icon">🥽</div><h4>Imersão Real</h4><p>Mergulhos virtuais em ecossistemas que a maioria nunca teria acesso  criando memória emocional com o tema.</p></div>
         <div class="bi fade-up"><div class="icon">🎮</div><h4>Aprendizado como Jogo</h4><p>Missões, conquistas e progressão transformam cada aula em uma experiência que o aluno quer continuar.</p></div>
-        <div class="bi fade-up"><div class="icon">🧠</div><h4>Maior Retenção</h4><p>Aprender por experiência sensorial aumenta significativamente a fixação do conteúdo — isso é neurociência.</p></div>
-        <div class="bi fade-up"><div class="icon">🌍</div><h4>Consciência que Vira Ação</h4><p>Quando o aluno sente o oceano, ele começa a protegê-lo — e leva essa consciência para casa.</p></div>
+        <div class="bi fade-up"><div class="icon">🧠</div><h4>Maior Retenção</h4><p>Aprender por experiência sensorial aumenta significativamente a fixação do conteúdo  isso é neurociência.</p></div>
+        <div class="bi fade-up"><div class="icon">🌍</div><h4>Consciência que Vira Ação</h4><p>Quando o aluno sente o oceano, ele começa a protegê-lo  e leva essa consciência para casa.</p></div>
       </div>
     </div>
     <div id="be3" class="bp">
       <div class="ben-g">
-        <div class="bi fade-up"><div class="icon">💬</div><h4>Assunto em Casa</h4><p>O aluno chega em casa falando sobre o que aprendeu — a aula vira conversa. Isso tem valor imenso para a família.</p></div>
-        <div class="bi fade-up"><div class="icon">📸</div><h4>Projeto Visível e Concreto</h4><p>Os pais veem, sentem e entendem o que a escola está fazendo. Não é abstrato — é experiência que aparece.</p></div>
+        <div class="bi fade-up"><div class="icon">💬</div><h4>Assunto em Casa</h4><p>O aluno chega em casa falando sobre o que aprendeu  a aula vira conversa. Isso tem valor imenso para a família.</p></div>
+        <div class="bi fade-up"><div class="icon">📸</div><h4>Projeto Visível e Concreto</h4><p>Os pais veem, sentem e entendem o que a escola está fazendo. Não é abstrato  é experiência que aparece.</p></div>
         <div class="bi fade-up"><div class="icon">🌿</div><h4>Valores que Importam</h4><p>Educação ambiental real alinha com os valores das famílias conscientes que escolhem escola com critério.</p></div>
-        <div class="bi fade-up"><div class="icon">🎖️</div><h4>Orgulho da Escolha</h4><p>Pais que sentem que escolheram bem a escola ficam — e indicam. O boca a boca mais poderoso começa aqui.</p></div>
+        <div class="bi fade-up"><div class="icon">🎖️</div><h4>Orgulho da Escolha</h4><p>Pais que sentem que escolheram bem a escola ficam  e indicam. O boca a boca mais poderoso começa aqui.</p></div>
       </div>
     </div>
   </div>
@@ -986,7 +993,7 @@
   <div class="container esg-inner">
     <div class="esg-text">
       <span class="lbl fade-up">Compromisso Real com o Futuro</span>
-      <h2 class="h2 fade-up">ESG não é trend.<br>É responsabilidade — e diferencial.</h2>
+      <h2 class="h2 fade-up">ESG não é trend.<br>É responsabilidade  e diferencial.</h2>
       <p class="sub fade-up" style="margin:.9rem 0 2rem;">A Imersão Azul 360 posiciona sua escola dentro da agenda global de sustentabilidade com credibilidade, dados e substância pedagógica.</p>
       <div class="esg-pillars">
         <div class="esg-p fade-up">
@@ -1000,7 +1007,7 @@
           <div class="esg-dot" style="background:var(--gold);"></div>
           <div>
             <h5>Social (S)</h5>
-            <p>Acesso a experiências que democratizam o conhecimento sobre os oceanos — especialmente para quem nunca viu o mar.</p>
+            <p>Acesso a experiências que democratizam o conhecimento sobre os oceanos  especialmente para quem nunca viu o mar.</p>
           </div>
         </div>
         <div class="esg-p fade-up">
@@ -1016,7 +1023,7 @@
       <div class="esg-cert">
         <div class="ec-ico" style="background:rgba(26,143,160,.14);color:var(--teal-lt);">🌊</div>
         <div>
-          <h4>UNESCO — Década do Oceano 2021–2030</h4>
+          <h4>UNESCO  Década do Oceano 2021–2030</h4>
           <p>Alinhamento às metas globais da ciência oceânica das Nações Unidas.</p>
         </div>
       </div>
@@ -1037,7 +1044,7 @@
       <div class="esg-cert">
         <div class="ec-ico" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);">📚</div>
         <div>
-          <h4>BNCC — Base Nacional Comum Curricular</h4>
+          <h4>BNCC  Base Nacional Comum Curricular</h4>
           <p>Todo o conteúdo mapeado e alinhado às competências e habilidades da base.</p>
         </div>
       </div>
@@ -1093,10 +1100,10 @@
     <span class="cta-ey fade-up">Pronto para liderar o futuro?</span>
     <div class="urgency fade-up"><i class="fa-solid fa-clock"></i> Apresentações gratuitas disponíveis para escolas privadas até junho de 2026</div>
     <h2 class="cta-h fade-up">Transforme sua escola na referência de <span class="cy">inovação e ESG</span> da sua cidade.</h2>
-    <p class="cta-desc fade-up">Agende uma apresentação gratuita e personalizada. Em 45 minutos, sua equipe pedagógica verá como a Imersão Azul 360 se encaixa na grade curricular, no calendário escolar — e na narrativa que diferencia sua escola.</p>
+    <p class="cta-desc fade-up">Agende uma apresentação gratuita e personalizada. Em 45 minutos, sua equipe pedagógica verá como a Imersão Azul 360 se encaixa na grade curricular, no calendário escolar  e na narrativa que diferencia sua escola.</p>
     <div class="cta-btns fade-up">
       <a href="#contato" class="btn btn-primary" style="padding:.95rem 2rem;font-size:.97rem;"><i class="fa-solid fa-calendar-check"></i> Agendar Apresentação Gratuita</a>
-      <a href="#contato" class="btn btn-ghost" style="padding:.95rem 2rem;font-size:.97rem;"><i class="fa-brands fa-whatsapp"></i> Falar com Consultor</a>
+      <a href="https://wa.me/5571999972427" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:.95rem 2rem;font-size:.97rem;"><i class="fa-brands fa-whatsapp"></i> Falar com Consultor</a>
     </div>
     <p class="cta-note fade-up"><i class="fa-solid fa-shield-halved"></i> Sem compromisso. Apresentação gratuita e personalizada para a realidade da sua escola.</p>
   </div>
@@ -1119,11 +1126,11 @@
         </div>
         <div class="ct-card">
           <div class="cc-ico" style="background:rgba(34,197,94,.14);color:#3dba6e;"><i class="fa-brands fa-whatsapp"></i></div>
-          <div><h4>WhatsApp</h4><p>+55 (11) 99999-0000</p></div>
+          <div><h4>WhatsApp</h4><p>(71) 99997-2427</p></div>
         </div>
         <div class="ct-card">
           <div class="cc-ico" style="background:rgba(196,154,60,.14);color:var(--gold);"><i class="fa-solid fa-location-dot"></i></div>
-          <div><h4>Localização</h4><p>São Paulo, Brasil</p></div>
+          <div><h4>Localização</h4><p>Av. Tancredo Neves, 620<br>Caminho das Árvores<br>Salvador – BA, 41820-020</p></div>
         </div>
         <div class="ct-card">
           <div class="cc-ico" style="background:rgba(122,171,138,.18);color:var(--sage);"><i class="fa-regular fa-clock"></i></div>
@@ -1153,7 +1160,7 @@
 <section id="manifesto">
   <div class="container">
     <blockquote class="mq fade-up">"Escolas que ensinam os alunos a sentir o oceano<br>ensinam a cuidar do mundo."</blockquote>
-    <p class="ms fade-up">— Imersão Azul 360</p>
+    <p class="ms fade-up"> Imersão Azul 360</p>
   </div>
 </section>
 
@@ -1162,7 +1169,7 @@
 <footer>
   <div class="ft-g container">
     <div class="ft-brand fade-up">
-      <div class="ft-brand-name"><img src="imagens/WhatsApp Image 2026-04-02 at 17.04.54.jpeg" alt="Imersão Azul 360" style="height:48px;width:auto;border-radius:8px;" /></div>
+      <div class="ft-brand-name"><img src="imagens/logo.png" alt="Imersão Azul 360" style="height:52px;width:auto;" /></div>
       <p>A plataforma de cultura oceânica que transforma escolas em referências de inovação, ESG e educação imersiva no Brasil.</p>
       <div class="ft-soc">
         <a href="#" class="sb" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -1193,14 +1200,14 @@
       <h5>Contato</h5>
       <ul>
         <li><a href="mailto:contato@imersaoazul.com.br">contato@imersaoazul.com.br</a></li>
-        <li><a href="#">+55 (11) 99999-0000</a></li>
-        <li><a href="#">São Paulo, Brasil</a></li>
+        <li><a href="https://wa.me/5571999972427">(71) 99997-2427</a></li>
+        <li><a href="#">Salvador – BA</a></li>
       </ul>
     </div>
   </div>
   <div class="ft-bot container">
     <p>&copy; 2026 Imersão Azul 360. Todos os direitos reservados.</p>
-    <a href="#">Década da Ciência Oceânica — UNESCO 2021–2030</a>
+    <a href="#">Década da Ciência Oceânica  UNESCO 2021–2030</a>
   </div>
 </footer>
 
@@ -1277,11 +1284,11 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
 /* ---- Jornada Interativa ---- */
 const jorDetails = [
-  '<strong>Praia &amp; Costa</strong> — O aluno começa onde o oceano toca a terra. Manguezais, costões rochosos e zonas de maré. Conteúdo integrado com Ciências e Geografia do Ensino Fundamental I.',
-  '<strong>Recifes de Coral</strong> — Mergulho virtual em um dos ecossistemas mais ricos do planeta. Biodiversidade, simbiose e ameaças climáticas. Integração com Biologia e Ciências do Fundamental II.',
-  '<strong>Vida Marinha</strong> — Espécies, comportamentos e redes ecológicas. O aluno entende como tudo está conectado — e o que acontece quando uma parte é afetada. Ciências, Biologia e Sociologia.',
-  '<strong>Oceano Aberto</strong> — Grandes migrações, cadeia alimentar em escala global e o papel do oceano no clima. Física, Química e Geografia do Ensino Médio ganham profundidade literal.',
-  '<strong>Oceano Profundo</strong> — O último bioma inexplorado da Terra. Criaturas bioluminescentes, pressão extrema e biotecnologia. Conteúdo de Ensino Médio para abrir mentes e despertar vocações científicas.',
+  '<strong>Praia &amp; Costa</strong>  O aluno começa onde o oceano toca a terra. Manguezais, costões rochosos e zonas de maré. Conteúdo integrado com Ciências e Geografia do Ensino Fundamental I.',
+  '<strong>Recifes de Coral</strong>  Mergulho virtual em um dos ecossistemas mais ricos do planeta. Biodiversidade, simbiose e ameaças climáticas. Integração com Biologia e Ciências do Fundamental II.',
+  '<strong>Vida Marinha</strong>  Espécies, comportamentos e redes ecológicas. O aluno entende como tudo está conectado  e o que acontece quando uma parte é afetada. Ciências, Biologia e Sociologia.',
+  '<strong>Oceano Aberto</strong>  Grandes migrações, cadeia alimentar em escala global e o papel do oceano no clima. Física, Química e Geografia do Ensino Médio ganham profundidade literal.',
+  '<strong>Oceano Profundo</strong>  O último bioma inexplorado da Terra. Criaturas bioluminescentes, pressão extrema e biotecnologia. Conteúdo de Ensino Médio para abrir mentes e despertar vocações científicas.',
 ];
 const jorSteps = document.querySelectorAll('.jor-step');
 const jorText = document.getElementById('jorText');
@@ -1299,14 +1306,14 @@ const questions = [
     q: 'Quanto do nosso oxigênio é produzido pelo oceano?',
     opts: ['10%', '25%', 'Cerca de 50%', '70%'],
     correct: 2,
-    feedback: '✅ Correto! O oceano produz aproximadamente 50% do oxigênio do planeta — principalmente através do fitoplâncton.',
+    feedback: '✅ Correto! O oceano produz aproximadamente 50% do oxigênio do planeta  principalmente através do fitoplâncton.',
     fact: '🌊 <strong>Fato Oceânico:</strong> Se o oceano parar de produzir oxigênio, o ar que respiramos ficará comprometido em décadas. Ainda assim, menos de 5% dele foi explorado pela ciência.'
   },
   {
     q: 'Qual porcentagem da superfície terrestre é coberta pelo oceano?',
     opts: ['51%', '61%', '71%', '81%'],
     correct: 2,
-    feedback: '✅ Correto! 71% da Terra é coberta pelo oceano — e ainda assim ele é o ambiente mais desconhecido do planeta.',
+    feedback: '✅ Correto! 71% da Terra é coberta pelo oceano  e ainda assim ele é o ambiente mais desconhecido do planeta.',
     fact: '🌊 <strong>Fato Oceânico:</strong> Conhecemos melhor a superfície de Marte do que o fundo dos nossos oceanos. A exploração profunda ainda é um território vasto.'
   },
   {
@@ -1318,22 +1325,22 @@ const questions = [
   },
   {
     q: 'Qual é o oceano mais profundo do mundo e sua profundidade máxima?',
-    opts: ['Atlântico — 7.647m', 'Índico — 8.047m', 'Ártico — 5.450m', 'Pacífico — cerca de 11.000m'],
+    opts: ['Atlântico  7.647m', 'Índico  8.047m', 'Ártico  5.450m', 'Pacífico  cerca de 11.000m'],
     correct: 3,
-    feedback: '✅ Correto! A Fossa das Marianas, no Pacífico, tem cerca de 11.000m de profundidade — mais fundo do que o Everest é alto.',
-    fact: '🌊 <strong>Fato Oceânico:</strong> A pressão no fundo da Fossa das Marianas é 1.000 vezes maior que a superfície. Ainda assim, encontramos vida lá — inclusive plástico.'
+    feedback: '✅ Correto! A Fossa das Marianas, no Pacífico, tem cerca de 11.000m de profundidade  mais fundo do que o Everest é alto.',
+    fact: '🌊 <strong>Fato Oceânico:</strong> A pressão no fundo da Fossa das Marianas é 1.000 vezes maior que a superfície. Ainda assim, encontramos vida lá  inclusive plástico.'
   },
   {
     q: 'O que são microplásticos e por que eles são perigosos?',
     opts: [
-      'Plásticos biodegradáveis — são seguros',
+      'Plásticos biodegradáveis  são seguros',
       'Fragmentos de plástico menores que 5mm que entram na cadeia alimentar',
       'Tipo de embalagem sustentável',
       'Plásticos usados em medicina'
     ],
     correct: 1,
-    feedback: '✅ Correto! Microplásticos são fragmentos invisíveis que penetram na cadeia alimentar oceânica — e chegam até o nosso prato.',
-    fact: '🌊 <strong>Fato Oceânico:</strong> Estudos encontraram microplásticos no sangue humano, no leite materno e nas nuvens. O problema é sistêmico — e a educação é a principal ferramenta de mudança.'
+    feedback: '✅ Correto! Microplásticos são fragmentos invisíveis que penetram na cadeia alimentar oceânica  e chegam até o nosso prato.',
+    fact: '🌊 <strong>Fato Oceânico:</strong> Estudos encontraram microplásticos no sangue humano, no leite materno e nas nuvens. O problema é sistêmico  e a educação é a principal ferramenta de mudança.'
   }
 ];
 
@@ -1413,8 +1420,8 @@ function showResult() {
   const msgs = [
     'O oceano está esperando você. Seus alunos vão te surpreender depois de uma experiência VR de imersão.',
     'Bom começo! Imagine o que acontece quando seus alunos exploram o oceano em realidade virtual 360°.',
-    'Ótimo resultado! Você já tem a curiosidade certa — e seus alunos precisam da mesma experiência.',
-    'Impressionante! Você já sente o oceano. Seus alunos podem ter essa mesma conexão — todos os anos.',
+    'Ótimo resultado! Você já tem a curiosidade certa  e seus alunos precisam da mesma experiência.',
+    'Impressionante! Você já sente o oceano. Seus alunos podem ter essa mesma conexão  todos os anos.',
     'Perfeito! Você é exatamente o tipo de educador que a Imersão Azul precisa. Vamos conversar?'
   ];
   document.getElementById('qmsg').textContent = msgs[Math.min(qScore, 4)];
