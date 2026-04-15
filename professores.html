@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imersão Azul — Espaço do Professor</title>
+  <meta name="description" content="Professor, conheça o projeto Imersão Azul, baixe os e-books gratuitos e ajude a transformar a educação oceânica no Brasil. Sua experiência em sala de aula faz a diferença." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* === RESET & TOKENS (mesmo design system do index) === */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --deep:    #0d2438;
+      --deep2:   #0b1e30;
+      --teal:    #1a8fa0;
+      --teal2:   #147a8a;
+      --teal-lt: #7dd4e8;
+      --sand:    #f0ebe3;
+      --fog:     #f5f7f6;
+      --white:   #ffffff;
+      --ink:     #1a2e3b;
+      --ink-md:  #3d5566;
+      --ink-lt:  #6b8799;
+      --gold:    #c49a3c;
+      --gold-lt: #fdf3dc;
+      --sage:    #7aab8a;
+      --coral:   #e07060;
+      --muted:   rgba(255,255,255,.62);
+      --fh: 'Sora', sans-serif;
+      --fb: 'Inter', sans-serif;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--fb); background:var(--deep); color:var(--white); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    .container { width:min(1160px,92%); margin-inline:auto; }
+
+    /* === ANIMATIONS === */
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .fade-up:nth-child(2){transition-delay:.08s} .fade-up:nth-child(3){transition-delay:.16s}
+    .fade-up:nth-child(4){transition-delay:.24s} .fade-up:nth-child(5){transition-delay:.32s}
+    .fade-up:nth-child(6){transition-delay:.4s}
+
+    /* === LABELS & TYPOGRAPHY === */
+    .lbl { display:inline-flex; align-items:center; gap:.45rem; font-size:.68rem; font-weight:600; letter-spacing:2.8px; text-transform:uppercase; color:var(--teal); margin-bottom:.9rem; }
+    .lbl::before { content:''; width:20px; height:1.5px; background:var(--teal); border-radius:2px; }
+    .lbl-dk { color:var(--teal); }
+    .lbl-dk::before { background:var(--teal); }
+    .h2 { font-family:var(--fh); font-size:clamp(1.85rem,3.5vw,2.8rem); font-weight:800; line-height:1.18; letter-spacing:-.3px; }
+    .h2-dk { color:var(--ink); }
+    .sub { font-size:1rem; line-height:1.9; color:var(--muted); max-width:560px; }
+    .sub-dk { color:var(--ink-md); }
+
+    /* === BUTTONS === */
+    /* Pulse glow keyframe */
+    @keyframes pulseGlow { 0%,100%{ box-shadow:0 0 12px rgba(26,143,160,.35), 0 4px 20px rgba(26,143,160,.18); } 50%{ box-shadow:0 0 28px rgba(26,143,160,.55), 0 6px 32px rgba(26,143,160,.3); } }
+    @keyframes shimmer { 0%{ background-position:200% center; } 100%{ background-position:-200% center; } }
+
+    .btn { display:inline-flex; align-items:center; gap:.45rem; padding:.8rem 1.7rem; border-radius:10px; font-family:var(--fh); font-size:.88rem; font-weight:600; cursor:pointer; text-decoration:none; border:none; transition:transform .25s cubic-bezier(.4,0,.2,1), background .25s, box-shadow .3s, filter .25s; }
+    .btn:hover { transform:translateY(-3px) scale(1.02); }
+    .btn:active { transform:translateY(0) scale(.98); }
+
+    .btn-primary { background:linear-gradient(135deg, #1a8fa0 0%, #20b2c8 50%, #1a8fa0 100%); background-size:200% auto; color:var(--white); box-shadow:0 4px 20px rgba(26,143,160,.35), 0 0 14px rgba(26,143,160,.2); animation:pulseGlow 3s ease-in-out infinite; position:relative; overflow:hidden; }
+    .btn-primary::before { content:''; position:absolute; inset:0; background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%); background-size:200% 100%; animation:shimmer 3.5s linear infinite; pointer-events:none; border-radius:inherit; }
+    .btn-primary:hover { background:linear-gradient(135deg, #147a8a 0%, #1a8fa0 50%, #20b2c8 100%); box-shadow:0 8px 36px rgba(26,143,160,.5), 0 0 24px rgba(32,178,200,.35); filter:brightness(1.08); }
+    .btn-primary:active { box-shadow:0 2px 12px rgba(26,143,160,.3); }
+
+    .btn-ghost { background:transparent; color:var(--white); border:1.5px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover { border-color:rgba(255,255,255,.65); background:rgba(255,255,255,.06); }
+    .btn-gold { background:var(--gold); color:var(--white); }
+    .btn-gold:hover { background:#b8893a; }
+    .btn-ink { background:var(--ink); color:var(--white); }
+    .btn-ink:hover { background:#223848; }
+    .btn-outline-dk { background:transparent; color:var(--ink); border:1.5px solid rgba(26,46,59,.22); border-radius:8px; }
+    .btn-outline-dk:hover { border-color:var(--teal); color:var(--teal); }
+    .btn-lg { padding:1.1rem 2.5rem; font-size:1.05rem; letter-spacing:.3px; }
+
+    /* === NAVBAR === */
+    #navbar { position:fixed; inset:0 0 auto; z-index:999; padding:.6rem 0; transition:background .35s, box-shadow .3s, padding .3s; }
+    #navbar.scrolled { background:rgba(255,255,255,.97); box-shadow:0 1px 20px rgba(0,0,0,.09); padding:.4rem 0; backdrop-filter:blur(12px); }
+    #navbar.scrolled .nav-links a { color:var(--ink-md); }
+    #navbar.scrolled .nav-links a:hover { color:var(--teal); }
+    #navbar.scrolled .hamburger span { background:var(--ink); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo-spacer { width:130px; flex-shrink:0; }
+    .nav-logo { display:block; text-decoration:none; position:absolute; top:0; left:calc((100vw - min(1160px,92%)) / 2); z-index:1000; }
+    .nav-logo img { height:110px; width:auto; display:block; }
+    .nav-links { display:flex; list-style:none; gap:1.85rem; }
+    .nav-links a { color:rgba(255,255,255,.82); text-decoration:none; font-size:.84rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal-lt); }
+    .nav-cta { display:flex; gap:.55rem; align-items:center; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { width:23px; height:2px; background:var(--white); border-radius:2px; transition:transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mob-menu { display:none; position:fixed; top:70px; left:0; right:0; background:rgba(255,255,255,.98); backdrop-filter:blur(14px); padding:1.5rem 1.5rem 2rem; flex-direction:column; gap:.55rem; z-index:998; border-top:1px solid rgba(0,0,0,.06); }
+    .mob-menu.open { display:flex; }
+    .mob-menu a { color:var(--ink-md); text-decoration:none; font-size:.95rem; font-weight:500; padding:.48rem 0; border-bottom:1px solid rgba(0,0,0,.05); }
+    .mob-cta a { color:var(--white) !important; border-bottom:none; padding:0; }
+    .mob-cta { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:.6rem; }
+
+    /* === HERO === */
+    #hero { min-height:100vh; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 1.5rem 5rem; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(9,24,38,.35) 0%, rgba(9,24,38,.6) 55%, rgba(9,24,38,.97) 100%), url('imagens/hero-capa.jpg') center/cover no-repeat; }
+    .hero-c { position:relative; z-index:1; max-width:920px; }
+    .hero-badge { display:inline-flex; align-items:center; gap:.5rem; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:6px; padding:.35rem .95rem; font-size:.68rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.88); margin-bottom:1.6rem; }
+    .hero-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); }
+    .hero-h1 { font-family:var(--fh); font-size:clamp(2.5rem,6.5vw,4.5rem); font-weight:800; line-height:1.08; letter-spacing:-1px; margin-bottom:1.5rem; }
+    .hero-h1 .accent { color:var(--teal-lt); }
+    .hero-h1 .accent-g { color:#e8c97a; }
+    .hero-p { font-size:clamp(.96rem,1.5vw,1.08rem); line-height:1.92; color:rgba(255,255,255,.76); max-width:680px; margin:0 auto 2.5rem; }
+    .hero-p strong { color:var(--white); }
+    .hero-ctas { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; margin-bottom:3rem; }
+    .proof-bar { display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1); }
+    .proof-item { display:flex; flex-direction:column; align-items:center; gap:.28rem; }
+    .proof-item .pv { font-family:var(--fh); font-size:1.85rem; font-weight:800; color:var(--white); line-height:1; }
+    .proof-item .pl { font-size:.64rem; font-weight:500; color:rgba(255,255,255,.5); letter-spacing:.5px; text-transform:uppercase; }
+    .scroll-hint { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:1; display:flex; flex-direction:column; align-items:center; gap:.35rem; opacity:.35; animation:bob 2.4s ease-in-out infinite; }
+    .scroll-hint span { font-size:.58rem; letter-spacing:1.5px; text-transform:uppercase; }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+    /* === SOBRE O PROJETO — seção clara === */
+    #sobre { background:var(--fog); padding:6rem 1.5rem; }
+    .sobre-intro { text-align:center; max-width:720px; margin:0 auto 3.5rem; }
+    .sobre-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.25rem; max-width:1100px; margin:0 auto; }
+    .sobre-card { background:var(--white); border:1px solid #e2e8ec; border-radius:14px; padding:1.75rem 1.5rem; box-shadow:0 2px 12px rgba(0,0,0,.04); transition:box-shadow .25s, transform .25s; }
+    .sobre-card:hover { box-shadow:0 8px 28px rgba(0,0,0,.08); transform:translateY(-3px); }
+    .sobre-icon { font-size:1.75rem; margin-bottom:.9rem; }
+    .sobre-card h3 { font-family:var(--fh); font-size:.95rem; font-weight:700; color:var(--ink); margin-bottom:.45rem; line-height:1.4; }
+    .sobre-card p { font-size:.83rem; color:var(--ink-md); line-height:1.72; }
+
+    /* === COMO FUNCIONA — escuro === */
+    #como-funciona { padding:6.5rem 1.5rem; background:var(--deep); }
+    .cf-hd { text-align:center; max-width:680px; margin:0 auto 3.5rem; }
+    .steps-track { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; max-width:1060px; margin:0 auto; }
+    .step-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:2rem 1.5rem; text-align:center; transition:transform .28s, border-color .28s; position:relative; }
+    .step-card:hover { transform:translateY(-5px); border-color:rgba(26,143,160,.3); }
+    .step-num { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--teal); color:var(--white); width:28px; height:28px; border-radius:50%; display:grid; place-items:center; font-family:var(--fh); font-size:.78rem; font-weight:700; }
+    .step-ico { font-size:2.2rem; margin-bottom:1rem; margin-top:.5rem; }
+    .step-card h3 { font-family:var(--fh); font-size:.94rem; font-weight:700; margin-bottom:.48rem; }
+    .step-card p { font-size:.83rem; color:var(--muted); line-height:1.72; }
+
+    /* === BENEFÍCIOS PROFESSOR — areia === */
+    #beneficios { padding:6.5rem 1.5rem; background:var(--sand); }
+    .ben-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; max-width:1100px; margin:0 auto; }
+    .ben-text .tag-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem; }
+    .tag { display:inline-flex; align-items:center; gap:.35rem; padding:.3rem .82rem; border-radius:6px; font-size:.72rem; font-weight:600; }
+    .tag-teal { background:rgba(26,143,160,.1); color:var(--teal); border:1px solid rgba(26,143,160,.2); }
+    .tag-gold { background:rgba(196,154,60,.1); color:var(--gold); border:1px solid rgba(196,154,60,.22); }
+    .tag-sage { background:rgba(122,171,138,.12); color:#3d7a52; border:1px solid rgba(122,171,138,.28); }
+    .ben-list { display:flex; flex-direction:column; gap:1.2rem; margin-top:2rem; }
+    .ben-item { display:flex; gap:1rem; align-items:flex-start; }
+    .ben-ico { width:44px; height:44px; border-radius:12px; display:grid; place-items:center; flex-shrink:0; font-size:1.1rem; }
+    .ben-item h4 { font-family:var(--fh); font-size:.9rem; font-weight:700; color:var(--ink); margin-bottom:.25rem; }
+    .ben-item p { font-size:.82rem; color:var(--ink-md); line-height:1.68; }
+    .ben-visual { position:relative; }
+    .ben-visual .card-stack { position:relative; height:420px; }
+    .cs-card { position:absolute; border-radius:18px; overflow:hidden; box-shadow:0 16px 48px rgba(0,0,0,.14); }
+    .cs-card img { width:100%; height:100%; object-fit:cover; display:block; }
+    .cs-card-1 { width:88%; height:75%; top:0; left:0; z-index:3; }
+    .cs-card-2 { width:72%; height:60%; bottom:0; right:0; z-index:2; box-shadow:0 20px 60px rgba(0,0,0,.28); }
+    .cs-badge { position:absolute; top:1.25rem; right:1.25rem; z-index:4; background:var(--white); border-radius:12px; padding:.7rem 1rem; box-shadow:0 4px 18px rgba(0,0,0,.12); display:flex; align-items:center; gap:.5rem; }
+    .cs-badge .cb-icon { font-size:1.3rem; }
+    .cs-badge p { font-family:var(--fh); font-size:.72rem; font-weight:700; color:var(--ink); line-height:1.3; }
+    .cs-badge span { font-size:.62rem; color:var(--ink-lt); }
+
+    /* === E-BOOKS / CONTEÚDO — claro === */
+    #ebooks { padding:6.5rem 1.5rem; background:var(--fog); text-align:center; }
+    .ebooks-hd { max-width:680px; margin:0 auto 1rem; }
+    .ebooks-sub { font-size:.95rem; color:var(--ink-md); max-width:580px; margin:0 auto 3.5rem; line-height:1.8; }
+    .ebooks-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; max-width:1100px; margin:0 auto; }
+    .ebook-card { background:var(--white); border:1px solid #e2e8ec; border-radius:14px; padding:1.75rem 1.5rem; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,.04); transition:border-color .25s, box-shadow .25s, transform .25s; }
+    .ebook-card:hover { border-color:var(--teal); box-shadow:0 8px 28px rgba(26,143,160,.12); transform:translateY(-3px); }
+    .ebook-card .ebook-emoji { font-size:2.4rem; margin-bottom:.9rem; }
+    .ebook-card h4 { font-family:var(--fh); font-size:.92rem; font-weight:700; color:var(--ink); margin-bottom:.35rem; }
+    .ebook-card p { font-size:.8rem; color:var(--ink-md); line-height:1.68; }
+    .ebook-card .ebook-tag { display:inline-block; margin-top:.8rem; background:rgba(26,143,160,.1); color:var(--teal); border:1px solid rgba(26,143,160,.18); border-radius:6px; padding:.2rem .65rem; font-size:.68rem; font-weight:600; }
+    .ebooks-cta { text-align:center; margin-top:3rem; }
+
+    /* === FAQ — escuro === */
+    #faq { padding:6.5rem 1.5rem; background:var(--deep2); }
+    .faq-hd { text-align:center; max-width:620px; margin:0 auto 3rem; }
+    .faq-list { max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:.75rem; }
+    .faq-item { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; overflow:hidden; transition:border-color .22s; }
+    .faq-item:hover { border-color:rgba(26,143,160,.3); }
+    .faq-q { display:flex; align-items:center; justify-content:space-between; padding:1.15rem 1.4rem; cursor:pointer; gap:1rem; }
+    .faq-q h4 { font-family:var(--fh); font-size:.9rem; font-weight:600; color:var(--white); line-height:1.5; }
+    .faq-q .faq-arrow { color:var(--teal); font-size:.85rem; transition:transform .3s; flex-shrink:0; }
+    .faq-item.open .faq-arrow { transform:rotate(180deg); }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; }
+    .faq-item.open .faq-a { max-height:400px; padding:0 1.4rem 1.25rem; }
+    .faq-a p { font-size:.85rem; color:var(--muted); line-height:1.78; }
+
+    /* === GALERIA === */
+    #galeria { padding:5rem 1.5rem 5rem; background:var(--deep); }
+    .gal-hd { padding:0 0 3rem; text-align:center; max-width:680px; margin:0 auto; }
+    .img-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:240px 240px; gap:1rem; max-width:1160px; margin:0 auto; }
+    .ig { overflow:hidden; position:relative; border-radius:16px; box-shadow:0 10px 36px rgba(0,0,0,.45); transition:transform .3s, box-shadow .3s; }
+    .ig:hover { transform:translateY(-5px); box-shadow:0 18px 50px rgba(0,0,0,.55); }
+    .ig img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.4,0,.2,1); }
+    .ig:hover img { transform:scale(1.06); }
+    .ig-tall { grid-row:span 2; }
+    .ig-wide { grid-column:span 2; }
+    .ig-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(9,24,38,.78) 0%,transparent 52%); display:flex; align-items:flex-end; padding:1.2rem 1.4rem; }
+    .ig-overlay span { font-family:var(--fh); font-size:.8rem; font-weight:700; color:var(--white); letter-spacing:.8px; text-shadow:0 1px 6px rgba(0,0,0,.5); }
+
+    /* === CTA / DOWNLOAD MODAL === */
+    #cta-download { padding:7rem 1.5rem; position:relative; overflow:hidden; text-align:center; }
+    .cta-bg { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(9,24,38,.78) 0%,rgba(9,24,38,.93) 100%), url('imagens 2/whalesdiver.jpeg.webp') center/cover no-repeat; }
+    .cta-c { position:relative; z-index:1; max-width:740px; margin:0 auto; }
+    .cta-ey { font-size:.67rem; letter-spacing:2.8px; text-transform:uppercase; color:var(--teal-lt); font-weight:600; margin-bottom:1.4rem; display:block; }
+    .cta-h { font-family:var(--fh); font-size:clamp(1.9rem,4vw,3rem); font-weight:800; line-height:1.18; letter-spacing:-.3px; margin-bottom:1.2rem; }
+    .cta-h .cy { color:var(--teal-lt); }
+    .cta-desc { font-size:.98rem; color:var(--muted); line-height:1.88; max-width:560px; margin:0 auto 2.5rem; }
+    .cta-btns { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+    .cta-note { font-size:.74rem; color:rgba(255,255,255,.34); }
+
+    /* === PARCEIROS === */
+    #credibilidade { padding:5rem 1.5rem; background:var(--white); text-align:center; border-top:1px solid #eaeeef; }
+    .cred-lbl { font-size:.66rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; display:block; }
+    .parceiros-grid { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; max-width:900px; margin:0 auto; }
+    .parceiro-card { background:var(--white); border:1px solid #e2e8ec; border-radius:16px; padding:2rem 1.75rem; width:240px; box-shadow:0 4px 20px rgba(0,0,0,.07); transition:transform .25s, box-shadow .25s; display:flex; flex-direction:column; align-items:center; gap:.85rem; }
+    .parceiro-card:hover { transform:translateY(-5px); box-shadow:0 12px 36px rgba(0,0,0,.12); }
+    .parceiro-logo { width:100%; height:120px; display:flex; align-items:center; justify-content:center; }
+    .parceiro-logo img { max-width:100%; max-height:110px; object-fit:contain; }
+    .parceiro-card h4 { font-family:var(--fh); font-size:.92rem; font-weight:700; color:var(--ink); margin:0; }
+    .parceiro-card p { font-size:.78rem; color:var(--ink-md); line-height:1.6; text-align:center; margin:0; }
+
+    /* === MANIFESTO === */
+    #manifesto { background:var(--deep); padding:5.5rem 1.5rem; text-align:center; }
+    .mq { font-family:var(--fh); font-size:clamp(1.35rem,2.8vw,2.1rem); font-weight:700; line-height:1.6; color:rgba(255,255,255,.9); max-width:720px; margin:0 auto 1rem; font-style:italic; }
+    .ms { font-size:.72rem; letter-spacing:1.8px; text-transform:uppercase; color:var(--teal); }
+
+    /* === MODAL === */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.65); backdrop-filter:blur(6px); z-index:2000; align-items:center; justify-content:center; padding:1.5rem; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:var(--white); border-radius:20px; padding:2.5rem 2rem; max-width:480px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,.25); position:relative; }
+    .modal-close { position:absolute; top:1rem; right:1rem; background:none; border:none; font-size:1.3rem; color:var(--ink-lt); cursor:pointer; transition:color .2s; }
+    .modal-close:hover { color:var(--ink); }
+    .modal-box h3 { font-family:var(--fh); font-size:1.2rem; font-weight:700; color:var(--ink); margin-bottom:.35rem; text-align:center; }
+    .modal-box .modal-sub { font-size:.85rem; color:var(--ink-md); text-align:center; margin-bottom:1.5rem; line-height:1.6; }
+    .modal-form { display:flex; flex-direction:column; gap:.9rem; }
+    .mfg { display:flex; flex-direction:column; gap:.25rem; }
+    .mfg label { font-size:.76rem; color:var(--ink-md); font-weight:600; }
+    .mfg input { background:var(--fog); border:1.5px solid #dde4e8; border-radius:9px; color:var(--ink); padding:.72rem 1rem; font-family:var(--fb); font-size:.88rem; outline:none; width:100%; transition:border-color .2s; }
+    .mfg input::placeholder { color:var(--ink-lt); }
+    .mfg input:focus { border-color:var(--teal); }
+    .modal-submit { background:linear-gradient(135deg, #1a8fa0 0%, #20b2c8 50%, #1a8fa0 100%); background-size:200% auto; color:var(--white); border:none; padding:.95rem 1.5rem; border-radius:10px; font-family:var(--fh); font-size:.96rem; font-weight:700; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:.55rem; transition:transform .25s, background .25s, box-shadow .3s, filter .25s; margin-top:.35rem; box-shadow:0 4px 20px rgba(26,143,160,.35), 0 0 14px rgba(26,143,160,.2); animation:pulseGlow 3s ease-in-out infinite; position:relative; overflow:hidden; letter-spacing:.3px; }
+    .modal-submit::before { content:''; position:absolute; inset:0; background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%); background-size:200% 100%; animation:shimmer 3.5s linear infinite; pointer-events:none; border-radius:inherit; }
+    .modal-submit:hover { background:linear-gradient(135deg, #147a8a 0%, #1a8fa0 50%, #20b2c8 100%); box-shadow:0 8px 36px rgba(26,143,160,.5), 0 0 24px rgba(32,178,200,.35); transform:translateY(-2px) scale(1.02); filter:brightness(1.08); }
+    .modal-submit:active { transform:translateY(0) scale(.98); box-shadow:0 2px 12px rgba(26,143,160,.3); }
+    .modal-note { font-size:.72rem; color:var(--ink-lt); text-align:center; margin-top:.6rem; line-height:1.5; }
+    .modal-success { display:none; text-align:center; padding:1rem 0; }
+    .modal-success.show { display:block; }
+    .modal-success .check-big { font-size:3rem; margin-bottom:.6rem; }
+    .modal-success h4 { font-family:var(--fh); font-size:1.1rem; font-weight:700; color:var(--ink); margin-bottom:.5rem; }
+    .modal-success p { font-size:.88rem; color:var(--ink-md); line-height:1.7; }
+
+    /* === FOOTER === */
+    footer { background:#07151f; padding:4.5rem 1.5rem 2rem; color:rgba(255,255,255,.42); }
+    .ft-g { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:2.5rem; max-width:1160px; margin:0 auto; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.07); }
+    .ft-brand-name { font-family:var(--fh); font-size:1.02rem; font-weight:700; color:var(--white); margin-bottom:.65rem; display:flex; align-items:center; gap:.5rem; }
+    .ft-brand > p { font-size:.81rem; line-height:1.78; max-width:280px; margin-bottom:1.4rem; }
+    .ft-soc { display:flex; gap:.48rem; }
+    .sb { width:32px; height:32px; border-radius:8px; background:rgba(255,255,255,.06); display:grid; place-items:center; color:rgba(255,255,255,.45); text-decoration:none; font-size:.84rem; transition:background .2s, color .2s; }
+    .sb:hover { background:var(--teal); color:var(--white); }
+    .ft-col h5 { font-family:var(--fh); font-size:.74rem; font-weight:700; color:rgba(255,255,255,.86); margin-bottom:1rem; text-transform:uppercase; letter-spacing:.8px; }
+    .ft-col ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    .ft-col ul li a { color:rgba(255,255,255,.4); text-decoration:none; font-size:.81rem; transition:color .2s; }
+    .ft-col ul li a:hover { color:var(--teal); }
+    .ft-bot { max-width:1160px; margin:0 auto; padding-top:1.6rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.7rem; }
+    .ft-bot p, .ft-bot a { font-size:.72rem; color:rgba(255,255,255,.26); text-decoration:none; }
+    .ft-bot a:hover { color:var(--teal); }
+
+    /* === RESPONSIVE === */
+    @media(max-width:1024px) {
+      .ben-inner { grid-template-columns:1fr; gap:3rem; }
+      .ben-visual .card-stack { height:340px; }
+      .cs-card-1 { width:80%; height:80%; }
+      .cs-card-2 { width:65%; height:55%; }
+      .cs-badge { top:.85rem; right:.85rem; padding:.55rem .8rem; }
+      .cs-badge .cb-icon { font-size:1.1rem; }
+      .cs-badge p { font-size:.66rem; }
+      .cs-badge span { font-size:.56rem; }
+      .steps-track { grid-template-columns:1fr 1fr; }
+      .ft-g { grid-template-columns:1fr 1fr; }
+      .ft-brand { grid-column:1/-1; }
+      .img-grid { grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,220px); gap:.75rem; }
+      .ig-tall { grid-row:span 1; }
+      .ig-wide { grid-column:span 1; }
+    }
+    @media(max-width:768px) {
+      .nav-links, .nav-cta, .nav-logo-spacer { display:none; }
+      .hamburger { display:flex; }
+      #navbar { padding:0; overflow:hidden; }
+      #navbar.scrolled { padding:0; }
+      .nav-inner { height:60px; overflow:hidden; align-items:center; }
+      .nav-logo { position:static; left:auto; top:auto; line-height:0; }
+      .nav-logo img { height:80px; position:static; margin-top:4px; }
+      .steps-track { grid-template-columns:1fr; }
+      .ft-g { grid-template-columns:1fr; }
+      .img-grid { grid-template-columns:1fr; grid-template-rows:repeat(6,200px); gap:.65rem; }
+      /* Card stack mobile — layout estático para imagens aparecerem */
+      .ben-visual { max-width:100%; margin:0 auto; }
+      .ben-visual .card-stack { position:relative; height:auto; display:flex; flex-direction:column; gap:1rem; }
+      .cs-card { position:relative; top:auto; left:auto; bottom:auto; right:auto; width:100% !important; height:auto !important; border-radius:14px; }
+      .cs-card img { width:100%; height:220px; object-fit:cover; display:block; }
+      .cs-card-2 { margin-top:-2rem; margin-left:auto; width:85% !important; z-index:2; }
+      .cs-card-2 img { height:180px; }
+      .cs-badge { position:absolute; top:.75rem; right:.75rem; z-index:5; padding:.5rem .75rem; border-radius:10px; }
+      .cs-badge .cb-icon { font-size:1rem; }
+      .cs-badge p { font-size:.64rem; }
+      .cs-badge span { font-size:.54rem; }
+    }
+    @media(max-width:520px) {
+      .proof-bar { gap:1.5rem; }
+      .cta-btns { flex-direction:column; align-items:center; }
+      .ebooks-grid { grid-template-columns:1fr; }
+      .cs-card img { height:200px; }
+      .cs-card-2 img { height:160px; }
+      .cs-card-2 { width:80% !important; }
+      .cs-badge { top:.5rem; right:.5rem; padding:.4rem .6rem; gap:.35rem; border-radius:8px; }
+      .cs-badge .cb-icon { font-size:.9rem; }
+      .cs-badge p { font-size:.6rem; }
+      .cs-badge span { font-size:.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="imagens/logo.png" alt="Imersão Azul" />
+    </a>
+    <div class="nav-logo-spacer"></div>
+    <ul class="nav-links">
+      <li><a href="#sobre">O Projeto</a></li>
+      <li><a href="#como-funciona">Como Funciona</a></li>
+      <li><a href="#beneficios">Para Você</a></li>
+      <li><a href="#ebooks">E-books</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#cta-download" class="btn btn-primary" style="padding:.44rem 1.25rem;font-size:.81rem;"><i class="fa-solid fa-download"></i> Baixar E-books</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#sobre">O Projeto</a>
+  <a href="#como-funciona">Como Funciona</a>
+  <a href="#beneficios">Para Você</a>
+  <a href="#ebooks">E-books</a>
+  <a href="#faq">Dúvidas</a>
+  <div class="mob-cta">
+    <a href="#cta-download" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.82rem;"><i class="fa-solid fa-download"></i> Baixar E-books</a>
+  </div>
+</div>
+
+
+<!-- ========== HERO ========== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-c">
+    <div class="hero-badge fade-up"><span class="dot"></span>👩‍🏫 Espaço exclusivo para Professores</div>
+    <h1 class="hero-h1 fade-up">
+      Professor, o oceano<br>
+      chegou à sua <span class="accent">sala de aula.</span><br>
+      <span class="accent-g">E precisa de você.</span>
+    </h1>
+    <p class="hero-p fade-up">
+      O <strong>Imersão Azul</strong> é um projeto de educação oceânica que começa pelos <strong>livros</strong>. Baixe os e-books gratuitos, use com seus alunos pelo celular em sala de aula e ajude a construir o melhor material de cultura oceânica do Brasil — com a sua experiência.
+    </p>
+    <div class="hero-ctas fade-up">
+      <a href="#cta-download" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Baixar os E-books Gratuitamente</a>
+      <a href="#sobre" class="btn btn-ghost">Entender o Projeto <i class="fa-solid fa-arrow-down"></i></a>
+    </div>
+    <div class="proof-bar fade-up">
+      <div class="proof-item"><span class="pv">📚</span><span class="pl">E-books gratuitos</span></div>
+      <div class="proof-item"><span class="pv">📱</span><span class="pl">Uso pelo celular</span></div>
+      <div class="proof-item"><span class="pv">BNCC</span><span class="pl">Alinhado à base nacional</span></div>
+      <div class="proof-item"><span class="pv">🤝</span><span class="pl">Sua voz no projeto</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Explorar</span><i class="fa-solid fa-chevron-down"></i></div>
+</section>
+
+
+<!-- ========== STRIP PROFESSOR ========== -->
+<section id="strip-prof" style="background:var(--teal);padding:0;">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;padding-top:2.5rem;padding-bottom:2.5rem;">
+    <div style="display:flex;align-items:center;gap:1.25rem;">
+      <div style="font-size:2.8rem;line-height:1;">📖</div>
+      <div>
+        <p style="font-family:var(--fh);font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:.25rem;">Por que começar pelos livros?</p>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.6;max-width:600px;">O <strong style="color:var(--white);">Imersão Azul</strong> é uma plataforma completa em desenvolvimento. Os <strong style="color:var(--white);">e-books são o primeiro passo</strong> — um piloto para levar conteúdo de qualidade sobre o oceano direto para a sala de aula, com a ajuda de quem mais entende de ensino: <strong style="color:var(--white);">você, professor.</strong></p>
+      </div>
+    </div>
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0;">
+      <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
+        <div style="font-size:1.4rem;">📱</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Uso pelo celular</p>
+      </div>
+      <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
+        <div style="font-size:1.4rem;">🆓</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">100% gratuito</p>
+      </div>
+      <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
+        <div style="font-size:1.4rem;">🗣️</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Sua opinião conta</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== SOBRE O PROJETO ========== -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-intro">
+      <span class="lbl lbl-dk fade-up">Conheça o Projeto</span>
+      <h2 class="h2 h2-dk fade-up">O que é o Imersão Azul?</h2>
+      <p class="sub sub-dk fade-up" style="margin:.9rem auto 0;">O Imersão Azul é um projeto educacional que une tecnologia, ciência oceânica e conteúdo alinhado à BNCC para transformar a forma como os alunos aprendem sobre o oceano — começando agora com os e-books.</p>
+    </div>
+    <div class="sobre-grid">
+      <div class="sobre-card fade-up">
+        <div class="sobre-icon">🌊</div>
+        <h3>Educação Oceânica de verdade</h3>
+        <p>Conteúdo autoral desenvolvido por especialistas, com base científica e alinhado à Base Nacional Comum Curricular (BNCC).</p>
+      </div>
+      <div class="sobre-card fade-up">
+        <div class="sobre-icon">🚀</div>
+        <h3>Plataforma em desenvolvimento</h3>
+        <p>O projeto completo incluirá realidade virtual, gamificação e trilhas interativas. Os e-books são a primeira fase — e a mais importante para validação.</p>
+      </div>
+      <div class="sobre-card fade-up">
+        <div class="sobre-icon">📖</div>
+        <h3>E-books como ponto de partida</h3>
+        <p>Os livros digitais são a porta de entrada para o projeto. Prontos para serem usados em sala de aula pelo celular, sem custo e sem burocracia.</p>
+      </div>
+      <div class="sobre-card fade-up">
+        <div class="sobre-icon">👩‍🏫</div>
+        <h3>O professor é protagonista</h3>
+        <p>Ninguém conhece a realidade da sala de aula como você. Sua participação é fundamental para que o Imersão Azul funcione em cada canto do Brasil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== COMO FUNCIONA (PASSO A PASSO) ========== -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="cf-hd">
+      <span class="lbl fade-up">Passo a Passo</span>
+      <h2 class="h2 fade-up">Como funciona a sua participação?</h2>
+      <p class="sub fade-up" style="margin:.9rem auto 0;text-align:center;">É simples, gratuito e leva poucos minutos para começar.</p>
+    </div>
+    <div class="steps-track">
+      <div class="step-card fade-up">
+        <div class="step-num">1</div>
+        <div class="step-ico">📥</div>
+        <h3>Baixe os e-books</h3>
+        <p>Preencha seu nome e WhatsApp. Em segundos, você recebe os livros digitais diretamente no seu celular via WhatsApp.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-num">2</div>
+        <div class="step-ico">📱</div>
+        <h3>Use em sala de aula</h3>
+        <p>Os e-books foram pensados para uso pelo celular. Abra durante a aula e utilize o conteúdo com seus alunos de forma prática.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-num">3</div>
+        <div class="step-ico">🗓️</div>
+        <h3>Experimente por 4 meses</h3>
+        <p>Use o material ao longo de 4 meses. Observe o que funciona, o que pode melhorar e como os alunos reagem ao conteúdo.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-num">4</div>
+        <div class="step-ico">📝</div>
+        <h3>Envie seu feedback</h3>
+        <p>Após o período de uso, preencha um formulário online com suas percepções. Suas sugestões serão incorporadas ao projeto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== BENEFÍCIOS PARA O PROFESSOR ========== -->
+<section id="beneficios">
+  <div class="container ben-inner">
+    <div class="ben-text">
+      <div class="tag-row fade-up">
+        <span class="tag tag-teal"><i class="fa-solid fa-chalkboard-user"></i> Para Professores</span>
+        <span class="tag tag-gold"><i class="fa-solid fa-star"></i> Reconhecimento</span>
+        <span class="tag tag-sage"><i class="fa-solid fa-earth-americas"></i> Impacto Real</span>
+      </div>
+      <h2 class="h2 h2-dk fade-up">Por que participar faz diferença — para você e para seus alunos.</h2>
+      <p class="sub sub-dk fade-up" style="margin:.9rem 0 0;">Sua experiência em sala de aula é insubstituível. O Brasil é um país imenso e diverso — o que funciona no Rio Grande do Sul pode não funcionar no Rio Grande do Norte. Precisamos de você para tornar este material relevante em cada realidade.</p>
+      <div class="ben-list">
+        <div class="ben-item fade-up">
+          <div class="ben-ico" style="background:rgba(26,143,160,.12);color:var(--teal);"><i class="fa-solid fa-medal"></i></div>
+          <div>
+            <h4>Seu nome como colaborador oficial</h4>
+            <p>Professores que contribuírem com feedback serão creditados como colaboradores do projeto Imersão Azul — reconhecimento público pela sua participação.</p>
+          </div>
+        </div>
+        <div class="ben-item fade-up">
+          <div class="ben-ico" style="background:rgba(196,154,60,.12);color:var(--gold);"><i class="fa-solid fa-map-location-dot"></i></div>
+          <div>
+            <h4>Adaptação à sua realidade regional</h4>
+            <p>Seu feedback ajuda a moldar o conteúdo para a realidade da sua cidade, bairro e estado. Cada região do Brasil tem vivências diferentes — e o material precisa refletir isso.</p>
+          </div>
+        </div>
+        <div class="ben-item fade-up">
+          <div class="ben-ico" style="background:rgba(122,171,138,.14);color:var(--sage);"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <h4>Crescimento profissional</h4>
+            <p>Participar de um projeto educacional inovador agrega valor ao seu currículo e à sua prática pedagógica. Você estará na vanguarda da educação oceânica no Brasil.</p>
+          </div>
+        </div>
+        <div class="ben-item fade-up">
+          <div class="ben-ico" style="background:rgba(26,143,160,.12);color:var(--teal);"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <div>
+            <h4>Impacto na sua comunidade</h4>
+            <p>Ao usar e melhorar este material, você contribui diretamente para a educação ambiental da sua comunidade — seus alunos, sua escola, sua cidade.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ben-visual fade-up">
+      <div class="card-stack">
+        <div class="cs-card cs-card-1">
+          <img src="imagens 2/mmt_Lousa-Digital-no-Colégio-Moraes-em-Americana-SP-1-3-scaled.jpg" alt="Professor utilizando material em sala de aula" />
+        </div>
+        <div class="cs-card cs-card-2">
+          <img src="imagens 2/costa.jpg" alt="Alunos engajados aprendendo sobre o oceano" />
+        </div>
+        <div class="cs-badge">
+          <div class="cb-icon">🏅</div>
+          <div>
+            <p>Colaborador Oficial<br>Imersão Azul</p>
+            <span>Seu nome no projeto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== E-BOOKS / CONTEÚDO ========== -->
+<section id="ebooks">
+  <div class="container">
+    <div class="ebooks-hd">
+      <span class="lbl lbl-dk fade-up">Material Disponível</span>
+      <h2 class="h2 h2-dk fade-up">E-books prontos para usar em sala de aula.</h2>
+    </div>
+    <p class="ebooks-sub fade-up">Conteúdo autoral, com base científica e alinhado à BNCC. Feitos para serem acessados pelo celular — sem necessidade de impressão ou equipamentos extras.</p>
+    <div class="ebooks-grid">
+      <div class="ebook-card fade-up">
+        <div class="ebook-emoji">🐟</div>
+        <h4>Fundamental I — 1º ao 3º ano</h4>
+        <p>Animais do mar, ciclo da água, vida na praia, manguezais e consciência ambiental de forma lúdica.</p>
+        <span class="ebook-tag">PDF — Celular</span>
+      </div>
+      <div class="ebook-card fade-up">
+        <div class="ebook-emoji">🦀</div>
+        <h4>Fundamental I — 4º ao 5º ano</h4>
+        <p>Ecossistemas marinhos brasileiros, correntes oceânicas, poluição dos mares e pesca sustentável.</p>
+        <span class="ebook-tag">PDF — Celular</span>
+      </div>
+      <div class="ebook-card fade-up">
+        <div class="ebook-emoji">🐬</div>
+        <h4>Fundamental II — 6º ao 7º ano</h4>
+        <p>Biomas marinhos, cadeia alimentar oceânica, microplásticos e áreas de conservação marinha.</p>
+        <span class="ebook-tag">PDF — Celular</span>
+      </div>
+      <div class="ebook-card fade-up">
+        <div class="ebook-emoji">🦈</div>
+        <h4>Fundamental II — 8º ao 9º ano</h4>
+        <p>Oceanografia, química dos oceanos, física das ondas e marés, ecologia de sistemas profundos.</p>
+        <span class="ebook-tag">PDF — Celular</span>
+      </div>
+      <div class="ebook-card fade-up">
+        <div class="ebook-emoji">🌊</div>
+        <h4>Ensino Médio — 1ª à 3ª série</h4>
+        <p>Oceanografia avançada, biotecnologia marinha, geopolítica dos oceanos e economia azul.</p>
+        <span class="ebook-tag">PDF — Celular</span>
+      </div>
+    </div>
+    <div class="ebooks-cta fade-up">
+      <p style="font-size:.92rem;color:var(--ink-md);margin-bottom:1.2rem;">Todos os e-books são <strong>gratuitos</strong> e enviados direto para o seu WhatsApp.</p>
+      <button class="btn btn-primary btn-lg" id="btn-download-ebooks"><i class="fa-solid fa-download"></i> Quero Baixar os E-books</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== FAQ ========== -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-hd">
+      <span class="lbl fade-up">Dúvidas Frequentes</span>
+      <h2 class="h2 fade-up">Tudo o que você precisa saber.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>Preciso pagar alguma coisa?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>Não! Os e-books são 100% gratuitos. Você só precisa informar seu nome e WhatsApp para recebê-los. Não há nenhum custo envolvido.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>Como eu recebo os livros?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>Após preencher o formulário com seu nome e WhatsApp, os PDFs dos e-books são enviados automaticamente para o seu WhatsApp pelo Instituto Gaia Soul. Você recebe em poucos segundos.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>Preciso instalar algum aplicativo?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>Não. Os e-books são arquivos PDF que podem ser abertos diretamente pelo celular — no WhatsApp, no navegador ou em qualquer leitor de PDF. Sem downloads extras.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>Sou obrigado a dar feedback depois?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>Não, a participação é voluntária. Mas sua opinião é extremamente valiosa! Após 4 meses de uso, enviaremos um formulário simples. Ao contribuir, você ajuda a melhorar o material e pode ser creditado como colaborador oficial do projeto.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>O que é o Imersão Azul exatamente?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>O Imersão Azul é um projeto educacional que une ciência oceânica, tecnologia e conteúdo pedagógico alinhado à BNCC. A plataforma completa está em desenvolvimento e incluirá realidade virtual e gamificação. Agora, estamos começando pela fase dos livros — e precisamos da sua ajuda para aprimorá-los.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>Posso usar os livros com qualquer série?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>Sim! Temos e-books para o Fundamental I (1º ao 5º ano), Fundamental II (6º ao 9º ano) e Ensino Médio. Ao baixar, você recebe todos os volumes e escolhe o mais adequado para suas turmas.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>Meu nome realmente vai aparecer no projeto?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>Sim! Professores que contribuírem com feedback terão seu nome mencionado como colaboradores oficiais do Imersão Azul. Queremos reconhecer publicamente cada educador que nos ajudar a construir este projeto.</p>
+        </div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">
+          <h4>Como os alunos vão usar o material em aula?</h4>
+          <i class="fa-solid fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          <p>Os e-books são otimizados para leitura no celular. O professor pode projetar o conteúdo ou pedir que os alunos abram pelo próprio celular durante a aula. É prático, rápido e não exige infraestrutura especial.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== GALERIA ========== -->
+<section id="galeria">
+  <div class="gal-hd container">
+    <span class="lbl fade-up">O Conteúdo que Seus Alunos Vão Explorar</span>
+    <h2 class="h2 fade-up" style="margin-bottom:.75rem;">Do litoral ao abismo — <br>em cada e-book.</h2>
+  </div>
+  <div class="img-grid">
+    <div class="ig ig-tall">
+      <img src="imagens 2/costa.jpg" alt="Costa brasileira" loading="lazy"/>
+      <div class="ig-overlay"><span>Costa Brasileira</span></div>
+    </div>
+    <div class="ig">
+      <img src="imagens 2/recife rocal.jpeg" alt="Recife de coral" loading="lazy"/>
+      <div class="ig-overlay"><span>Recifes de Coral</span></div>
+    </div>
+    <div class="ig">
+      <img src="imagens 2/tartatura marinhas.jpeg" alt="Tartarugas marinhas" loading="lazy"/>
+      <div class="ig-overlay"><span>Tartarugas Marinhas</span></div>
+    </div>
+    <div class="ig ig-wide">
+      <img src="imagens 2/whalesdiver.jpeg.webp" alt="Baleia e mergulhador" loading="lazy"/>
+      <div class="ig-overlay"><span>Baleias — Oceano Aberto</span></div>
+    </div>
+    <div class="ig">
+      <img src="imagens 2/cardume.webp" alt="Cardume de peixes" loading="lazy"/>
+      <div class="ig-overlay"><span>Vida em Cardume</span></div>
+    </div>
+    <div class="ig">
+      <img src="imagens 2/fundo do oceano.jpg" alt="Fundo do oceano" loading="lazy"/>
+      <div class="ig-overlay"><span>Oceano Profundo</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CTA DOWNLOAD ========== -->
+<section id="cta-download">
+  <div class="cta-bg"></div>
+  <div class="container cta-c">
+    <span class="cta-ey fade-up">Pronto para fazer a diferença?</span>
+    <h2 class="cta-h fade-up">Baixe os e-books, leve o oceano para a <span class="cy">sua sala de aula</span> e ajude a transformar a educação.</h2>
+    <p class="cta-desc fade-up">É gratuito, rápido e seus alunos vão sentir a diferença. Preencha seus dados e receba os livros direto no WhatsApp — em segundos.</p>
+    <div class="cta-btns fade-up">
+      <button class="btn btn-primary btn-lg" id="btn-download-cta"><i class="fa-solid fa-download"></i> Baixar E-books Gratuitamente</button>
+    </div>
+    <p class="cta-note fade-up"><i class="fa-solid fa-shield-halved"></i> Seus dados são seguros. Usamos apenas para enviar os livros e informações sobre o projeto.</p>
+  </div>
+</section>
+
+
+<!-- ========== PARCEIROS ========== -->
+<section id="credibilidade">
+  <div class="container">
+    <span class="cred-lbl fade-up">Parceiros Oficiais</span>
+    <h2 class="h2 h2-dk fade-up" style="margin-bottom:2.5rem;">Parceiros Institucionais</h2>
+    <div class="parceiros-grid fade-up">
+      <div class="parceiro-card">
+        <div class="parceiro-logo">
+          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.53.jpeg" alt="UNESCO" />
+        </div>
+        <h4>UNESCO</h4>
+        <p>Década das Nações Unidas para a Ciência Oceânica (2021–2030)</p>
+      </div>
+      <div class="parceiro-card">
+        <div class="parceiro-logo">
+          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.540.jpeg" alt="AOCEANO" />
+        </div>
+        <h4>AOCEANO</h4>
+        <p>Associação Brasileira de Oceanografia</p>
+      </div>
+      <div class="parceiro-card">
+        <div class="parceiro-logo">
+          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.57.jpeg" alt="Instituto Baleia Jubarte" />
+        </div>
+        <h4>Instituto Baleia Jubarte</h4>
+        <p>Conservação e pesquisa de baleias jubarte</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;"><div style="width:48px;height:3px;background:var(--teal);border-radius:2px;display:inline-block;"></div></div>
+  </div>
+</section>
+
+
+<!-- ========== MANIFESTO ========== -->
+<section id="manifesto">
+  <div class="container">
+    <blockquote class="mq fade-up">"Quando um professor leva o oceano para a sala de aula,<br>ele muda a forma como uma geração inteira enxerga o mundo."</blockquote>
+    <p class="ms fade-up">— Projeto Imersão Azul</p>
+  </div>
+</section>
+
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="ft-g container">
+    <div class="ft-brand fade-up">
+      <div class="ft-brand-name"><img src="imagens/logo.png" alt="Imersão Azul" style="height:52px;width:auto;" /></div>
+      <p>Projeto de educação oceânica que transforma a sala de aula com conteúdo autoral, base científica e a participação ativa dos professores de todo o Brasil.</p>
+      <div class="ft-soc">
+        <a href="#" class="sb" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="sb" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" class="sb" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" class="sb" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div class="ft-col fade-up">
+      <h5>Projeto</h5>
+      <ul>
+        <li><a href="#sobre">O que é</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#ebooks">E-books</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+      </ul>
+    </div>
+    <div class="ft-col fade-up">
+      <h5>Para Professores</h5>
+      <ul>
+        <li><a href="#beneficios">Benefícios</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+        <li><a href="#cta-download">Baixar E-books</a></li>
+      </ul>
+    </div>
+    <div class="ft-col fade-up">
+      <h5>Contato</h5>
+      <ul>
+        <li><a href="mailto:contato@imersaoazul.com.br">contato@imersaoazul.com.br</a></li>
+        <li><a href="https://wa.me/5571999972427">(71) 99997-2427</a></li>
+        <li><a href="#">Salvador — BA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot container">
+    <p>&copy; 2026 Imersão Azul. Todos os direitos reservados.</p>
+    <a href="#">Década da Ciência Oceânica — UNESCO 2021–2030</a>
+  </div>
+</footer>
+
+
+<!-- ========== MODAL DE CADASTRO ========== -->
+<div class="modal-overlay" id="downloadModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">&times;</button>
+
+    <!-- Formulário -->
+    <div id="modalFormWrap">
+      <h3>📚 Receba os E-books no WhatsApp</h3>
+      <p class="modal-sub">Preencha seus dados abaixo e receba os livros do Imersão Azul direto no seu celular — em segundos.</p>
+      <form id="downloadForm" class="modal-form" novalidate>
+        <div class="mfg">
+          <label for="prof-nome">Seu nome completo</label>
+          <input type="text" id="prof-nome" name="nome" placeholder="Ex: Maria da Silva" required autocomplete="name" />
+        </div>
+        <div class="mfg">
+          <label for="prof-whatsapp">Seu WhatsApp (com DDD)</label>
+          <input type="tel" id="prof-whatsapp" name="whatsapp" placeholder="Ex: (11) 99999-0000" required autocomplete="tel" />
+        </div>
+        <button type="submit" class="modal-submit"><i class="fa-brands fa-whatsapp"></i> Receber E-books pelo WhatsApp</button>
+      </form>
+      <p class="modal-note"><i class="fa-solid fa-lock"></i> Seus dados são seguros. Usamos apenas para enviar os livros e informações do projeto Imersão Azul via WhatsApp do Instituto Gaia Soul.</p>
+    </div>
+
+    <!-- Sucesso -->
+    <div class="modal-success" id="modalSuccess">
+      <div class="check-big">✅</div>
+      <h4>Pronto! Verifique seu WhatsApp.</h4>
+      <p>Os e-books do Imersão Azul estão sendo enviados para o seu WhatsApp agora mesmo. 📱<br><br>Junto com os livros, você receberá um convite para participar do aprimoramento do projeto. <strong>Sua contribuição faz toda a diferença!</strong></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========== JAVASCRIPT ========== -->
+<script>
+/* ---- Navbar scroll ---- */
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60), { passive: true });
+
+/* ---- Hamburger ---- */
+const hb = document.getElementById('hamburger');
+const mm = document.getElementById('mobMenu');
+hb.addEventListener('click', () => {
+  const o = mm.classList.toggle('open');
+  hb.classList.toggle('open', o);
+  hb.setAttribute('aria-expanded', String(o));
+});
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mm.classList.remove('open'); hb.classList.remove('open'); hb.setAttribute('aria-expanded','false');
+}));
+
+/* ---- IntersectionObserver (fade-up) ---- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+}), { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+/* ---- FAQ Accordion ---- */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // Fecha todos
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Abre o clicado (se não estava aberto)
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ---- Modal de Download ---- */
+const modal = document.getElementById('downloadModal');
+const modalClose = document.getElementById('modalClose');
+const modalFormWrap = document.getElementById('modalFormWrap');
+const modalSuccess = document.getElementById('modalSuccess');
+const downloadForm = document.getElementById('downloadForm');
+
+function openModal() {
+  // Reset estado
+  modalFormWrap.style.display = 'block';
+  modalSuccess.className = 'modal-success';
+  downloadForm.reset();
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Botões que abrem o modal
+document.querySelectorAll('#btn-download-ebooks, #btn-download-cta, [href="#cta-download"].btn-primary').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  });
+});
+
+// Também captura links de nav que vão para #cta-download
+document.querySelectorAll('a[href="#cta-download"]').forEach(link => {
+  // Apenas os que são botões de download direto
+  if (link.classList.contains('btn-primary')) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  }
+});
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Fechar com ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+});
+
+/* ---- Form submit ---- */
+downloadForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const nome = document.getElementById('prof-nome').value.trim();
+  const whatsapp = document.getElementById('prof-whatsapp').value.trim();
+
+  if (!nome || !whatsapp) return;
+
+  // Sanitização básica — remove caracteres não numéricos do WhatsApp para montar o link
+  const whatsappClean = whatsapp.replace(/\D/g, '');
+
+  // Aqui normalmente integraria com o CRM / API do WhatsApp do Instituto Gaia Soul.
+  // Por enquanto, redireciona para o WhatsApp com mensagem pré-preenchida.
+  const mensagem = encodeURIComponent(
+    `Olá! Sou o(a) professor(a) ${nome} e gostaria de receber os e-books do Imersão Azul. Meu WhatsApp: ${whatsapp}`
+  );
+
+  // Mostra sucesso
+  modalFormWrap.style.display = 'none';
+  modalSuccess.className = 'modal-success show';
+
+  // Abre o WhatsApp após 1.5s
+  setTimeout(() => {
+    window.open(`https://wa.me/5571999972427?text=${mensagem}`, '_blank');
+  }, 1500);
+});
+
+/* ---- Smooth scroll ---- */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+
+</body>
+</html>
