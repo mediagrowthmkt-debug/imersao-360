@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirme sua Participação — Imersão Azul</title>
+  <meta name="description" content="Professor parceiro, confirme sua participação no projeto Imersão Azul e acesse todos os e-books gratuitamente."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --deep:#0d2438;--deep2:#0b1e30;--teal:#1a8fa0;--teal2:#147a8a;
+      --teal-lt:#7dd4e8;--sand:#f0ebe3;--fog:#f5f7f6;--white:#ffffff;
+      --ink:#1a2e3b;--ink-md:#3d5566;--ink-lt:#6b8799;
+      --gold:#c49a3c;--sage:#7aab8a;--coral:#e07060;
+      --muted:rgba(255,255,255,.62);--fh:'Sora',sans-serif;--fb:'Inter',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--fog);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .container{width:min(860px,92%);margin-inline:auto}
+
+    /* === TOPBAR === */
+    .topbar{background:var(--deep);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:center}
+    .topbar img{height:60px;width:auto}
+
+    /* === HERO STRIP === */
+    .hero{background:linear-gradient(140deg,var(--deep2) 0%,#0e3553 100%);padding:3.2rem 1.5rem 2.8rem;text-align:center;color:var(--white)}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:.3rem .9rem;font-size:.66rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:1.3rem}
+    .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .hero h1{font-family:var(--fh);font-size:clamp(1.65rem,4vw,2.5rem);font-weight:800;line-height:1.15;margin-bottom:.85rem}
+    .hero h1 .acc{color:var(--teal-lt)}
+    .hero p{font-size:.97rem;line-height:1.82;color:var(--muted);max-width:600px;margin:0 auto}
+
+    /* === STEPS === */
+    .steps{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;padding:1.6rem 1.5rem;background:var(--white);border-bottom:1px solid rgba(0,0,0,.07)}
+    .step{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--ink-md);font-weight:500}
+    .sn{width:26px;height:26px;border-radius:50%;background:var(--teal);color:var(--white);font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .sarr{color:var(--teal-lt);font-size:.75rem}
+    @media(max-width:500px){.sarr{display:none}}
+
+    /* === FORM SECTION === */
+    .form-section{padding:2.5rem 1.5rem 4.5rem}
+    .form-card{background:var(--white);border-radius:16px;box-shadow:0 4px 40px rgba(0,0,0,.1);overflow:hidden}
+    .form-head{background:linear-gradient(135deg,rgba(26,143,160,.08),rgba(26,143,160,.04));border-bottom:1px solid rgba(26,143,160,.12);padding:1.8rem 2rem 1.6rem}
+    .form-head h2{font-family:var(--fh);font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+    .form-head p{font-size:.86rem;color:var(--ink-lt);line-height:1.6}
+    .form-body{padding:2rem}
+    @media(min-width:600px){.form-head{padding:2rem 2.5rem 1.8rem}.form-body{padding:2.2rem 2.5rem 2.5rem}}
+
+    /* Form fields */
+    .fsec{font-size:.72rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--ink-lt);margin:1.8rem 0 1rem;padding-top:1.8rem;border-top:1px solid rgba(0,0,0,.07);display:flex;align-items:center;gap:.5rem}
+    .fsec:first-child{margin-top:0;padding-top:0;border-top:none}
+    .fg{display:flex;flex-direction:column;gap:.38rem;margin-bottom:1.1rem}
+    .fg label{font-size:.8rem;font-weight:600;color:var(--ink-md)}
+    .fg input,.fg select{
+      padding:.78rem 1rem;border:1.5px solid rgba(0,0,0,.12);border-radius:10px;
+      font-family:var(--fb);font-size:.9rem;color:var(--ink);background:var(--white);
+      transition:border-color .2s,box-shadow .2s;width:100%;
+    }
+    .fg input:focus,.fg select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(26,143,160,.12)}
+    .fg input::placeholder{color:#b0bec5}
+    .f2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:520px){.f2{grid-template-columns:1fr}}
+
+    .check-grp{display:flex;flex-direction:column;gap:.55rem;margin-top:.4rem}
+    .check-row{flex-direction:row;flex-wrap:wrap;gap:.8rem}
+    .ci{display:flex;align-items:flex-start;gap:.55rem;cursor:pointer;font-size:.86rem;color:var(--ink-md);line-height:1.55}
+    .ci input{width:16px;height:16px;accent-color:var(--teal);flex-shrink:0;margin-top:2px;cursor:pointer}
+
+    .termo-box{background:rgba(26,143,160,.06);border:1px solid rgba(26,143,160,.18);border-radius:12px;padding:1.15rem 1.3rem;margin:1.8rem 0 1.5rem}
+
+    .btn-sub{
+      width:100%;padding:1.1rem;border:none;border-radius:12px;cursor:pointer;
+      font-family:var(--fh);font-size:1rem;font-weight:700;
+      background:linear-gradient(135deg,#1a8fa0 0%,#20b2c8 100%);color:var(--white);
+      display:flex;align-items:center;justify-content:center;gap:.55rem;
+      box-shadow:0 4px 20px rgba(26,143,160,.35);
+      transition:transform .25s,box-shadow .3s,filter .25s;
+    }
+    .btn-sub:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(26,143,160,.5);filter:brightness(1.06)}
+    .btn-sub:active{transform:translateY(0)}
+    .btn-sub:disabled{opacity:.65;cursor:not-allowed;transform:none!important}
+    .fnote{text-align:center;font-size:.77rem;color:var(--ink-lt);margin-top:.85rem;line-height:1.6}
+
+    /* === SUCCESS === */
+    #successBox{display:none;text-align:center;padding:4rem 2rem}
+    #successBox.show{display:block}
+    #successBox .ico{font-size:4rem;margin-bottom:1rem;display:block}
+    #successBox h3{font-family:var(--fh);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.75rem}
+    #successBox p{font-size:.95rem;color:var(--ink-md);line-height:1.75}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .spin{display:inline-block;animation:spin .9s linear infinite}
+
+    /* === FOOTER === */
+    footer{background:var(--deep);color:rgba(255,255,255,.5);padding:2.2rem 1.5rem;text-align:center;font-size:.8rem;line-height:1.8}
+    footer a{color:var(--teal-lt);text-decoration:none}
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="professores.html"><img src="imagens/logo.png" alt="Imersão Azul"/></a>
+</header>
+
+<div class="hero">
+  <div class="badge"><span class="dot"></span>Professor Parceiro — Projeto Imersão Azul</div>
+  <h1>Confirme sua participação<br>na <span class="acc">Imersão Azul</span> 🌊</h1>
+  <p>Preencha o formulário abaixo para formalizar sua participação. Assim que concluir, você acessa imediatamente todos os e-books da Coleção Imersão Azul para compartilhar com suas turmas.</p>
+</div>
+
+<div class="steps">
+  <div class="step"><div class="sn">1</div><span>Preencha o formulário</span></div>
+  <div class="sarr"><i class="fa-solid fa-chevron-right"></i></div>
+  <div class="step"><div class="sn">2</div><span>Confirme seu aceite</span></div>
+  <div class="sarr"><i class="fa-solid fa-chevron-right"></i></div>
+  <div class="step"><div class="sn">3</div><span>Acesse todos os e-books</span></div>
+</div>
+
+<div class="form-section">
+  <div class="container">
+    <div class="form-card">
+
+      <div class="form-head">
+        <h2>📋 Dados do professor parceiro</h2>
+        <p>Suas informações são usadas exclusivamente no âmbito do projeto Imersão Azul.</p>
+      </div>
+
+      <div class="form-body">
+        <div id="formContent">
+          <form id="confirmForm" novalidate>
+
+            <p class="fsec">👤 Dados pessoais</p>
+            <div class="fg">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" placeholder="Maria da Silva" required autocomplete="name"/>
+            </div>
+            <div class="f2">
+              <div class="fg">
+                <label for="whatsapp">WhatsApp (com DDD) *</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-0000" required autocomplete="tel"/>
+              </div>
+              <div class="fg">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email"/>
+              </div>
+            </div>
+
+            <p class="fsec">🏫 Sua escola</p>
+            <div class="fg">
+              <label for="escola">Nome da escola / instituição *</label>
+              <input type="text" id="escola" name="escola" placeholder="Ex: EMEF João da Silva" required/>
+            </div>
+            <div class="f2">
+              <div class="fg">
+                <label for="cidade">Cidade *</label>
+                <input type="text" id="cidade" name="cidade" placeholder="São Paulo" required/>
+              </div>
+              <div class="fg">
+                <label for="estado">Estado *</label>
+                <select id="estado" name="estado" required>
+                  <option value="">Selecione</option>
+                  <option>AC</option><option>AL</option><option>AM</option><option>AP</option>
+                  <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                  <option>GO</option><option>MA</option><option>MG</option><option>MS</option>
+                  <option>MT</option><option>PA</option><option>PB</option><option>PE</option>
+                  <option>PI</option><option>PR</option><option>RJ</option><option>RN</option>
+                  <option>RO</option><option>RR</option><option>RS</option><option>SC</option>
+                  <option>SE</option><option>SP</option><option>TO</option>
+                </select>
+              </div>
+            </div>
+            <div class="f2">
+              <div class="fg">
+                <label for="rede">Tipo de rede *</label>
+                <select id="rede" name="rede" required>
+                  <option value="">Selecione</option>
+                  <option>Pública Federal</option>
+                  <option>Pública Estadual</option>
+                  <option>Pública Municipal</option>
+                  <option>Privada</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label for="cargo">Cargo *</label>
+                <select id="cargo" name="cargo" required>
+                  <option value="">Selecione</option>
+                  <option>Professor(a)</option>
+                  <option>Coordenador(a)</option>
+                  <option>Diretor(a)</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+
+            <p class="fsec">📖 Sua atuação</p>
+            <div class="fg">
+              <label for="disciplina">Disciplina(s) que leciona *</label>
+              <input type="text" id="disciplina" name="disciplina" placeholder="Ex: Ciências, Biologia, Geografia..." required/>
+            </div>
+            <div class="fg">
+              <label>Faixa etária dos seus alunos * <span style="font-weight:400;color:var(--ink-lt);font-size:.71rem;">(marque todas que se aplicam)</span></label>
+              <div class="check-grp">
+                <label class="ci"><input type="checkbox" name="faixa_etaria" value="Fundamental I (1º ao 5º)"><span>Fundamental I (1º ao 5º)</span></label>
+                <label class="ci"><input type="checkbox" name="faixa_etaria" value="Fundamental II (6º ao 9º)"><span>Fundamental II (6º ao 9º)</span></label>
+                <label class="ci"><input type="checkbox" name="faixa_etaria" value="Ensino Médio"><span>Ensino Médio</span></label>
+              </div>
+            </div>
+            <div class="f2">
+              <div class="fg">
+                <label for="alunos">Quantidade média de alunos *</label>
+                <select id="alunos" name="alunos" required>
+                  <option value="">Selecione</option>
+                  <option>Até 30 alunos</option>
+                  <option>31 a 60 alunos</option>
+                  <option>61 a 100 alunos</option>
+                  <option>Mais de 100 alunos</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label>Produz material didático próprio? *</label>
+                <div class="check-grp check-row" style="margin-top:.6rem">
+                  <label class="ci"><input type="radio" name="produz_material" value="Sim" required><span>Sim</span></label>
+                  <label class="ci"><input type="radio" name="produz_material" value="Não"><span>Não</span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="termo-box">
+              <label class="ci">
+                <input type="checkbox" id="termo" name="termo" required/>
+                <span>Confirmo que participei da reunião com o <strong>Instituto Gaia Soul</strong>, compreendi a proposta da Imersão Azul e concordo em utilizar os e-books com minha(s) turma(s) durante o período piloto, enviando feedback ao final. Li e aceito os termos de participação.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-sub" id="btnSubmit">
+              <i class="fa-solid fa-lock-open"></i> Confirmar e Acessar os E-books
+            </button>
+            <p class="fnote"><i class="fa-solid fa-shield-halved"></i> Dados protegidos e usados exclusivamente no âmbito do projeto.</p>
+
+          </form>
+        </div>
+
+        <div id="successBox">
+          <span class="ico">🎉</span>
+          <h3>Participação confirmada!</h3>
+          <p>Redirecionando para os e-books...<br><br><span class="spin">🌀</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Imersão Azul &nbsp;·&nbsp; <a href="mailto:contato@imersaoazul.com.br">contato@imersaoazul.com.br</a> &nbsp;·&nbsp; <a href="https://wa.me/5571999972427">(71) 99997-2427</a></p>
+  <p style="margin-top:.4rem">Projeto apoiado pela Década da Ciência Oceânica — UNESCO 2021–2030</p>
+</footer>
+
+<script>
+const WEBHOOK     = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/411490de-e245-475d-92f6-bc503c3585a7';
+const APPS_SCRIPT = 'https://script.google.com/macros/s/AKfycbwD7-6-jC1CglUaUrYIhINMNZZ2-j9SPholCunvnp6sQXw-gJhdfdPoxgt5Ot1IRCkrEQ/exec';
+
+document.getElementById('confirmForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btnSubmit');
+
+  const nome       = document.getElementById('nome').value.trim();
+  const whatsapp   = document.getElementById('whatsapp').value.trim();
+  const email      = document.getElementById('email').value.trim();
+  const escola     = document.getElementById('escola').value.trim();
+  const cidade     = document.getElementById('cidade').value.trim();
+  const estado     = document.getElementById('estado').value;
+  const rede       = document.getElementById('rede').value;
+  const cargo      = document.getElementById('cargo').value;
+  const disciplina = document.getElementById('disciplina').value.trim();
+  const faixas     = [...document.querySelectorAll('input[name="faixa_etaria"]:checked')].map(c => c.value);
+  const alunos     = document.getElementById('alunos').value;
+  const material   = document.querySelector('input[name="produz_material"]:checked')?.value || '';
+  const termoOk    = document.getElementById('termo').checked;
+
+  const invalidos = [];
+  if (!nome)       invalidos.push('nome');
+  if (!whatsapp)   invalidos.push('whatsapp');
+  if (!email)      invalidos.push('email');
+  if (!escola)     invalidos.push('escola');
+  if (!cidade)     invalidos.push('cidade');
+  if (!estado)     invalidos.push('estado');
+  if (!rede)       invalidos.push('rede');
+  if (!cargo)      invalidos.push('cargo');
+  if (!disciplina) invalidos.push('disciplina');
+  if (!faixas.length) invalidos.push('faixa');
+  if (!alunos)     invalidos.push('alunos');
+  if (!material)   invalidos.push('material');
+  if (!termoOk)    invalidos.push('termo');
+
+  if (invalidos.length) {
+    const orig = btn.innerHTML;
+    btn.textContent = '⚠️ Preencha todos os campos obrigatórios';
+    btn.disabled = true;
+    setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 3000);
+    const el = document.getElementById(invalidos[0]);
+    if (el) { el.focus(); el.style.borderColor = '#e07060'; setTimeout(() => el.style.borderColor = '', 2500); }
+    return;
+  }
+
+  const phone = '+55' + whatsapp.replace(/\D/g, '').replace(/^55/, '');
+  const nota = [
+    '📚 PROFESSOR IMERSÃO AZUL — Confirmação via Link Reunião',
+    `• Escola: ${escola}`,
+    `• Cidade/UF: ${cidade} — ${estado}`,
+    `• Tipo de Rede: ${rede}`,
+    `• Cargo: ${cargo}`,
+    `• Disciplina(s): ${disciplina}`,
+    `• Faixa Etária: ${faixas.join(', ')}`,
+    `• Quantidade de Alunos: ${alunos}`,
+    `• Produz Material Didático: ${material}`,
+    `• Aceite do Termo: ${new Date().toLocaleString('pt-BR')}`,
+  ].join('\n');
+
+  btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Confirmando...';
+  btn.disabled = true;
+
+  const payload = {
+    name: nome, email, phone, escola, cidade, estado, rede, cargo,
+    disciplina, faixas: faixas.join(', '), alunos, material, nota,
+    PLATAFORMA: 'LINK-CONFIRMACAO', FONTE: window.location.href,
+  };
+
+  try {
+    // N8N → cria contato + oportunidade no GHL
+    await fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch (_) {}
+
+  try {
+    // Apps Script direto → garante entrada na planilha independente do N8N
+    fetch(APPS_SCRIPT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch (_) {}
+
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('successBox').classList.add('show');
+
+  setTimeout(() => {
+    window.location.href = 'acesso-ebooks.html?nome=' + encodeURIComponent(nome);
+  }, 2000);
+});
+</script>
+</body>
+</html>

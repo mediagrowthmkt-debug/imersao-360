@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seus E-books — Imersão Azul</title>
+  <meta name="description" content="Acesse todos os e-books da Coleção Imersão Azul — Cultura Oceânica para compartilhar com suas turmas."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --deep:#0d2438;--deep2:#0b1e30;--teal:#1a8fa0;--teal2:#147a8a;
+      --teal-lt:#7dd4e8;--sand:#f0ebe3;--fog:#f5f7f6;--white:#ffffff;
+      --ink:#1a2e3b;--ink-md:#3d5566;--ink-lt:#6b8799;
+      --gold:#c49a3c;--sage:#7aab8a;--coral:#e07060;
+      --muted:rgba(255,255,255,.65);--fh:'Sora',sans-serif;--fb:'Inter',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--fog);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .container{width:min(1100px,93%);margin-inline:auto}
+
+    /* === TOPBAR === */
+    .topbar{background:var(--deep);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:center}
+    .topbar img{height:60px;width:auto}
+
+    /* === HERO === */
+    .hero{background:linear-gradient(140deg,var(--deep2) 0%,#0e3553 100%);padding:3rem 1.5rem 2.8rem;text-align:center;color:var(--white)}
+    .welcome-badge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(26,143,160,.25);border:1px solid rgba(26,143,160,.5);border-radius:8px;padding:.4rem 1rem;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-lt);margin-bottom:1.2rem}
+    .welcome-badge i{font-size:.85rem}
+    .hero h1{font-family:var(--fh);font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;line-height:1.2;margin-bottom:.7rem}
+    .hero h1 .nome{color:var(--teal-lt)}
+    .hero p{font-size:.97rem;line-height:1.82;color:var(--muted);max-width:580px;margin:0 auto}
+
+    /* === INSTRUCTION STRIP === */
+    .instr{background:var(--white);border-bottom:1px solid rgba(0,0,0,.07);padding:1.4rem 1.5rem}
+    .instr-inner{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center;max-width:900px;margin:0 auto}
+    .instr-chip{display:flex;align-items:center;gap:.55rem;font-size:.83rem;color:var(--ink-md);background:var(--fog);border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:.55rem .9rem}
+    .instr-chip i{color:var(--teal);font-size:.9rem}
+
+    /* === SECTION TITLE === */
+    .sec-title{padding:2.5rem 1.5rem 1.2rem;text-align:center}
+    .sec-title .lbl{display:inline-flex;align-items:center;gap:.45rem;font-size:.67rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:.7rem}
+    .sec-title .lbl::before{content:'';width:18px;height:1.5px;background:var(--teal);border-radius:2px}
+    .sec-title h2{font-family:var(--fh);font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:var(--ink);line-height:1.2}
+
+    /* === BOOKS GRID === */
+    .books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;padding:0 1.5rem 1.5rem}
+    @media(min-width:900px){.books-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:640px){.books-grid{grid-template-columns:1fr 1fr;gap:1rem}}
+    @media(max-width:420px){.books-grid{grid-template-columns:1fr}}
+
+    /* === BOOK CARD === */
+    .book-card{background:var(--white);border-radius:16px;box-shadow:0 2px 20px rgba(0,0,0,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+    .book-card:hover{transform:translateY(-4px);box-shadow:0 8px 36px rgba(0,0,0,.14)}
+
+    .book-cover{position:relative;width:100%;padding-top:136%;background:var(--deep);overflow:hidden;flex-shrink:0}
+    .book-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+    .book-card:hover .book-cover img{transform:scale(1.04)}
+    .book-cover-fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(145deg,var(--deep2),#0e3a52);color:var(--white);padding:1.5rem;text-align:center}
+    .book-cover.no-img .book-cover-fallback{display:flex}
+    .book-cover.no-img img{display:none}
+    .book-cover-fallback .big-emoji{font-size:2.8rem;line-height:1}
+    .book-cover-fallback .cover-title{font-family:var(--fh);font-size:.82rem;font-weight:700;color:var(--white);line-height:1.35;margin-top:.4rem}
+    .book-cover-fallback .cover-sub{font-size:.68rem;color:var(--teal-lt);margin-top:.25rem;font-weight:600;letter-spacing:.5px}
+
+    .level-badge{position:absolute;top:.75rem;left:.75rem;background:rgba(13,36,56,.85);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);color:var(--teal-lt);font-size:.63rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:.3rem .65rem;border-radius:6px}
+
+    .book-info{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;flex:1;gap:.6rem}
+    .book-title{font-family:var(--fh);font-size:.96rem;font-weight:700;color:var(--ink);line-height:1.3}
+    .book-desc{font-size:.82rem;color:var(--ink-lt);line-height:1.65;flex:1}
+    .btn-ebook{
+      display:flex;align-items:center;justify-content:center;gap:.45rem;
+      padding:.75rem 1rem;border-radius:10px;text-decoration:none;
+      background:linear-gradient(135deg,var(--teal),#20b2c8);color:var(--white);
+      font-family:var(--fh);font-size:.84rem;font-weight:700;
+      transition:transform .2s,box-shadow .25s,filter .2s;
+      box-shadow:0 3px 14px rgba(26,143,160,.3);margin-top:.4rem;
+    }
+    .btn-ebook:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(26,143,160,.45);filter:brightness(1.07)}
+    .btn-ebook:active{transform:translateY(0)}
+
+    /* Material de apoio cards */
+    .book-card.apoio .book-cover{background:linear-gradient(145deg,#1a3a2a,#0d2438)}
+    .btn-apoio{background:linear-gradient(135deg,var(--sage),#5d9a70)!important}
+
+    /* === SECTION DIVIDER === */
+    .sec-divider{padding:2rem 1.5rem .5rem;text-align:center}
+    .sec-divider .dtag{display:inline-flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid rgba(0,0,0,.09);border-radius:20px;padding:.5rem 1.1rem;font-size:.77rem;font-weight:600;color:var(--ink-md)}
+    .sec-divider .dtag i{color:var(--sage)}
+
+    /* === CTA SHARE === */
+    .cta-share{background:linear-gradient(135deg,var(--deep2),#0e3553);padding:3.5rem 1.5rem;text-align:center;color:var(--white);margin-top:2.5rem}
+    .cta-share h2{font-family:var(--fh);font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:.8rem}
+    .cta-share p{font-size:.95rem;color:var(--muted);max-width:540px;margin:0 auto 2rem;line-height:1.78}
+    .share-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+    .btn-wpp{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:10px;background:#25d366;color:var(--white);font-family:var(--fh);font-size:.9rem;font-weight:700;text-decoration:none;transition:transform .2s,filter .2s}
+    .btn-wpp:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn-back{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:10px;background:transparent;color:rgba(255,255,255,.75);font-family:var(--fh);font-size:.9rem;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.25);transition:border-color .2s,color .2s}
+    .btn-back:hover{border-color:rgba(255,255,255,.6);color:var(--white)}
+
+    /* === FOOTER === */
+    footer{background:var(--deep);color:rgba(255,255,255,.45);padding:2.2rem 1.5rem;text-align:center;font-size:.8rem;line-height:1.8}
+    footer a{color:var(--teal-lt);text-decoration:none}
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="professores.html"><img src="imagens/logo.png" alt="Imersão Azul"/></a>
+</header>
+
+<!-- Hero personalizado -->
+<div class="hero">
+  <div class="welcome-badge"><i class="fa-solid fa-graduation-cap"></i>Acesso Professor Parceiro</div>
+  <h1>Olá, <span class="nome" id="nomeProf">Professor(a)</span>!<br>Seus e-books estão aqui 🌊</h1>
+  <p>Abaixo estão todos os volumes da Coleção Imersão Azul. Clique no e-book adequado para cada turma e compartilhe o link diretamente com seus alunos.</p>
+</div>
+
+<!-- Instrução -->
+<div class="instr">
+  <div class="instr-inner">
+    <div class="instr-chip"><i class="fa-solid fa-hand-pointer"></i><span>Clique em "Acessar E-book" para abrir</span></div>
+    <div class="instr-chip"><i class="fa-brands fa-whatsapp"></i><span>Compartilhe o link com seus alunos</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-mobile-screen"></i><span>Funciona no celular, sem app</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-lock-open"></i><span>Acesso gratuito e permanente</span></div>
+  </div>
+</div>
+
+<!-- Ensino Fundamental I -->
+<div class="sec-title">
+  <div class="container">
+    <p class="lbl">Ensino Fundamental I</p>
+    <h2>1º ao 5º Ano</h2>
+  </div>
+</div>
+
+<div class="books-grid container">
+
+  <!-- 2º Ano EF -->
+  <div class="book-card">
+    <div class="book-cover" id="cover-1">
+      <img src="https://p.calameo.com/books/008217566/e121854a2556/p1.jpg"
+           loading="eager" fetchpriority="high" alt="Capa 2º Ano Ensino Fundamental"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🐠</div>
+        <div class="cover-title">2º Ano<br>Ensino Fundamental</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental I · 2º Ano</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">2º Ano — Ensino Fundamental</h3>
+      <p class="book-desc">Vida no oceano, animais marinhos e primeiros passos na consciência ambiental, de forma lúdica e acessível.</p>
+      <a href="https://www.calameo.com/read/008217566e121854a2556?authid=S5lCP26tRSwk" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+  <!-- 4º e 5º Ano EF -->
+  <div class="book-card">
+    <div class="book-cover" id="cover-2">
+      <img src="https://p.calameo.com/books/008217566/3a199d6d8d82/p1.jpg"
+           loading="lazy" alt="Capa 4º e 5º Ano Ensino Fundamental"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🦀</div>
+        <div class="cover-title">4º e 5º Ano<br>Ensino Fundamental</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental I · 4º e 5º</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">4º e 5º Ano — Ensino Fundamental</h3>
+      <p class="book-desc">Ecossistemas marinhos brasileiros, correntes oceânicas, poluição dos mares e pesca sustentável.</p>
+      <a href="https://www.calameo.com/read/0082175663a199d6d8d82?authid=bW4xZ79xhRvW" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Ensino Fundamental II -->
+<div class="sec-divider">
+  <div class="dtag"><i class="fa-solid fa-water"></i> Ensino Fundamental II — 6º ao 9º Ano</div>
+</div>
+
+<div class="books-grid container">
+
+  <!-- 6º Ano -->
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/45ab5192ad65/p1.jpg"
+           loading="lazy" alt="Capa 6º Ano Ensino Fundamental"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🐙</div>
+        <div class="cover-title">6º Ano<br>Ensino Fundamental</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental II · 6º Ano</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">6º Ano — Ensino Fundamental</h3>
+      <p class="book-desc">Biomas costeiros, biodiversidade marinha e impacto humano nos oceanos, com atividades interdisciplinares.</p>
+      <a href="https://www.calameo.com/read/00821756645ab5192ad65?authid=7geKzeBw5i7S" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+  <!-- 8º Ano -->
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/d209f1ec9a91/p1.jpg"
+           loading="lazy" alt="Capa 8º Ano Ensino Fundamental"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🌊</div>
+        <div class="cover-title">8º Ano<br>Ensino Fundamental</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental II · 8º Ano</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">8º Ano — Ensino Fundamental</h3>
+      <p class="book-desc">Oceanografia, clima global e recursos naturais do oceano — conexões com ciências, física e química.</p>
+      <a href="https://www.calameo.com/read/008217566d209f1ec9a91?authid=ZBWfBKova71y" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+  <!-- 9º Ano -->
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/507d3fdf8b43/p1.jpg"
+           loading="lazy" alt="Capa 9º Ano Ensino Fundamental"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🌍</div>
+        <div class="cover-title">9º Ano<br>Ensino Fundamental</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental II · 9º Ano</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">9º Ano — Ensino Fundamental</h3>
+      <p class="book-desc">Políticas ambientais, impactos nos oceanos, ciência do mar e cidadania oceânica na prática.</p>
+      <a href="https://www.calameo.com/read/008217566507d3fdf8b43?authid=uDpic6teOrxe" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Ensino Médio -->
+<div class="sec-divider">
+  <div class="dtag"><i class="fa-solid fa-graduation-cap"></i> Ensino Médio — 1ª à 3ª Série</div>
+</div>
+
+<div class="books-grid container">
+
+  <!-- 1ª Série EM -->
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/395ac5fce80e/p1.jpg"
+           loading="lazy" alt="Capa 1ª Série Ensino Médio"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🌐</div>
+        <div class="cover-title">1ª Série<br>Ensino Médio</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Ensino Médio · 1ª Série</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">1ª Série — Ensino Médio</h3>
+      <p class="book-desc">Cultura oceânica, ecossistemas globais e oceanografia introdutória com enfoque científico e crítico.</p>
+      <a href="https://www.calameo.com/read/008217566395ac5fce80e?authid=8LbqzmiMXwZD" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+  <!-- 2ª Série EM -->
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/ce9b4e215926/p1.jpg"
+           loading="lazy" alt="Capa 2ª Série Ensino Médio"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🗺️</div>
+        <div class="cover-title">2ª Série<br>Ensino Médio</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Ensino Médio · 2ª Série</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">2ª Série — Ensino Médio</h3>
+      <p class="book-desc">Geopolítica dos oceanos, recursos marinhos, direito do mar e soberania oceânica do Brasil.</p>
+      <a href="https://www.calameo.com/read/008217566ce9b4e215926?authid=uWy4EVrPV4fi" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+  <!-- 3ª Série EM -->
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/cb9a71974c29/p1.jpg"
+           loading="lazy" alt="Capa 3ª Série Ensino Médio"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🔬</div>
+        <div class="cover-title">3ª Série<br>Ensino Médio</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Ensino Médio · 3ª Série</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">3ª Série — Ensino Médio</h3>
+      <p class="book-desc">Futuro dos oceanos, interdisciplinaridade, ação climática e projetos de inovação ambiental.</p>
+      <a href="https://www.calameo.com/read/008217566cb9a71974c29?authid=lMwrt7yvV8pR" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Material de Apoio -->
+<div class="sec-divider" style="margin-top:1rem">
+  <div class="dtag"><i class="fa-solid fa-file-lines" style="color:var(--sage)"></i> Material de Apoio ao Professor</div>
+</div>
+
+<div class="books-grid container" style="padding-bottom:3rem">
+
+  <!-- Apresentação -->
+  <div class="book-card apoio">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/fd522c2485b6/p1.jpg"
+           loading="lazy" alt="Capa Apresentação da Coleção"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">📋</div>
+        <div class="cover-title">Apresentação<br>da Coleção</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Material de Apoio</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">Apresentação — Coleção Imersão Azul</h3>
+      <p class="book-desc">Documento introdutório com visão geral da Coleção Imersão Azul — Cultura Oceânica, objetivos e organização.</p>
+      <a href="https://www.calameo.com/read/008217566fd522c2485b6?authid=ZsWThA73aGcL" target="_blank" rel="noopener" class="btn-ebook btn-apoio">
+        <i class="fa-solid fa-file-lines"></i> Acessar Documento
+      </a>
+    </div>
+  </div>
+
+  <!-- Proposta Pedagógica -->
+  <div class="book-card apoio">
+    <div class="book-cover">
+      <img src="https://p.calameo.com/books/008217566/8ab3fea5329b/p1.jpg"
+           loading="lazy" alt="Capa Proposta Pedagógica"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">📚</div>
+        <div class="cover-title">Proposta<br>Pedagógica</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Material de Apoio</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">Proposta Pedagógica</h3>
+      <p class="book-desc">Orientações metodológicas, plano de implementação e sugestões de atividades para uso em sala de aula.</p>
+      <a href="https://www.calameo.com/read/0082175668ab3fea5329b?authid=de966tnTcc7y" target="_blank" rel="noopener" class="btn-ebook btn-apoio">
+        <i class="fa-solid fa-file-lines"></i> Acessar Documento
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA compartilhamento -->
+<div class="cta-share">
+  <h2>Compartilhe com suas turmas 🌊</h2>
+  <p>Envie o link do e-book correto para cada turma pelo WhatsApp. Os alunos acessam diretamente no celular, sem precisar baixar nada.</p>
+  <div class="share-btns">
+    <a href="https://wa.me/?text=Ol%C3%A1%21%20Acesse%20os%20e-books%20gratuitos%20da%20Cole%C3%A7%C3%A3o%20Imers%C3%A3o%20Azul%20%E2%80%94%20Cultura%20Oce%C3%A2nica%3A%20https%3A%2F%2Fmediagrowthmkt-debug.github.io%2Fimersao-360%2Facesso-ebooks.html"
+       target="_blank" rel="noopener" class="btn-wpp">
+      <i class="fa-brands fa-whatsapp"></i> Compartilhar via WhatsApp
+    </a>
+    <a href="professores.html" class="btn-back">
+      <i class="fa-solid fa-arrow-left"></i> Voltar ao início
+    </a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Imersão Azul &nbsp;·&nbsp; <a href="mailto:contato@imersaoazul.com.br">contato@imersaoazul.com.br</a> &nbsp;·&nbsp; <a href="https://wa.me/5571999972427">(71) 99997-2427</a></p>
+  <p style="margin-top:.4rem">Projeto apoiado pela Década da Ciência Oceânica — UNESCO 2021–2030</p>
+</footer>
+
+<script>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const nome = params.get('nome');
+  if (nome) {
+    const el = document.getElementById('nomeProf');
+    if (el) el.textContent = nome.split(' ')[0];
+  }
+})();
+</script>
+</body>
+</html>

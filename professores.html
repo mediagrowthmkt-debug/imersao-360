@@ -750,7 +750,7 @@
   <div class="container cta-c">
     <span class="cta-ey fade-up">Pronto para fazer a diferença?</span>
     <h2 class="cta-h fade-up">Baixe os e-books, leve o oceano para a <span class="cy">sua sala de aula</span> e ajude a transformar a educação.</h2>
-    <p class="cta-desc fade-up">É gratuito, rápido e seus alunos vão sentir a diferença. Preencha seus dados e receba os livros direto no WhatsApp  em segundos.</p>
+    <p class="cta-desc fade-up">É gratuito e rápido. Informe só seu nome e WhatsApp — você recebe uma mensagem com o link para acessar os e-books.</p>
     <div class="cta-btns fade-up">
       <button class="btn btn-primary btn-lg" id="btn-download-cta"><i class="fa-solid fa-download"></i> Baixar E-books Gratuitamente</button>
     </div>
@@ -854,141 +854,37 @@
 
     <!-- Formulário -->
     <div id="modalFormWrap">
-      <div style="text-align:center;margin-bottom:1.2rem;">
-        <span style="font-size:2.2rem;display:block;margin-bottom:.4rem;">📚</span>
-        <h3>Cadastro de Professor Parceiro</h3>
-        <p class="modal-sub">Preencha os dados abaixo para receber os e-books e participar do projeto Imersão Azul.</p>
+      <div style="text-align:center;margin-bottom:1.4rem;">
+        <span style="font-size:2.2rem;display:block;margin-bottom:.4rem;">🌊</span>
+        <h3>Quero participar do Imersão Azul</h3>
+        <p class="modal-sub">Informe seu nome e WhatsApp. Em instantes você recebe uma mensagem com o próximo passo para acessar os e-books.</p>
       </div>
 
       <form id="downloadForm" class="modal-form" novalidate>
 
-        <!-- Bloco 1: Dados pessoais -->
-        <p class="form-section-lbl">👤 Seus dados</p>
         <div class="mfg">
           <label for="prof-nome">Nome completo *</label>
           <input type="text" id="prof-nome" name="nome" placeholder="Maria da Silva" required autocomplete="name" />
         </div>
-        <div class="form-2col">
-          <div class="mfg">
-            <label for="prof-whatsapp">WhatsApp (com DDD) *</label>
-            <input type="tel" id="prof-whatsapp" name="whatsapp" placeholder="(11) 99999-0000" required autocomplete="tel" />
-          </div>
-          <div class="mfg">
-            <label for="prof-email">E-mail *</label>
-            <input type="email" id="prof-email" name="email" placeholder="seu@email.com" required autocomplete="email" />
-          </div>
-        </div>
 
-        <!-- Bloco 2: Escola -->
-        <p class="form-section-lbl">🏫 Sua escola</p>
         <div class="mfg">
-          <label for="prof-escola">Nome da escola / instituição *</label>
-          <input type="text" id="prof-escola" name="escola" placeholder="Ex: EMEF João da Silva" required />
-        </div>
-        <div class="form-2col">
-          <div class="mfg">
-            <label for="prof-cidade">Cidade *</label>
-            <input type="text" id="prof-cidade" name="cidade" placeholder="São Paulo" required />
-          </div>
-          <div class="mfg">
-            <label for="prof-estado">Estado *</label>
-            <select id="prof-estado" name="estado" required>
-              <option value="">Selecione</option>
-              <option>AC</option><option>AL</option><option>AM</option><option>AP</option>
-              <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
-              <option>GO</option><option>MA</option><option>MG</option><option>MS</option>
-              <option>MT</option><option>PA</option><option>PB</option><option>PE</option>
-              <option>PI</option><option>PR</option><option>RJ</option><option>RN</option>
-              <option>RO</option><option>RR</option><option>RS</option><option>SC</option>
-              <option>SE</option><option>SP</option><option>TO</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-2col">
-          <div class="mfg">
-            <label for="prof-rede">Tipo de rede *</label>
-            <select id="prof-rede" name="rede" required>
-              <option value="">Selecione</option>
-              <option>Pública Federal</option>
-              <option>Pública Estadual</option>
-              <option>Pública Municipal</option>
-              <option>Privada</option>
-            </select>
-          </div>
-          <div class="mfg">
-            <label for="prof-cargo">Cargo *</label>
-            <select id="prof-cargo" name="cargo" required>
-              <option value="">Selecione</option>
-              <option>Professor(a)</option>
-              <option>Coordenador(a)</option>
-              <option>Diretor(a)</option>
-              <option>Outro</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Bloco 3: Atuação -->
-        <p class="form-section-lbl">📖 Sua atuação</p>
-        <div class="mfg">
-          <label for="prof-disciplina">Disciplina(s) que leciona *</label>
-          <input type="text" id="prof-disciplina" name="disciplina" placeholder="Ex: Ciências, Biologia, Geografia..." required />
-        </div>
-        <div class="mfg">
-          <label>Faixa etária dos seus alunos * <span style="font-weight:400;color:var(--ink-lt);font-size:.7rem;">(marque todas que se aplicam)</span></label>
-          <div class="check-group">
-            <label class="check-item"><input type="checkbox" name="faixa_etaria" value="Fundamental I (1º ao 5º)"><span>Fundamental I (1º ao 5º)</span></label>
-            <label class="check-item"><input type="checkbox" name="faixa_etaria" value="Fundamental II (6º ao 9º)"><span>Fundamental II (6º ao 9º)</span></label>
-            <label class="check-item"><input type="checkbox" name="faixa_etaria" value="Ensino Médio"><span>Ensino Médio</span></label>
-          </div>
-        </div>
-        <div class="form-2col">
-          <div class="mfg">
-            <label for="prof-alunos">Quantidade média de alunos *</label>
-            <select id="prof-alunos" name="alunos" required>
-              <option value="">Selecione</option>
-              <option>Até 30 alunos</option>
-              <option>31 a 60 alunos</option>
-              <option>61 a 100 alunos</option>
-              <option>Mais de 100 alunos</option>
-            </select>
-          </div>
-          <div class="mfg">
-            <label>Produz material didático próprio? *</label>
-            <div class="check-group check-row" style="margin-top:.55rem;">
-              <label class="check-item"><input type="radio" name="produz_material" value="Sim" required><span>Sim</span></label>
-              <label class="check-item"><input type="radio" name="produz_material" value="Não"><span>Não</span></label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Termo de Confiabilidade -->
-        <div class="termo-wrap">
-          <label class="check-item">
-            <input type="checkbox" id="prof-termo" name="termo" required>
-            <span>Li e concordo com o <a href="#" style="color:var(--teal);text-decoration:underline;" onclick="return false;">Termo de Confiabilidade</a> do projeto Imersão Azul. Confirmo que sou educador(a) e utilizarei os materiais exclusivamente para fins educacionais.</span>
-          </label>
+          <label for="prof-whatsapp">WhatsApp (com DDD) *</label>
+          <input type="tel" id="prof-whatsapp" name="whatsapp" placeholder="(11) 99999-0000" required autocomplete="tel" />
         </div>
 
         <button type="submit" class="modal-submit" id="modal-btn-submit">
-          <i class="fa-brands fa-whatsapp"></i> Confirmar Cadastro e Receber E-books
+          <i class="fa-brands fa-whatsapp"></i> Quero Receber os E-books
         </button>
       </form>
-      <p class="modal-note"><i class="fa-solid fa-lock"></i> Seus dados são protegidos e utilizados apenas no âmbito do projeto Imersão Azul.</p>
+      <p class="modal-note"><i class="fa-solid fa-lock"></i> Seus dados são protegidos. Usamos apenas para enviar o acesso ao material.</p>
     </div>
 
     <!-- Sucesso -->
     <div class="modal-success" id="modalSuccess">
       <div class="check-big">🎉</div>
-      <h4>Bem-vindo(a) ao Imersão Azul!</h4>
-      <p>Cadastro realizado com sucesso. Os e-books serão enviados para o seu WhatsApp em instantes pelo Instituto Gaia Soul. 📱</p>
-      <div class="cameleon-badge">
-        <span style="font-size:1.8rem;">🦎</span>
-        <div>
-          <p class="cb-text">Acesso ao Camaleão liberado</p>
-          <p class="cb-sub">Você receberá o convite no WhatsApp</p>
-        </div>
-      </div>
-      <p style="font-size:.84rem;color:var(--ink-md);margin-top:1.2rem;line-height:1.7;">Fique de olho no WhatsApp — junto com os e-books você receberá o acesso exclusivo à plataforma Camaleão, espaço reservado para professores parceiros do projeto. <strong>Sua contribuição transforma a educação oceânica no Brasil!</strong> 🌊</p>
+      <h4>Recebemos seu contato!</h4>
+      <p>Em instantes o Instituto Gaia Soul vai te enviar uma mensagem no <strong>WhatsApp</strong> com o link para concluir seu cadastro e receber os e-books gratuitamente. 📱</p>
+      <p style="font-size:.84rem;color:var(--ink-md);margin-top:1.2rem;line-height:1.7;">Fique de olho no WhatsApp. O processo é rápido e você logo terá acesso a todo o material da <strong>Coleção Imersão Azul</strong>. 🌊</p>
     </div>
   </div>
 </div>
@@ -1089,44 +985,17 @@ downloadForm.addEventListener('submit', async (e) => {
   const btn = document.getElementById('modal-btn-submit');
 
   // Coleta dos campos
-  const nome       = document.getElementById('prof-nome').value.trim();
-  const whatsapp   = document.getElementById('prof-whatsapp').value.trim();
-  const email      = document.getElementById('prof-email').value.trim();
-  const escola     = document.getElementById('prof-escola').value.trim();
-  const cidade     = document.getElementById('prof-cidade').value.trim();
-  const estado     = document.getElementById('prof-estado').value;
-  const rede       = document.getElementById('prof-rede').value;
-  const cargo      = document.getElementById('prof-cargo').value;
-  const disciplina = document.getElementById('prof-disciplina').value.trim();
-  const faixas     = [...document.querySelectorAll('input[name="faixa_etaria"]:checked')].map(c => c.value);
-  const alunos     = document.getElementById('prof-alunos').value;
-  const material   = document.querySelector('input[name="produz_material"]:checked')?.value || '';
-  const termoOk    = document.getElementById('prof-termo').checked;
+  const nome     = document.getElementById('prof-nome').value.trim();
+  const whatsapp = document.getElementById('prof-whatsapp').value.trim();
 
   // Validação
-  const invalidos = [];
-  if (!nome)       invalidos.push('nome');
-  if (!whatsapp)   invalidos.push('whatsapp');
-  if (!email)      invalidos.push('email');
-  if (!escola)     invalidos.push('escola');
-  if (!cidade)     invalidos.push('cidade');
-  if (!estado)     invalidos.push('estado');
-  if (!rede)       invalidos.push('rede');
-  if (!cargo)      invalidos.push('cargo');
-  if (!disciplina) invalidos.push('disciplina');
-  if (faixas.length === 0) invalidos.push('faixa');
-  if (!alunos)     invalidos.push('alunos');
-  if (!material)   invalidos.push('material');
-  if (!termoOk)    invalidos.push('termo');
-
-  if (invalidos.length > 0) {
+  if (!nome || !whatsapp) {
     const textoBtn = btn.innerHTML;
-    btn.innerHTML = '⚠️ Preencha todos os campos obrigatórios';
+    btn.innerHTML = '⚠️ Preencha nome e WhatsApp';
     btn.disabled = true;
     setTimeout(() => { btn.innerHTML = textoBtn; btn.disabled = false; }, 3000);
-    const primeiro = invalidos[0];
-    const el = document.getElementById('prof-' + primeiro);
-    if (el) { el.focus(); el.style.borderColor = '#e07060'; setTimeout(() => el.style.borderColor = '', 2500); }
+    if (!nome) { const el = document.getElementById('prof-nome'); el.focus(); el.style.borderColor = '#e07060'; setTimeout(() => el.style.borderColor = '', 2500); }
+    else { const el = document.getElementById('prof-whatsapp'); el.focus(); el.style.borderColor = '#e07060'; setTimeout(() => el.style.borderColor = '', 2500); }
     return;
   }
 
@@ -1134,33 +1003,9 @@ downloadForm.addEventListener('submit', async (e) => {
   const phoneBruto = whatsapp.replace(/\D/g, '');
   const phone      = '+55' + (phoneBruto.startsWith('55') ? phoneBruto.slice(2) : phoneBruto);
 
-  const nota = [
-    '📚 PROFESSOR IMERSÃO AZUL — Dados do Formulário',
-    `• Escola: ${escola}`,
-    `• Cidade/UF: ${cidade} - ${estado}`,
-    `• Tipo de Rede: ${rede}`,
-    `• Cargo: ${cargo}`,
-    `• Disciplina(s): ${disciplina}`,
-    `• Faixa Etária: ${faixas.join(', ')}`,
-    `• Quantidade de Alunos: ${alunos}`,
-    `• Produz Material Didático: ${material}`,
-    `• Aceite do Termo: ${new Date().toLocaleString('pt-BR')}`,
-  ].join('\n');
-
   const payload = {
     name:       nome,
-    email,
     phone,
-    escola,
-    cidade,
-    estado,
-    rede,
-    cargo,
-    disciplina,
-    faixas:     faixas.join(', '),
-    alunos,
-    material,
-    nota,
     PLATAFORMA: 'ORGANIC',
     FONTE:      window.location.href,
   };
