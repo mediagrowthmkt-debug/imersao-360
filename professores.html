@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Imersão Azul  Espaço do Professor</title>
-  <meta name="description" content="Professor, conheça o projeto Imersão Azul, baixe os e-books gratuitos e ajude a transformar a educação oceânica no Brasil. Sua experiência em sala de aula faz a diferença." />
+  <meta name="description" content="Professor, conheça o Projeto Imersão Azul 360°, acesse a coleção integral e contribua com a validação pedagógica da educação oceânica no Brasil." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -181,6 +181,15 @@
     .ebook-card .ebook-tag { display:inline-block; margin-top:.8rem; background:rgba(26,143,160,.1); color:var(--teal); border:1px solid rgba(26,143,160,.18); border-radius:6px; padding:.2rem .65rem; font-size:.68rem; font-weight:600; }
     .ebooks-cta { text-align:center; margin-top:3rem; }
 
+    /* === CERTIFICADO === */
+    #certificado { padding:6.5rem 1.5rem; background:var(--white); }
+    .cert-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+    .cert-copy { max-width:560px; }
+    .cert-copy p { font-size:.92rem; color:var(--ink-md); line-height:1.82; margin-top:1rem; }
+    .cert-text { margin-top:1.4rem; background:var(--fog); border:1px solid #e1e9ec; border-radius:14px; padding:1.2rem 1.3rem; font-size:.86rem; color:var(--ink-md); line-height:1.75; }
+    .cert-visual { background:var(--fog); border:1px solid #e1e9ec; border-radius:18px; padding:1rem; box-shadow:0 12px 44px rgba(0,0,0,.1); }
+    .cert-visual img { width:100%; height:auto; display:block; border-radius:12px; }
+
     /* === FAQ  escuro === */
     #faq { padding:6.5rem 1.5rem; background:var(--deep2); }
     .faq-hd { text-align:center; max-width:620px; margin:0 auto 3rem; }
@@ -335,9 +344,17 @@
       .cs-badge span { font-size:.54rem; }
     }
     @media(max-width:520px) {
-      .proof-bar { gap:1.5rem; }
+      html, body { width:100%; max-width:100%; overflow-x:hidden; }
+      #hero { padding-left:1rem; padding-right:1rem; }
+      #hero, .hero-c, .hero-h1, .hero-p, .hero-ctas, .proof-bar { width:100%; max-width:calc(100vw - 2rem); min-width:0; }
+      .hero-badge { width:100%; max-width:calc(100vw - 2rem); white-space:normal; justify-content:center; letter-spacing:1.15px; line-height:1.45; }
+      .hero-h1 { font-size:1.72rem; line-height:1.16; letter-spacing:0; overflow-wrap:break-word; }
+      .hero-p { font-size:.92rem; max-width:320px; }
+      .hero-ctas .btn { width:100%; justify-content:center; }
+      .proof-bar { display:grid; grid-template-columns:1fr; gap:1rem; max-width:240px; margin-left:auto; margin-right:auto; }
       .cta-btns { flex-direction:column; align-items:center; }
       .ebooks-grid { grid-template-columns:1fr; }
+      .cert-grid { grid-template-columns:1fr; }
       .cs-card img { height:200px; }
       .cs-card-2 img { height:160px; }
       .cs-card-2 { width:80% !important; }
@@ -361,11 +378,11 @@
       <li><a href="#sobre">O Projeto</a></li>
       <li><a href="#como-funciona">Como Funciona</a></li>
       <li><a href="#beneficios">Para Você</a></li>
-      <li><a href="#ebooks">E-books</a></li>
+      <li><a href="#ebooks">Coleção</a></li>
       <li><a href="#faq">Dúvidas</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#cta-download" class="btn btn-primary" style="padding:.44rem 1.25rem;font-size:.81rem;"><i class="fa-solid fa-download"></i> Baixar E-books</a>
+      <a href="#cta-download" class="btn btn-primary" style="padding:.44rem 1.25rem;font-size:.81rem;"><i class="fa-solid fa-book-open"></i> Acessar a Coleção</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -377,10 +394,10 @@
   <a href="#sobre">O Projeto</a>
   <a href="#como-funciona">Como Funciona</a>
   <a href="#beneficios">Para Você</a>
-  <a href="#ebooks">E-books</a>
+  <a href="#ebooks">Coleção</a>
   <a href="#faq">Dúvidas</a>
   <div class="mob-cta">
-    <a href="#cta-download" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.82rem;"><i class="fa-solid fa-download"></i> Baixar E-books</a>
+    <a href="#cta-download" class="btn btn-primary" style="padding:.6rem 1.25rem;font-size:.82rem;"><i class="fa-solid fa-book-open"></i> Acessar a Coleção</a>
   </div>
 </div>
 
@@ -392,19 +409,20 @@
     <div class="hero-badge fade-up"><span class="dot"></span>👩‍🏫 Espaço exclusivo para Professores</div>
     <h1 class="hero-h1 fade-up">
       Professor, o oceano<br>
-      chegou à sua <span class="accent">sala de aula.</span><br>
+      chegou à sua<br>
+      <span class="accent">sala de aula.</span><br>
       <span class="accent-g">E precisa de você.</span>
     </h1>
     <p class="hero-p fade-up">
-      O <strong>Imersão Azul</strong> é um projeto de educação oceânica que começa pelos <strong>livros</strong>. Baixe os e-books gratuitos, use com seus alunos pelo celular em sala de aula e ajude a construir o melhor material de cultura oceânica do Brasil  com a sua experiência.
+      O <strong>Projeto Imersão Azul 360°</strong> começa pela <strong>coleção integral</strong>. Acesse os livros na plataforma, leia o volume da sua série/ano e contribua com a validação pedagógica.
     </p>
     <div class="hero-ctas fade-up">
-      <a href="#cta-download" class="btn btn-primary btn-lg"><i class="fa-solid fa-download"></i> Baixar os E-books Gratuitamente</a>
+      <a href="#cta-download" class="btn btn-primary btn-lg"><i class="fa-solid fa-book-open"></i> Acessar a Coleção Integral</a>
       <a href="#sobre" class="btn btn-ghost">Entender o Projeto <i class="fa-solid fa-arrow-down"></i></a>
     </div>
     <div class="proof-bar fade-up">
-      <div class="proof-item"><span class="pv">📚</span><span class="pl">E-books gratuitos</span></div>
-      <div class="proof-item"><span class="pv">📱</span><span class="pl">Uso pelo celular</span></div>
+      <div class="proof-item"><span class="pv">📚</span><span class="pl">Coleção integral</span></div>
+      <div class="proof-item"><span class="pv">2</span><span class="pl">Meses para avaliação</span></div>
       <div class="proof-item"><span class="pv">BNCC</span><span class="pl">Alinhado à base nacional</span></div>
       <div class="proof-item"><span class="pv">🤝</span><span class="pl">Sua voz no projeto</span></div>
     </div>
@@ -420,17 +438,17 @@
       <div style="font-size:2.8rem;line-height:1;">📖</div>
       <div>
         <p style="font-family:var(--fh);font-size:1.05rem;font-weight:800;color:var(--white);margin-bottom:.25rem;">Por que começar pelos livros?</p>
-        <p style="font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.6;max-width:600px;">O <strong style="color:var(--white);">Imersão Azul</strong> é uma plataforma completa em desenvolvimento. Os <strong style="color:var(--white);">e-books são o primeiro passo</strong>  um piloto para levar conteúdo de qualidade sobre o oceano direto para a sala de aula, com a ajuda de quem mais entende de ensino: <strong style="color:var(--white);">você, professor.</strong></p>
+        <p style="font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.6;max-width:600px;">O <strong style="color:var(--white);">Projeto Imersão Azul 360°</strong> começa pela leitura e avaliação pedagógica da coleção. A proposta é validar o conteúdo com quem mais entende de ensino: <strong style="color:var(--white);">você, professor.</strong></p>
       </div>
     </div>
     <div style="display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0;">
       <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
-        <div style="font-size:1.4rem;">📱</div>
-        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Uso pelo celular</p>
+        <div style="font-size:1.4rem;">📚</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Coleção integral</p>
       </div>
       <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
-        <div style="font-size:1.4rem;">🆓</div>
-        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">100% gratuito</p>
+        <div style="font-size:1.4rem;">🗓️</div>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Retorno em 2 meses</p>
       </div>
       <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
         <div style="font-size:1.4rem;">🗣️</div>
@@ -447,7 +465,7 @@
     <div class="sobre-intro">
       <span class="lbl lbl-dk fade-up">Conheça o Projeto</span>
       <h2 class="h2 h2-dk fade-up">O que é o Imersão Azul?</h2>
-      <p class="sub sub-dk fade-up" style="margin:.9rem auto 0;">O Imersão Azul é um projeto educacional que une tecnologia, ciência oceânica e conteúdo alinhado à BNCC para transformar a forma como os alunos aprendem sobre o oceano  começando agora com os e-books.</p>
+      <p class="sub sub-dk fade-up" style="margin:.9rem auto 0;">O Projeto Imersão Azul 360° é uma iniciativa educacional que une tecnologia, ciência oceânica e conteúdo alinhado à BNCC para validar uma coleção pedagógica com professores de diferentes realidades.</p>
     </div>
     <div class="sobre-grid">
       <div class="sobre-card fade-up">
@@ -458,12 +476,12 @@
       <div class="sobre-card fade-up">
         <div class="sobre-icon">🚀</div>
         <h3>Plataforma em desenvolvimento</h3>
-        <p>O projeto completo incluirá realidade virtual, gamificação e trilhas interativas. Os e-books são a primeira fase  e a mais importante para validação.</p>
+        <p>O projeto completo incluirá realidade virtual, gamificação e trilhas interativas. A coleção integral é a primeira fase e a base da validação pedagógica.</p>
       </div>
       <div class="sobre-card fade-up">
         <div class="sobre-icon">📖</div>
-        <h3>E-books como ponto de partida</h3>
-        <p>Os livros digitais são a porta de entrada para o projeto. Prontos para serem usados em sala de aula pelo celular, sem custo e sem burocracia.</p>
+        <h3>Coleção como ponto de partida</h3>
+        <p>Os livros são a porta de entrada para o projeto. Nesta fase, o professor acessa, lê e avalia o volume relacionado à série em que leciona.</p>
       </div>
       <div class="sobre-card fade-up">
         <div class="sobre-icon">👩‍🏫</div>
@@ -481,32 +499,32 @@
     <div class="cf-hd">
       <span class="lbl fade-up">Passo a Passo</span>
       <h2 class="h2 fade-up">Como funciona a sua participação?</h2>
-      <p class="sub fade-up" style="margin:.9rem auto 0;text-align:center;">É simples, gratuito e leva poucos minutos para começar.</p>
+      <p class="sub fade-up" style="margin:.9rem auto 0;text-align:center;">É simples e leva poucos minutos para começar.</p>
     </div>
     <div class="steps-track">
       <div class="step-card fade-up">
         <div class="step-num">1</div>
-        <div class="step-ico">📥</div>
-        <h3>Baixe os e-books</h3>
-        <p>Preencha seu nome e WhatsApp. Em segundos, você recebe os livros digitais diretamente no seu celular via WhatsApp.</p>
+        <div class="step-ico">📚</div>
+        <h3>Acesse a coleção integral</h3>
+        <p>Preencha seu nome e WhatsApp. Em seguida, você recebe o caminho para acessar os livros na plataforma.</p>
       </div>
       <div class="step-card fade-up">
         <div class="step-num">2</div>
-        <div class="step-ico">📱</div>
-        <h3>Use em sala de aula</h3>
-        <p>Os e-books foram pensados para uso pelo celular. Abra durante a aula e utilize o conteúdo com seus alunos de forma prática.</p>
+        <div class="step-ico">🧭</div>
+        <h3>Leia o volume da sua série</h3>
+        <p>Você poderá visualizar a coleção completa, mas a avaliação principal deve considerar o livro relacionado ao ano ou série que você leciona.</p>
       </div>
       <div class="step-card fade-up">
         <div class="step-num">3</div>
         <div class="step-ico">🗓️</div>
-        <h3>Experimente por 4 meses</h3>
-        <p>Use o material ao longo de 4 meses. Observe o que funciona, o que pode melhorar e como os alunos reagem ao conteúdo.</p>
+        <h3>Avalie em até 2 meses</h3>
+        <p>Leia o material e registre suas percepções em até 2 meses, ajudando a validar a coleção com agilidade e consistência pedagógica.</p>
       </div>
       <div class="step-card fade-up">
         <div class="step-num">4</div>
         <div class="step-ico">📝</div>
         <h3>Envie seu feedback</h3>
-        <p>Após o período de uso, preencha um formulário online com suas percepções. Suas sugestões serão incorporadas ao projeto.</p>
+        <p>Após a leitura, preencha um formulário online com suas percepções. Suas sugestões serão consideradas no estudo de validação pedagógica.</p>
       </div>
     </div>
   </div>
@@ -522,14 +540,14 @@
         <span class="tag tag-gold"><i class="fa-solid fa-star"></i> Reconhecimento</span>
         <span class="tag tag-sage"><i class="fa-solid fa-earth-americas"></i> Impacto Real</span>
       </div>
-      <h2 class="h2 h2-dk fade-up">Por que participar faz diferença  para você e para seus alunos.</h2>
-      <p class="sub sub-dk fade-up" style="margin:.9rem 0 0;">Sua experiência em sala de aula é insubstituível. O Brasil é um país imenso e diverso  o que funciona no Rio Grande do Sul pode não funcionar no Rio Grande do Norte. Precisamos de você para tornar este material relevante em cada realidade.</p>
+      <h2 class="h2 h2-dk fade-up">Por que participar faz diferença para a validação da coleção.</h2>
+      <p class="sub sub-dk fade-up" style="margin:.9rem 0 0;">Sua experiência em sala de aula é insubstituível. O Brasil é um país imenso e diverso: o que funciona em uma rede pode precisar de ajuste em outra. Precisamos de você para tornar este material relevante em cada realidade.</p>
       <div class="ben-list">
         <div class="ben-item fade-up">
           <div class="ben-ico" style="background:rgba(26,143,160,.12);color:var(--teal);"><i class="fa-solid fa-medal"></i></div>
           <div>
             <h4>Seu nome como colaborador oficial</h4>
-            <p>Professores que contribuírem com feedback serão creditados como colaboradores do projeto Imersão Azul  reconhecimento público pela sua participação.</p>
+            <p>Professores que contribuírem com a avaliação poderão ser reconhecidos como participantes do estudo de validação pedagógica do Projeto Imersão Azul 360°.</p>
           </div>
         </div>
         <div class="ben-item fade-up">
@@ -542,15 +560,15 @@
         <div class="ben-item fade-up">
           <div class="ben-ico" style="background:rgba(122,171,138,.14);color:var(--sage);"><i class="fa-solid fa-graduation-cap"></i></div>
           <div>
-            <h4>Crescimento profissional</h4>
-            <p>Participar de um projeto educacional inovador agrega valor ao seu currículo e à sua prática pedagógica. Você estará na vanguarda da educação oceânica no Brasil.</p>
+            <h4>Certificado de participação</h4>
+            <p>A participação poderá gerar certificado oficial do Instituto Gaia Soul, reconhecendo sua contribuição para a leitura e avaliação da coleção educacional.</p>
           </div>
         </div>
         <div class="ben-item fade-up">
           <div class="ben-ico" style="background:rgba(26,143,160,.12);color:var(--teal);"><i class="fa-solid fa-hand-holding-heart"></i></div>
           <div>
             <h4>Impacto na sua comunidade</h4>
-            <p>Ao usar e melhorar este material, você contribui diretamente para a educação ambiental da sua comunidade  seus alunos, sua escola, sua cidade.</p>
+            <p>Ao avaliar este material, você contribui diretamente para qualificar a educação oceânica que poderá chegar a diferentes escolas e comunidades.</p>
           </div>
         </div>
       </div>
@@ -558,10 +576,10 @@
     <div class="ben-visual fade-up">
       <div class="card-stack">
         <div class="cs-card cs-card-1">
-          <img src="imagens 2/mmt_Lousa-Digital-no-Colégio-Moraes-em-Americana-SP-1-3-scaled.jpg" alt="Professor utilizando material em sala de aula" />
+          <img src="imagens 2/mmt_Lousa-Digital-no-Colégio-Moraes-em-Americana-SP-1-3-scaled.jpg" alt="Professor em ambiente educacional" />
         </div>
         <div class="cs-card cs-card-2">
-          <img src="imagens 2/costa.jpg" alt="Alunos engajados aprendendo sobre o oceano" />
+          <img src="imagens 2/costa.jpg" alt="Costa brasileira" />
         </div>
         <div class="cs-badge">
           <div class="cb-icon">🏅</div>
@@ -576,49 +594,67 @@
 </section>
 
 
+<!-- ========== CERTIFICADO ========== -->
+<section id="certificado">
+  <div class="container cert-grid">
+    <div class="cert-copy">
+      <span class="lbl lbl-dk fade-up">Certificado</span>
+      <h2 class="h2 h2-dk fade-up">Reconhecimento pela sua participação.</h2>
+      <p class="fade-up">Ao concluir a leitura e a avaliação pedagógica da coleção, o professor participante poderá receber um certificado oficial do Instituto Gaia Soul, reconhecendo sua contribuição para o estudo de validação do Projeto Imersão Azul 360°.</p>
+      <div class="cert-text fade-up">
+        Certificamos que [NOME DO PROFESSOR] participou do estudo de validação pedagógica do Projeto Imersão Azul 360°, contribuindo com a leitura e avaliação da coleção educacional desenvolvida pelo Instituto Gaia Soul.
+      </div>
+    </div>
+    <div class="cert-visual fade-up">
+      <img src="imagens/certificado-participacao-imersao-azul.png" alt="Modelo do certificado de participação do Projeto Imersão Azul 360°" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+
 <!-- ========== E-BOOKS / CONTEÚDO ========== -->
 <section id="ebooks">
   <div class="container">
     <div class="ebooks-hd">
       <span class="lbl lbl-dk fade-up">Material Disponível</span>
-      <h2 class="h2 h2-dk fade-up">E-books prontos para usar em sala de aula.</h2>
+      <h2 class="h2 h2-dk fade-up">Coleção integral para leitura e avaliação.</h2>
     </div>
-    <p class="ebooks-sub fade-up">Conteúdo autoral, com base científica e alinhado à BNCC. Feitos para serem acessados pelo celular  sem necessidade de impressão ou equipamentos extras.</p>
+    <p class="ebooks-sub fade-up">Conteúdo autoral, com base científica e alinhado à BNCC. O professor acessa a coleção integral e avalia principalmente o volume da série em que leciona.</p>
     <div class="ebooks-grid">
       <div class="ebook-card fade-up">
         <div class="ebook-emoji">🐟</div>
         <h4>Fundamental I  1º ao 3º ano</h4>
         <p>Animais do mar, ciclo da água, vida na praia, manguezais e consciência ambiental de forma lúdica.</p>
-        <span class="ebook-tag">PDF  Celular</span>
+        <span class="ebook-tag">Coleção integral</span>
       </div>
       <div class="ebook-card fade-up">
         <div class="ebook-emoji">🦀</div>
         <h4>Fundamental I  4º ao 5º ano</h4>
         <p>Ecossistemas marinhos brasileiros, correntes oceânicas, poluição dos mares e pesca sustentável.</p>
-        <span class="ebook-tag">PDF  Celular</span>
+        <span class="ebook-tag">Coleção integral</span>
       </div>
       <div class="ebook-card fade-up">
         <div class="ebook-emoji">🐬</div>
         <h4>Fundamental II  6º ao 7º ano</h4>
         <p>Biomas marinhos, cadeia alimentar oceânica, microplásticos e áreas de conservação marinha.</p>
-        <span class="ebook-tag">PDF  Celular</span>
+        <span class="ebook-tag">Coleção integral</span>
       </div>
       <div class="ebook-card fade-up">
         <div class="ebook-emoji">🦈</div>
         <h4>Fundamental II  8º ao 9º ano</h4>
         <p>Oceanografia, química dos oceanos, física das ondas e marés, ecologia de sistemas profundos.</p>
-        <span class="ebook-tag">PDF  Celular</span>
+        <span class="ebook-tag">Coleção integral</span>
       </div>
       <div class="ebook-card fade-up">
         <div class="ebook-emoji">🌊</div>
         <h4>Ensino Médio  1ª à 3ª série</h4>
         <p>Oceanografia avançada, biotecnologia marinha, geopolítica dos oceanos e economia azul.</p>
-        <span class="ebook-tag">PDF  Celular</span>
+        <span class="ebook-tag">Coleção integral</span>
       </div>
     </div>
     <div class="ebooks-cta fade-up">
-      <p style="font-size:.92rem;color:var(--ink-md);margin-bottom:1.2rem;">Todos os e-books são <strong>gratuitos</strong> e enviados direto para o seu WhatsApp.</p>
-      <button class="btn btn-primary btn-lg" id="btn-download-ebooks"><i class="fa-solid fa-download"></i> Quero Baixar os E-books</button>
+      <p style="font-size:.92rem;color:var(--ink-md);margin-bottom:1.2rem;">A coleção fica disponível para leitura e avaliação pedagógica após o cadastro.</p>
+      <button class="btn btn-primary btn-lg" id="btn-download-ebooks"><i class="fa-solid fa-book-open"></i> Quero Acessar a Coleção Integral</button>
     </div>
   </div>
 </section>
@@ -638,16 +674,16 @@
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>Não! Os e-books são 100% gratuitos. Você só precisa informar seu nome e WhatsApp para recebê-los. Não há nenhum custo envolvido.</p>
+          <p>Não há custo para participar desta etapa de validação pedagógica. Você só precisa informar seu nome e WhatsApp para receber o próximo passo de acesso.</p>
         </div>
       </div>
       <div class="faq-item fade-up">
         <div class="faq-q">
-          <h4>Como eu recebo os livros?</h4>
+          <h4>Como eu acesso a coleção?</h4>
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>Após preencher o formulário com seu nome e WhatsApp, os PDFs dos e-books são enviados automaticamente para o seu WhatsApp pelo Instituto Gaia Soul. Você recebe em poucos segundos.</p>
+          <p>Após preencher o formulário com seu nome e WhatsApp, o Instituto Gaia Soul envia o caminho para acessar a coleção integral na plataforma.</p>
         </div>
       </div>
       <div class="faq-item fade-up">
@@ -656,7 +692,7 @@
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>Não. Os e-books são arquivos PDF que podem ser abertos diretamente pelo celular  no WhatsApp, no navegador ou em qualquer leitor de PDF. Sem downloads extras.</p>
+          <p>Não. O acesso acontece pela plataforma indicada pelo Instituto Gaia Soul, sem necessidade de instalação de aplicativo específico.</p>
         </div>
       </div>
       <div class="faq-item fade-up">
@@ -665,7 +701,7 @@
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>Não, a participação é voluntária. Mas sua opinião é extremamente valiosa! Após 4 meses de uso, enviaremos um formulário simples. Ao contribuir, você ajuda a melhorar o material e pode ser creditado como colaborador oficial do projeto.</p>
+          <p>A participação é voluntária, mas sua avaliação é extremamente valiosa. O retorno esperado é em até 2 meses, por meio de um formulário simples sobre a leitura e análise pedagógica da coleção.</p>
         </div>
       </div>
       <div class="faq-item fade-up">
@@ -674,16 +710,16 @@
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>O Imersão Azul é um projeto educacional que une ciência oceânica, tecnologia e conteúdo pedagógico alinhado à BNCC. A plataforma completa está em desenvolvimento e incluirá realidade virtual e gamificação. Agora, estamos começando pela fase dos livros  e precisamos da sua ajuda para aprimorá-los.</p>
+          <p>O Projeto Imersão Azul 360° é uma iniciativa educacional que une ciência oceânica, tecnologia e conteúdo pedagógico alinhado à BNCC. A plataforma completa está em desenvolvimento e esta fase valida a coleção com professores.</p>
         </div>
       </div>
       <div class="faq-item fade-up">
         <div class="faq-q">
-          <h4>Posso usar os livros com qualquer série?</h4>
+          <h4>Preciso avaliar todos os volumes?</h4>
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>Sim! Temos e-books para o Fundamental I (1º ao 5º ano), Fundamental II (6º ao 9º ano) e Ensino Médio. Ao baixar, você recebe todos os volumes e escolhe o mais adequado para suas turmas.</p>
+          <p>Você poderá visualizar a coleção completa, mas a avaliação principal deve ser feita sobre o volume relacionado à série ou ano em que você leciona.</p>
         </div>
       </div>
       <div class="faq-item fade-up">
@@ -692,16 +728,16 @@
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>Sim! Professores que contribuírem com feedback terão seu nome mencionado como colaboradores oficiais do Imersão Azul. Queremos reconhecer publicamente cada educador que nos ajudar a construir este projeto.</p>
+          <p>Os professores participantes poderão ser reconhecidos no estudo de validação pedagógica e receber certificado oficial do Instituto Gaia Soul pela contribuição realizada.</p>
         </div>
       </div>
       <div class="faq-item fade-up">
         <div class="faq-q">
-          <h4>Como os alunos vão usar o material em aula?</h4>
+          <h4>A participação é exclusiva para professores nesta fase?</h4>
           <i class="fa-solid fa-chevron-down faq-arrow"></i>
         </div>
         <div class="faq-a">
-          <p>Os e-books são otimizados para leitura no celular. O professor pode projetar o conteúdo ou pedir que os alunos abram pelo próprio celular durante a aula. É prático, rápido e não exige infraestrutura especial.</p>
+          <p>Sim. Nesta fase, o acesso é direcionado aos professores. A proposta é leitura, análise e avaliação pedagógica antes de qualquer aplicação ampliada.</p>
         </div>
       </div>
     </div>
@@ -712,8 +748,8 @@
 <!-- ========== GALERIA ========== -->
 <section id="galeria">
   <div class="gal-hd container">
-    <span class="lbl fade-up">O Conteúdo que Seus Alunos Vão Explorar</span>
-    <h2 class="h2 fade-up" style="margin-bottom:.75rem;">Do litoral ao abismo  <br>em cada e-book.</h2>
+    <span class="lbl fade-up">O conteúdo da coleção</span>
+    <h2 class="h2 fade-up" style="margin-bottom:.75rem;">Do litoral ao abismo<br>em cada volume.</h2>
   </div>
   <div class="img-grid">
     <div class="ig ig-tall">
@@ -749,12 +785,12 @@
   <div class="cta-bg"></div>
   <div class="container cta-c">
     <span class="cta-ey fade-up">Pronto para fazer a diferença?</span>
-    <h2 class="cta-h fade-up">Baixe os e-books, leve o oceano para a <span class="cy">sua sala de aula</span> e ajude a transformar a educação.</h2>
-    <p class="cta-desc fade-up">É gratuito e rápido. Informe só seu nome e WhatsApp — você recebe uma mensagem com o link para acessar os e-books.</p>
+    <h2 class="cta-h fade-up">Acesse a coleção integral e contribua com a <span class="cy">validação pedagógica</span> do projeto.</h2>
+    <p class="cta-desc fade-up">Informe seu nome e WhatsApp. Você recebe uma mensagem com o próximo passo para acessar a coleção e participar da avaliação.</p>
     <div class="cta-btns fade-up">
-      <button class="btn btn-primary btn-lg" id="btn-download-cta"><i class="fa-solid fa-download"></i> Baixar E-books Gratuitamente</button>
+      <button class="btn btn-primary btn-lg" id="btn-download-cta"><i class="fa-solid fa-book-open"></i> Acessar a Coleção Integral</button>
     </div>
-    <p class="cta-note fade-up"><i class="fa-solid fa-shield-halved"></i> Seus dados são seguros. Usamos apenas para enviar os livros e informações sobre o projeto.</p>
+    <p class="cta-note fade-up"><i class="fa-solid fa-shield-halved"></i> Seus dados são seguros. Usamos apenas para orientar seu acesso e participação no projeto.</p>
   </div>
 </section>
 
@@ -819,7 +855,7 @@
       <ul>
         <li><a href="#sobre">O que é</a></li>
         <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#ebooks">E-books</a></li>
+        <li><a href="#ebooks">Coleção</a></li>
         <li><a href="#galeria">Galeria</a></li>
       </ul>
     </div>
@@ -828,7 +864,7 @@
       <ul>
         <li><a href="#beneficios">Benefícios</a></li>
         <li><a href="#faq">Dúvidas</a></li>
-        <li><a href="#cta-download">Baixar E-books</a></li>
+        <li><a href="#cta-download">Acessar Coleção</a></li>
       </ul>
     </div>
     <div class="ft-col fade-up">
@@ -857,7 +893,7 @@
       <div style="text-align:center;margin-bottom:1.4rem;">
         <span style="font-size:2.2rem;display:block;margin-bottom:.4rem;">🌊</span>
         <h3>Quero participar do Imersão Azul</h3>
-        <p class="modal-sub">Informe seu nome e WhatsApp. Em instantes você recebe uma mensagem com o próximo passo para acessar os e-books.</p>
+        <p class="modal-sub">Informe seu nome e WhatsApp. Em instantes você recebe uma mensagem com o próximo passo para acessar a coleção integral.</p>
       </div>
 
       <form id="downloadForm" class="modal-form" novalidate>
@@ -873,7 +909,7 @@
         </div>
 
         <button type="submit" class="modal-submit" id="modal-btn-submit">
-          <i class="fa-brands fa-whatsapp"></i> Quero Receber os E-books
+          <i class="fa-brands fa-whatsapp"></i> Quero Acessar a Coleção
         </button>
       </form>
       <p class="modal-note"><i class="fa-solid fa-lock"></i> Seus dados são protegidos. Usamos apenas para enviar o acesso ao material.</p>
@@ -883,7 +919,7 @@
     <div class="modal-success" id="modalSuccess">
       <div class="check-big">🎉</div>
       <h4>Recebemos seu contato!</h4>
-      <p>Em instantes o Instituto Gaia Soul vai te enviar uma mensagem no <strong>WhatsApp</strong> com o link para concluir seu cadastro e receber os e-books gratuitamente. 📱</p>
+      <p>Em instantes o Instituto Gaia Soul vai te enviar uma mensagem no <strong>WhatsApp</strong> com o link para concluir seu cadastro e acessar a coleção integral.</p>
       <p style="font-size:.84rem;color:var(--ink-md);margin-top:1.2rem;line-height:1.7;">Fique de olho no WhatsApp. O processo é rápido e você logo terá acesso a todo o material da <strong>Coleção Imersão Azul</strong>. 🌊</p>
     </div>
   </div>

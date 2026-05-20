@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Seus E-books — Imersão Azul</title>
-  <meta name="description" content="Acesse todos os e-books da Coleção Imersão Azul — Cultura Oceânica para compartilhar com suas turmas."/>
+  <title>Acesso à Coleção Integral — Projeto Imersão Azul 360°</title>
+  <meta name="description" content="Acesse a coleção integral do Projeto Imersão Azul 360° para ler e avaliar o volume relacionado à série/ano em que você leciona."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -100,6 +100,12 @@
     .btn-wpp:hover{transform:translateY(-2px);filter:brightness(1.08)}
     .btn-back{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:10px;background:transparent;color:rgba(255,255,255,.75);font-family:var(--fh);font-size:.9rem;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.25);transition:border-color .2s,color .2s}
     .btn-back:hover{border-color:rgba(255,255,255,.6);color:var(--white)}
+    .cert-box{max-width:960px;margin:2.5rem auto 0;background:var(--white);border:1px solid #e1e9ec;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.08);display:grid;grid-template-columns:1fr 1.1fr;gap:1.5rem;align-items:center;padding:1rem}
+    .cert-box img{width:100%;height:auto;border-radius:12px;display:block}
+    .cert-copy{padding:1rem 1rem 1rem .2rem}
+    .cert-copy h3{font-family:var(--fh);font-size:1.2rem;color:var(--ink);margin-bottom:.6rem}
+    .cert-copy p{font-size:.9rem;color:var(--ink-md);line-height:1.75;margin:0}
+    @media(max-width:760px){.cert-box{grid-template-columns:1fr}.cert-copy{padding:.4rem}}
 
     /* === FOOTER === */
     footer{background:var(--deep);color:rgba(255,255,255,.45);padding:2.2rem 1.5rem;text-align:center;font-size:.8rem;line-height:1.8}
@@ -115,17 +121,17 @@
 <!-- Hero personalizado -->
 <div class="hero">
   <div class="welcome-badge"><i class="fa-solid fa-graduation-cap"></i>Acesso Professor Parceiro</div>
-  <h1>Olá, <span class="nome" id="nomeProf">Professor(a)</span>!<br>Seus e-books estão aqui 🌊</h1>
-  <p>Abaixo estão todos os volumes da Coleção Imersão Azul. Clique no e-book adequado para cada turma e compartilhe o link diretamente com seus alunos.</p>
+  <h1>Olá, <span class="nome" id="nomeProf">Professor(a)</span>!<br>A coleção integral está aqui 🌊</h1>
+  <p>Abaixo estão os volumes da Coleção Imersão Azul. Acesse o livro relacionado à série/ano em que você leciona e faça sua avaliação pedagógica.</p>
 </div>
 
 <!-- Instrução -->
 <div class="instr">
   <div class="instr-inner">
-    <div class="instr-chip"><i class="fa-solid fa-hand-pointer"></i><span>Clique em "Acessar E-book" para abrir</span></div>
-    <div class="instr-chip"><i class="fa-brands fa-whatsapp"></i><span>Compartilhe o link com seus alunos</span></div>
-    <div class="instr-chip"><i class="fa-solid fa-mobile-screen"></i><span>Funciona no celular, sem app</span></div>
-    <div class="instr-chip"><i class="fa-solid fa-lock-open"></i><span>Acesso gratuito e permanente</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-hand-pointer"></i><span>Clique em "Acessar volume" para abrir</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-clipboard-check"></i><span>Avalie o volume da sua série</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-hourglass-half"></i><span>Retorno em até 2 meses</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-lock"></i><span>Acesso exclusivo para professores</span></div>
   </div>
 </div>
 
@@ -156,7 +162,7 @@
       <h3 class="book-title">2º Ano — Ensino Fundamental</h3>
       <p class="book-desc">Vida no oceano, animais marinhos e primeiros passos na consciência ambiental, de forma lúdica e acessível.</p>
       <a href="https://www.calameo.com/read/008217566e121854a2556?authid=S5lCP26tRSwk" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -178,7 +184,7 @@
       <h3 class="book-title">4º e 5º Ano — Ensino Fundamental</h3>
       <p class="book-desc">Ecossistemas marinhos brasileiros, correntes oceânicas, poluição dos mares e pesca sustentável.</p>
       <a href="https://www.calameo.com/read/0082175663a199d6d8d82?authid=bW4xZ79xhRvW" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -209,7 +215,7 @@
       <h3 class="book-title">6º Ano — Ensino Fundamental</h3>
       <p class="book-desc">Biomas costeiros, biodiversidade marinha e impacto humano nos oceanos, com atividades interdisciplinares.</p>
       <a href="https://www.calameo.com/read/00821756645ab5192ad65?authid=7geKzeBw5i7S" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -231,7 +237,7 @@
       <h3 class="book-title">8º Ano — Ensino Fundamental</h3>
       <p class="book-desc">Oceanografia, clima global e recursos naturais do oceano — conexões com ciências, física e química.</p>
       <a href="https://www.calameo.com/read/008217566d209f1ec9a91?authid=ZBWfBKova71y" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -253,7 +259,7 @@
       <h3 class="book-title">9º Ano — Ensino Fundamental</h3>
       <p class="book-desc">Políticas ambientais, impactos nos oceanos, ciência do mar e cidadania oceânica na prática.</p>
       <a href="https://www.calameo.com/read/008217566507d3fdf8b43?authid=uDpic6teOrxe" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -284,7 +290,7 @@
       <h3 class="book-title">1ª Série — Ensino Médio</h3>
       <p class="book-desc">Cultura oceânica, ecossistemas globais e oceanografia introdutória com enfoque científico e crítico.</p>
       <a href="https://www.calameo.com/read/008217566395ac5fce80e?authid=8LbqzmiMXwZD" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -306,7 +312,7 @@
       <h3 class="book-title">2ª Série — Ensino Médio</h3>
       <p class="book-desc">Geopolítica dos oceanos, recursos marinhos, direito do mar e soberania oceânica do Brasil.</p>
       <a href="https://www.calameo.com/read/008217566ce9b4e215926?authid=uWy4EVrPV4fi" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -328,7 +334,7 @@
       <h3 class="book-title">3ª Série — Ensino Médio</h3>
       <p class="book-desc">Futuro dos oceanos, interdisciplinaridade, ação climática e projetos de inovação ambiental.</p>
       <a href="https://www.calameo.com/read/008217566cb9a71974c29?authid=lMwrt7yvV8pR" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -379,7 +385,7 @@
     </div>
     <div class="book-info">
       <h3 class="book-title">Proposta Pedagógica</h3>
-      <p class="book-desc">Orientações metodológicas, plano de implementação e sugestões de atividades para uso em sala de aula.</p>
+      <p class="book-desc">Orientações metodológicas, plano de implementação e sugestões para análise pedagógica da coleção.</p>
       <a href="https://www.calameo.com/read/0082175668ab3fea5329b?authid=de966tnTcc7y" target="_blank" rel="noopener" class="btn-ebook btn-apoio">
         <i class="fa-solid fa-file-lines"></i> Acessar Documento
       </a>
@@ -388,14 +394,25 @@
 
 </div>
 
-<!-- CTA compartilhamento -->
+<!-- Certificado -->
+<div class="container">
+  <div class="cert-box">
+    <img src="imagens/certificado-participacao-imersao-azul.png" alt="Modelo do certificado de participação do Projeto Imersão Azul 360°" loading="lazy"/>
+    <div class="cert-copy">
+      <h3>Certificado de participação</h3>
+      <p>Ao concluir a leitura e a avaliação pedagógica, o professor participante poderá receber um certificado oficial do Instituto Gaia Soul reconhecendo sua contribuição para o estudo de validação do Projeto Imersão Azul 360°.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA avaliação -->
 <div class="cta-share">
-  <h2>Compartilhe com suas turmas 🌊</h2>
-  <p>Envie o link do e-book correto para cada turma pelo WhatsApp. Os alunos acessam diretamente no celular, sem precisar baixar nada.</p>
+  <h2>Avalie o volume da sua série 🌊</h2>
+  <p>Use esta página para acessar a coleção integral. Nesta fase, a leitura e avaliação são feitas pelo professor, sem envio dos livros aos alunos.</p>
   <div class="share-btns">
-    <a href="https://wa.me/?text=Ol%C3%A1%21%20Acesse%20os%20e-books%20gratuitos%20da%20Cole%C3%A7%C3%A3o%20Imers%C3%A3o%20Azul%20%E2%80%94%20Cultura%20Oce%C3%A2nica%3A%20https%3A%2F%2Fmediagrowthmkt-debug.github.io%2Fimersao-360%2Facesso-ebooks.html"
+    <a href="https://wa.me/?text=Ol%C3%A1%21%20Estou%20participando%20da%20avalia%C3%A7%C3%A3o%20pedag%C3%B3gica%20da%20Cole%C3%A7%C3%A3o%20Imers%C3%A3o%20Azul."
        target="_blank" rel="noopener" class="btn-wpp">
-      <i class="fa-brands fa-whatsapp"></i> Compartilhar via WhatsApp
+      <i class="fa-brands fa-whatsapp"></i> Registrar participação
     </a>
     <a href="professores.html" class="btn-back">
       <i class="fa-solid fa-arrow-left"></i> Voltar ao início
