@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "type": "image",
+  "asset": "logo-projeto-imersao-azul-oficial.png",
+  "source": "/Users/bruno/.codex/generated_images/019e6b37-bcbf-7102-8c38-c5db57a9c91c/ig_074b41e1d6fba4c9016a175ae046888190ab5000e6e29bc821.png",
+  "render_command": "magick /Users/bruno/.codex/generated_images/019e6b37-bcbf-7102-8c38-c5db57a9c91c/ig_074b41e1d6fba4c9016a175ae046888190ab5000e6e29bc821.png -alpha set -fuzz 8% -fill none -draw 'color 0,0 floodfill' -draw 'color 1232,0 floodfill' -draw 'color 0,1275 floodfill' -draw 'color 1232,1275 floodfill' -trim +repage -resize 900x900 -stroke '#063C64' -strokewidth 14 -fill none -draw 'path \"M 568,540 C 585,525 600,555 622,535\"' -stroke '#FFD239' -strokewidth 7 -fill none -draw 'path \"M 568,540 C 585,525 600,555 622,535\"' /Users/bruno/clientes_convidados/clientes/24_instituto_gaia_soul/website/lps/imersao_360/imagens/logo-projeto-imersao-azul-oficial.png",
+  "notes": "Logo oficial limpa do Projeto Imersão Azul, com fundo transparente, sem riscos/resíduos externos e acento em Imersão aplicado no arquivo final."
+}

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Seus E-books — Imersão Azul</title>
-  <meta name="description" content="Acesse todos os e-books da Coleção Imersão Azul — Cultura Oceânica para compartilhar com suas turmas."/>
+  <title>Acesso à Coleção Integral — Projeto Imersão Azul</title>
+  <meta name="description" content="Acesse a coleção integral do Projeto Imersão Azul para ler e avaliar o volume relacionado à série/ano em que você leciona."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -23,8 +23,8 @@
     .container{width:min(1100px,93%);margin-inline:auto}
 
     /* === TOPBAR === */
-    .topbar{background:var(--deep);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:center}
-    .topbar img{height:60px;width:auto}
+    .topbar{background:var(--deep);padding:.55rem 1.5rem;display:flex;align-items:center;justify-content:center}
+    .topbar img{height:54px;width:auto;display:block;object-fit:contain}
 
     /* === HERO === */
     .hero{background:linear-gradient(140deg,var(--deep2) 0%,#0e3553 100%);padding:3rem 1.5rem 2.8rem;text-align:center;color:var(--white)}
@@ -96,10 +96,25 @@
     .cta-share h2{font-family:var(--fh);font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:.8rem}
     .cta-share p{font-size:.95rem;color:var(--muted);max-width:540px;margin:0 auto 2rem;line-height:1.78}
     .share-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-    .btn-wpp{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:10px;background:#25d366;color:var(--white);font-family:var(--fh);font-size:.9rem;font-weight:700;text-decoration:none;transition:transform .2s,filter .2s}
-    .btn-wpp:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn-wpp,.btn-form{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:10px;background:#25d366;color:var(--white);font-family:var(--fh);font-size:.9rem;font-weight:700;text-decoration:none;transition:transform .2s,filter .2s}
+    .btn-wpp:hover,.btn-form:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .btn-form{background:linear-gradient(135deg,var(--teal),#20b2c8)}
     .btn-back{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.8rem;border-radius:10px;background:transparent;color:rgba(255,255,255,.75);font-family:var(--fh);font-size:.9rem;font-weight:600;text-decoration:none;border:1.5px solid rgba(255,255,255,.25);transition:border-color .2s,color .2s}
     .btn-back:hover{border-color:rgba(255,255,255,.6);color:var(--white)}
+    .cert-box{max-width:960px;margin:2.5rem auto 0;background:var(--white);border:1px solid #e1e9ec;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.08);display:grid;grid-template-columns:1fr 1.1fr;gap:1.5rem;align-items:center;padding:1rem}
+    .cert-box img{width:100%;height:auto;border-radius:12px;display:block}
+    .cert-copy{padding:1rem 1rem 1rem .2rem}
+    .cert-copy h3{font-family:var(--fh);font-size:1.2rem;color:var(--ink);margin-bottom:.6rem}
+    .cert-copy p{font-size:.9rem;color:var(--ink-md);line-height:1.75;margin:0}
+    .eval-guide{max-width:860px;margin:2.5rem auto 0;background:var(--white);border:1px solid rgba(26,143,160,.18);border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.08);padding:1.6rem}
+    .eval-guide h3{font-family:var(--fh);font-size:1.18rem;color:var(--ink);margin-bottom:.75rem}
+    .eval-guide p{font-size:.9rem;color:var(--ink-md);line-height:1.75;margin-bottom:1rem}
+    .scale-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+    .scale-card{background:var(--fog);border:1px solid rgba(0,0,0,.07);border-radius:12px;padding:.9rem;text-align:left}
+    .scale-card strong{display:block;font-family:var(--fh);font-size:.86rem;color:var(--teal);margin-bottom:.25rem}
+    .scale-card span{font-size:.78rem;color:var(--ink-lt);line-height:1.55}
+    @media(max-width:640px){.scale-row{grid-template-columns:1fr}}
+    @media(max-width:760px){.cert-box{grid-template-columns:1fr}.cert-copy{padding:.4rem}}
 
     /* === FOOTER === */
     footer{background:var(--deep);color:rgba(255,255,255,.45);padding:2.2rem 1.5rem;text-align:center;font-size:.8rem;line-height:1.8}
@@ -109,23 +124,23 @@
 <body>
 
 <header class="topbar">
-  <a href="professores.html"><img src="imagens/logo.png" alt="Imersão Azul"/></a>
+  <a href="professores.html" style="line-height:0"><img src="imagens/logo-projeto-imersao-azul-oficial.png" alt="Projeto Imersão Azul"/></a>
 </header>
 
 <!-- Hero personalizado -->
 <div class="hero">
   <div class="welcome-badge"><i class="fa-solid fa-graduation-cap"></i>Acesso Professor Parceiro</div>
-  <h1>Olá, <span class="nome" id="nomeProf">Professor(a)</span>!<br>Seus e-books estão aqui 🌊</h1>
-  <p>Abaixo estão todos os volumes da Coleção Imersão Azul. Clique no e-book adequado para cada turma e compartilhe o link diretamente com seus alunos.</p>
+  <h1>Olá, <span class="nome" id="nomeProf">Professor(a)</span>!<br>A coleção integral está aqui 🌊</h1>
+  <p>Abaixo estão os volumes da Coleção Imersão Azul. Acesse o livro relacionado à série/ano em que você leciona e faça sua avaliação pedagógica.</p>
 </div>
 
 <!-- Instrução -->
 <div class="instr">
   <div class="instr-inner">
-    <div class="instr-chip"><i class="fa-solid fa-hand-pointer"></i><span>Clique em "Acessar E-book" para abrir</span></div>
-    <div class="instr-chip"><i class="fa-brands fa-whatsapp"></i><span>Compartilhe o link com seus alunos</span></div>
-    <div class="instr-chip"><i class="fa-solid fa-mobile-screen"></i><span>Funciona no celular, sem app</span></div>
-    <div class="instr-chip"><i class="fa-solid fa-lock-open"></i><span>Acesso gratuito e permanente</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-hand-pointer"></i><span>Clique em "Acessar volume" para abrir</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-clipboard-check"></i><span>Avalie o volume da sua série</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-hourglass-half"></i><span>Retorno em até 2 meses</span></div>
+    <div class="instr-chip"><i class="fa-solid fa-lock"></i><span>Acesso exclusivo para professores</span></div>
   </div>
 </div>
 
@@ -139,46 +154,90 @@
 
 <div class="books-grid container">
 
-  <!-- 2º Ano EF -->
+  <!-- 1º e 2º Ano EF - 1º semestre -->
   <div class="book-card">
     <div class="book-cover" id="cover-1">
-      <img src="https://p.calameo.com/books/008217566/e121854a2556/p1.jpg"
-           loading="eager" fetchpriority="high" alt="Capa 2º Ano Ensino Fundamental"
+      <img src="imagens/capas-ebooks/01-fundamental-1e2-1sem.jpg"
+           loading="eager" fetchpriority="high" alt="Capa 1º e 2º Ano Ensino Fundamental - 1º semestre"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
         <div class="big-emoji">🐠</div>
-        <div class="cover-title">2º Ano<br>Ensino Fundamental</div>
+        <div class="cover-title">1º e 2º Ano<br>1º Semestre</div>
         <div class="cover-sub">Coleção Imersão Azul</div>
       </div>
-      <span class="level-badge">Fundamental I · 2º Ano</span>
+      <span class="level-badge">Fundamental I · 1º e 2º · 1º semestre</span>
     </div>
     <div class="book-info">
-      <h3 class="book-title">2º Ano — Ensino Fundamental</h3>
-      <p class="book-desc">Vida no oceano, animais marinhos e primeiros passos na consciência ambiental, de forma lúdica e acessível.</p>
-      <a href="https://www.calameo.com/read/008217566e121854a2556?authid=S5lCP26tRSwk" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+      <h3 class="book-title">1º e 2º Ano — Ensino Fundamental · 1º semestre</h3>
+      <p class="book-desc">Volume inicial da sequência do Ensino Fundamental, organizado para o primeiro semestre de trabalho com cultura oceânica.</p>
+      <a href="https://www.calameo.com/read/008217566c21e2e49c57f?authid=ItvSAv5sUvCD" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
 
-  <!-- 4º e 5º Ano EF -->
+  <!-- 1º e 2º Ano EF - 2º semestre -->
   <div class="book-card">
     <div class="book-cover" id="cover-2">
-      <img src="https://p.calameo.com/books/008217566/3a199d6d8d82/p1.jpg"
-           loading="lazy" alt="Capa 4º e 5º Ano Ensino Fundamental"
+      <img src="imagens/capas-ebooks/02-fundamental-1e2-2sem.jpg"
+           loading="lazy" alt="Capa 1º e 2º Ano Ensino Fundamental - 2º semestre"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🐟</div>
+        <div class="cover-title">1º e 2º Ano<br>2º Semestre</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental I · 1º e 2º · 2º semestre</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">1º e 2º Ano — Ensino Fundamental · 2º semestre</h3>
+      <p class="book-desc">Continuação do percurso para 1º e 2º ano, com atividades lúdicas e acessíveis sobre vida no oceano.</p>
+      <a href="https://www.calameo.com/read/008217566e121854a2556?authid=S5lCP26tRSwk" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar volume
+      </a>
+    </div>
+  </div>
+
+  <!-- 3º, 4º e 5º Ano EF - 1º semestre -->
+  <div class="book-card">
+    <div class="book-cover" id="cover-3">
+      <img src="imagens/capas-ebooks/03-fundamental-3a5-1sem.jpg"
+           loading="lazy" alt="Capa 3º, 4º e 5º Ano Ensino Fundamental - 1º semestre"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🪸</div>
+        <div class="cover-title">3º, 4º e 5º Ano<br>1º Semestre</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental I · 3º ao 5º · 1º semestre</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">3º, 4º e 5º Ano — Ensino Fundamental · 1º semestre</h3>
+      <p class="book-desc">Volume para o primeiro semestre do ciclo 3º ao 5º ano, com introdução progressiva aos temas de cultura oceânica.</p>
+      <a href="https://www.calameo.com/read/0082175665da2d4fd9bf1?authid=KWng5HpaqM5x" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar volume
+      </a>
+    </div>
+  </div>
+
+  <!-- 3º, 4º e 5º Ano EF - 2º semestre -->
+  <div class="book-card">
+    <div class="book-cover" id="cover-4">
+      <img src="imagens/capas-ebooks/04-fundamental-3a5-2sem.jpg"
+           loading="lazy" alt="Capa 3º, 4º e 5º Ano Ensino Fundamental - 2º semestre"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
         <div class="big-emoji">🦀</div>
-        <div class="cover-title">4º e 5º Ano<br>Ensino Fundamental</div>
+        <div class="cover-title">3º, 4º e 5º Ano<br>2º Semestre</div>
         <div class="cover-sub">Coleção Imersão Azul</div>
       </div>
-      <span class="level-badge">Fundamental I · 4º e 5º</span>
+      <span class="level-badge">Fundamental I · 3º ao 5º · 2º semestre</span>
     </div>
     <div class="book-info">
-      <h3 class="book-title">4º e 5º Ano — Ensino Fundamental</h3>
-      <p class="book-desc">Ecossistemas marinhos brasileiros, correntes oceânicas, poluição dos mares e pesca sustentável.</p>
+      <h3 class="book-title">3º, 4º e 5º Ano — Ensino Fundamental · 2º semestre</h3>
+      <p class="book-desc">Continuação do ciclo 3º ao 5º ano, aprofundando ecossistemas marinhos, correntes oceânicas e preservação.</p>
       <a href="https://www.calameo.com/read/0082175663a199d6d8d82?authid=bW4xZ79xhRvW" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -192,68 +251,90 @@
 
 <div class="books-grid container">
 
-  <!-- 6º Ano -->
+  <!-- 6º e 7º Ano - 1º semestre -->
   <div class="book-card">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/45ab5192ad65/p1.jpg"
-           loading="lazy" alt="Capa 6º Ano Ensino Fundamental"
+      <img src="imagens/capas-ebooks/05-fundamental-6e7-1sem.jpg"
+           loading="lazy" alt="Capa 6º e 7º Ano Ensino Fundamental - 1º semestre"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
         <div class="big-emoji">🐙</div>
-        <div class="cover-title">6º Ano<br>Ensino Fundamental</div>
+        <div class="cover-title">6º e 7º Ano<br>1º Semestre</div>
         <div class="cover-sub">Coleção Imersão Azul</div>
       </div>
-      <span class="level-badge">Fundamental II · 6º Ano</span>
+      <span class="level-badge">Fundamental II · 6º e 7º · 1º semestre</span>
     </div>
     <div class="book-info">
-      <h3 class="book-title">6º Ano — Ensino Fundamental</h3>
-      <p class="book-desc">Biomas costeiros, biodiversidade marinha e impacto humano nos oceanos, com atividades interdisciplinares.</p>
+      <h3 class="book-title">6º e 7º Ano — Ensino Fundamental · 1º semestre</h3>
+      <p class="book-desc">Volume do primeiro semestre para 6º e 7º ano, abordando biomas costeiros, biodiversidade e impacto humano.</p>
       <a href="https://www.calameo.com/read/00821756645ab5192ad65?authid=7geKzeBw5i7S" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
 
-  <!-- 8º Ano -->
+  <!-- 6º e 7º Ano - 2º semestre -->
   <div class="book-card">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/d209f1ec9a91/p1.jpg"
-           loading="lazy" alt="Capa 8º Ano Ensino Fundamental"
+      <img src="imagens/capas-ebooks/06-fundamental-6e7-2sem.jpg"
+           loading="lazy" alt="Capa 6º e 7º Ano Ensino Fundamental - 2º semestre"
+           onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
+      <div class="book-cover-fallback">
+        <div class="big-emoji">🐢</div>
+        <div class="cover-title">6º e 7º Ano<br>2º Semestre</div>
+        <div class="cover-sub">Coleção Imersão Azul</div>
+      </div>
+      <span class="level-badge">Fundamental II · 6º e 7º · 2º semestre</span>
+    </div>
+    <div class="book-info">
+      <h3 class="book-title">6º e 7º Ano — Ensino Fundamental · 2º semestre</h3>
+      <p class="book-desc">Continuação do ciclo 6º e 7º ano, mantendo a sequência de leitura para professores do Ensino Fundamental II.</p>
+      <a href="https://www.calameo.com/read/008217566967fc36a01e4?authid=9aZLbjN5Mfbk" target="_blank" rel="noopener" class="btn-ebook">
+        <i class="fa-solid fa-book-open"></i> Acessar volume
+      </a>
+    </div>
+  </div>
+
+  <!-- 8º e 9º Ano - 1º semestre -->
+  <div class="book-card">
+    <div class="book-cover">
+      <img src="imagens/capas-ebooks/07-fundamental-8e9-1sem.jpg"
+           loading="lazy" alt="Capa 8º e 9º Ano Ensino Fundamental - 1º semestre"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
         <div class="big-emoji">🌊</div>
-        <div class="cover-title">8º Ano<br>Ensino Fundamental</div>
+        <div class="cover-title">8º e 9º Ano<br>1º Semestre</div>
         <div class="cover-sub">Coleção Imersão Azul</div>
       </div>
-      <span class="level-badge">Fundamental II · 8º Ano</span>
+      <span class="level-badge">Fundamental II · 8º e 9º · 1º semestre</span>
     </div>
     <div class="book-info">
-      <h3 class="book-title">8º Ano — Ensino Fundamental</h3>
-      <p class="book-desc">Oceanografia, clima global e recursos naturais do oceano — conexões com ciências, física e química.</p>
+      <h3 class="book-title">8º e 9º Ano — Ensino Fundamental · 1º semestre</h3>
+      <p class="book-desc">Volume do primeiro semestre para 8º e 9º ano, com oceanografia, clima global e recursos naturais do oceano.</p>
       <a href="https://www.calameo.com/read/008217566d209f1ec9a91?authid=ZBWfBKova71y" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
 
-  <!-- 9º Ano -->
+  <!-- 8º e 9º Ano - 2º semestre -->
   <div class="book-card">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/507d3fdf8b43/p1.jpg"
-           loading="lazy" alt="Capa 9º Ano Ensino Fundamental"
+      <img src="imagens/capas-ebooks/08-fundamental-8e9-2sem.jpg"
+           loading="lazy" alt="Capa 8º e 9º Ano Ensino Fundamental - 2º semestre"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
         <div class="big-emoji">🌍</div>
-        <div class="cover-title">9º Ano<br>Ensino Fundamental</div>
+        <div class="cover-title">8º e 9º Ano<br>2º Semestre</div>
         <div class="cover-sub">Coleção Imersão Azul</div>
       </div>
-      <span class="level-badge">Fundamental II · 9º Ano</span>
+      <span class="level-badge">Fundamental II · 8º e 9º · 2º semestre</span>
     </div>
     <div class="book-info">
-      <h3 class="book-title">9º Ano — Ensino Fundamental</h3>
-      <p class="book-desc">Políticas ambientais, impactos nos oceanos, ciência do mar e cidadania oceânica na prática.</p>
+      <h3 class="book-title">8º e 9º Ano — Ensino Fundamental · 2º semestre</h3>
+      <p class="book-desc">Continuação do ciclo 8º e 9º ano, com cidadania oceânica, políticas ambientais e impactos nos oceanos.</p>
       <a href="https://www.calameo.com/read/008217566507d3fdf8b43?authid=uDpic6teOrxe" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -270,7 +351,7 @@
   <!-- 1ª Série EM -->
   <div class="book-card">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/395ac5fce80e/p1.jpg"
+      <img src="imagens/capas-ebooks/09-ensino-medio-1serie.jpg"
            loading="lazy" alt="Capa 1ª Série Ensino Médio"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
@@ -284,7 +365,7 @@
       <h3 class="book-title">1ª Série — Ensino Médio</h3>
       <p class="book-desc">Cultura oceânica, ecossistemas globais e oceanografia introdutória com enfoque científico e crítico.</p>
       <a href="https://www.calameo.com/read/008217566395ac5fce80e?authid=8LbqzmiMXwZD" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -292,7 +373,7 @@
   <!-- 2ª Série EM -->
   <div class="book-card">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/ce9b4e215926/p1.jpg"
+      <img src="imagens/capas-ebooks/10-ensino-medio-2serie.jpg"
            loading="lazy" alt="Capa 2ª Série Ensino Médio"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
@@ -306,7 +387,7 @@
       <h3 class="book-title">2ª Série — Ensino Médio</h3>
       <p class="book-desc">Geopolítica dos oceanos, recursos marinhos, direito do mar e soberania oceânica do Brasil.</p>
       <a href="https://www.calameo.com/read/008217566ce9b4e215926?authid=uWy4EVrPV4fi" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -314,7 +395,7 @@
   <!-- 3ª Série EM -->
   <div class="book-card">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/cb9a71974c29/p1.jpg"
+      <img src="imagens/capas-ebooks/11-ensino-medio-3serie.jpg"
            loading="lazy" alt="Capa 3ª Série Ensino Médio"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
@@ -328,7 +409,7 @@
       <h3 class="book-title">3ª Série — Ensino Médio</h3>
       <p class="book-desc">Futuro dos oceanos, interdisciplinaridade, ação climática e projetos de inovação ambiental.</p>
       <a href="https://www.calameo.com/read/008217566cb9a71974c29?authid=lMwrt7yvV8pR" target="_blank" rel="noopener" class="btn-ebook">
-        <i class="fa-solid fa-book-open"></i> Acessar E-book
+        <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
   </div>
@@ -345,7 +426,7 @@
   <!-- Apresentação -->
   <div class="book-card apoio">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/fd522c2485b6/p1.jpg"
+      <img src="imagens/capas-ebooks/12-apresentacao-projeto.jpg"
            loading="lazy" alt="Capa Apresentação da Coleção"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
@@ -367,7 +448,7 @@
   <!-- Proposta Pedagógica -->
   <div class="book-card apoio">
     <div class="book-cover">
-      <img src="https://p.calameo.com/books/008217566/8ab3fea5329b/p1.jpg"
+      <img src="imagens/capas-ebooks/13-proposta-pedagogica.jpg"
            loading="lazy" alt="Capa Proposta Pedagógica"
            onerror="this.onerror=null;this.parentElement.classList.add('no-img');"/>
       <div class="book-cover-fallback">
@@ -379,7 +460,7 @@
     </div>
     <div class="book-info">
       <h3 class="book-title">Proposta Pedagógica</h3>
-      <p class="book-desc">Orientações metodológicas, plano de implementação e sugestões de atividades para uso em sala de aula.</p>
+      <p class="book-desc">Orientações metodológicas, plano de implementação e sugestões para análise pedagógica da coleção.</p>
       <a href="https://www.calameo.com/read/0082175668ab3fea5329b?authid=de966tnTcc7y" target="_blank" rel="noopener" class="btn-ebook btn-apoio">
         <i class="fa-solid fa-file-lines"></i> Acessar Documento
       </a>
@@ -388,14 +469,38 @@
 
 </div>
 
-<!-- CTA compartilhamento -->
+<!-- Certificado -->
+<div class="container">
+  <div class="cert-box">
+    <img src="imagens/certificado-participacao-imersao-azul.png" alt="Modelo do certificado de participação do Projeto Imersão Azul" loading="lazy"/>
+    <div class="cert-copy">
+      <h3>Certificado de participação</h3>
+      <p>Ao concluir a leitura e a avaliação pedagógica, o professor participante vai receber um certificado oficial do Instituto Gaia Soul, com registro de horas-aula e reconhecimento da contribuição no estudo de validação do Projeto Imersão Azul. O certificado poderá ser usado como comprovação para progressão de carreira, conforme as regras da rede de ensino do professor.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Orientação de avaliação -->
+<div class="container">
+  <div class="eval-guide">
+    <h3>Como preencher a avaliação</h3>
+    <p>Depois de ler o volume da sua série, responda o questionário pedagógico. Na escala do formulário, considere a menor nota como baixa aderência pedagógica e a maior nota como alta aderência para uso em sala de aula.</p>
+    <div class="scale-row">
+      <div class="scale-card"><strong>Mínimo</strong><span>O conteúdo precisa de ajustes importantes antes de ser aplicado.</span></div>
+      <div class="scale-card"><strong>Intermediário</strong><span>O material é útil, mas ainda pode ser melhorado em linguagem, atividades ou aplicação.</span></div>
+      <div class="scale-card"><strong>Máximo</strong><span>O volume está claro, adequado e pronto para apoiar o trabalho pedagógico.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA avaliação -->
 <div class="cta-share">
-  <h2>Compartilhe com suas turmas 🌊</h2>
-  <p>Envie o link do e-book correto para cada turma pelo WhatsApp. Os alunos acessam diretamente no celular, sem precisar baixar nada.</p>
+  <h2>Avalie o volume da sua série 🌊</h2>
+  <p>Use esta página para acessar a coleção integral. Após a leitura, preencha o questionário de avaliação pedagógica do volume relacionado à sua série ou ano.</p>
   <div class="share-btns">
-    <a href="https://wa.me/?text=Ol%C3%A1%21%20Acesse%20os%20e-books%20gratuitos%20da%20Cole%C3%A7%C3%A3o%20Imers%C3%A3o%20Azul%20%E2%80%94%20Cultura%20Oce%C3%A2nica%3A%20https%3A%2F%2Fmediagrowthmkt-debug.github.io%2Fimersao-360%2Facesso-ebooks.html"
-       target="_blank" rel="noopener" class="btn-wpp">
-      <i class="fa-brands fa-whatsapp"></i> Compartilhar via WhatsApp
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfc1Glc_djX6eiIwIjn5tdJf62eccWNRQ9BC-y1c60pS9Mjsg/viewform?usp=header"
+       target="_blank" rel="noopener" class="btn-form">
+      <i class="fa-solid fa-clipboard-check"></i> Responder questionário
     </a>
     <a href="professores.html" class="btn-back">
       <i class="fa-solid fa-arrow-left"></i> Voltar ao início

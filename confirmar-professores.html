@@ -23,8 +23,8 @@
     .container{width:min(860px,92%);margin-inline:auto}
 
     /* === TOPBAR === */
-    .topbar{background:var(--deep);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:center}
-    .topbar img{height:60px;width:auto}
+    .topbar{background:var(--deep);padding:.55rem 1.5rem;display:flex;align-items:center;justify-content:center}
+    .topbar img{height:54px;width:auto;display:block;object-fit:contain}
 
     /* === HERO STRIP === */
     .hero{background:linear-gradient(140deg,var(--deep2) 0%,#0e3553 100%);padding:3.2rem 1.5rem 2.8rem;text-align:center;color:var(--white)}
@@ -91,7 +91,7 @@
     #successBox .ico{font-size:4rem;margin-bottom:1rem;display:block}
     #successBox h3{font-family:var(--fh);font-size:1.6rem;font-weight:700;color:var(--ink);margin-bottom:.75rem}
     #successBox p{font-size:.95rem;color:var(--ink-md);line-height:1.75}
-    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes spin{to{transform:rotate(1turn)}}
     .spin{display:inline-block;animation:spin .9s linear infinite}
 
     /* === FOOTER === */
@@ -102,13 +102,13 @@
 <body>
 
 <header class="topbar">
-  <a href="professores.html"><img src="imagens/logo.png" alt="Imersão Azul"/></a>
+  <a href="professores.html" style="line-height:0"><img src="imagens/logo-projeto-imersao-azul-oficial.png" alt="Projeto Imersão Azul"/></a>
 </header>
 
 <div class="hero">
   <div class="badge"><span class="dot"></span>Professor Parceiro — Projeto Imersão Azul</div>
   <h1>Confirme sua participação<br>na <span class="acc">Imersão Azul</span> 🌊</h1>
-  <p>Preencha o formulário abaixo para formalizar sua participação. Assim que concluir, você acessa imediatamente todos os e-books da Coleção Imersão Azul para compartilhar com suas turmas.</p>
+  <p>Preencha o formulário abaixo para formalizar sua participação. Assim que concluir, você acessa imediatamente todos os e-books da Coleção Imersão Azul para leitura e avaliação pedagógica.</p>
 </div>
 
 <div class="steps">
@@ -231,7 +231,7 @@
             <div class="termo-box">
               <label class="ci">
                 <input type="checkbox" id="termo" name="termo" required/>
-                <span>Confirmo que participei da reunião com o <strong>Instituto Gaia Soul</strong>, compreendi a proposta da Imersão Azul e concordo em utilizar os e-books com minha(s) turma(s) durante o período piloto, enviando feedback ao final. Li e aceito os termos de participação.</span>
+                <span>Confirmo que participei da reunião com o <strong>Instituto Gaia Soul</strong>, compreendi a proposta da Imersão Azul e concordo em acessar os e-books para leitura e avaliação pedagógica durante o período piloto, enviando feedback ao final. Li e aceito os termos de participação.</span>
               </label>
             </div>
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Imersão Azul 360  A Escola que Lidera o Futuro</title>
-  <meta name="description" content="A plataforma que posiciona sua escola como referência em inovação, ESG e educação do futuro. Realidade virtual + conteúdo oceânico para escolas privadas." />
+  <title>Imersão Azul  A Escola que Lidera o Futuro</title>
+  <meta name="description" content="Projeto Imersão Azul: educação oceânica, realidade virtual e conteúdo pedagógico para todas as escolas." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -75,9 +75,9 @@
     #navbar.scrolled .nav-links a:hover { color:var(--teal); }
     #navbar.scrolled .hamburger span { background:var(--ink); }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; }
-    .nav-logo-spacer { width:130px; flex-shrink:0; }
+    .nav-logo-spacer { width:96px; flex-shrink:0; }
     .nav-logo { display:block; text-decoration:none; position:absolute; top:0; left:calc((100vw - min(1160px,92%)) / 2); z-index:1000; }
-    .nav-logo img { height:110px; width:auto; display:block; }
+    .nav-logo img { height:74px; width:auto; display:block; object-fit:contain; }
     .nav-links { display:flex; list-style:none; gap:1.85rem; }
     .nav-links a { color:rgba(255,255,255,.82); text-decoration:none; font-size:.84rem; font-weight:500; transition:color .2s; }
     .nav-links a:hover { color:var(--teal-lt); }
@@ -104,6 +104,10 @@
     .hero-h1 .accent-g { color:#e8c97a; }
     .hero-p { font-size:clamp(.96rem,1.5vw,1.08rem); line-height:1.92; color:rgba(255,255,255,.76); max-width:650px; margin:0 auto 2.5rem; }
     .hero-p strong { color:var(--white); }
+    .hero-logos { display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap; margin:-.8rem auto 2.3rem; }
+    .hero-logo-card { min-height:76px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.92); border:1px solid rgba(255,255,255,.26); border-radius:10px; padding:.75rem 1rem; box-shadow:0 12px 40px rgba(0,0,0,.18); }
+    .hero-logo-card img { max-height:54px; max-width:170px; object-fit:contain; display:block; }
+    .hero-logo-note { font-size:.68rem; letter-spacing:1.4px; text-transform:uppercase; color:rgba(255,255,255,.68); font-weight:600; }
     .hero-ctas { display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap; margin-bottom:3.5rem; }
     /* Proof bar */
     .proof-bar { display:flex; justify-content:center; gap:2.5rem; flex-wrap:wrap; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1); }
@@ -395,7 +399,7 @@
       #navbar.scrolled { padding:0; }
       .nav-inner { height:60px; overflow:hidden; align-items:center; }
       .nav-logo { position:static; left:auto; top:auto; line-height:0; }
-      .nav-logo img { height:80px; position:static; margin-top:4px; }
+      .nav-logo img { height:54px; position:static; margin-top:0; }
       .jor-track { grid-template-columns:1fr 1fr; gap:1.75rem; }
       .jor-track::before { display:none; }
       .jor-step { flex-direction:row; gap:.75rem; align-items:flex-start; text-align:left; }
@@ -424,7 +428,7 @@
   <div class="container nav-inner">
     <!-- Logo absoluto — fora do fluxo -->
     <a href="#hero" class="nav-logo">
-      <img src="imagens/logo.png" alt="Imersão Azul 360" />
+      <img src="imagens/logo-projeto-imersao-azul-oficial.png" alt="Projeto Imersão Azul" />
     </a>
     <!-- Espaçador invisível que ocupa o lugar do logo no fluxo -->
     <div class="nav-logo-spacer"></div>
@@ -462,14 +466,14 @@
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-c">
-    <div class="hero-badge fade-up"><span class="dot"></span>🥽 Óculos VR em sala de aula  Inovação &amp; ESG</div>
+    <div class="hero-badge fade-up"><span class="dot"></span>Projeto Imersão Azul · Inovação &amp; ESG</div>
     <h1 class="hero-h1 fade-up">
-      A escola que leva os alunos<br>
+      A escola que leva seus alunos<br>
       ao <span class="accent">fundo do oceano</span><br>
       <span class="accent-g">lidera o futuro.</span>
     </h1>
     <p class="hero-p fade-up">
-      A <strong>Imersão Azul 360</strong> coloca <strong>óculos de Realidade Virtual</strong> nas mãos dos seus alunos  e os leva ao fundo do oceano sem sair da sala de aula. Uma experiência 360° que une tecnologia VR, conteúdo BNCC e engajamento real, transformando sua escola em referência de inovação.
+      O <strong>Projeto Imersão Azul</strong> coloca <strong>óculos de Realidade Virtual</strong> nas mãos dos seus alunos  e os leva ao fundo do oceano sem sair da sala de aula. Uma experiência imersiva que une tecnologia VR, conteúdo BNCC e engajamento real para escolas de diferentes realidades.
     </p>
     <div class="hero-ctas fade-up">
       <a href="#cta" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Agendar Apresentação Gratuita</a>
@@ -478,7 +482,7 @@
     <div class="proof-bar fade-up">
       <div class="proof-item"><span class="pv" data-count="1300" data-suffix="+">1300+</span><span class="pl">Páginas de conteúdo autoral</span></div>
       <div class="proof-item"><span class="pv">5</span><span class="pl">Segmentos de ensino</span></div>
-      <div class="proof-item"><span class="pv">VR</span><span class="pl">Realidade Virtual 360°</span></div>
+      <div class="proof-item"><span class="pv">VR</span><span class="pl">Realidade Virtual</span></div>
       <div class="proof-item"><span class="pv">BNCC</span><span class="pl">Alinhado à base nacional</span></div>
     </div>
   </div>
@@ -499,7 +503,7 @@
     <div style="display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0;">
       <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
         <div style="font-size:1.4rem;">🌊</div>
-        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Oceano em 360°</p>
+        <p style="font-size:.72rem;font-weight:700;color:var(--white);margin-top:.3rem;">Oceano imersivo</p>
       </div>
       <div style="background:rgba(255,255,255,.18);border-radius:10px;padding:.75rem 1.1rem;text-align:center;">
         <div style="font-size:1.4rem;">📚</div>
@@ -519,14 +523,14 @@
   <div class="container">
     <div class="pain-intro">
       <span class="lbl lbl-dk fade-up">O Cenário Atual</span>
-      <h2 class="h2 h2-dk fade-up">Sua escola quer se diferenciar.<br>Os pais exigem mais. O mercado também.</h2>
-      <p class="sub sub-dk fade-up" style="margin:.9rem auto 0;">As escolas privadas que crescem hoje têm algo em comum: oferecem uma experiência educacional que vai além do currículo tradicional.</p>
+      <h2 class="h2 h2-dk fade-up">Sua escola quer se diferenciar.<br>Os pais exigem mais.<br>O mercado também.</h2>
+      <p class="sub sub-dk fade-up" style="margin:.9rem auto 0;">As escolas que crescem hoje têm algo em comum: oferecem uma experiência educacional que vai além do currículo tradicional.</p>
     </div>
     <div class="pain-grid">
       <div class="pain-card fade-up">
         <div class="pain-icon">📊</div>
         <h3>Captação cada vez mais competitiva</h3>
-        <p>Pais estão comparando escolas com base em inovação, projetos especiais e diferenciação real  não só nota.</p>
+        <p>Os pais estão comparando escolas com base em inovação, projetos especiais e diferenciação real — não apenas em notas.</p>
       </div>
       <div class="pain-card fade-up">
         <div class="pain-icon">🌿</div>
@@ -541,11 +545,11 @@
       <div class="pain-card fade-up">
         <div class="pain-icon">🏆</div>
         <h3>Valor percebido pelos pais é baixo</h3>
-        <p>Sem projetos visíveis e marcantes, o investimento na escola parece "o mesmo de qualquer lugar".</p>
+        <p>Sem projetos visíveis e experiências marcantes, o investimento na escola passa a ser percebido como "mais do mesmo".</p>
       </div>
     </div>
     <div class="pain-cta-strip fade-up">
-      <p>A <strong>Imersão Azul 360</strong> foi criada para resolver exatamente isso.</p>
+      <p>A <strong>Imersão Azul</strong> foi criada para resolver exatamente isso.</p>
       <a href="#solucao" class="btn btn-ink">Ver a solução <i class="fa-solid fa-arrow-down"></i></a>
     </div>
   </div>
@@ -564,7 +568,7 @@
       <div class="pillar fade-up">
         <div class="p-ico" style="background:rgba(26,143,160,.14);color:#7dd4e8;"><i class="fa-solid fa-vr-cardboard"></i></div>
         <h3>🥽 Óculos VR em Sala de Aula</h3>
-        <p>O aluno veste o óculos de Realidade Virtual e mergulha no oceano em 360°  recifes, baleias, oceano profundo  tudo dentro da escola, em experiências de 5 a 10 minutos por aula.</p>
+        <p>O aluno veste o óculos de Realidade Virtual e mergulha em recifes, baleias e no oceano profundo, tudo dentro da escola, em experiências de 5 a 10 minutos por aula.</p>
       </div>
       <div class="pillar fade-up">
         <div class="p-ico" style="background:rgba(196,154,60,.14);color:#e8c97a;"><i class="fa-solid fa-book-open"></i></div>
@@ -688,11 +692,6 @@
         <div class="ctr-val"><span class="count-num" data-target="8">0</span><sup>+</sup></div>
         <div class="ctr-lbl">Disciplinas integradas</div>
       </div>
-      <div class="ctr-divider"></div>
-      <div class="ctr">
-        <div class="ctr-val"><span class="count-num" data-target="360">0</span><sup>°</sup></div>
-        <div class="ctr-lbl">Visão imersiva em realidade virtual</div>
-      </div>
     </div>
   </div>
 </section>
@@ -790,13 +789,13 @@
       <div class="flip-card fade-up">
         <div class="flip-inner">
           <div class="flip-f"><div class="fi">📊</div><h4>Dados e Relatórios</h4><small>Passe o mouse</small></div>
-          <div class="flip-b"><div class="fb-icon">📊</div><p>Painel completo com engajamento, desempenho e progressão por aluno  subsídio real para reuniões pedagógicas.</p></div>
+          <div class="flip-b"><div class="fb-icon">📊</div><p>Painel completo com engajamento, desempenho e progressão por aluno — subsídio real para reuniões pedagógicas.</p></div>
         </div>
       </div>
       <div class="flip-card fade-up">
         <div class="flip-inner">
           <div class="flip-f"><div class="fi">🔁</div><h4>Retenção de Alunos</h4><small>Passe o mouse</small></div>
-          <div class="flip-b"><div class="fb-icon">🔁</div><p>Experiências memoráveis criam vínculo emocional com a escola. Alunos que sentem o oceano ficam  e recomendam.</p></div>
+          <div class="flip-b"><div class="fb-icon">🔁</div><p>Experiências memoráveis fortalecem o vínculo emocional com a escola. Alunos que vivenciam o oceano se conectam, permanecem e recomendam.</p></div>
         </div>
       </div>
     </div>
@@ -880,58 +879,58 @@
         <button class="ti" data-tp="t4">🌊 Ens. Médio</button>
       </div>
       <div id="t0" class="tp active">
-        <h4>Fundamental I  1º ao 3º ano</h4>
+        <h4>Fundamental I — 1º ao 3º ano</h4>
         <ul class="tlist">
-          <li><i class="fa-solid fa-circle-dot"></i>Animais do Mar e seus habitats</li>
-          <li><i class="fa-solid fa-circle-dot"></i>A Água: origem, ciclo e importância</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Vida na Praia e Zonas Costeiras</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Animais marinhos e seus habitats</li>
+          <li><i class="fa-solid fa-circle-dot"></i>A água: origem, ciclo e importância</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Vida na praia e zonas costeiras</li>
           <li><i class="fa-solid fa-circle-dot"></i>Manguezais e biodiversidade</li>
           <li><i class="fa-solid fa-circle-dot"></i>Cuidando do oceano: ação ambiental</li>
           <li><i class="fa-solid fa-circle-dot"></i>Reciclagem e consciência ambiental</li>
         </ul>
       </div>
       <div id="t1" class="tp">
-        <h4>Fundamental I  4º ao 5º ano</h4>
+        <h4>Fundamental I — 4º ao 5º ano</h4>
         <ul class="tlist">
-          <li><i class="fa-solid fa-circle-dot"></i>Ecossistemas Marinhos Brasileiros</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Correntes Oceânicas e Clima</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Biodiversidade Costeira</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Poluição dos Mares</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Pesca Sustentável</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Ciclo Hidrológico Global</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Ecossistemas marinhos brasileiros</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Correntes oceânicas e clima</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Biodiversidade costeira</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Poluição dos mares</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Pesca sustentável</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Ciclo hidrológico global</li>
         </ul>
       </div>
       <div id="t2" class="tp">
-        <h4>Fundamental II  6º e 7º ano</h4>
+        <h4>Fundamental II — 6º e 7º ano</h4>
         <ul class="tlist">
-          <li><i class="fa-solid fa-circle-dot"></i>Biomas Marinhos e características</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Cadeia Alimentar Oceânica</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Impacto das Mudanças Climáticas</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Microplásticos e Poluição Invisível</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Energias Renováveis Oceânicas</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Áreas de Conservação Marinha</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Biomas marinhos e características</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Cadeia alimentar oceânica</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Impacto das mudanças climáticas</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Microplásticos e poluição invisível</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Energias renováveis oceânicas</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Áreas de conservação marinha</li>
         </ul>
       </div>
       <div id="t3" class="tp">
-        <h4>Fundamental II  8º e 9º ano</h4>
+        <h4>Fundamental II — 8º e 9º ano</h4>
         <ul class="tlist">
           <li><i class="fa-solid fa-circle-dot"></i>Oceanografia: conceitos e aplicações</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Química dos Oceanos e Acidificação</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Física das Ondas e Marés</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Ecologia de Sistemas Profundos</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Legislação e Direito Ambiental</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Projeto de Pesquisa Ambiental</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Química dos oceanos e acidificação</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Física das ondas e marés</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Ecologia de sistemas profundos</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Legislação e direito ambiental</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Projeto de pesquisa ambiental</li>
         </ul>
       </div>
       <div id="t4" class="tp">
-        <h4>Ensino Médio  1ª à 3ª série</h4>
+        <h4>Ensino Médio — 1ª à 3ª série</h4>
         <ul class="tlist">
-          <li><i class="fa-solid fa-circle-dot"></i>Oceanografia Avançada</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Biotecnologia e Recursos Marinhos</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Geopolítica dos Oceanos</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Crise Climática e Oceanos</li>
-          <li><i class="fa-solid fa-circle-dot"></i>Empreendedorismo Azul (Blue Economy)</li>
-          <li><i class="fa-solid fa-circle-dot"></i>TCC Ambiental integrado</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Oceanografia avançada</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Biotecnologia e recursos marinhos</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Geopolítica dos oceanos</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Crise climática e oceanos</li>
+          <li><i class="fa-solid fa-circle-dot"></i>Empreendedorismo azul (Blue Economy)</li>
+          <li><i class="fa-solid fa-circle-dot"></i>TCC ambiental integrado</li>
         </ul>
       </div>
     </div>
@@ -994,7 +993,7 @@
     <div class="esg-text">
       <span class="lbl fade-up">Compromisso Real com o Futuro</span>
       <h2 class="h2 fade-up">ESG não é trend.<br>É responsabilidade  e diferencial.</h2>
-      <p class="sub fade-up" style="margin:.9rem 0 2rem;">A Imersão Azul 360 posiciona sua escola dentro da agenda global de sustentabilidade com credibilidade, dados e substância pedagógica.</p>
+      <p class="sub fade-up" style="margin:.9rem 0 2rem;">A Imersão Azul posiciona sua escola dentro da agenda global de sustentabilidade com credibilidade, dados e substância pedagógica.</p>
       <div class="esg-pillars">
         <div class="esg-p fade-up">
           <div class="esg-dot"></div>
@@ -1021,74 +1020,27 @@
     </div>
     <div class="esg-certs fade-up">
       <div class="esg-cert">
-        <div class="ec-ico" style="background:rgba(26,143,160,.14);color:var(--teal-lt);">🌊</div>
+        <div class="ec-ico" style="background:rgba(26,143,160,.14);color:var(--teal-lt);">E</div>
         <div>
-          <h4>UNESCO  Década do Oceano 2021–2030</h4>
-          <p>Alinhamento às metas globais da ciência oceânica das Nações Unidas.</p>
+          <h4>Ambiental (E)</h4>
+          <p>Conteúdo baseado em ciência oceânica real. A escola forma cidadãos que entendem, respeitam e agem pelo ambiente.</p>
         </div>
       </div>
       <div class="esg-cert">
-        <div class="ec-ico" style="background:rgba(122,171,138,.14);color:#aacdb5;">🌱</div>
+        <div class="ec-ico" style="background:rgba(196,154,60,.12);color:#e8c97a;">S</div>
         <div>
-          <h4>Plenum Brazil</h4>
-          <p>Parceria com referência em educação ambiental e sustentabilidade.</p>
+          <h4>Social (S)</h4>
+          <p>Acesso a experiências que democratizam o conhecimento sobre os oceanos, especialmente para quem nunca viu o mar.</p>
         </div>
       </div>
       <div class="esg-cert">
-        <div class="ec-ico" style="background:rgba(196,154,60,.12);color:#e8c97a;">🐋</div>
+        <div class="ec-ico" style="background:rgba(122,171,138,.14);color:#aacdb5;">G</div>
         <div>
-          <h4>Instituto Baleia Jubarte</h4>
-          <p>Conteúdo desenvolvido com expertise científica em conservação marinha.</p>
-        </div>
-      </div>
-      <div class="esg-cert">
-        <div class="ec-ico" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);">📚</div>
-        <div>
-          <h4>BNCC  Base Nacional Comum Curricular</h4>
-          <p>Todo o conteúdo mapeado e alinhado às competências e habilidades da base.</p>
-        </div>
-      </div>
-      <div class="esg-cert">
-        <div class="ec-ico" style="background:rgba(26,143,160,.12);color:var(--teal-lt);">🌎</div>
-        <div>
-          <h4>Instituto Gaia Soul</h4>
-          <p>Colaboração com referência em educação para a cidadania planetária.</p>
+          <h4>Governança (G)</h4>
+          <p>Relatórios de impacto, dados de engajamento e alinhamento com metas da UNESCO Década do Oceano 2021–2030.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- ========== PARCEIROS ========== -->
-<section id="credibilidade">
-  <div class="container">
-    <span class="cred-lbl fade-up">Parceiros Oficiais</span>
-    <h2 class="h2 h2-dk fade-up" style="margin-bottom:2.5rem;">Parceiros Institucionais</h2>
-    <div class="parceiros-grid fade-up">
-      <div class="parceiro-card">
-        <div class="parceiro-logo">
-          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.53.jpeg" alt="UNESCO" />
-        </div>
-        <h4>UNESCO</h4>
-        <p>Década das Nações Unidas para a Ciência Oceânica (2021–2030)</p>
-      </div>
-      <div class="parceiro-card">
-        <div class="parceiro-logo">
-          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.540.jpeg" alt="AOCEANO" />
-        </div>
-        <h4>AOCEANO</h4>
-        <p>Associação Brasileira de Oceanografia</p>
-      </div>
-      <div class="parceiro-card">
-        <div class="parceiro-logo">
-          <img src="imagens/WhatsApp Image 2026-04-02 at 17.04.57.jpeg" alt="Instituto Baleia Jubarte" />
-        </div>
-        <h4>Instituto Baleia Jubarte</h4>
-        <p>Conservação e pesquisa de baleias jubarte</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:2.5rem;"><div style="width:48px;height:3px;background:var(--teal);border-radius:2px;display:inline-block;"></div></div>
   </div>
 </section>
 
@@ -1098,9 +1050,9 @@
   <div class="cta-bg"></div>
   <div class="container cta-c">
     <span class="cta-ey fade-up">Pronto para liderar o futuro?</span>
-    <div class="urgency fade-up"><i class="fa-solid fa-clock"></i> Apresentações gratuitas disponíveis para escolas privadas até junho de 2026</div>
+    <div class="urgency fade-up"><i class="fa-solid fa-clock"></i> Apresentações gratuitas disponíveis para escolas até junho de 2026</div>
     <h2 class="cta-h fade-up">Transforme sua escola na referência de <span class="cy">inovação e ESG</span> da sua cidade.</h2>
-    <p class="cta-desc fade-up">Agende uma apresentação gratuita e personalizada. Em 45 minutos, sua equipe pedagógica verá como a Imersão Azul 360 se encaixa na grade curricular, no calendário escolar  e na narrativa que diferencia sua escola.</p>
+    <p class="cta-desc fade-up">Agende uma apresentação gratuita e personalizada. Em 45 minutos, sua equipe pedagógica verá como o Projeto Imersão Azul se encaixa na grade curricular, no calendário escolar  e na narrativa que diferencia sua escola.</p>
     <div class="cta-btns fade-up">
       <a href="#contato" class="btn btn-primary" style="padding:.95rem 2rem;font-size:.97rem;"><i class="fa-solid fa-calendar-check"></i> Agendar Apresentação Gratuita</a>
       <a href="https://wa.me/5571999972427" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:.95rem 2rem;font-size:.97rem;"><i class="fa-brands fa-whatsapp"></i> Falar com Consultor</a>
@@ -1160,7 +1112,7 @@
 <section id="manifesto">
   <div class="container">
     <blockquote class="mq fade-up">"Escolas que ensinam os alunos a sentir o oceano<br>ensinam a cuidar do mundo."</blockquote>
-    <p class="ms fade-up"> Imersão Azul 360</p>
+    <p class="ms fade-up"> Imersão Azul</p>
   </div>
 </section>
 
@@ -1169,7 +1121,7 @@
 <footer>
   <div class="ft-g container">
     <div class="ft-brand fade-up">
-      <div class="ft-brand-name"><img src="imagens/logo.png" alt="Imersão Azul 360" style="height:52px;width:auto;" /></div>
+      <div class="ft-brand-name"><img src="imagens/logo-projeto-imersao-azul-oficial.png" alt="Projeto Imersão Azul" style="height:42px;width:auto;" /></div>
       <p>A plataforma de cultura oceânica que transforma escolas em referências de inovação, ESG e educação imersiva no Brasil.</p>
       <div class="ft-soc">
         <a href="#" class="sb" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -1206,7 +1158,7 @@
     </div>
   </div>
   <div class="ft-bot container">
-    <p>&copy; 2026 Imersão Azul 360. Todos os direitos reservados.</p>
+    <p>&copy; 2026 Imersão Azul. Todos os direitos reservados.</p>
     <a href="#">Década da Ciência Oceânica  UNESCO 2021–2030</a>
   </div>
 </footer>
@@ -1325,9 +1277,9 @@ const questions = [
   },
   {
     q: 'Qual é o oceano mais profundo do mundo e sua profundidade máxima?',
-    opts: ['Atlântico  7.647m', 'Índico  8.047m', 'Ártico  5.450m', 'Pacífico  cerca de 11.000m'],
+    opts: ['Atlântico — 7.647 m', 'Índico — 8.047 m', 'Ártico — 5.450 m', 'Pacífico — cerca de 11.000 m'],
     correct: 3,
-    feedback: '✅ Correto! A Fossa das Marianas, no Pacífico, tem cerca de 11.000m de profundidade  mais fundo do que o Everest é alto.',
+    feedback: '✅ Correto! A Fossa das Marianas, no Pacífico, tem cerca de 11.000 m de profundidade — mais fundo do que o Everest é alto.',
     fact: '🌊 <strong>Fato Oceânico:</strong> A pressão no fundo da Fossa das Marianas é 1.000 vezes maior que a superfície. Ainda assim, encontramos vida lá  inclusive plástico.'
   },
   {
@@ -1419,7 +1371,7 @@ function showResult() {
   document.getElementById('qfinal').textContent = `${qScore}/5`;
   const msgs = [
     'O oceano está esperando você. Seus alunos vão te surpreender depois de uma experiência VR de imersão.',
-    'Bom começo! Imagine o que acontece quando seus alunos exploram o oceano em realidade virtual 360°.',
+    'Bom começo! Imagine o que acontece quando seus alunos exploram o oceano em realidade virtual imersiva.',
     'Ótimo resultado! Você já tem a curiosidade certa  e seus alunos precisam da mesma experiência.',
     'Impressionante! Você já sente o oceano. Seus alunos podem ter essa mesma conexão  todos os anos.',
     'Perfeito! Você é exatamente o tipo de educador que a Imersão Azul precisa. Vamos conversar?'
