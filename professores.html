@@ -287,6 +287,24 @@
     .check-item { display:flex; align-items:flex-start; gap:.45rem; cursor:pointer; font-size:.83rem; color:var(--ink-md); line-height:1.45; }
     .check-item input[type="checkbox"], .check-item input[type="radio"] { width:15px; height:15px; flex-shrink:0; margin-top:2px; accent-color:var(--teal); cursor:pointer; }
     .termo-wrap { background:#f0f8fa; border:1px solid rgba(26,143,160,.22); border-radius:10px; padding:.9rem 1rem; margin-top:.2rem; }
+    .terms-callout { display:flex; gap:.65rem; background:#fff8e8; border:1px solid rgba(196,154,60,.32); border-radius:12px; padding:.9rem 1rem; color:var(--ink); margin:.15rem 0 .55rem; }
+    .terms-callout i { color:var(--gold); margin-top:.1rem; flex-shrink:0; }
+    .terms-callout strong { display:block; font-family:var(--fh); font-size:.82rem; margin-bottom:.18rem; }
+    .terms-callout span { display:block; font-size:.76rem; line-height:1.55; color:var(--ink-md); }
+    .terms-box { max-height:235px; overflow-y:auto; background:#fbfdfe; border:1px solid rgba(26,143,160,.24); border-radius:12px; padding:1rem 1.05rem; font-size:.74rem; line-height:1.62; color:var(--ink-md); scroll-behavior:smooth; }
+    .terms-box h4 { font-family:var(--fh); font-size:.78rem; color:var(--ink); margin:.85rem 0 .35rem; text-align:left; }
+    .terms-box h4:first-child { margin-top:0; }
+    .terms-box p { margin:0 0 .55rem; }
+    .terms-box ul { margin:.35rem 0 .7rem 1rem; }
+    .terms-box li { margin-bottom:.38rem; }
+    .terms-progress { display:flex; justify-content:space-between; gap:.8rem; align-items:center; margin:.55rem 0 .2rem; font-size:.72rem; color:var(--ink-lt); }
+    .terms-progress strong { color:var(--teal); }
+    .terms-locked { opacity:.62; }
+    .terms-locked input { pointer-events:none; }
+    .fields-locked-note { background:rgba(26,143,160,.06); border:1px dashed rgba(26,143,160,.28); border-radius:10px; padding:.72rem .85rem; font-size:.74rem; line-height:1.5; color:var(--ink-md); }
+    .fields-locked-note i { color:var(--teal); margin-right:.35rem; }
+    .fields-locked-note.unlocked { background:rgba(122,171,138,.09); border-style:solid; border-color:rgba(122,171,138,.32); color:#315b40; }
+    .modal-form input:disabled, .modal-form button:disabled { cursor:not-allowed; }
     .modal-submit { background:linear-gradient(135deg, #1a8fa0 0%, #20b2c8 50%, #1a8fa0 100%); background-size:200% auto; color:var(--white); border:none; padding:.95rem 1.5rem; border-radius:10px; font-family:var(--fh); font-size:.95rem; font-weight:700; cursor:pointer; width:100%; display:flex; align-items:center; justify-content:center; gap:.55rem; transition:transform .25s, background .25s, box-shadow .3s, filter .25s; margin-top:.5rem; box-shadow:0 4px 20px rgba(26,143,160,.35), 0 0 14px rgba(26,143,160,.2); animation:pulseGlow 3s ease-in-out infinite; position:relative; overflow:hidden; letter-spacing:.3px; }
     .modal-submit::before { content:''; position:absolute; inset:0; background:linear-gradient(105deg, transparent 40%, rgba(255,255,255,.18) 50%, transparent 60%); background-size:200% 100%; animation:shimmer 3.5s linear infinite; pointer-events:none; border-radius:inherit; }
     .modal-submit:hover { background:linear-gradient(135deg, #147a8a 0%, #1a8fa0 50%, #20b2c8 100%); box-shadow:0 8px 36px rgba(26,143,160,.5), 0 0 24px rgba(32,178,200,.35); transform:translateY(-2px) scale(1.02); filter:brightness(1.08); }
@@ -298,6 +316,10 @@
     .modal-success .check-big { font-size:3.2rem; margin-bottom:.7rem; }
     .modal-success h4 { font-family:var(--fh); font-size:1.15rem; font-weight:700; color:var(--ink); margin-bottom:.65rem; }
     .modal-success p { font-size:.88rem; color:var(--ink-md); line-height:1.75; }
+    .access-link-box { display:none; margin-top:1.2rem; background:#f0f8fa; border:1px solid rgba(26,143,160,.24); border-radius:12px; padding:1rem; text-align:left; }
+    .access-link-box.show { display:block; }
+    .access-link-box strong { display:block; font-family:var(--fh); font-size:.82rem; color:var(--ink); margin-bottom:.45rem; }
+    .access-link-box a { display:block; color:var(--teal); font-size:.8rem; line-height:1.5; word-break:break-all; }
     .modal-success .cameleon-badge { display:inline-flex; align-items:center; gap:.6rem; background:linear-gradient(135deg,rgba(26,143,160,.1),rgba(32,178,200,.08)); border:1px solid rgba(26,143,160,.25); border-radius:12px; padding:.85rem 1.2rem; margin-top:1.2rem; }
     .modal-success .cameleon-badge .cb-text { font-family:var(--fh); font-size:.82rem; font-weight:700; color:var(--teal); text-align:left; }
     .modal-success .cameleon-badge .cb-sub { font-size:.73rem; color:var(--ink-lt); }
@@ -622,11 +644,11 @@
       <h2 class="h2 h2-dk fade-up">Reconhecimento pela sua participação.</h2>
       <p class="fade-up">Ao concluir a leitura e a avaliação pedagógica da coleção, o professor participante vai receber um certificado oficial do Instituto Gaia Soul, com horas-aula e reconhecimento da contribuição no estudo de validação do Projeto Imersão Azul. O certificado poderá apoiar processos de progressão de carreira, conforme as regras da rede de ensino do professor.</p>
       <div class="cert-text fade-up">
-        Certificamos que [NOME DO PROFESSOR] participou do estudo de validação pedagógica do Projeto Imersão Azul, contribuindo com a leitura e avaliação da coleção educacional desenvolvida pelo Instituto Gaia Soul.
+        Certifica 20 horas de trabalho pedagógico em colaboração ao Projeto Imersão Azul.
       </div>
     </div>
     <div class="cert-visual fade-up">
-      <img src="imagens/certificado-participacao-imersao-azul.png" alt="Modelo do certificado de participação do Projeto Imersão Azul" loading="lazy" />
+      <img src="imagens/certificado-instituto-gaia-soul-imersao-azul.png" alt="Modelo do certificado oficial do Instituto Gaia Soul para o Projeto Imersão Azul" loading="lazy" />
     </div>
   </div>
 </section>
@@ -660,7 +682,7 @@
         <div class="book-info">
           <h3 class="book-title">1º e 2º Ano — Ensino Fundamental · 1º semestre</h3>
           <p class="book-desc">Volume inicial da sequência do Ensino Fundamental, organizado para o primeiro semestre de trabalho com cultura oceânica.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566c21e2e49c57f?authid=ItvSAv5sUvCD" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-1e2-1sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -681,7 +703,7 @@
         <div class="book-info">
           <h3 class="book-title">1º e 2º Ano — Ensino Fundamental · 2º semestre</h3>
           <p class="book-desc">Continuação do percurso para 1º e 2º ano, com atividades lúdicas e acessíveis sobre vida no oceano.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566e121854a2556?authid=S5lCP26tRSwk" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-1e2-2sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -702,7 +724,7 @@
         <div class="book-info">
           <h3 class="book-title">3º, 4º e 5º Ano — Ensino Fundamental · 1º semestre</h3>
           <p class="book-desc">Volume para o primeiro semestre do ciclo 3º ao 5º ano, com introdução progressiva aos temas de cultura oceânica.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/0082175665da2d4fd9bf1?authid=KWng5HpaqM5x" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-3a5-1sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -723,7 +745,7 @@
         <div class="book-info">
           <h3 class="book-title">3º, 4º e 5º Ano — Ensino Fundamental · 2º semestre</h3>
           <p class="book-desc">Continuação do ciclo 3º ao 5º ano, aprofundando ecossistemas marinhos, correntes oceânicas e preservação.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/0082175663a199d6d8d82?authid=bW4xZ79xhRvW" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-3a5-2sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -750,7 +772,7 @@
         <div class="book-info">
           <h3 class="book-title">6º e 7º Ano — Ensino Fundamental · 1º semestre</h3>
           <p class="book-desc">Volume do primeiro semestre para 6º e 7º ano, abordando biomas costeiros, biodiversidade e impacto humano.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/00821756645ab5192ad65?authid=7geKzeBw5i7S" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-6e7-1sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -771,7 +793,7 @@
         <div class="book-info">
           <h3 class="book-title">6º e 7º Ano — Ensino Fundamental · 2º semestre</h3>
           <p class="book-desc">Continuação do ciclo 6º e 7º ano, mantendo a sequência de leitura para professores do Ensino Fundamental II.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566967fc36a01e4?authid=9aZLbjN5Mfbk" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-6e7-2sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -792,7 +814,7 @@
         <div class="book-info">
           <h3 class="book-title">8º e 9º Ano — Ensino Fundamental · 1º semestre</h3>
           <p class="book-desc">Volume do primeiro semestre para 8º e 9º ano, com oceanografia, clima global e recursos naturais do oceano.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566d209f1ec9a91?authid=ZBWfBKova71y" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-8e9-1sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -813,7 +835,7 @@
         <div class="book-info">
           <h3 class="book-title">8º e 9º Ano — Ensino Fundamental · 2º semestre</h3>
           <p class="book-desc">Continuação do ciclo 8º e 9º ano, com cidadania oceânica, políticas ambientais e impactos nos oceanos.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566507d3fdf8b43?authid=uDpic6teOrxe" class="btn-ebook">
+          <a href="#cta-download" data-material-id="fund-8e9-2sem" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -840,7 +862,7 @@
         <div class="book-info">
           <h3 class="book-title">1ª Série — Ensino Médio</h3>
           <p class="book-desc">Cultura oceânica, ecossistemas globais e oceanografia introdutória com enfoque científico e crítico.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566395ac5fce80e?authid=8LbqzmiMXwZD" class="btn-ebook">
+          <a href="#cta-download" data-material-id="medio-1serie" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -861,7 +883,7 @@
         <div class="book-info">
           <h3 class="book-title">2ª Série — Ensino Médio</h3>
           <p class="book-desc">Geopolítica dos oceanos, recursos marinhos, direito do mar e soberania oceânica do Brasil.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566ce9b4e215926?authid=uWy4EVrPV4fi" class="btn-ebook">
+          <a href="#cta-download" data-material-id="medio-2serie" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -882,7 +904,7 @@
         <div class="book-info">
           <h3 class="book-title">3ª Série — Ensino Médio</h3>
           <p class="book-desc">Futuro dos oceanos, interdisciplinaridade, ação climática e projetos de inovação ambiental.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566cb9a71974c29?authid=lMwrt7yvV8pR" class="btn-ebook">
+          <a href="#cta-download" data-material-id="medio-3serie" class="btn-ebook">
             <i class="fa-solid fa-book-open"></i> Acessar volume
           </a>
         </div>
@@ -909,7 +931,7 @@
         <div class="book-info">
           <h3 class="book-title">Apresentação — Coleção Imersão Azul</h3>
           <p class="book-desc">Documento introdutório com visão geral da Coleção Imersão Azul — Cultura Oceânica, objetivos e organização.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/008217566fd522c2485b6?authid=ZsWThA73aGcL" class="btn-ebook btn-apoio">
+          <a href="#cta-download" data-material-id="apoio-apresentacao" class="btn-ebook btn-apoio">
             <i class="fa-solid fa-file-lines"></i> Acessar Documento
           </a>
         </div>
@@ -930,7 +952,7 @@
         <div class="book-info">
           <h3 class="book-title">Proposta Pedagógica</h3>
           <p class="book-desc">Orientações metodológicas, plano de implementação e sugestões para análise pedagógica da coleção.</p>
-          <a href="#cta-download" data-volume-url="https://www.calameo.com/read/0082175668ab3fea5329b?authid=de966tnTcc7y" class="btn-ebook btn-apoio">
+          <a href="#cta-download" data-material-id="apoio-proposta" class="btn-ebook btn-apoio">
             <i class="fa-solid fa-file-lines"></i> Acessar Documento
           </a>
         </div>
@@ -1181,19 +1203,102 @@
       </div>
 
       <form id="downloadForm" class="modal-form" novalidate>
+        <div class="form-section-lbl"><i class="fa-solid fa-file-signature"></i> Termo obrigatório</div>
+
+        <div class="terms-callout" id="termsCallout">
+          <i class="fa-solid fa-arrow-down-wide-short"></i>
+          <div>
+            <strong>Antes do cadastro, leia o termo até o final.</strong>
+            <span>O nome e o WhatsApp ficam bloqueados. Para liberar o formulário, role esta caixa até embaixo e marque que leu e aceitou os termos.</span>
+          </div>
+        </div>
+
+        <div class="terms-box" id="termsBox" tabindex="0" aria-label="Termo de cooperação, confidencialidade e uso restrito">
+          <h4>TERMO DE COOPERAÇÃO, CONFIDENCIALIDADE E USO RESTRITO DE MATERIAL DIDÁTICO EM FASE DE VALIDAÇÃO</h4>
+          <p><strong>Coleção Imersão Azul — Instituto Gaia Soul</strong></p>
+          <p>Este Termo de Confidencialidade e Uso Restrito de Material Didático em Fase de Validação, doravante denominado "Termo", é celebrado entre as partes identificadas abaixo, tendo por objeto o acesso controlado e temporário à Coleção Imersão Azul para fins exclusivos de validação pedagógica, nos termos e condições aqui estabelecidos.</p>
+
+          <h4>Das Partes</h4>
+          <p><strong>Parte Divulgadora:</strong> Instituto Gaia Soul, pessoa jurídica sem fins lucrativos, representado por seu fundador e CEO, Marcelo Dantas Telles, oceanógrafo, Mestre em Oceanografia Biológica, doravante denominado "INSTITUTO".</p>
+          <p><strong>Parte Intermediária:</strong> Projeto Escola Azul Brasil, representada pela Profa. Thaís Pileggi, doravante denominado "ESCOLA AZUL", responsável pela articulação junto aos professores e educadores participantes do processo de validação.</p>
+          <p><strong>Parte Receptora:</strong> Professor(a) participante do processo de validação, identificado(a) ao final deste Termo, doravante denominado(a) "PROFESSOR(A) VALIDADOR(A)".</p>
+
+          <h4>Cláusula Primeira — Do Objeto</h4>
+          <p>O presente Termo regula o acesso, uso e tratamento dos livros didáticos digitais, em PDF, integrantes da Coleção Imersão Azul, obra de educação para a Cultura Oceânica desenvolvida pelo INSTITUTO para todos os anos do Ensino Fundamental e Ensino Médio, em conformidade com a Lei nº 14.461/2023, cedidos ao(à) PROFESSOR(A) VALIDADOR(A) exclusivamente para fins de avaliação pedagógica durante o Período de Validação definido neste instrumento.</p>
+
+          <h4>Cláusula Segunda — Das Definições</h4>
+          <p>Para os fins deste Termo, adotam-se as seguintes definições:</p>
+          <p><strong>Material Confidencial:</strong> os arquivos em formato PDF dos livros didáticos da Coleção Imersão Azul, seus textos, imagens, atividades pedagógicas, metodologias, diagramação e qualquer conteúdo neles contido, em versão pré-comercial, ainda não publicada para o mercado editorial.</p>
+          <p><strong>Período de Validação:</strong> prazo determinado de até 60 dias a contar do recebimento do Material Confidencial pelo(a) PROFESSOR(A) VALIDADOR(A), salvo prorrogação expressa por escrito pelo INSTITUTO.</p>
+          <p><strong>Uso Autorizado:</strong> leitura, análise pedagógica, aplicação em sala de aula para fins avaliativos e preenchimento do formulário de retorno estruturado fornecido pelo INSTITUTO.</p>
+
+          <h4>Cláusula Terceira — Das Obrigações do(a) Professor(a) Validador(a)</h4>
+          <ul>
+            <li>Utilizar o Material Confidencial única e exclusivamente para os fins de validação pedagógica descritos neste Termo.</li>
+            <li>Manter sigilo absoluto sobre o conteúdo do material, não divulgando, compartilhando, reproduzindo, distribuindo ou publicando, total ou parcialmente, em qualquer meio físico ou digital, incluindo redes sociais, aplicativos de mensagens, plataformas de ensino a distância ou qualquer outro canal.</li>
+            <li>Não ceder, emprestar, vender ou transferir o acesso ao material a terceiros, nem mesmo a outros colegas docentes não participantes do processo de validação.</li>
+            <li>Não utilizar o Material Confidencial para fins comerciais, didáticos externos à validação, ou em publicações acadêmicas sem autorização prévia e expressa do INSTITUTO.</li>
+            <li>Informar a ESCOLA AZUL e o INSTITUTO, em até 48 horas, qualquer incidente de segurança que resulte ou possa resultar em acesso não autorizado ao Material Confidencial.</li>
+          </ul>
+
+          <h4>Cláusula Quarta — Do Uso em Sala de Aula</h4>
+          <ul>
+            <li>A exibição dos materiais deve ocorrer de forma oral ou projetada, sem geração de cópias físicas ou digitais para os alunos.</li>
+            <li>Eventuais atividades aplicadas com alunos devem ser registradas como parte do processo de validação e reportadas no formulário de avaliação.</li>
+            <li>Os alunos não podem, em nenhuma hipótese, receber ou reter cópias, mesmo parciais, do material.</li>
+          </ul>
+
+          <h4>Cláusula Quinta — Da Propriedade Intelectual</h4>
+          <p>A cessão dos arquivos para fins de validação não implica, em qualquer hipótese, transferência de direitos autorais, de propriedade intelectual ou de qualquer outro direito sobre o Material Confidencial. Todos os direitos patrimoniais e morais sobre a Coleção Imersão Azul pertencem exclusivamente ao INSTITUTO GAIA SOUL e aos seus coautores.</p>
+
+          <h4>Cláusula Sexta — Das Penalidades</h4>
+          <ul>
+            <li>Imediata exclusão do processo de validação, com comunicação formal à instituição de ensino à qual está vinculado(a).</li>
+            <li>Responsabilidade civil pelos danos materiais e morais causados ao INSTITUTO, nos termos dos artigos 186 e 927 do Código Civil Brasileiro.</li>
+            <li>Responsabilidade por violação de direitos autorais, nos termos da Lei nº 9.610/1998.</li>
+            <li>Comunicação ao Ministério Público, caso a conduta configure ilícito penal.</li>
+          </ul>
+
+          <h4>Cláusula Sétima — Da Vigência</h4>
+          <p>Este Termo entra em vigor na data de sua assinatura e permanece vigente pelo Período de Validação estabelecido na Cláusula Segunda, II. As obrigações de confidencialidade subsistem por prazo indeterminado após o término da vigência, enquanto o material não for formalmente publicado pelo INSTITUTO para o mercado geral.</p>
+
+          <h4>Cláusula Oitava — Das Disposições Gerais</h4>
+          <ul>
+            <li>Este Termo poderá ser assinado de forma eletrônica, com validade jurídica nos termos da Lei nº 14.063/2020 e do Decreto nº 10.543/2020.</li>
+            <li>O INSTITUTO atuará como responsável pelo gerenciamento e guarda dos Termos assinados.</li>
+            <li>Eventuais dúvidas sobre o alcance das obrigações aqui previstas deverão ser dirimidas pela ESCOLA AZUL em conjunto com o INSTITUTO.</li>
+            <li>Fica eleito o foro da comarca de Salvador, Estado da Bahia, para dirimir quaisquer controvérsias decorrentes deste instrumento, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</li>
+          </ul>
+
+          <p><strong>Salvador (BA), 6 de maio de 2026.</strong></p>
+        </div>
+
+        <div class="terms-progress">
+          <span id="termsStatus">Passo 1 de 3: role o termo até o final.</span>
+          <strong id="termsPercent">0%</strong>
+        </div>
+
+        <label class="check-item termo-wrap terms-locked" id="termsAcceptWrap">
+          <input type="checkbox" id="termsAccept" disabled required />
+          <span>Eu li o termo completo até o final e aceito as regras de confidencialidade, cooperação e uso restrito do material didático em fase de validação.</span>
+        </label>
+
+        <div class="fields-locked-note" id="fieldsLockedNote">
+          <i class="fa-solid fa-lock"></i> Campos bloqueados: preencha seu nome e WhatsApp somente após ler o termo completo e marcar o aceite.
+        </div>
 
         <div class="mfg">
           <label for="prof-nome">Nome completo *</label>
-          <input type="text" id="prof-nome" name="nome" placeholder="Maria da Silva" required autocomplete="name" />
+          <input type="text" id="prof-nome" name="nome" placeholder="Maria da Silva" required autocomplete="name" disabled />
         </div>
 
         <div class="mfg">
           <label for="prof-whatsapp">WhatsApp (com DDD) *</label>
-          <input type="tel" id="prof-whatsapp" name="whatsapp" placeholder="(11) 99999-0000" required autocomplete="tel" />
+          <input type="tel" id="prof-whatsapp" name="whatsapp" placeholder="(11) 99999-0000" required autocomplete="tel" disabled />
         </div>
 
-        <button type="submit" class="modal-submit" id="modal-btn-submit">
-          <i class="fa-brands fa-whatsapp"></i> Quero Acessar a Coleção
+        <button type="submit" class="modal-submit" id="modal-btn-submit" disabled>
+          <i class="fa-solid fa-lock"></i> Primeiro leia o termo completo e marque o aceite
         </button>
       </form>
       <p class="modal-note"><i class="fa-solid fa-lock"></i> Seus dados são protegidos. Usamos apenas para enviar o acesso ao material.</p>
@@ -1203,8 +1308,12 @@
     <div class="modal-success" id="modalSuccess">
       <div class="check-big">🎉</div>
       <h4>Recebemos seu contato!</h4>
-      <p>Em instantes o Instituto Gaia Soul vai te enviar uma mensagem no <strong>WhatsApp</strong> com o link para concluir seu cadastro e acessar a coleção integral.</p>
-      <p style="font-size:.84rem;color:var(--ink-md);margin-top:1.2rem;line-height:1.7;">Fique de olho no WhatsApp. O processo é rápido e você logo terá acesso a todo o material da <strong>Coleção Imersão Azul</strong>. 🌊</p>
+      <p>Seu cadastro foi recebido e o acesso individual à coleção será enviado pelo <strong>WhatsApp</strong>.</p>
+      <div class="access-link-box show">
+        <strong>Como o acesso será liberado:</strong>
+        <a href="acesso-ebooks.html">Depois do cadastro, acesse a página dos e-books e informe o mesmo WhatsApp usado aqui.</a>
+      </div>
+      <p style="font-size:.84rem;color:var(--ink-md);margin-top:1.2rem;line-height:1.7;">Este link é pessoal e não deve ser compartilhado. Ele libera os materiais somente para professores cadastrados na validação pedagógica da <strong>Coleção Imersão Azul</strong>. 🌊</p>
     </div>
   </div>
 </div>
@@ -1252,12 +1361,57 @@ const modalClose = document.getElementById('modalClose');
 const modalFormWrap = document.getElementById('modalFormWrap');
 const modalSuccess = document.getElementById('modalSuccess');
 const downloadForm = document.getElementById('downloadForm');
+const termsBox = document.getElementById('termsBox');
+const termsAccept = document.getElementById('termsAccept');
+const termsAcceptWrap = document.getElementById('termsAcceptWrap');
+const termsStatus = document.getElementById('termsStatus');
+const termsPercent = document.getElementById('termsPercent');
+const profNome = document.getElementById('prof-nome');
+const profWhatsapp = document.getElementById('prof-whatsapp');
+const modalSubmit = document.getElementById('modal-btn-submit');
+const fieldsLockedNote = document.getElementById('fieldsLockedNote');
+
+function setParticipationFieldsEnabled(enabled) {
+  profNome.disabled = !enabled;
+  profWhatsapp.disabled = !enabled;
+  modalSubmit.disabled = !enabled;
+  fieldsLockedNote.classList.toggle('unlocked', enabled);
+  fieldsLockedNote.innerHTML = enabled
+    ? '<i class="fa-solid fa-unlock"></i> Formulário liberado: agora preencha nome e WhatsApp para concluir o cadastro.'
+    : '<i class="fa-solid fa-lock"></i> Campos bloqueados: preencha seu nome e WhatsApp somente após ler o termo completo e marcar o aceite.';
+  modalSubmit.innerHTML = enabled
+    ? '<i class="fa-brands fa-whatsapp"></i> Enviar cadastro e participar'
+    : '<i class="fa-solid fa-lock"></i> Primeiro leia o termo completo e marque o aceite';
+}
+
+function resetTermsGate() {
+  termsBox.scrollTop = 0;
+  termsAccept.checked = false;
+  termsAccept.disabled = true;
+  termsAcceptWrap.classList.add('terms-locked');
+  termsStatus.textContent = 'Passo 1 de 3: role o termo até o final.';
+  termsPercent.textContent = '0%';
+  setParticipationFieldsEnabled(false);
+}
+
+function updateTermsGate() {
+  const maxScroll = Math.max(termsBox.scrollHeight - termsBox.clientHeight, 1);
+  const progress = Math.min(100, Math.round((termsBox.scrollTop / maxScroll) * 100));
+  termsPercent.textContent = `${progress}%`;
+  if (termsBox.scrollTop + termsBox.clientHeight >= termsBox.scrollHeight - 8) {
+    termsAccept.disabled = false;
+    termsAcceptWrap.classList.remove('terms-locked');
+    termsStatus.textContent = 'Passo 2 de 3: marque o aceite para liberar o formulário.';
+    termsPercent.textContent = '100%';
+  }
+}
 
 function openModal() {
   // Reset estado
   modalFormWrap.style.display = 'block';
   modalSuccess.className = 'modal-success';
   downloadForm.reset();
+  resetTermsGate();
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1296,8 +1450,17 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
 });
 
+termsBox.addEventListener('scroll', updateTermsGate, { passive: true });
+termsAccept.addEventListener('change', () => {
+  setParticipationFieldsEnabled(termsAccept.checked);
+  termsStatus.textContent = termsAccept.checked
+    ? 'Passo 3 de 3: formulário liberado. Preencha seus dados para participar.'
+    : 'Passo 2 de 3: marque o aceite para liberar o formulário.';
+});
+
 /* ---- Form submit — via N8N (sem credenciais no frontend) ---- */
 const N8N_WEBHOOK = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/411490de-e245-475d-92f6-bc503c3585a7';
+const ACCESS_WEBHOOK = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/imersao-azul-acesso-token';
 
 downloadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -1309,6 +1472,12 @@ downloadForm.addEventListener('submit', async (e) => {
   const whatsapp = document.getElementById('prof-whatsapp').value.trim();
 
   // Validação
+  if (termsAccept.disabled || !termsAccept.checked) {
+    termsStatus.textContent = 'Para enviar o cadastro, leia o termo até o final e marque que leu e aceitou os termos.';
+    termsBox.focus();
+    return;
+  }
+
   if (!nome || !whatsapp) {
     const textoBtn = btn.innerHTML;
     btn.innerHTML = '⚠️ Preencha nome e WhatsApp';
@@ -1323,11 +1492,43 @@ downloadForm.addEventListener('submit', async (e) => {
   const phoneBruto = whatsapp.replace(/\D/g, '');
   const phone      = '+55' + (phoneBruto.startsWith('55') ? phoneBruto.slice(2) : phoneBruto);
 
+  try {
+    const accessResponse = await fetch(ACCESS_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'register',
+        name: nome,
+        phone,
+        TERMO_CONFIDENCIALIDADE: 'ACEITO',
+        FONTE: window.location.href,
+        userAgent: navigator.userAgent,
+      }),
+    });
+    const accessData = await accessResponse.json();
+    if (!accessResponse.ok || !accessData.ok) {
+      throw new Error(accessData.message || 'Falha ao liberar telefone para acesso.');
+    }
+  } catch (error) {
+    btn.innerHTML = '⚠️ Não foi possível liberar o acesso agora';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviar cadastro e participar';
+      btn.disabled = false;
+    }, 4200);
+    return;
+  }
+
   const payload = {
     name:       nome,
     phone,
     PLATAFORMA: 'ORGANIC',
     FONTE:      window.location.href,
+    TERMO_CONFIDENCIALIDADE: 'ACEITO',
+    TERMO_ACEITE_DATA: new Date().toISOString(),
+    TERMO_REFERENCIA: 'Termo de Cooperação, Confidencialidade e Uso Restrito de Material Didático em Fase de Validação — Coleção Imersão Azul',
+    ACESSO_METODO: 'VALIDACAO_POR_WHATSAPP',
+    ACESSO_LINK: 'https://imersaoazul.com.br/acesso-ebooks.html',
   };
 
   // Loading state
