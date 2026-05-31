@@ -1536,16 +1536,26 @@ downloadForm.addEventListener('submit', async (e) => {
   btn.disabled = true;
 
   try {
-    await fetch(N8N_WEBHOOK, {
+    const leadResponse = await fetch(N8N_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-  } catch (_) {
-    // Falha de rede — não bloqueia o professor
+    if (!leadResponse.ok) {
+      throw new Error(`Falha ao registrar lead: HTTP ${leadResponse.status}`);
+    }
+  } catch (error) {
+    console.error('Erro ao registrar lead no CRM:', error);
+    btn.innerHTML = '⚠️ Não foi possível concluir o cadastro agora';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Enviar cadastro e participar';
+      btn.disabled = false;
+    }, 4200);
+    return;
   }
 
-  // Exibe sucesso independente de erro de rede
+  // Exibe sucesso somente após o webhook principal aceitar o lead
   modalFormWrap.style.display = 'none';
   modalSuccess.className = 'modal-success show';
 });
