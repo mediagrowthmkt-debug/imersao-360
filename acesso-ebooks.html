@@ -47,6 +47,7 @@
     .access-copy h2{font-family:var(--fh);font-size:1.05rem;color:var(--ink);margin-bottom:.35rem}
     .access-copy p{font-size:.86rem;color:var(--ink-md);line-height:1.7}
     .access-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
+    .access-actions[hidden], .access-form[hidden]{display:none}
     .access-actions a{display:inline-flex;align-items:center;gap:.45rem;border-radius:10px;padding:.72rem 1rem;text-decoration:none;font-family:var(--fh);font-size:.82rem;font-weight:700}
     .access-actions .primary{background:var(--teal);color:var(--white)}
     .access-actions .ghost{background:var(--fog);color:var(--ink-md);border:1px solid rgba(0,0,0,.08)}
@@ -166,11 +167,15 @@
 
 <section class="access-gate" id="accessGate" aria-live="polite">
   <div class="access-card">
-    <div class="access-icon"><i class="fa-solid fa-unlock"></i></div>
+    <div class="access-icon"><i class="fa-solid fa-lock"></i></div>
     <div class="access-copy">
-      <h2 id="accessTitle">Acesso liberado à coleção integral</h2>
-      <p id="accessMessage">Os materiais da Coleção Imersão Azul estão disponíveis nesta página, sem necessidade de informar WhatsApp para entrar.</p>
-      <p class="access-note">A participação na validação pedagógica continua vinculada ao aceite do termo na página dos professores.</p>
+      <h2 id="accessTitle">Acesso exclusivo para professores cadastrados</h2>
+      <p id="accessMessage">Digite o mesmo WhatsApp usado no cadastro. Aceitamos variações com código do país, DDD, espaços, parênteses, hífen e nono dígito.</p>
+      <form class="access-form" id="accessForm" novalidate>
+        <input type="tel" id="accessPhone" placeholder="WhatsApp com DDD" autocomplete="tel" required />
+        <button type="submit" id="accessSubmit"><i class="fa-solid fa-unlock-keyhole"></i> Liberar acesso</button>
+      </form>
+      <p class="access-note">Por segurança, cada tentativa registra data, horário, telefone informado, navegador e IP recebido pelo servidor.</p>
       <div class="access-actions" id="accessActions" hidden>
         <a href="professores.html#cta-download" class="primary"><i class="fa-solid fa-file-signature"></i> Fazer cadastro</a>
         <a href="professores.html" class="ghost"><i class="fa-solid fa-arrow-left"></i> Voltar ao início</a>
@@ -179,7 +184,7 @@
   </div>
 </section>
 
-<main id="secureContent" class="secure-content">
+<main id="secureContent" class="secure-content" hidden>
 
 <!-- Ensino Fundamental I -->
 <div class="sec-title">
@@ -207,7 +212,7 @@
     <div class="book-info">
       <h3 class="book-title">1º e 2º Ano — Ensino Fundamental · 1º semestre</h3>
       <p class="book-desc">Volume inicial da sequência do Ensino Fundamental, organizado para o primeiro semestre de trabalho com cultura oceânica.</p>
-      <a href="https://www.calameo.com/read/008217566c21e2e49c57f?authid=ItvSAv5sUvCD" target="_blank" rel="noopener" data-material-id="fund-1e2-1sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-1e2-1sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -229,7 +234,7 @@
     <div class="book-info">
       <h3 class="book-title">1º e 2º Ano — Ensino Fundamental · 2º semestre</h3>
       <p class="book-desc">Continuação do percurso para 1º e 2º ano, com atividades lúdicas e acessíveis sobre vida no oceano.</p>
-      <a href="https://www.calameo.com/read/008217566e121854a2556?authid=S5lCP26tRSwk" target="_blank" rel="noopener" data-material-id="fund-1e2-2sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-1e2-2sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -251,7 +256,7 @@
     <div class="book-info">
       <h3 class="book-title">3º, 4º e 5º Ano — Ensino Fundamental · 1º semestre</h3>
       <p class="book-desc">Volume para o primeiro semestre do ciclo 3º ao 5º ano, com introdução progressiva aos temas de cultura oceânica.</p>
-      <a href="https://www.calameo.com/read/0082175665da2d4fd9bf1?authid=KWng5HpaqM5x" target="_blank" rel="noopener" data-material-id="fund-3a5-1sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-3a5-1sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -273,7 +278,7 @@
     <div class="book-info">
       <h3 class="book-title">3º, 4º e 5º Ano — Ensino Fundamental · 2º semestre</h3>
       <p class="book-desc">Continuação do ciclo 3º ao 5º ano, aprofundando ecossistemas marinhos, correntes oceânicas e preservação.</p>
-      <a href="https://www.calameo.com/read/0082175663a199d6d8d82?authid=bW4xZ79xhRvW" target="_blank" rel="noopener" data-material-id="fund-3a5-2sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-3a5-2sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -304,7 +309,7 @@
     <div class="book-info">
       <h3 class="book-title">6º e 7º Ano — Ensino Fundamental · 1º semestre</h3>
       <p class="book-desc">Volume do primeiro semestre para 6º e 7º ano, abordando biomas costeiros, biodiversidade e impacto humano.</p>
-      <a href="https://www.calameo.com/read/00821756645ab5192ad65?authid=7geKzeBw5i7S" target="_blank" rel="noopener" data-material-id="fund-6e7-1sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-6e7-1sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -326,7 +331,7 @@
     <div class="book-info">
       <h3 class="book-title">6º e 7º Ano — Ensino Fundamental · 2º semestre</h3>
       <p class="book-desc">Continuação do ciclo 6º e 7º ano, mantendo a sequência de leitura para professores do Ensino Fundamental II.</p>
-      <a href="https://www.calameo.com/read/008217566967fc36a01e4?authid=9aZLbjN5Mfbk" target="_blank" rel="noopener" data-material-id="fund-6e7-2sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-6e7-2sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -348,7 +353,7 @@
     <div class="book-info">
       <h3 class="book-title">8º e 9º Ano — Ensino Fundamental · 1º semestre</h3>
       <p class="book-desc">Volume do primeiro semestre para 8º e 9º ano, com oceanografia, clima global e recursos naturais do oceano.</p>
-      <a href="https://www.calameo.com/read/008217566d209f1ec9a91?authid=ZBWfBKova71y" target="_blank" rel="noopener" data-material-id="fund-8e9-1sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-8e9-1sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -370,7 +375,7 @@
     <div class="book-info">
       <h3 class="book-title">8º e 9º Ano — Ensino Fundamental · 2º semestre</h3>
       <p class="book-desc">Continuação do ciclo 8º e 9º ano, com cidadania oceânica, políticas ambientais e impactos nos oceanos.</p>
-      <a href="https://www.calameo.com/read/008217566507d3fdf8b43?authid=uDpic6teOrxe" target="_blank" rel="noopener" data-material-id="fund-8e9-2sem" class="btn-ebook">
+      <a href="#" data-material-id="fund-8e9-2sem" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -401,7 +406,7 @@
     <div class="book-info">
       <h3 class="book-title">1ª Série — Ensino Médio</h3>
       <p class="book-desc">Cultura oceânica, ecossistemas globais e oceanografia introdutória com enfoque científico e crítico.</p>
-      <a href="https://www.calameo.com/read/008217566395ac5fce80e?authid=8LbqzmiMXwZD" target="_blank" rel="noopener" data-material-id="medio-1serie" class="btn-ebook">
+      <a href="#" data-material-id="medio-1serie" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -423,7 +428,7 @@
     <div class="book-info">
       <h3 class="book-title">2ª Série — Ensino Médio</h3>
       <p class="book-desc">Geopolítica dos oceanos, recursos marinhos, direito do mar e soberania oceânica do Brasil.</p>
-      <a href="https://www.calameo.com/read/008217566ce9b4e215926?authid=uWy4EVrPV4fi" target="_blank" rel="noopener" data-material-id="medio-2serie" class="btn-ebook">
+      <a href="#" data-material-id="medio-2serie" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -445,7 +450,7 @@
     <div class="book-info">
       <h3 class="book-title">3ª Série — Ensino Médio</h3>
       <p class="book-desc">Futuro dos oceanos, interdisciplinaridade, ação climática e projetos de inovação ambiental.</p>
-      <a href="https://www.calameo.com/read/008217566cb9a71974c29?authid=lMwrt7yvV8pR" target="_blank" rel="noopener" data-material-id="medio-3serie" class="btn-ebook">
+      <a href="#" data-material-id="medio-3serie" class="btn-ebook">
         <i class="fa-solid fa-book-open"></i> Acessar volume
       </a>
     </div>
@@ -476,7 +481,7 @@
     <div class="book-info">
       <h3 class="book-title">Apresentação — Coleção Imersão Azul</h3>
       <p class="book-desc">Documento introdutório com visão geral da Coleção Imersão Azul — Cultura Oceânica, objetivos e organização.</p>
-      <a href="https://www.calameo.com/read/008217566fd522c2485b6?authid=ZsWThA73aGcL" target="_blank" rel="noopener" data-material-id="apoio-apresentacao" class="btn-ebook btn-apoio">
+      <a href="#" data-material-id="apoio-apresentacao" class="btn-ebook btn-apoio">
         <i class="fa-solid fa-file-lines"></i> Acessar Documento
       </a>
     </div>
@@ -498,7 +503,7 @@
     <div class="book-info">
       <h3 class="book-title">Proposta Pedagógica</h3>
       <p class="book-desc">Orientações metodológicas, plano de implementação e sugestões para análise pedagógica da coleção.</p>
-      <a href="https://www.calameo.com/read/0082175668ab3fea5329b?authid=de966tnTcc7y" target="_blank" rel="noopener" data-material-id="apoio-proposta" class="btn-ebook btn-apoio">
+      <a href="#" data-material-id="apoio-proposta" class="btn-ebook btn-apoio">
         <i class="fa-solid fa-file-lines"></i> Acessar Documento
       </a>
     </div>
@@ -554,20 +559,170 @@
 </footer>
 
 <script>
+const ACCESS_WEBHOOK = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/imersao-azul-acesso-token';
+
+function setAccessState(state, message) {
+  const title = document.getElementById('accessTitle');
+  const text = document.getElementById('accessMessage');
+  const actions = document.getElementById('accessActions');
+  const icon = document.querySelector('.access-icon i');
+  const form = document.getElementById('accessForm');
+  const submit = document.getElementById('accessSubmit');
+  if (state === 'granted') {
+    title.textContent = 'Acesso liberado';
+    text.textContent = message || 'Seu WhatsApp foi validado. Os materiais da Coleção Imersão Azul estão disponíveis abaixo.';
+    icon.className = 'fa-solid fa-unlock';
+    actions.hidden = true;
+    form.hidden = true;
+    document.getElementById('secureContent').hidden = false;
+    return;
+  }
+  title.textContent = state === 'loading' ? 'Validando seu WhatsApp' : 'Acesso restrito';
+  text.textContent = message || 'Para acessar os materiais, informe o WhatsApp usado no cadastro. Aceitamos variações com +55, DDD, espaços, hífen, parênteses e nono dígito.';
+  icon.className = state === 'loading' ? 'fa-solid fa-circle-notch fa-spin' : 'fa-solid fa-lock';
+  actions.hidden = state === 'loading' || state === 'idle';
+  form.hidden = false;
+  submit.disabled = state === 'loading';
+  submit.innerHTML = state === 'loading'
+    ? '<i class="fa-solid fa-circle-notch fa-spin"></i> Validando...'
+    : '<i class="fa-solid fa-unlock-keyhole"></i> Liberar acesso';
+  document.getElementById('secureContent').hidden = true;
+}
+
 function applyMaterials(materials) {
   const byId = new Map((materials || []).map(item => [item.id, item.url]));
   document.querySelectorAll('.btn-ebook[data-material-id]').forEach(btn => {
     const url = byId.get(btn.dataset.materialId);
-    if (!url) {
+    if (!url && btn.getAttribute('href') === '#') {
       btn.setAttribute('aria-disabled', 'true');
       btn.addEventListener('click', event => event.preventDefault());
       return;
     }
-    btn.href = url;
+    if (url) btn.href = url;
     btn.target = '_blank';
     btn.rel = 'noopener';
     btn.removeAttribute('aria-disabled');
   });
+}
+
+function uniquePush(list, value) {
+  const clean = String(value || '').trim();
+  if (clean && !list.includes(clean)) list.push(clean);
+}
+
+function getNationalPhoneVariants(input) {
+  const digitsOnly = String(input || '').replace(/\D/g, '');
+  const variants = [];
+  if (!digitsOnly) return variants;
+
+  uniquePush(variants, digitsOnly);
+
+  let digits = digitsOnly;
+  if (digits.startsWith('00')) {
+    digits = digits.slice(2);
+    uniquePush(variants, digits);
+  }
+
+  if (digits.startsWith('0') && digits.length >= 13) {
+    uniquePush(variants, digits.slice(3)); // 0 + operadora + DDD + número
+  }
+  if (digits.startsWith('0') && digits.length >= 11) {
+    uniquePush(variants, digits.slice(1)); // 0 + DDD + número
+  }
+
+  const pool = [...variants];
+  pool.forEach(value => {
+    if (value.startsWith('55') && value.length > 10) {
+      uniquePush(variants, value.slice(2));
+    }
+  });
+
+  [...variants].forEach(value => {
+    const national = value.startsWith('55') && value.length > 10 ? value.slice(2) : value;
+    if (national.length === 11 && national[2] === '9') {
+      uniquePush(variants, national.slice(0, 2) + national.slice(3));
+    }
+    if (national.length === 10) {
+      uniquePush(variants, national.slice(0, 2) + '9' + national.slice(2));
+    }
+    if (national.length === 9 && national[0] === '9') {
+      uniquePush(variants, national.slice(1));
+    }
+    if (national.length === 8) {
+      uniquePush(variants, '9' + national);
+    }
+  });
+
+  return variants;
+}
+
+function getPhoneValidationCandidates(input) {
+  const candidates = [];
+  uniquePush(candidates, input);
+
+  getNationalPhoneVariants(input).forEach(value => {
+    uniquePush(candidates, value);
+    if (!value.startsWith('55') && !value.startsWith('0') && (value.length === 10 || value.length === 11)) {
+      uniquePush(candidates, '55' + value);
+      uniquePush(candidates, '+55' + value);
+      uniquePush(candidates, '0055' + value);
+    }
+    if (value.startsWith('55') && (value.length === 12 || value.length === 13)) {
+      uniquePush(candidates, '+' + value);
+      uniquePush(candidates, '00' + value);
+    }
+  });
+
+  return candidates;
+}
+
+async function postValidation(phone, originalPhone) {
+  const response = await fetch(ACCESS_WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      action: 'validate',
+      phone,
+      originalPhone,
+      source: window.location.href,
+      userAgent: navigator.userAgent,
+    }),
+  });
+  const data = await response.json();
+  return { response, data };
+}
+
+async function validateAccess(phoneInput) {
+  const fallbackNome = params.get('nome');
+  if (fallbackNome) {
+    const el = document.getElementById('nomeProf');
+    if (el) el.textContent = fallbackNome.split(' ')[0];
+  }
+  const candidates = getPhoneValidationCandidates(phoneInput);
+  if (!candidates.some(value => value.replace(/\D/g, '').length >= 8)) {
+    setAccessState('denied', 'Informe um WhatsApp válido para liberar o acesso.');
+    return;
+  }
+  setAccessState('loading', 'Estamos conferindo o telefone informado e suas variações de formato.');
+  let lastMessage = '';
+  for (const candidate of candidates) {
+    try {
+      const { response, data } = await postValidation(candidate, phoneInput);
+      if (response.ok && data.ok) {
+        if (data.professor?.name) {
+          const el = document.getElementById('nomeProf');
+          if (el) el.textContent = data.professor.name.split(' ')[0];
+        }
+        applyMaterials(data.materials);
+        setAccessState('granted');
+        return;
+      }
+      lastMessage = data.message || lastMessage;
+    } catch (error) {
+      lastMessage = error.message || lastMessage;
+    }
+  }
+  setAccessState('denied', lastMessage || 'Não encontramos este telefone entre os cadastros liberados. Tente com DDD, código do país ou sem o nono dígito.');
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -576,6 +731,18 @@ if (fallbackNome) {
   const el = document.getElementById('nomeProf');
   if (el) el.textContent = fallbackNome.split(' ')[0];
 }
+const phoneFromUrl = params.get('phone') || params.get('whatsapp');
+if (phoneFromUrl) {
+  document.getElementById('accessPhone').value = phoneFromUrl;
+  validateAccess(phoneFromUrl);
+} else {
+  setAccessState('idle');
+}
+
+document.getElementById('accessForm').addEventListener('submit', event => {
+  event.preventDefault();
+  validateAccess(document.getElementById('accessPhone').value);
+});
 </script>
 </body>
 </html>
