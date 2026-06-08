@@ -62,6 +62,22 @@
     .secure-content[hidden]{display:none}
     .btn-ebook[aria-disabled="true"]{opacity:.62;cursor:not-allowed;filter:grayscale(.35);box-shadow:none}
     @media(max-width:640px){.access-card{flex-direction:column}.access-form{grid-template-columns:1fr}}
+    @media(max-width:520px){
+      html,body{width:100%;max-width:100%;overflow-x:hidden}
+      .hero{padding:2.6rem 1rem 2.35rem}
+      .hero,.hero h1,.hero p,.welcome-badge{width:100%;max-width:calc(100vw - 2rem);min-width:0}
+      .welcome-badge{white-space:normal;justify-content:center;letter-spacing:.8px;line-height:1.45;font-size:.58rem;padding:.35rem .75rem}
+      .hero h1{font-size:1.5rem;line-height:1.18;letter-spacing:0;overflow-wrap:anywhere}
+      .hero p{font-size:.9rem;line-height:1.72;max-width:320px}
+      .instr-inner{align-items:stretch}
+      .instr-chip{width:100%;justify-content:center;text-align:center}
+      .access-gate{padding:1.6rem 1rem}
+      .access-card{padding:1.25rem}
+      .access-copy{width:100%;max-width:280px}
+      .access-copy h2{font-size:1rem;line-height:1.35;overflow-wrap:anywhere}
+      .access-copy p{font-size:.83rem;line-height:1.62;overflow-wrap:anywhere}
+      .access-actions a,.access-form button{width:100%;justify-content:center}
+    }
 
     /* === SECTION TITLE === */
     .sec-title{padding:2.5rem 1.5rem 1.2rem;text-align:center}
@@ -153,7 +169,7 @@
 <!-- Hero personalizado -->
 <div class="hero">
   <div class="welcome-badge"><i class="fa-solid fa-graduation-cap"></i>Acesso do Professor Parceiro</div>
-  <h1>Olá, <span class="nome" id="nomeProf">Professor(a)</span>!<br>A coleção completa já está disponível para você.</h1>
+  <h1>Olá, <span class="nome" id="nomeProf">Professor(a)</span>!<br>A coleção completa<br>já está disponível<br>para você.</h1>
   <p>Abaixo, você encontrará os volumes da Coleção Imersão Azul. Selecione o livro correspondente à série ou ao ano em que leciona, explore o conteúdo e contribua com sua avaliação pedagógica.</p>
   <p>Sua participação é fundamental para o aprimoramento da coleção e para o fortalecimento da educação oceânica nas escolas de todo o Brasil.</p>
 </div>

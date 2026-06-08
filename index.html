@@ -417,11 +417,66 @@
       .ctr-divider { display:none; }
     }
     @media(max-width:520px) {
-      .proof-bar { gap:1.5rem; }
+      html, body { width:100%; max-width:100%; overflow-x:hidden; }
+      #hero { padding-left:1rem; padding-right:1rem; }
+      #hero, .hero-c, .hero-h1, .hero-p, .hero-ctas, .proof-bar { width:100%; max-width:calc(100vw - 2rem); min-width:0; }
+      .hero-badge { width:100%; max-width:calc(100vw - 2rem); white-space:normal; justify-content:center; letter-spacing:.75px; line-height:1.45; font-size:.6rem; }
+      .hero-h1 { font-size:1.62rem; line-height:1.16; letter-spacing:0; overflow-wrap:normal; word-break:normal; }
+      .hero-p { font-size:.92rem; max-width:320px; }
+      .hero-ctas .btn { width:100%; justify-content:center; }
+      .hero-logo-card { width:100%; min-height:96px; padding:.85rem 1rem; }
+      .hero-logo-card img { max-width:100%; max-height:82px; }
+      .proof-bar { display:grid; grid-template-columns:1fr; gap:1rem; max-width:240px; margin-left:auto; margin-right:auto; }
       .cta-btns { flex-direction:column; align-items:center; }
       .jor-track { grid-template-columns:1fr; }
       .frow { grid-template-columns:1fr; }
-      .flip-grid { grid-template-columns:1fr 1fr; }
+      .flip-grid { grid-template-columns:1fr; }
+      .flip-card {
+        height:auto;
+        min-height:0;
+        perspective:none;
+        cursor:default;
+      }
+      .flip-inner {
+        height:auto;
+        display:flex;
+        flex-direction:column;
+        transform:none !important;
+        transform-style:flat;
+        border-radius:14px;
+        overflow:hidden;
+        box-shadow:0 8px 28px rgba(0,0,0,.08);
+      }
+      .flip-card:hover .flip-inner,
+      .flip-card.flipped .flip-inner {
+        transform:none !important;
+      }
+      .flip-f,
+      .flip-b {
+        position:relative;
+        inset:auto;
+        min-height:0;
+        backface-visibility:visible;
+        transform:none;
+        border-radius:0;
+        padding:1.3rem 1.15rem;
+      }
+      .flip-f {
+        border:1px solid #dde4e8;
+        border-bottom:0;
+      }
+      .flip-b {
+        background:var(--teal);
+      }
+      .flip-f small {
+        display:none;
+      }
+      .flip-b p {
+        font-size:.84rem;
+        line-height:1.62;
+        max-width:100%;
+        overflow-wrap:break-word;
+      }
     }
   </style>
 </head>
@@ -472,8 +527,9 @@
   <div class="hero-c">
     <div class="hero-badge fade-up"><span class="dot"></span>Projeto Imersão Azul · Inovação &amp; ESG</div>
     <h1 class="hero-h1 fade-up">
-      A escola que leva seus alunos<br>
-      ao <span class="accent">fundo do oceano</span><br>
+      A escola que leva seus<br>
+      alunos ao<br>
+      <span class="accent">fundo do oceano</span><br>
       <span class="accent-g">lidera o futuro.</span>
     </h1>
     <p class="hero-p fade-up">
@@ -768,48 +824,48 @@
   <div class="container">
     <div class="ganhos-hd">
       <span class="lbl lbl-dk fade-up">O que sua escola ganha</span>
-      <h2 class="h2 h2-dk fade-up">Passe o mouse e descubra.</h2>
+      <h2 class="h2 h2-dk fade-up">Explore os benefícios.</h2>
     </div>
     <p class="ganhos-sub fade-up">Cada card revela um benefício concreto. Assim como a Imersão Azul, o maior valor está além do que se vê na superfície.</p>
     <div class="flip-grid">
       <div class="flip-card fade-up">
         <div class="flip-inner">
-          <div class="flip-f"><div class="fi">🎯</div><h4>Diferenciação Pedagógica</h4><small>Passe o mouse</small></div>
+          <div class="flip-f"><div class="fi">🎯</div><h4>Diferenciação Pedagógica</h4><small>Ver benefício</small></div>
           <div class="flip-b"><div class="fb-icon">🎯</div><p>Destaque sua escola como pioneira em educação oceânica, fortalecendo sua marca com uma proposta inovadora e uma identidade que a diferencia no mercado educacional.</p></div>
         </div>
       </div>
       <div class="flip-card fade-up">
         <div class="flip-inner">
-          <div class="flip-f"><div class="fi">💰</div><h4>Maior Valor Percebido</h4><small>Passe o mouse</small></div>
+          <div class="flip-f"><div class="fi">💰</div><h4>Maior Valor Percebido</h4><small>Ver benefício</small></div>
           <div class="flip-b"><div class="fb-icon">💰</div><p>Experiências imersivas e tecnológicas elevam o valor percebido da escola, contribuindo para a valorização da mensalidade e para a atração de famílias que buscam inovação educacional.</p></div>
         </div>
       </div>
       <div class="flip-card fade-up">
         <div class="flip-inner">
-          <div class="flip-f"><div class="fi">📐</div><h4>Alinhamento à BNCC</h4><small>Passe o mouse</small></div>
+          <div class="flip-f"><div class="fi">📐</div><h4>Alinhamento à BNCC</h4><small>Ver benefício</small></div>
           <div class="flip-b"><div class="fb-icon">📐</div><p>Todo o material está alinhado às competências da Base Nacional Comum Curricular (BNCC), garantindo integração ao currículo escolar. O professor recebe conteúdos e atividades prontos para aplicação, com praticidade e segurança pedagógica.</p></div>
         </div>
       </div>
       <div class="flip-card fade-up">
         <div class="flip-inner">
-          <div class="flip-f"><div class="fi">🌱</div><h4>ESG e Sustentabilidade</h4><small>Passe o mouse</small></div>
+          <div class="flip-f"><div class="fi">🌱</div><h4>ESG e Sustentabilidade</h4><small>Ver benefício</small></div>
           <div class="flip-b"><div class="fb-icon">🌱</div><p>Alinhado aos princípios da Década do Oceano da UNESCO, o projeto gera dados mensuráveis de impacto e conteúdo qualificado para fundamentar relatórios ESG com credibilidade e transparência.</p></div>
         </div>
       </div>
       <div class="flip-card fade-up">
         <div class="flip-inner">
-          <div class="flip-f"><div class="fi">📊</div><h4>Dados e Gestão</h4><small>Passe o mouse</small></div>
+          <div class="flip-f"><div class="fi">📊</div><h4>Dados e Gestão</h4><small>Ver benefício</small></div>
           <div class="flip-b"><div class="fb-icon">📊</div><p>Painel completo com indicadores de engajamento, desempenho e evolução individual dos alunos, oferecendo subsídios concretos para reuniões pedagógicas e acompanhamento do desenvolvimento educacional.</p></div>
         </div>
       </div>
       <div class="flip-card fade-up">
         <div class="flip-inner">
-          <div class="flip-f"><div class="fi">🔁</div><h4>Maior Retenção</h4><small>Passe o mouse</small></div>
+          <div class="flip-f"><div class="fi">🔁</div><h4>Maior Retenção</h4><small>Ver benefício</small></div>
           <div class="flip-b"><div class="fb-icon">🔁</div><p>Experiências memoráveis fortalecem o vínculo emocional com a escola. Alunos que vivenciam o oceano de forma imersiva permanecem engajados e tornam-se promotores espontâneos da instituição.</p></div>
         </div>
       </div>
     </div>
-    <p class="flip-hint fade-up"><i class="fa-regular fa-hand-pointer"></i> Passe o mouse (ou toque) em cada card para revelar o benefício</p>
+    <p class="flip-hint fade-up"><i class="fa-regular fa-hand-pointer"></i> Toque ou passe o mouse em cada card para revelar o benefício</p>
   </div>
 </section>
 
