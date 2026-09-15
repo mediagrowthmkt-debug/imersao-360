@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Leve o Projeto Imersão Azul para a sua escola. Cadastre seu interesse e converse com o Instituto Gaia Soul." />
+  <meta name="theme-color" content="#0d2438" />
+  <title>Imersão Azul para Escolas | Instituto Gaia Soul</title>
+  <link rel="icon" type="image/png" href="../imagens/favicon-imersao-azul.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --deep: #0d2438;
+      --deep-2: #081a2a;
+      --teal: #1a8fa0;
+      --teal-light: #7dd4e8;
+      --gold: #c49a3c;
+      --white: #ffffff;
+      --fog: #f5f7f6;
+      --ink: #1a2e3b;
+      --muted: #647986;
+      --line: #dce6e8;
+      --danger: #b74242;
+      --success: #25795d;
+      --font-heading: "Sora", sans-serif;
+      --font-body: "Inter", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--white);
+      background: var(--deep);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select { font: inherit; }
+    a { color: inherit; }
+
+    .page {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(26,143,160,.24), transparent 28%),
+        radial-gradient(circle at 85% 85%, rgba(125,212,232,.12), transparent 26%),
+        linear-gradient(135deg, var(--deep-2), var(--deep) 58%, #0c2d3f);
+    }
+    .page::before,
+    .page::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      border: 1px solid rgba(125,212,232,.12);
+      border-radius: 50%;
+    }
+    .page::before { width: 620px; height: 620px; left: -360px; bottom: -320px; }
+    .page::after { width: 420px; height: 420px; right: -210px; top: -180px; }
+
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; position: relative; z-index: 1; }
+    .topbar { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+    .brand img { width: 76px; height: 58px; object-fit: contain; }
+    .brand-copy { display: flex; flex-direction: column; gap: 3px; }
+    .brand-copy strong { font: 700 14px/1.2 var(--font-heading); letter-spacing: .02em; }
+    .brand-copy span { color: var(--teal-light); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+    .back-link { color: rgba(255,255,255,.72); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .back-link:hover { color: var(--white); }
+
+    .content {
+      min-height: calc(100vh - 86px);
+      padding: 42px 0 70px;
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(460px, 1.08fr);
+      align-items: center;
+      gap: clamp(48px, 7vw, 96px);
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--teal-light); font: 600 12px/1 var(--font-heading); letter-spacing: .18em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--teal); border-radius: 10px; }
+    h1 { margin: 20px 0 22px; max-width: 620px; font: 800 clamp(38px, 5vw, 66px)/1.08 var(--font-heading); letter-spacing: -.045em; }
+    h1 span { color: var(--teal-light); }
+    .intro { margin: 0; max-width: 610px; color: rgba(255,255,255,.73); font-size: clamp(16px, 1.6vw, 19px); line-height: 1.72; }
+    .benefits { margin: 34px 0 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+    .benefits li { display: flex; align-items: flex-start; gap: 13px; color: rgba(255,255,255,.88); line-height: 1.5; }
+    .check { width: 24px; height: 24px; flex: 0 0 24px; display: grid; place-items: center; border-radius: 50%; background: rgba(125,212,232,.13); color: var(--teal-light); font-weight: 700; }
+    .institutional { margin-top: 40px; display: flex; align-items: center; gap: 18px; color: rgba(255,255,255,.5); font-size: 12px; }
+    .institutional img { width: 112px; max-height: 44px; object-fit: contain; filter: brightness(0) invert(1); opacity: .85; }
+    .institutional i { width: 1px; height: 32px; background: rgba(255,255,255,.18); }
+
+    .card { background: var(--white); color: var(--ink); border-radius: 22px; padding: clamp(26px, 4vw, 44px); box-shadow: 0 30px 80px rgba(0,0,0,.28); position: relative; }
+    .card::before { content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 5px; border-radius: 22px 22px 0 0; background: linear-gradient(90deg, var(--teal), var(--teal-light), var(--gold)); }
+    .card-kicker { margin: 0 0 7px; color: var(--teal); font: 700 11px/1.2 var(--font-heading); letter-spacing: .16em; text-transform: uppercase; }
+    .card h2 { margin: 0; font: 700 clamp(24px, 3vw, 32px)/1.2 var(--font-heading); letter-spacing: -.025em; }
+    .card-sub { margin: 10px 0 28px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px 15px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: #314c5a; font-size: 12px; font-weight: 600; }
+    label .optional { color: #91a1aa; font-weight: 400; }
+    input, select {
+      width: 100%; height: 48px; border: 1px solid var(--line); border-radius: 9px; padding: 0 13px; background: #fbfcfc; color: var(--ink); outline: none; transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    input::placeholder { color: #9aaab2; }
+    input:focus, select:focus { background: var(--white); border-color: var(--teal); box-shadow: 0 0 0 3px rgba(26,143,160,.12); }
+    input[aria-invalid="true"], select[aria-invalid="true"] { border-color: var(--danger); box-shadow: 0 0 0 3px rgba(183,66,66,.1); }
+    .location-row { display: grid; grid-template-columns: 1fr 92px; gap: 12px; }
+    .consent { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 10px; margin-top: 2px; }
+    .consent input { width: 17px; height: 17px; margin-top: 2px; accent-color: var(--teal); flex: 0 0 auto; }
+    .consent label { color: #617581; font-size: 11px; font-weight: 400; line-height: 1.5; }
+    .consent a { color: var(--teal); }
+    .honeypot { position: absolute !important; left: -9999px !important; opacity: 0 !important; pointer-events: none !important; }
+    .submit {
+      grid-column: 1 / -1; min-height: 52px; border: 0; border-radius: 10px; color: var(--white); background: linear-gradient(135deg, var(--teal), #20aabc); font: 700 15px/1 var(--font-heading); cursor: pointer; box-shadow: 0 10px 24px rgba(26,143,160,.25); transition: transform .2s, box-shadow .2s, opacity .2s;
+    }
+    .submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(26,143,160,.33); }
+    .submit:disabled { opacity: .65; cursor: wait; }
+    .privacy-note { grid-column: 1 / -1; margin: -5px 0 0; text-align: center; color: #91a1aa; font-size: 10px; line-height: 1.4; }
+    .status { display: none; grid-column: 1 / -1; border-radius: 10px; padding: 13px 15px; font-size: 13px; line-height: 1.5; }
+    .status.show { display: block; }
+    .status.error { color: #852f2f; background: #fff0f0; border: 1px solid #f4cccc; }
+    .status.success { color: #195f48; background: #edf9f4; border: 1px solid #bde7d6; }
+    .success-panel { display: none; text-align: center; padding: 34px 6px 14px; }
+    .success-panel.show { display: block; }
+    .success-icon { width: 68px; height: 68px; margin: 0 auto 20px; display: grid; place-items: center; border-radius: 50%; background: #e7f7f1; color: var(--success); font-size: 30px; }
+    .success-panel h3 { margin: 0 0 10px; font: 700 27px/1.25 var(--font-heading); }
+    .success-panel p { margin: 0 auto; max-width: 380px; color: var(--muted); line-height: 1.65; }
+
+    @media (max-width: 920px) {
+      .content { grid-template-columns: 1fr; padding-top: 26px; gap: 42px; }
+      .copy { text-align: center; }
+      h1, .intro { margin-left: auto; margin-right: auto; }
+      .benefits { max-width: 650px; margin-left: auto; margin-right: auto; text-align: left; }
+      .institutional { justify-content: center; }
+      .card { width: min(650px, 100%); margin: 0 auto; }
+    }
+    @media (max-width: 600px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      .topbar { min-height: 74px; }
+      .brand img { width: 62px; height: 48px; }
+      .brand-copy { display: none; }
+      .back-link { font-size: 12px; }
+      .content { min-height: auto; padding: 32px 0 44px; }
+      h1 { margin-top: 16px; font-size: clamp(36px, 11vw, 50px); }
+      .intro { font-size: 16px; }
+      .institutional { margin-top: 30px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full, .consent, .submit, .privacy-note, .status { grid-column: 1; }
+      .card { border-radius: 17px; padding: 28px 20px; }
+      .card::before { border-radius: 17px 17px 0 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="page" id="escolas-email">
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="../" aria-label="Voltar ao site do Projeto Imersão Azul">
+          <img src="../imagens/logo-projeto-imersao-azul-oficial-2026-05-27.png" alt="Projeto Imersão Azul" />
+          <span class="brand-copy"><strong>Projeto Imersão Azul</strong><span>Instituto Gaia Soul</span></span>
+        </a>
+        <a class="back-link" href="../">← Conheça o projeto</a>
+      </header>
+
+      <section class="content" aria-labelledby="page-title">
+        <div class="copy">
+          <span class="eyebrow">Educação oceânica na prática</span>
+          <h1 id="page-title">Leve o oceano para dentro da sua <span>escola.</span></h1>
+          <p class="intro">Cadastre o interesse da sua instituição no Projeto Imersão Azul e conheça uma experiência que conecta cultura oceânica, tecnologia e aprendizagem.</p>
+
+          <ul class="benefits" aria-label="Diferenciais do projeto">
+            <li><span class="check">✓</span><span>Conteúdo pedagógico alinhado à BNCC e à Cultura Oceânica.</span></li>
+            <li><span class="check">✓</span><span>Experiências imersivas que aproximam estudantes da ciência.</span></li>
+            <li><span class="check">✓</span><span>Possibilidades adaptadas à realidade da sua instituição.</span></li>
+          </ul>
+
+          <div class="institutional">
+            <img src="../imagens/logo-gaia-soul.png" alt="Instituto Gaia Soul" />
+            <i aria-hidden="true"></i>
+            <span>Uma iniciativa de educação<br />e consciência oceânica.</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div id="form-wrap">
+            <p class="card-kicker">Cadastro de interesse</p>
+            <h2>Conte um pouco sobre a sua escola</h2>
+            <p class="card-sub">É rápido. Preencha os dados abaixo para que o Instituto Gaia Soul conheça a sua instituição.</p>
+
+            <form id="school-form" class="form-grid" novalidate>
+              <div class="field full">
+                <label for="name">Seu nome *</label>
+                <input id="name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Nome completo" required />
+              </div>
+
+              <div class="field">
+                <label for="escola">Nome da escola *</label>
+                <input id="escola" name="escola" type="text" autocomplete="organization" maxlength="140" placeholder="Instituição de ensino" required />
+              </div>
+              <div class="field">
+                <label for="cargo">Cargo ou função *</label>
+                <input id="cargo" name="cargo" type="text" autocomplete="organization-title" maxlength="100" placeholder="Ex.: Direção, coordenação" required />
+              </div>
+
+              <div class="field">
+                <label for="email">E-mail *</label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="voce@escola.com.br" required />
+              </div>
+              <div class="field">
+                <label for="phone">WhatsApp *</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="19" placeholder="(00) 00000-0000" required />
+              </div>
+
+              <div class="field">
+                <label for="rede">Rede de ensino *</label>
+                <select id="rede" name="rede" required>
+                  <option value="">Selecione</option>
+                  <option value="Pública municipal">Pública municipal</option>
+                  <option value="Pública estadual">Pública estadual</option>
+                  <option value="Pública federal">Pública federal</option>
+                  <option value="Privada">Privada</option>
+                  <option value="Outra">Outra</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cidade">Cidade e UF *</label>
+                <div class="location-row">
+                  <input id="cidade" name="cidade" type="text" autocomplete="address-level2" maxlength="90" placeholder="Cidade" required />
+                  <select id="estado" name="estado" autocomplete="address-level1" aria-label="Estado" required>
+                    <option value="">UF</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="honeypot" aria-hidden="true">
+                <label for="website">Website</label>
+                <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="consent">
+                <input id="consent" name="consent" type="checkbox" required />
+                <label for="consent">Autorizo o Instituto Gaia Soul a entrar em contato sobre o Projeto Imersão Azul e concordo com o tratamento dos dados informados para essa finalidade. *</label>
+              </div>
+
+              <div id="form-status" class="status" role="alert" aria-live="polite"></div>
+              <button id="submit-button" class="submit" type="submit">Quero conhecer o projeto</button>
+              <p class="privacy-note">Seus dados serão usados somente para o contato relacionado ao Projeto Imersão Azul.</p>
+            </form>
+          </div>
+
+          <div id="success-panel" class="success-panel" role="status" aria-live="polite">
+            <div class="success-icon">✓</div>
+            <h3>Cadastro recebido!</h3>
+            <p>Obrigado pelo interesse. Os dados da sua escola foram registrados com sucesso.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const WEBHOOK_URL = 'https://mediagrowth-n8n.63kuy3.easypanel.host/webhook/imersao-azul-escolas-email';
+    const form = document.getElementById('school-form');
+    const submitButton = document.getElementById('submit-button');
+    const statusBox = document.getElementById('form-status');
+    const loadedAt = Date.now();
+
+    const showStatus = (message, type) => {
+      statusBox.textContent = message;
+      statusBox.className = `status show ${type}`;
+    };
+
+    const normalizePhone = (value) => {
+      const digits = value.replace(/\D/g, '');
+      const local = digits.startsWith('55') ? digits.slice(2) : digits;
+      return `+55${local}`;
+    };
+
+    const formatPhone = (value) => {
+      const digits = value.replace(/\D/g, '').replace(/^55/, '').slice(0, 11);
+      if (digits.length <= 2) return digits;
+      if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+      if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+      return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+    };
+
+    document.getElementById('phone').addEventListener('input', (event) => {
+      event.target.value = formatPhone(event.target.value);
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      statusBox.className = 'status';
+      form.querySelectorAll('[aria-invalid="true"]').forEach((field) => field.removeAttribute('aria-invalid'));
+
+      if (document.getElementById('website').value || Date.now() - loadedAt < 1200) return;
+
+      if (!form.checkValidity()) {
+        const invalid = form.querySelector(':invalid');
+        if (invalid) {
+          invalid.setAttribute('aria-invalid', 'true');
+          invalid.focus();
+        }
+        showStatus('Confira os campos obrigatórios antes de continuar.', 'error');
+        return;
+      }
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      const phoneDigits = data.phone.replace(/\D/g, '').replace(/^55/, '');
+      if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+        const phone = document.getElementById('phone');
+        phone.setAttribute('aria-invalid', 'true');
+        phone.focus();
+        showStatus('Informe um WhatsApp válido com DDD.', 'error');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando cadastro...';
+
+      try {
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: data.name.trim(),
+            escola: data.escola.trim(),
+            cargo: data.cargo.trim(),
+            email: data.email.trim().toLowerCase(),
+            phone: normalizePhone(data.phone),
+            rede: data.rede,
+            cidade: data.cidade.trim(),
+            estado: data.estado,
+            consentimento: true,
+            fonte: window.location.href,
+          }),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.ok === false) throw new Error(result.message || 'Falha no cadastro');
+
+        document.getElementById('form-wrap').hidden = true;
+        document.getElementById('success-panel').classList.add('show');
+        form.reset();
+      } catch (error) {
+        console.error('Erro ao enviar cadastro:', error);
+        showStatus('Não foi possível enviar agora. Aguarde um instante e tente novamente.', 'error');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Quero conhecer o projeto';
+      }
+    });
+  </script>
+</body>
+</html>
