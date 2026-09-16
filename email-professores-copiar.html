@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Copiar e-mail dos professores | Projeto Imersão Azul</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { background: #e9eff1; color: #173042; font-family: Arial, Helvetica, sans-serif; }
+    .toolbar {
+      position: sticky; top: 0; z-index: 10; display: flex; align-items: center;
+      justify-content: space-between; gap: 18px; padding: 14px max(18px, calc((100% - 940px) / 2));
+      background: #ffffff; border-bottom: 1px solid #d5e0e3; box-shadow: 0 4px 18px rgba(13,36,56,.08);
+    }
+    .heading strong { display: block; color: #0d2438; font-size: 15px; line-height: 20px; }
+    .heading span { color: #647986; font-size: 12px; line-height: 18px; }
+    .actions { display: flex; flex: 0 0 auto; gap: 10px; }
+    button {
+      border: 0; border-radius: 10px; padding: 13px 18px; cursor: pointer;
+      color: #ffffff; font: 700 14px/20px Arial, sans-serif;
+      box-shadow: 0 6px 16px rgba(26,143,160,.18);
+    }
+    #copy-formatted { background: #1a8fa0; }
+    #copy-html { background: #0d2438; }
+    button:hover { filter: brightness(.94); }
+    button.success { background: #25795d !important; }
+    button.error { background: #a33a3a !important; }
+    .subject {
+      margin: 18px auto 10px; width: min(600px, calc(100% - 24px));
+      color: #526a78; font-size: 13px; line-height: 20px; text-align: center;
+    }
+    .status { min-height: 22px; margin: 0 auto 8px; color: #526a78; font-size: 13px; text-align: center; }
+    .preview {
+      display: block; width: min(720px, calc(100% - 24px)); height: 2300px;
+      margin: 0 auto 30px; border: 0; border-radius: 14px; background: #eef4f6;
+      box-shadow: 0 14px 42px rgba(13,36,56,.12);
+    }
+    @media (max-width: 760px) {
+      .toolbar { align-items: stretch; flex-direction: column; }
+      .actions { display: grid; grid-template-columns: 1fr; }
+      button { width: 100%; }
+      .preview { width: 100%; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="heading">
+      <strong>E-mail aos professores · foto da escola + certificado</strong>
+      <span>Use o primeiro botão para colar formatado ou copie o HTML para o HighLevel.</span>
+    </div>
+    <div class="actions">
+      <button id="copy-formatted" type="button">Copiar e-mail formatado</button>
+      <button id="copy-html" type="button">Copiar HTML para o HighLevel</button>
+    </div>
+  </div>
+
+  <p class="subject">Assunto sugerido: <strong>Um convite pessoal · Coleção Cultura Oceânica</strong></p>
+  <div class="status" id="status" role="status">Carregando o e-mail correto…</div>
+  <iframe class="preview" id="preview" title="Prévia do e-mail aos professores" src="email-professores.html"></iframe>
+
+  <script>
+    const sourceUrl = 'email-professores.html';
+    const formattedButton = document.getElementById('copy-formatted');
+    const htmlButton = document.getElementById('copy-html');
+    const status = document.getElementById('status');
+    let source = '';
+
+    async function loadSource() {
+      const response = await fetch(sourceUrl, { cache: 'no-store' });
+      if (!response.ok) throw new Error('Não foi possível carregar o e-mail.');
+      source = await response.text();
+      status.textContent = 'E-mail carregado: foto da escola e bloco do certificado confirmados.';
+    }
+
+    function feedback(button, label, type = 'success') {
+      const original = button.textContent;
+      button.textContent = label;
+      button.classList.add(type);
+      window.setTimeout(() => {
+        button.textContent = original;
+        button.classList.remove(type);
+      }, 2400);
+    }
+
+    async function ensureSource() {
+      if (!source) await loadSource();
+      return source;
+    }
+
+    async function copyHtml() {
+      try {
+        await navigator.clipboard.writeText(await ensureSource());
+        feedback(htmlButton, 'HTML copiado ✓');
+      } catch (error) {
+        feedback(htmlButton, 'Não foi possível copiar', 'error');
+      }
+    }
+
+    async function copyFormatted() {
+      try {
+        const html = await ensureSource();
+        const parsed = new DOMParser().parseFromString(html, 'text/html');
+        const plainText = parsed.body.innerText;
+
+        if (window.ClipboardItem && navigator.clipboard.write) {
+          const item = new ClipboardItem({
+            'text/html': new Blob([html], { type: 'text/html' }),
+            'text/plain': new Blob([plainText], { type: 'text/plain' })
+          });
+          await navigator.clipboard.write([item]);
+        } else {
+          const frame = document.getElementById('preview');
+          frame.contentWindow.focus();
+          frame.contentWindow.document.execCommand('selectAll', false, null);
+          frame.contentWindow.document.execCommand('copy');
+        }
+        feedback(formattedButton, 'E-mail copiado ✓');
+      } catch (error) {
+        feedback(formattedButton, 'Não foi possível copiar', 'error');
+      }
+    }
+
+    formattedButton.addEventListener('click', copyFormatted);
+    htmlButton.addEventListener('click', copyHtml);
+    loadSource().catch(() => {
+      status.textContent = 'Não foi possível carregar a prévia. Atualize a página e tente novamente.';
+    });
+  </script>
+</body>
+</html>
