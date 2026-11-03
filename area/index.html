@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Área do Educador · Projeto Imersão Azul</title>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="description" content="Área exclusiva para escolas e educadores do Projeto Imersão Azul: acesse a Coleção Imersão Azul com o seu login."/>
+<link rel="icon" type="image/png" sizes="512x512" href="../imagens/favicon-imersao-azul.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="_base.css"/>
+<style>
+.biblio{max-width:1100px;margin:0 auto}
+.topo{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.topo h2{font-family:var(--fh);font-size:1.35rem}.topo p{font-size:.88rem;color:var(--ink-md);margin-top:.25rem}
+.topo .acoes{display:flex;gap:.6rem}.topo .acoes .btn{width:auto;margin:0;padding:.6rem .95rem;font-size:.8rem}
+.grupo{font:700 .74rem var(--fh);letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:1.8rem 0 .8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.1rem}
+.livro{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.07);border:1px solid rgba(0,0,0,.05);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;padding:0}
+.livro:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(13,36,56,.16)}
+.livro img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#dfe9ec;display:block}
+.livro div{padding:.8rem .85rem 1rem}.livro b{font:700 .86rem var(--fh);display:block;line-height:1.35}
+.livro small{font-size:.75rem;color:var(--teal);font-weight:600;margin-top:.35rem;display:block}
+.leitor{position:fixed;inset:0;background:rgba(6,18,30,.92);z-index:50;display:flex;flex-direction:column}
+.leitor header{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1rem;color:#fff;gap:1rem}
+.leitor header b{font:600 .95rem var(--fh)}.leitor header a,.leitor header button{color:#fff;background:rgba(255,255,255,.12);border:0;border-radius:9px;padding:.5rem .85rem;font:600 .8rem var(--fh);cursor:pointer;text-decoration:none}
+.leitor iframe{flex:1;border:0;width:100%;background:#fff}
+.aviso{max-width:1100px;margin:0 auto 1.2rem;background:#fff6e5;border:1px solid #f1d9a6;color:#7a5410;border-radius:12px;padding:.85rem 1rem;font-size:.86rem;line-height:1.55}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a href="../" style="line-height:0"><img src="../imagens/logo-projeto-imersao-azul-oficial-2026-05-27.png" alt="Projeto Imersão Azul"/></a>
+  <button class="sair" id="sair" hidden>Sair</button>
+</header>
+<section class="hero">
+  <span class="badge">Área do Educador</span>
+  <h1 id="ola">A Coleção Imersão Azul <span>na sua sala de aula</span></h1>
+  <p id="heroTxt">Espaço exclusivo para escolas e professores parceiros. Entre com o seu e-mail e a senha que você recebeu do Instituto Gaia Soul.</p>
+</section>
+<main>
+  <!-- LOGIN -->
+  <div class="card" id="telaLogin">
+    <h2>Entrar</h2>
+    <p class="sub">Use o e-mail cadastrado e a senha enviada pela equipe do Imersão Azul.</p>
+    <form id="fLogin" novalidate>
+      <label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required/>
+      <label for="senha">Senha</label><input id="senha" type="password" autocomplete="current-password" required/>
+      <button class="btn" type="submit" id="bLogin">Entrar na área</button>
+    </form>
+    <div class="msg" id="mLogin"></div>
+    <p class="ajuda">Esqueceu a senha ou ainda não tem acesso?<br><a href="https://wa.me/5571999972427?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20o%20acesso%20%C3%A0%20%C3%81rea%20do%20Educador%20do%20Imers%C3%A3o%20Azul." target="_blank" rel="noopener">Fale com a equipe no WhatsApp</a></p>
+  </div>
+
+  <!-- TROCAR SENHA -->
+  <div class="card" id="telaSenha" hidden>
+    <h2>Crie a sua senha</h2>
+    <p class="sub" id="senhaSub">No primeiro acesso, troque a senha provisória por uma que você vai lembrar.</p>
+    <form id="fSenha" novalidate>
+      <label for="sAtual">Senha atual</label><input id="sAtual" type="password" autocomplete="current-password"/>
+      <label for="sNova">Nova senha (mínimo 6 caracteres)</label><input id="sNova" type="password" autocomplete="new-password"/>
+      <label for="sNova2">Repita a nova senha</label><input id="sNova2" type="password" autocomplete="new-password"/>
+      <button class="btn" type="submit" id="bSenha">Salvar nova senha</button>
+      <button class="btn ghost" type="button" id="bPular">Agora não, ir para os livros</button>
+    </form>
+    <div class="msg" id="mSenha"></div>
+  </div>
+
+  <!-- BIBLIOTECA -->
+  <div class="biblio" id="telaLivros" hidden>
+    <div class="topo">
+      <div><h2>Coleção Imersão Azul</h2><p>11 livros do 1º ano do Fundamental à 3ª série do Médio, mais o material de apoio. Toque no livro para ler.</p></div>
+      <div class="acoes"><button class="btn ghost" id="bTrocar">Trocar senha</button></div>
+    </div>
+    <div id="estante"></div>
+  </div>
+</main>
+<div class="leitor" id="leitor" hidden>
+  <header><b id="lTitulo"></b><span style="display:flex;gap:.5rem"><a id="lNova" target="_blank" rel="noopener">Abrir em tela cheia</a><button id="lFechar">Fechar</button></span></header>
+  <iframe id="lFrame" title="Leitor do livro" allowfullscreen></iframe>
+</div>
+<footer>Projeto Imersão Azul · Instituto Gaia Soul · <a href="../">imersaoazul.com.br</a><br>Material de uso exclusivo das escolas e educadores parceiros.</footer>
+<script>
+const API = /^(127\.0\.0\.1|localhost)$/.test(location.hostname) ? 'http://127.0.0.1:8091/api.php' : 'https://mediagrowth.com.br/imersao-area-api/api.php';
+const $ = id => document.getElementById(id);
+const K = 'ia_area_token';
+let usuario = null;
+async function api(acao, dados) {
+  const r = await fetch(API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({acao, ...dados})});
+  let d = {}; try { d = await r.json(); } catch (e) { d = {ok: false, msg: 'Não foi possível conectar. Tente de novo em instantes.'}; }
+  return d;
+}
+function msg(el, txt, tipo) { el.textContent = txt; el.className = 'msg ' + tipo; }
+function mostra(t) { ['telaLogin', 'telaSenha', 'telaLivros'].forEach(x => $(x).hidden = x !== t); $('sair').hidden = t === 'telaLogin'; }
+function primeiro(n) { return (n || '').trim().split(' ')[0]; }
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c])); }
+function embed(url) { // leitor do Calaméo dentro da página
+  const m = url.match(/calameo\.com\/read\/([0-9a-z]+)(?:\?authid=([A-Za-z0-9]+))?/i);
+  return m ? 'https://v.calameo.com/?bkcode=' + m[1] + (m[2] ? '&authid=' + m[2] : '') + '&mode=viewer&view=book&showsharemenu=false' : url;
+}
+function estante(livros) {
+  const grupos = {};
+  livros.forEach(l => (grupos[l.grupo] = grupos[l.grupo] || []).push(l));
+  $('estante').innerHTML = Object.entries(grupos).map(([g, ls]) => '<div class="grupo">' + esc(g) + '</div><div class="grid">' +
+    ls.map(l => '<button class="livro" data-id="' + esc(l.id) + '"><img loading="lazy" src="' + esc(l.capa) + '" alt="Capa ' + esc(l.titulo) + '"/><div><b>' + esc(l.titulo) + '</b><small>Ler o livro</small></div></button>').join('') + '</div>').join('');
+  document.querySelectorAll('.livro').forEach(b => b.onclick = () => {
+    const l = livros.find(x => x.id === b.dataset.id);
+    $('lTitulo').textContent = l.grupo + ' · ' + l.titulo; $('lFrame').src = embed(l.url); $('lNova').href = l.url; $('leitor').hidden = false;
+    api('abriu', {token: localStorage.getItem(K), livro: l.id});
+  });
+}
+function entrar(d) {
+  usuario = d.usuario; localStorage.setItem(K, d.token || localStorage.getItem(K));
+  $('ola').innerHTML = 'Olá, <span>' + esc(primeiro(usuario.nome)) + '</span>';
+  $('heroTxt').textContent = 'Aqui está a Coleção Imersão Azul completa para você usar com as suas turmas.';
+  estante(d.livros);
+  if (usuario.trocar_senha) { mostra('telaSenha'); } else { mostra('telaLivros'); }
+}
+$('fLogin').onsubmit = async e => {
+  e.preventDefault(); $('bLogin').disabled = true; $('bLogin').textContent = 'Entrando...';
+  const d = await api('login', {email: $('email').value, senha: $('senha').value});
+  $('bLogin').disabled = false; $('bLogin').textContent = 'Entrar na área';
+  if (d.ok) { $('mLogin').className = 'msg'; entrar(d); } else msg($('mLogin'), d.msg || 'Não foi possível entrar.', 'erro');
+};
+$('fSenha').onsubmit = async e => {
+  e.preventDefault();
+  if ($('sNova').value !== $('sNova2').value) return msg($('mSenha'), 'As duas senhas novas não são iguais.', 'erro');
+  $('bSenha').disabled = true;
+  const d = await api('trocar_senha', {token: localStorage.getItem(K), atual: $('sAtual').value, nova: $('sNova').value});
+  $('bSenha').disabled = false;
+  if (d.ok) { msg($('mSenha'), 'Senha salva. Abrindo a coleção...', 'ok'); usuario.trocar_senha = false; setTimeout(() => { $('fSenha').reset(); $('mSenha').className = 'msg'; mostra('telaLivros'); }, 900); }
+  else msg($('mSenha'), d.msg || 'Não foi possível salvar.', 'erro');
+};
+$('bPular').onclick = () => mostra('telaLivros');
+$('bTrocar').onclick = () => { $('senhaSub').textContent = 'Digite a senha atual e escolha uma nova.'; mostra('telaSenha'); };
+$('sair').onclick = () => { localStorage.removeItem(K); location.reload(); };
+$('lFechar').onclick = () => { $('leitor').hidden = true; $('lFrame').src = 'about:blank'; };
+(async () => { // sessão salva: entra direto
+  const t = localStorage.getItem(K); if (!t) return;
+  const d = await api('livros', {token: t});
+  if (d.ok) { d.token = t; d.usuario.trocar_senha = false; entrar(d); } else localStorage.removeItem(K);
+})();
+</script>
+</body>
+</html>

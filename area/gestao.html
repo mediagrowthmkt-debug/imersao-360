@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gestão de acessos · Área do Educador · Imersão Azul</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="icon" type="image/png" sizes="512x512" href="../imagens/favicon-imersao-azul.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="_base.css"/>
+<style>
+.painel{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:1.4rem;align-items:start}
+@media(max-width:860px){.painel{grid-template-columns:1fr}}
+.painel .card{max-width:none;margin:0}
+.lista{background:#fff;border-radius:18px;box-shadow:0 10px 36px rgba(0,0,0,.08);padding:1.4rem;overflow:auto}
+.lista h2{font-family:var(--fh);font-size:1.1rem;margin-bottom:.9rem}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+th{text-align:left;font:600 .72rem var(--fh);color:var(--ink-lt);text-transform:uppercase;letter-spacing:.06em;padding:.5rem;border-bottom:2px solid #e3ecef}
+td{padding:.6rem .5rem;border-bottom:1px solid #edf2f4;vertical-align:top}
+td small{color:var(--ink-lt);display:block}
+.tag{display:inline-block;border-radius:6px;padding:.15rem .45rem;font-size:.7rem;font-weight:700}
+.tag.on{background:#e6f6f1;color:#1d6b4f}.tag.off{background:#fdecea;color:#9b2c22}
+.mini{border:1px solid #d7e2e6;background:#fff;border-radius:8px;padding:.35rem .55rem;font:600 .72rem var(--fh);cursor:pointer;color:var(--ink-md);margin:.15rem .15rem 0 0}
+.mini:hover{border-color:var(--teal);color:var(--teal)}
+.entrega{margin-top:1rem;background:#eef8fa;border:1px solid #bfe3ea;border-radius:12px;padding:1rem;font-size:.84rem;line-height:1.6;white-space:pre-wrap}
+.entrega + .btn{margin-top:.6rem}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a href="./" style="line-height:0"><img src="../imagens/logo-projeto-imersao-azul-oficial-2026-05-27.png" alt="Projeto Imersão Azul"/></a>
+  <button class="sair" id="sair" hidden>Sair</button>
+</header>
+<section class="hero"><span class="badge">Gestão de acessos</span><h1>Área do Educador</h1><p>Crie o acesso de cada escola ou professor, gere uma nova senha quando alguém esquecer e bloqueie quem não deve mais entrar.</p></section>
+<main>
+  <div class="card" id="telaChave">
+    <h2>Entrar na gestão</h2>
+    <form id="fChave"><label for="chave">Senha de administração</label><input id="chave" type="password" autocomplete="current-password"/><button class="btn">Entrar</button></form>
+    <div class="msg" id="mChave"></div>
+  </div>
+  <div class="painel" id="telaPainel" hidden>
+    <div class="card">
+      <h2>Novo acesso</h2>
+      <form id="fNovo" novalidate>
+        <label for="nNome">Nome da pessoa</label><input id="nNome"/>
+        <label for="nEmail">E-mail</label><input id="nEmail" type="email"/>
+        <label for="nEscola">Escola</label><input id="nEscola"/>
+        <label for="nCidade">Cidade</label><input id="nCidade"/>
+        <button class="btn" id="bNovo">Criar acesso</button>
+      </form>
+      <div class="msg" id="mNovo"></div>
+      <div id="saida" hidden><div class="entrega" id="txtEntrega"></div><button class="btn ghost" id="bCopiar">Copiar mensagem para enviar</button></div>
+    </div>
+    <div class="lista"><h2 id="tLista">Acessos</h2><table><thead><tr><th>Pessoa</th><th>Escola</th><th>Último acesso</th><th>Situação</th><th></th></tr></thead><tbody id="corpo"></tbody></table></div>
+  </div>
+</main>
+<footer>Projeto Imersão Azul · Instituto Gaia Soul · uso interno</footer>
+<script>
+const API = /^(127\.0\.0\.1|localhost)$/.test(location.hostname) ? 'http://127.0.0.1:8091/api.php' : 'https://mediagrowth.com.br/imersao-area-api/api.php';
+const LINK = 'https://imersaoazul.com.br/area/';
+const $ = id => document.getElementById(id);
+let chave = sessionStorage.getItem('ia_gestao') || '';
+async function api(acao, dados) {
+  const r = await fetch(API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({acao, chave, ...dados})});
+  try { return await r.json(); } catch (e) { return {ok: false, msg: 'Não foi possível conectar.'}; }
+}
+function msg(el, t, tipo) { el.textContent = t; el.className = 'msg ' + tipo; }
+function esc(s) { return String(s || '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c])); }
+function data(iso) { if (!iso) return 'Ainda não entrou'; const d = new Date(iso); return d.toLocaleDateString('pt-BR') + ' ' + d.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'}); }
+function entrega(nome, email, senha) {
+  $('txtEntrega').textContent = 'Olá, ' + nome.split(' ')[0] + '! Seu acesso à Área do Educador do Imersão Azul está pronto.\n\nEntre em ' + LINK + '\nE-mail: ' + email + '\nSenha provisória: ' + senha + '\n\nNo primeiro acesso, você cria a sua própria senha. Lá estão os 11 livros da Coleção Imersão Azul e o material de apoio.';
+  $('saida').hidden = false;
+}
+async function carregar() {
+  const d = await api('admin_listar', {});
+  if (!d.ok) { sessionStorage.removeItem('ia_gestao'); chave = ''; $('telaPainel').hidden = true; $('telaChave').hidden = false; $('sair').hidden = true; if (d.msg) msg($('mChave'), d.msg, 'erro'); return; }
+  sessionStorage.setItem('ia_gestao', chave); $('telaChave').hidden = true; $('telaPainel').hidden = false; $('sair').hidden = false;
+  $('tLista').textContent = 'Acessos (' + d.usuarios.length + ')';
+  $('corpo').innerHTML = d.usuarios.length ? d.usuarios.map(u => '<tr><td><b>' + esc(u.nome) + '</b><small>' + esc(u.email) + '</small></td><td>' + esc(u.escola) + '<small>' + esc(u.cidade) + '</small></td><td>' + data(u.ultimo_acesso) + '<small>' + u.acessos + ' entrada(s)</small></td><td><span class="tag ' + (u.ativo ? 'on">Ativo' : 'off">Bloqueado') + '</span></td><td><button class="mini" data-a="senha" data-e="' + esc(u.email) + '" data-n="' + esc(u.nome) + '">Nova senha</button><button class="mini" data-a="ativo" data-v="' + (u.ativo ? '0' : '1') + '" data-e="' + esc(u.email) + '">' + (u.ativo ? 'Bloquear' : 'Reativar') + '</button></td></tr>').join('') : '<tr><td colspan="5">Nenhum acesso criado ainda.</td></tr>';
+  document.querySelectorAll('.mini').forEach(b => b.onclick = async () => {
+    if (b.dataset.a === 'senha') { if (!confirm('Gerar uma nova senha para ' + b.dataset.e + '? A senha antiga para de funcionar.')) return; const r = await api('admin_nova_senha', {email: b.dataset.e}); if (r.ok) entrega(b.dataset.n, b.dataset.e, r.senha); }
+    else { await api('admin_ativo', {email: b.dataset.e, ativo: b.dataset.v === '1'}); }
+    carregar();
+  });
+}
+$('fChave').onsubmit = e => { e.preventDefault(); chave = $('chave').value; carregar(); };
+$('fNovo').onsubmit = async e => {
+  e.preventDefault(); $('bNovo').disabled = true;
+  const d = await api('admin_criar', {nome: $('nNome').value, email: $('nEmail').value, escola: $('nEscola').value, cidade: $('nCidade').value});
+  $('bNovo').disabled = false;
+  if (d.ok) { msg($('mNovo'), 'Acesso criado. Copie a mensagem abaixo e envie para a pessoa.', 'ok'); entrega(d.usuario.nome, d.usuario.email, d.senha); $('fNovo').reset(); carregar(); }
+  else msg($('mNovo'), d.msg || 'Não foi possível criar.', 'erro');
+};
+$('bCopiar').onclick = () => { navigator.clipboard.writeText($('txtEntrega').textContent); $('bCopiar').textContent = 'Mensagem copiada'; setTimeout(() => $('bCopiar').textContent = 'Copiar mensagem para enviar', 1500); };
+$('sair').onclick = () => { sessionStorage.removeItem('ia_gestao'); location.reload(); };
+if (chave) carregar();
+</script>
+</body>
+</html>
