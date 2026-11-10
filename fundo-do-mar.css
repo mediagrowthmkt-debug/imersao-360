@@ -1,0 +1,112 @@
+/* Padrão Fundo do Mar (identidade oficial Instituto Gaia Soul, 28-10-26) aplicado ao Imersão Azul.
+   Zonas: luz (areia, água clara, texto petróleo) · penumbra (#1F5FAE, texto branco) · profunda (#0A2E4D luminoso, texto branco).
+   Fontes: Bebas Neue (títulos) + Barlow (corpo). Sem ícones, sem sombra, sem brilho, sem cantos arredondados em foto. */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --areia:#F4E9D8;--agua:#CDEEF1;--petroleo:#0F4C5C;--petroleo-2:#0B3B48;
+  --penumbra:#1F5FAE;--penumbra-2:#174C8F;--marinho:#0A2E4D;--marinho-2:#082640;
+  --ciano:#00B4D8;--claro:#E9F7FA;--texto:#0D1B2A;--branco:#FFFFFF;
+  --t:'Bebas Neue',sans-serif;--c:'Barlow',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--c);color:var(--texto);background:var(--areia);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1200px,90%);margin-inline:auto;position:relative}
+
+/* marcador de profundidade */
+.prof{display:flex;align-items:center;gap:.8rem;font:600 .72rem var(--c);letter-spacing:.32em;text-transform:uppercase;margin-bottom:2.2rem}
+.prof::before{content:'';width:34px;height:1px;background:currentColor;opacity:.7}
+.luz .prof{color:var(--petroleo)}.penumbra .prof,.profunda .prof{color:var(--claro)}
+
+/* tipografia */
+.tt{font-family:var(--t);font-weight:400;line-height:.92;letter-spacing:.01em;text-transform:uppercase}
+.tt-xl{font-size:clamp(3.4rem,9vw,8.6rem)}
+.tt-l{font-size:clamp(2.6rem,6vw,5.2rem)}
+.tt-m{font-size:clamp(2rem,4vw,3.3rem)}
+.tt-s{font-size:clamp(1.5rem,2.4vw,2rem);line-height:1}
+.apoio{font-size:1.12rem;line-height:1.75;max-width:620px}
+.luz{color:var(--petroleo)}.luz .apoio{color:#2A5560}
+.penumbra,.profunda{color:var(--branco)}.penumbra .apoio,.profunda .apoio{color:rgba(255,255,255,.84)}
+.kicker{font:600 .82rem var(--c);letter-spacing:.24em;text-transform:uppercase}
+
+/* cáusticas passando pelas letras */
+.causticas{background:url('imagens/fundo-do-mar/causticas-letras.webp') center/1100px auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:ondula 26s linear infinite}
+@keyframes ondula{to{background-position:1100px 220px}}
+.penumbra .causticas,.profunda .causticas{background-image:url('imagens/fundo-do-mar/causticas-claras.webp')}
+@media(prefers-reduced-motion:reduce){.causticas{animation:none}}
+
+/* linhas batimétricas */
+.bati{position:absolute;inset:0;pointer-events:none;background:url('imagens/fundo-do-mar/batimetria-petroleo.svg') center/cover no-repeat;opacity:.13}
+.penumbra .bati,.profunda .bati{background-image:url('imagens/fundo-do-mar/batimetria-branca.svg');opacity:.09}
+
+/* botões: chapados, sem sombra, sem brilho */
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font:700 .82rem var(--c);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:1.05rem 1.6rem;border:1.5px solid transparent;border-radius:2px;cursor:pointer;transition:background .2s,color .2s}
+.bt-p{background:var(--petroleo);color:var(--branco)}.bt-p:hover{background:var(--petroleo-2)}
+.bt-c{background:var(--branco);color:var(--marinho)}.bt-c:hover{background:var(--claro)}
+.bt-o{border-color:currentColor;background:transparent}
+.bt .seta{font-family:var(--c);font-weight:400;letter-spacing:0}
+
+/* zonas */
+.z{position:relative;overflow:hidden;padding:7.5rem 0}
+.z.luz{background:var(--areia)}
+.z.penumbra{background:linear-gradient(180deg,var(--penumbra) 0%,var(--penumbra-2) 100%)}
+.z.profunda{background:radial-gradient(120% 75% at 50% 0%,#1D5C93 0%,#0E3D66 45%,var(--marinho) 100%)}
+.raios::before{content:'';position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(100deg,transparent 30%,rgba(205,238,241,.1) 34%,transparent 40%),
+  linear-gradient(80deg,transparent 52%,rgba(205,238,241,.09) 56%,transparent 61%),
+  linear-gradient(95deg,transparent 66%,rgba(205,238,241,.08) 69%,transparent 74%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 75%);mask-image:linear-gradient(180deg,#000,transparent 75%)}
+
+/* foto sangrada que funde com a cor da zona */
+.sangra{position:absolute;top:0;bottom:0;width:52%;background-size:cover;background-position:center}
+.sangra.dir{right:0;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 12%);mask-image:linear-gradient(90deg,transparent 0%,#000 12%)}
+.sangra.esq{left:0;-webkit-mask-image:linear-gradient(270deg,transparent 0%,#000 12%);mask-image:linear-gradient(270deg,transparent 0%,#000 12%)}
+@media(max-width:900px){.sangra{position:relative;width:100%!important;height:400px;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 62%,rgba(0,0,0,.5) 82%,transparent 100%)!important;mask-image:linear-gradient(180deg,transparent 0%,#000 12%,#000 62%,rgba(0,0,0,.5) 82%,transparent 100%)!important;margin:-7.5rem 0 1.5rem;opacity:1!important}}
+
+/* listas editoriais com fios finos */
+.fios{display:grid;border-top:1px solid currentColor}
+.fios>*{border-bottom:1px solid rgba(15,76,92,.25);padding:1.4rem 0}
+.penumbra .fios,.profunda .fios{border-top-color:rgba(255,255,255,.45)}
+.penumbra .fios>*,.profunda .fios>*{border-bottom-color:rgba(255,255,255,.18)}
+.num{font-family:var(--t);font-size:2.2rem;line-height:1;opacity:.55}
+
+/* topo do site */
+.topo{position:absolute;top:0;left:0;right:0;z-index:20;padding:1.4rem 0}
+.topo .wrap{display:flex;align-items:center;gap:2rem}
+.topo .marca img{height:66px;width:auto}
+.topo nav{display:flex;gap:1.7rem;margin-left:auto}
+.topo nav a{text-decoration:none;font:600 .78rem var(--c);letter-spacing:.16em;text-transform:uppercase;color:var(--petroleo)}
+.topo nav a:hover{text-decoration:underline;text-underline-offset:6px}
+.topo .acoes{display:flex;gap:.6rem}
+.topo .acoes .bt{padding:.75rem 1.1rem;font-size:.72rem}
+.menu-mob{display:none;margin-left:auto;background:none;border:0;font:700 .78rem var(--c);letter-spacing:.2em;text-transform:uppercase;color:var(--petroleo);cursor:pointer;padding:.6rem 0}
+.gaveta{display:none;position:fixed;inset:0;z-index:40;background:var(--marinho);color:#fff;padding:1.4rem 5% 2rem;flex-direction:column}
+.gaveta.aberta{display:flex}
+.gaveta .fecha{align-self:flex-end;background:none;border:0;color:#fff;font:700 .78rem var(--c);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;padding:.6rem 0}
+.gaveta a{font-family:var(--t);font-size:2.4rem;text-decoration:none;color:#fff;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.gaveta .bts{display:grid;gap:.6rem;margin-top:auto}
+@media(max-width:1060px){.topo nav,.topo .acoes{display:none}.menu-mob{display:block}.topo .marca img{height:54px}}
+
+/* medidor de profundidade (desktop) */
+.medidor{position:fixed;right:1.6rem;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;align-items:center;gap:.6rem;font:600 .66rem var(--c);letter-spacing:.2em;mix-blend-mode:difference;color:#fff}
+.medidor i{display:block;width:1px;height:120px;background:rgba(255,255,255,.4);position:relative}
+.medidor i b{position:absolute;left:-3px;width:7px;height:7px;border-radius:50%;background:#fff;transition:top .5s}
+.medidor span{writing-mode:vertical-rl;transform:rotate(180deg)}
+@media(max-width:1060px){.medidor{display:none}}
+
+/* rodapé */
+.rodape{background:var(--marinho-2);color:rgba(255,255,255,.7);padding:4.5rem 0 2rem;font-size:.95rem}
+.rodape .g{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3rem}
+@media(max-width:800px){.rodape .g{grid-template-columns:1fr}}
+.rodape h5{font:700 .74rem var(--c);letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:1rem}
+.rodape ul{list-style:none;display:grid;gap:.55rem}.rodape a{text-decoration:none}.rodape a:hover{color:#fff}
+.rodape .realiza{display:flex;align-items:center;gap:1rem;margin-top:1.6rem;font:600 .7rem var(--c);letter-spacing:.2em;text-transform:uppercase}
+.rodape .realiza img{height:46px;width:auto}
+.rodape .base{border-top:1px solid rgba(255,255,255,.1);margin-top:3rem;padding-top:1.4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.8rem}
+.mg-credit{display:block!important;text-align:center!important;margin-top:1.4rem!important;font-size:.74rem!important;color:rgba(255,255,255,.45)!important}
+.mg-credit a{color:var(--agua)!important;text-decoration:none!important}
+@media(max-width:520px){.mg-credit .sep{display:none!important}.mg-credit .l2{display:block!important}}
+
+/* entrada suave */
+.sobe{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.sobe.ok{opacity:1;transform:none}

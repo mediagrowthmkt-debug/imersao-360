@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portal Imersão Azul · Acervo de Cultura Oceânica para a sala de aula</title>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="description" content="Portal Imersão Azul: e-books, vídeos 360°, lições e fichas de atividades de Cultura Oceânica para professores e estudantes. Acesso gratuito com cadastro."/>
+<link rel="icon" type="image/png" sizes="512x512" href="../imagens/favicon-imersao-azul.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="area.css"/>
+<style>
+body{background:var(--areia)}
+.topbar{position:sticky;top:0;z-index:30}
+.topbar nav{display:flex;gap:1.6rem;flex:1;justify-content:center}
+.topbar nav a{color:rgba(255,255,255,.75);text-decoration:none;font:600 .74rem var(--c);letter-spacing:.18em;text-transform:uppercase;padding:.5rem 0;border-bottom:1px solid transparent}
+.topbar nav a:hover{color:#fff}
+.topbar nav a.on{color:#fff;border-bottom-color:#fff}
+.topbar .conta{display:flex;gap:1rem;align-items:center}
+.topbar .conta a{color:var(--agua);font:600 .72rem var(--c);letter-spacing:.18em;text-transform:uppercase;text-decoration:none}
+.abas-mob{display:none}
+@media(max-width:900px){.topbar nav{display:none}.abas-mob{display:flex;gap:1.3rem;overflow-x:auto;background:var(--marinho-2);padding:.7rem 1.2rem;position:sticky;top:68px;z-index:29;scrollbar-width:none}.abas-mob::-webkit-scrollbar{display:none}.abas-mob a{flex:0 0 auto;color:rgba(255,255,255,.7);text-decoration:none;font:600 .72rem var(--c);letter-spacing:.16em;text-transform:uppercase;padding:.35rem 0;border-bottom:1px solid transparent}.abas-mob a.on{color:#fff;border-bottom-color:#fff}}
+.hero.so-inicio{display:none}
+.wrap{max-width:1120px;margin:0 auto}
+.prof{display:flex;align-items:center;gap:.8rem;font:600 .7rem var(--c);letter-spacing:.3em;text-transform:uppercase;color:var(--petroleo);margin-bottom:.8rem}
+.prof::before{content:'';width:34px;height:1px;background:currentColor}
+/* acesso · zona de luz */
+#telaAcesso,#telaSenha{position:relative}
+.acesso{max-width:540px;margin:0 auto}
+.abas{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(15,76,92,.35);margin-bottom:0}
+.abas button{border:0;background:none;padding:1rem .5rem;font:700 .78rem var(--c);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-md);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+.abas button.on{color:var(--petroleo);border-bottom-color:var(--petroleo);background:rgba(255,255,255,.55)}
+.acesso .card{max-width:none;border-top:0}
+.prog{display:flex;align-items:center;justify-content:space-between;font:600 .7rem var(--c);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-lt);margin-bottom:.6rem}
+.barra{height:2px;background:#DCE6E8;margin-bottom:1.6rem}
+.barra i{display:block;height:100%;background:var(--petroleo);transition:width .35s}
+.passo{display:none}.passo.on{display:block;animation:entra .3s ease}
+@keyframes entra{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.passo h3{font-family:var(--t);font-weight:400;font-size:2.2rem;line-height:.98;text-transform:uppercase;color:var(--petroleo);margin-bottom:.4rem}
+.passo .dica{font-size:.98rem;color:var(--ink-md);margin-bottom:1.2rem;line-height:1.55}
+.opcoes{display:grid;border-top:1px solid #D5E1E4}
+.opcoes.duas{grid-template-columns:1fr 1fr;border-top:0;gap:.5rem}
+.op{display:flex;align-items:center;gap:1rem;text-align:left;border:0;border-bottom:1px solid #D5E1E4;background:#fff;padding:1.05rem .3rem;font:600 1.05rem var(--c);color:var(--texto);cursor:pointer;transition:background .15s,padding .15s}
+.op:hover{background:#F3FAFB;padding-left:.7rem}
+.op.on{background:var(--petroleo);color:#fff;padding-left:.7rem}
+.op.on small{color:rgba(255,255,255,.8)}
+.op .ic{flex:0 0 2.2rem;font-family:var(--t);font-weight:400;font-size:1.7rem;line-height:1;color:var(--petroleo);opacity:.6}
+.op.on .ic{color:#fff;opacity:.8}
+.op small{display:block;font:400 .86rem var(--c);color:var(--ink-lt);margin-top:.15rem}
+.op.chip{border:1.5px solid #C8D7DA;padding:.85rem .6rem;font-size:.95rem;justify-content:center;text-align:center}
+.op.chip:hover{padding-left:.6rem;border-color:var(--petroleo)}
+.op.chip.on{border-color:var(--petroleo)}
+.linha{display:grid;grid-template-columns:1fr 92px;gap:.9rem}
+.nav-passo{display:flex;gap:.6rem;margin-top:1.4rem}
+.nav-passo .btn{margin-top:0}
+.nav-passo .voltar{flex:0 0 auto;width:auto;padding:1.05rem 1.2rem}
+.check{display:flex;gap:.7rem;align-items:flex-start;font:400 .9rem var(--c);letter-spacing:0;text-transform:none;color:var(--ink-md);line-height:1.5;margin-top:1rem;cursor:pointer}
+.check input{width:18px;height:18px;flex:0 0 18px;margin-top:.15rem;accent-color:var(--petroleo)}
+.isca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* portal */
+.sec{display:none}.sec.on{display:block}
+.cab{margin-bottom:2rem;border-bottom:1px solid rgba(15,76,92,.3);padding-bottom:1.4rem}
+.cab h2{font-family:var(--t);font-weight:400;font-size:clamp(2.4rem,5vw,3.6rem);line-height:.95;text-transform:uppercase;color:var(--petroleo)}
+.cab p{font-size:1.02rem;color:var(--ink-md);margin-top:.6rem;max-width:680px;line-height:1.6}
+.atalhos{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--petroleo)}
+@media(max-width:900px){.atalhos{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.atalhos{grid-template-columns:1fr}}
+.atalho{padding:1.5rem 1.4rem 1.6rem 0;margin-right:1.4rem;border-bottom:1px solid rgba(15,76,92,.25);text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:.45rem}
+.atalho .ic{font-family:var(--t);font-size:2.6rem;line-height:1;color:var(--petroleo);opacity:.4}
+.atalho b{font-family:var(--t);font-weight:400;font-size:1.9rem;line-height:1;color:var(--petroleo);text-transform:uppercase}
+.atalho span{font-size:.95rem;color:var(--ink-md);line-height:1.55}
+.atalho em{font-style:normal;font:700 .7rem var(--c);letter-spacing:.18em;text-transform:uppercase;color:var(--petroleo);margin-top:auto;padding-top:.6rem}
+.atalho:hover b{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.faixa{position:relative;overflow:hidden;margin-top:2.6rem;background:var(--penumbra);color:#fff;padding:2.2rem 2.2rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
+.faixa::before{content:'';position:absolute;inset:0;background:url('../imagens/fundo-do-mar/batimetria-branca.svg') center/cover;opacity:.1}
+.faixa>*{position:relative}
+@media(max-width:760px){.faixa{grid-template-columns:1fr}}
+.faixa h3{font-family:var(--t);font-weight:400;font-size:2.2rem;line-height:.95;text-transform:uppercase;margin-bottom:.6rem}.faixa p{font-size:1rem;color:rgba(255,255,255,.85);line-height:1.65}
+.etapas{display:grid;counter-reset:e;border-top:1px solid rgba(255,255,255,.45)}
+.etapas div{counter-increment:e;display:flex;gap:.9rem;align-items:center;font-size:1rem;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.etapas div::before{content:counter(e,decimal-leading-zero);font-family:var(--t);font-size:1.6rem;opacity:.6}
+.grupo{font:700 .72rem var(--c);letter-spacing:.24em;text-transform:uppercase;color:var(--petroleo);margin:2.2rem 0 1rem;display:flex;align-items:center;gap:.8rem}
+.grupo::after{content:'';flex:1;height:1px;background:rgba(15,76,92,.3)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.4rem}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:1rem}}
+.livro{background:none;border:0;cursor:pointer;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit;padding:0}
+.livro img{width:100%;aspect-ratio:3/4;object-fit:cover;background:#dfe9ec;display:block;transition:transform .25s}
+.livro:hover img{transform:translateY(-4px)}
+.livro div{padding:.7rem 0 0}.livro b{font-family:var(--t);font-weight:400;font-size:1.25rem;line-height:1.05;display:block;color:var(--petroleo);text-transform:uppercase}
+.livro small{font:700 .66rem var(--c);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-lt);margin-top:.35rem;display:block}
+.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.6rem}
+.vcard{text-decoration:none;color:inherit}
+.vcard .tela{aspect-ratio:16/9;background:var(--marinho) url('../imagens/fundo-do-mar/oceano-profundo.webp') center/cover;display:grid;place-items:center;color:#fff;position:relative;overflow:hidden}
+.vcard .tela::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,46,77,.15),rgba(10,46,77,.65))}
+.vcard .tela b{position:relative;font-family:var(--t);font-weight:400;font-size:3.4rem;letter-spacing:.02em;color:#fff}
+.vcard .tela img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.selo{position:absolute;top:.8rem;left:.8rem;font:700 .62rem var(--c);letter-spacing:.2em;text-transform:uppercase;color:#fff;z-index:1;border-bottom:1px solid #fff;padding-bottom:.1rem}
+.selo.ok{color:var(--agua);border-color:var(--agua)}
+.vcard div.txt{padding:.9rem 0 0}.vcard div.txt b{font-family:var(--t);font-weight:400;font-size:1.6rem;line-height:1;color:var(--petroleo);display:block;text-transform:uppercase}.vcard div.txt span{font-size:.92rem;color:var(--ink-md);line-height:1.55;display:block;margin-top:.4rem}
+.fichario{display:grid;grid-template-columns:1fr 300px;gap:2rem;align-items:start}
+@media(max-width:900px){.fichario{grid-template-columns:1fr}}
+.player{aspect-ratio:16/9;overflow:hidden;background:var(--marinho) url('../imagens/fundo-do-mar/oceano-profundo.webp') center/cover;display:grid;place-items:center;color:#fff;text-align:center;padding:1.5rem;position:relative}
+.player::before{content:'';position:absolute;inset:0;background:rgba(10,46,77,.55)}
+.player>*{position:relative}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.player b{font-family:var(--t);font-weight:400;font-size:2.2rem;line-height:1;display:block;margin-bottom:.5rem;text-transform:uppercase}.player span{font-size:.98rem;color:rgba(255,255,255,.85);max-width:440px;display:block;line-height:1.6}
+.bloco{border-top:1px solid rgba(15,76,92,.35);padding:1.4rem 0;margin-top:.4rem}
+.bloco h3{font-family:var(--t);font-weight:400;font-size:1.7rem;line-height:1;color:var(--petroleo);margin-bottom:.6rem;text-transform:uppercase}.bloco p,.bloco li{font-size:1rem;color:var(--ink-md);line-height:1.7}
+.bloco ul{padding-left:1.1rem}
+.vazio{font-size:.95rem;color:var(--ink-md);border-left:2px solid var(--petroleo);padding:.4rem 0 .4rem 1rem;line-height:1.6}
+.lado{position:sticky;top:90px;border-top:3px solid var(--petroleo);padding-top:1rem}
+.lado h4{font:700 .7rem var(--c);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-lt);margin-bottom:.4rem}
+.lado a{display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-bottom:1px solid rgba(15,76,92,.2);text-decoration:none;color:var(--petroleo);font-family:var(--t);font-size:1.35rem;line-height:1;text-transform:uppercase}
+.lado a:hover{padding-left:.4rem}.lado a small{font:600 .7rem var(--c);letter-spacing:.14em;color:var(--ink-lt)}
+.voltar-link{display:inline-block;color:var(--petroleo);font:700 .72rem var(--c);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;margin-bottom:1.2rem}
+.tabela{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));column-gap:2rem;border-top:1px solid var(--petroleo)}
+.tabela div{padding:1rem 0;border-bottom:1px solid rgba(15,76,92,.2)}
+.tabela b{font-family:var(--t);font-weight:400;font-size:1.4rem;line-height:1;color:var(--petroleo);display:block;text-transform:uppercase}.tabela span{font-size:.92rem;color:var(--ink-md);line-height:1.5}
+.fichas{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));column-gap:2.2rem;border-top:1px solid var(--petroleo)}
+.ficha{padding:1.4rem 0;border-bottom:1px solid rgba(15,76,92,.22);display:flex;flex-direction:column;gap:.5rem}
+.ficha b{font-family:var(--t);font-weight:400;font-size:1.7rem;line-height:1;color:var(--petroleo);text-transform:uppercase}
+.ficha p{font-size:.95rem;color:var(--ink-md);line-height:1.55}.ficha p strong{color:var(--texto)}
+.ficha .estado{font:700 .62rem var(--c);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-lt);align-self:flex-start;border-bottom:1px solid currentColor;padding-bottom:.1rem}
+.ficha .btn{margin-top:auto;padding:.8rem;width:auto;align-self:flex-start}
+.mais{display:grid;grid-template-columns:repeat(3,1fr);column-gap:2rem;border-top:1px solid var(--petroleo)}
+@media(max-width:760px){.mais{grid-template-columns:1fr}}
+.mais div{padding:1.1rem 0;border-bottom:1px solid rgba(15,76,92,.2)}
+.mais b{font-family:var(--t);font-weight:400;font-size:1.45rem;line-height:1;color:var(--petroleo);display:block;margin-bottom:.35rem;text-transform:uppercase}.mais span{font-size:.92rem;color:var(--ink-md);line-height:1.55}
+.leitor{position:fixed;inset:0;background:rgba(8,38,64,.96);z-index:50;display:flex;flex-direction:column}
+.leitor header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;color:#fff;gap:1rem}
+.leitor header b{font-family:var(--t);font-weight:400;font-size:1.4rem;line-height:1;text-transform:uppercase}.leitor header a,.leitor header button{color:#fff;background:none;border:1px solid rgba(255,255,255,.5);border-radius:2px;padding:.55rem .85rem;font:700 .68rem var(--c);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;white-space:nowrap}
+.leitor iframe{flex:1;border:0;width:100%;background:#fff}
+.dados{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+@media(max-width:760px){.dados{grid-template-columns:1fr}}
+.dados .card{max-width:none;margin:0}
+.dados dl{display:grid;grid-template-columns:auto 1fr;gap:.55rem 1.2rem;font-size:1rem}
+.dados dt{color:var(--ink-lt);font-weight:600}.dados dd{color:var(--texto)}
+footer .realiza{display:inline-flex;align-items:center;gap:.7rem;margin-top:.6rem;font:600 .66rem var(--c);letter-spacing:.2em;text-transform:uppercase}
+footer .realiza img{height:34px;width:auto}
+.mg-credit{display:block!important;margin-top:.7rem!important;font-size:.72rem!important;color:rgba(255,255,255,.45)!important}
+.mg-credit a{color:var(--agua)!important;text-decoration:none!important}
+@media(max-width:520px){.mg-credit .sep{display:none!important}.mg-credit .l2{display:block!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a href="../" style="line-height:0"><img src="../imagens/fundo-do-mar/logo-imersao-azul.webp" alt="Projeto Imersão Azul"/></a>
+  <nav id="menu" hidden>
+    <a href="#inicio" data-s="inicio">Início</a>
+    <a href="#ebooks" data-s="ebooks">E-books</a>
+    <a href="#videos" data-s="videos">Vídeos 360°</a>
+    <a href="#licoes" data-s="licoes">Lições</a>
+    <a href="#fichas" data-s="fichas">Fichas de atividades</a>
+  </nav>
+  <div class="conta"><a href="#conta" id="lConta" hidden>Minha conta</a><button class="sair" id="sair" hidden>Sair</button></div>
+</header>
+<div class="abas-mob" id="menuMob" hidden>
+  <a href="#inicio" data-s="inicio">Início</a><a href="#ebooks" data-s="ebooks">E-books</a><a href="#videos" data-s="videos">Vídeos 360°</a><a href="#licoes" data-s="licoes">Lições</a><a href="#fichas" data-s="fichas">Fichas</a><a href="#conta" data-s="conta">Conta</a>
+</div>
+<section class="hero" id="hero">
+  <span class="badge" id="heroBadge">0 M · Portal Imersão Azul</span>
+  <h1 id="ola">O oceano inteiro <span>dentro da sua sala de aula</span></h1>
+  <p id="heroTxt">E-books, vídeos 360°, lições e fichas de atividades de Cultura Oceânica, do 1º ano do Fundamental à 3ª série do Médio. O acesso é gratuito: basta criar o seu cadastro.</p>
+</section>
+<main>
+  <!-- ACESSO -->
+  <div class="acesso" id="telaAcesso">
+    <div class="abas"><button id="tCad" class="on">Criar meu acesso</button><button id="tLog">Já tenho cadastro</button></div>
+
+    <div class="card" id="telaCadastro">
+      <div class="prog"><span id="pTxt">Passo 1 de 4</span><span id="pNome">Seu perfil</span></div>
+      <div class="barra"><i id="pBar" style="width:25%"></i></div>
+      <form id="fCad" novalidate autocomplete="on">
+        <div class="isca" aria-hidden="true"><label for="site">Site</label><input id="site" name="site" tabindex="-1" autocomplete="off"/></div>
+        <div class="passo on" data-p="1">
+          <h3>Como você vai usar o portal?</h3>
+          <p class="dica">Assim mostramos primeiro o que mais combina com você.</p>
+          <div class="opcoes" id="opPerfil">
+            <button type="button" class="op" data-v="professor"><span class="ic">01</span><span>Sou professor(a)<small>Quero levar a Cultura Oceânica para as minhas turmas</small></span></button>
+            <button type="button" class="op" data-v="estudante"><span class="ic">02</span><span>Sou estudante<small>Quero explorar os livros e os vídeos 360°</small></span></button>
+            <button type="button" class="op" data-v="gestao"><span class="ic">03</span><span>Coordenação ou gestão escolar<small>Quero implantar o programa na escola</small></span></button>
+            <button type="button" class="op" data-v="outro"><span class="ic">04</span><span>Outro interesse<small>Família, pesquisa, empresa ou apoiador</small></span></button>
+          </div>
+          <input type="hidden" name="perfil" id="perfil"/>
+        </div>
+        <div class="passo" data-p="2">
+          <h3 id="p2Titulo">Em quais etapas você atua?</h3>
+          <p class="dica" id="p2Dica">Pode marcar mais de uma.</p>
+          <div class="opcoes duas" id="opEtapa"></div>
+          <input type="hidden" name="etapa" id="etapa"/>
+        </div>
+        <div class="passo" data-p="3">
+          <h3 id="p3Titulo">Qual é a sua escola?</h3>
+          <p class="dica">Usamos estes dados para acompanhar onde o Imersão Azul está chegando.</p>
+          <label for="escola" id="lEscola">Nome da escola</label><input id="escola" name="escola" autocomplete="organization"/>
+          <div class="linha">
+            <div><label for="cidade">Cidade</label><input id="cidade" name="cidade" autocomplete="address-level2"/></div>
+            <div><label for="uf">UF</label><select id="uf" name="uf"><option value="">--</option></select></div>
+          </div>
+        </div>
+        <div class="passo" data-p="4">
+          <h3>Último passo: crie o seu acesso</h3>
+          <p class="dica">Você entra no portal assim que concluir.</p>
+          <label for="nome">Nome completo</label><input id="nome" name="nome" autocomplete="name"/>
+          <label for="email2">E-mail</label><input id="email2" name="email" type="email" autocomplete="email"/>
+          <label for="tel">WhatsApp (opcional)</label><input id="tel" name="telefone" type="tel" inputmode="tel" placeholder="(71) 99999-9999" autocomplete="tel"/>
+          <label for="senha2">Crie uma senha (mínimo 6 caracteres)</label><input id="senha2" name="senha" type="password" autocomplete="new-password"/>
+          <label class="check" id="cResp" hidden><input type="checkbox" id="responsavel"/> Tenho 18 anos ou mais, ou o meu responsável autorizou este cadastro.</label>
+          <label class="check"><input type="checkbox" id="consentimento"/> Autorizo o Projeto Imersão Azul a usar estes dados para liberar o acesso, medir o alcance do projeto e enviar novidades sobre os materiais. Posso pedir a exclusão a qualquer momento.</label>
+        </div>
+        <div class="nav-passo">
+          <button type="button" class="btn ghost voltar" id="bVoltar" hidden>Voltar</button>
+          <button type="submit" class="btn" id="bAvancar">Continuar</button>
+        </div>
+      </form>
+      <div class="msg" id="mCad"></div>
+    </div>
+
+    <div class="card" id="telaLogin" hidden>
+      <h2>Entrar no portal</h2>
+      <p class="sub">Use o e-mail e a senha do seu cadastro.</p>
+      <form id="fLogin" novalidate>
+        <label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required/>
+        <label for="senha">Senha</label><input id="senha" type="password" autocomplete="current-password" required/>
+        <button class="btn" type="submit" id="bLogin">Entrar</button>
+      </form>
+      <div class="msg" id="mLogin"></div>
+      <p class="ajuda">Esqueceu a senha?<br><a href="https://wa.me/5571999972427?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20o%20acesso%20ao%20Portal%20Imers%C3%A3o%20Azul." target="_blank" rel="noopener">Fale com a equipe no WhatsApp</a></p>
+    </div>
+  </div>
+
+  <!-- TROCAR SENHA -->
+  <div class="card" id="telaSenha" hidden>
+    <h2>Crie a sua senha</h2>
+    <p class="sub" id="senhaSub">No primeiro acesso, troque a senha provisória por uma que você vai lembrar.</p>
+    <form id="fSenha" novalidate>
+      <label for="sAtual">Senha atual</label><input id="sAtual" type="password" autocomplete="current-password"/>
+      <label for="sNova">Nova senha (mínimo 6 caracteres)</label><input id="sNova" type="password" autocomplete="new-password"/>
+      <label for="sNova2">Repita a nova senha</label><input id="sNova2" type="password" autocomplete="new-password"/>
+      <button class="btn" type="submit" id="bSenha">Salvar nova senha</button>
+      <button class="btn ghost" type="button" id="bPular">Agora não, ir para o portal</button>
+    </form>
+    <div class="msg" id="mSenha"></div>
+  </div>
+
+  <!-- PORTAL -->
+  <div class="wrap" id="telaPortal" hidden>
+    <section class="sec" id="s-inicio">
+      <p class="prof">0 M · Início</p>
+      <div class="atalhos">
+        <a class="atalho" href="#ebooks"><span class="ic">01</span><b>E-books</b><span>A Coleção Imersão Azul: 11 livros, do 1º ano do Fundamental à 3ª série do Médio, e o material de apoio.</span><em id="nLivros">Ler agora</em></a>
+        <a class="atalho" href="#videos"><span class="ic">02</span><b>Vídeos 360°</b><span>Mergulhos para assistir na TV, no computador, no celular ou com óculos de papelão.</span><em id="nVideos">Ver vídeos</em></a>
+        <a class="atalho" href="#licoes"><span class="ic">03</span><b>Lições</b><span>Sequências didáticas prontas, com objetivo, atividade, registro e avaliação.</span><em id="nLicoes">Ver lições</em></a>
+        <a class="atalho" href="#fichas"><span class="ic">04</span><b>Fichas de atividades</b><span>Oficinas e fichas para a turma investigar o oceano a partir da própria escola.</span><em id="nFichas">Ver fichas</em></a>
+      </div>
+      <div class="faixa">
+        <div><h3>Comece por um percurso de 8 semanas</h3><p>Você não precisa usar tudo de uma vez. Escolha a trilha da sua etapa, aplique quatro lições temáticas e feche com uma produção dos estudantes. Funciona com ou sem internet contínua e com ou sem óculos de realidade virtual.</p></div>
+        <div class="etapas"><div>Escolha o livro da sua etapa</div><div>Aplique as lições com a turma</div><div>Use os vídeos 360° como mergulho</div><div>Feche com uma oficina ou produção final</div></div>
+      </div>
+    </section>
+
+    <section class="sec" id="s-ebooks">
+      <p class="prof">0 M · Biblioteca</p>
+      <div class="cab"><div><h2>E-books · Coleção Imersão Azul</h2><p>Toque no livro para ler dentro do portal. Cada etapa de ensino tem os seus volumes.</p></div></div>
+      <div id="estante"></div>
+    </section>
+
+    <section class="sec" id="s-videos">
+      <p class="prof">200 M · Mergulhos</p>
+      <div id="videosLista">
+        <div class="cab"><div><h2>Vídeos 360°</h2><p>Cada vídeo funciona como um fichário: o mergulho em 360°, uma introdução, informações complementares, a lição e a ficha de atividade relacionadas.</p></div></div>
+        <div class="videos" id="gradeVideos"></div>
+        <div class="bloco"><h3>Como assistir com a turma</h3><ul><li><b>TV ou projetor:</b> a turma explora o vídeo junta, com a mediação do professor.</li><li><b>Computador, tablet ou celular:</b> arraste a tela ou gire o aparelho para olhar em todas as direções.</li><li><b>Óculos de papelão (cardboard):</b> com um celular compatível, a experiência fica imersiva.</li></ul></div>
+      </div>
+      <div id="videoFichario" hidden></div>
+    </section>
+
+    <section class="sec" id="s-licoes">
+      <p class="prof">200 M · Lições</p>
+      <div class="cab"><div><h2>Lições por tema</h2><p>Sequências didáticas prontas para usar e adaptar a cada etapa de ensino, pensadas para reduzir o tempo de preparação do professor.</p></div></div>
+      <div id="listaLicoes"></div>
+      <div class="grupo">O que cada lição traz</div>
+      <div class="tabela">
+        <div><b>Identificação</b><span>Tema, público recomendado e duração</span></div>
+        <div><b>Objetivos</b><span>O que o estudante deverá compreender ou realizar</span></div>
+        <div><b>Relação curricular</b><span>Componentes e habilidades da BNCC</span></div>
+        <div><b>Preparação</b><span>Materiais necessários e orientações para o professor</span></div>
+        <div><b>Contextualização</b><span>Pergunta ou situação que inicia a investigação</span></div>
+        <div><b>Exploração</b><span>Leitura, imagens, vídeo ou observação</span></div>
+        <div><b>Atividade</b><span>Procedimentos e organização da turma</span></div>
+        <div><b>Registro</b><span>Ficha do estudante ou produção equivalente</span></div>
+        <div><b>Avaliação</b><span>Perguntas e critérios de aprendizagem</span></div>
+        <div><b>Adaptações</b><span>Alternativas de acessibilidade e de recursos</span></div>
+        <div><b>Conexão local</b><span>Como relacionar o tema ao território da escola</span></div>
+      </div>
+    </section>
+
+    <section class="sec" id="s-fichas">
+      <p class="prof">1000 M · Atividades</p>
+      <div class="cab"><div><h2>Fichas de atividades e oficinas</h2><p>Atividades simples, com materiais acessíveis, que ligam o oceano à realidade dos estudantes, mesmo onde o mar não pode ser visto da janela.</p></div></div>
+      <div class="fichas" id="gradeFichas"></div>
+      <div class="grupo">Também chegam ao portal</div>
+      <div class="mais">
+        <div><b>Videoaula de óculos cardboard</b><span>Passo a passo para a turma montar os próprios óculos e assistir aos vídeos 360°.</span></div>
+        <div><b>Guia do hackathon escolar</b><span>Roteiro para os estudantes criarem soluções para desafios da água e do oceano.</span></div>
+        <div><b>Formação de professores</b><span>Aulas gravadas para aplicar o programa com autonomia, sem precisar saber Oceanografia.</span></div>
+      </div>
+    </section>
+
+    <section class="sec" id="s-conta">
+      <p class="prof">Conta</p>
+      <div class="cab"><div><h2>Minha conta</h2></div></div>
+      <div class="dados">
+        <div class="card"><h2>Seus dados</h2><dl id="meusDados"></dl></div>
+        <div class="card"><h2>Senha</h2><p class="sub">Troque a sua senha quando quiser.</p><button class="btn" id="bTrocar">Trocar senha</button></div>
+      </div>
+    </section>
+  </div>
+</main>
+<div class="leitor" id="leitor" hidden>
+  <header><b id="lTitulo"></b><span style="display:flex;gap:.5rem"><a id="lNova" target="_blank" rel="noopener">Tela cheia</a><button id="lFechar">Fechar</button></span></header>
+  <iframe id="lFrame" title="Leitor do livro" allowfullscreen></iframe>
+</div>
+<footer>Portal Imersão Azul · Cultura Oceânica na educação básica · <a href="../">imersaoazul.com.br</a><br>Material de uso educacional. Dúvidas: <a href="https://wa.me/5571999972427" target="_blank" rel="noopener">(71) 99997-2427</a><br><span class="realiza">Realização <img src="../imagens/fundo-do-mar/logo-gaia-soul-branca.png" alt="Instituto Gaia Soul"/></span>
+  <span class="mg-credit">Site desenvolvido por <a href="https://mediagrowth.com.br/" target="_blank" rel="noopener">mediagrowth.com.br</a><span class="sep"> · </span><span class="l2">Feito com &#10084;&#xFE0E; e tecnologia</span></span>
+</footer>
+<script>
+const API = /^(127\.0\.0\.1|localhost)$/.test(location.hostname) ? 'http://127.0.0.1:8091/api.php' : 'https://mediagrowth.com.br/imersao-area-api/api.php';
+const $ = id => document.getElementById(id);
+const K = 'ia_area_token';
+let usuario = null, C = {livros: [], videos: [], licoes: [], fichas: []};
+window.dataLayer = window.dataLayer || [];
+async function api(acao, dados) {
+  try { const r = await fetch(API, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({acao, ...dados})}); return await r.json(); }
+  catch (e) { return {ok: false, msg: 'Não foi possível conectar. Tente de novo em instantes.'}; }
+}
+function msg(el, txt, tipo) { el.textContent = txt; el.className = 'msg ' + tipo; }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c])); }
+function primeiro(n) { return (n || '').trim().split(' ')[0]; }
+function embed(url) {
+  const m = url.match(/calameo\.com\/read\/([0-9a-z]+)(?:\?authid=([A-Za-z0-9]+))?/i);
+  return m ? 'https://v.calameo.com/?bkcode=' + m[1] + (m[2] ? '&authid=' + m[2] : '') + '&mode=viewer&view=book&showsharemenu=false' : url;
+}
+function tela(t) {
+  ['telaAcesso', 'telaSenha', 'telaPortal'].forEach(x => $(x).hidden = x !== t);
+  const dentro = t !== 'telaAcesso';
+  $('sair').hidden = $('lConta').hidden = $('menu').hidden = $('menuMob').hidden = !dentro;
+}
+
+/* ---------- cadastro passo a passo ---------- */
+const UFS = 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
+$('uf').insertAdjacentHTML('beforeend', UFS.map(u => '<option>' + u + '</option>').join(''));
+const ETAPAS = {
+  professor: {t: 'Em quais etapas você leciona?', d: 'Pode marcar mais de uma.', multi: true, op: ['Educação Infantil', 'Fundamental · 1º ao 5º ano', 'Fundamental · 6º ao 9º ano', 'Ensino Médio', 'EJA', 'Outra']},
+  gestao: {t: 'Quais etapas a sua escola atende?', d: 'Pode marcar mais de uma.', multi: true, op: ['Educação Infantil', 'Fundamental · 1º ao 5º ano', 'Fundamental · 6º ao 9º ano', 'Ensino Médio', 'EJA', 'Outra']},
+  estudante: {t: 'Em que série você está?', d: 'Toque na sua série.', multi: false, op: ['1º ano', '2º ano', '3º ano', '4º ano', '5º ano', '6º ano', '7º ano', '8º ano', '9º ano', '1ª série do Médio', '2ª série do Médio', '3ª série do Médio']},
+  outro: {t: 'Qual é o seu interesse?', d: 'Toque na opção que mais combina.', multi: false, op: ['Mãe, pai ou responsável', 'Pesquisa ou universidade', 'Empresa ou apoiador', 'Outro']}
+};
+const NOMES = ['Seu perfil', 'Etapa de ensino', 'Escola e cidade', 'Seus dados'];
+let p = 1;
+function irPasso(n) {
+  p = n; document.querySelectorAll('.passo').forEach(x => x.classList.toggle('on', +x.dataset.p === n));
+  $('pTxt').textContent = 'Passo ' + n + ' de 4'; $('pNome').textContent = NOMES[n - 1]; $('pBar').style.width = (n * 25) + '%';
+  $('bVoltar').hidden = n === 1; $('mCad').className = 'msg';
+  const multi = n === 2 && (ETAPAS[$('perfil').value] || {}).multi;
+  $('bAvancar').hidden = n === 1 || (n === 2 && !multi);
+  $('bAvancar').textContent = n === 4 ? 'Criar meu acesso' : 'Continuar';
+  const f = document.querySelector('.passo.on input:not([type=hidden]):not([type=checkbox])'); if (f && n > 2 && innerWidth > 760) f.focus();
+}
+function montaEtapa() {
+  const e = ETAPAS[$('perfil').value]; $('p2Titulo').textContent = e.t; $('p2Dica').textContent = e.d; $('etapa').value = '';
+  $('opEtapa').innerHTML = e.op.map(o => '<button type="button" class="op chip" data-v="' + esc(o) + '">' + esc(o) + '</button>').join('');
+  $('opEtapa').querySelectorAll('.op').forEach(b => b.onclick = () => {
+    if (e.multi) { b.classList.toggle('on'); $('etapa').value = [...$('opEtapa').querySelectorAll('.op.on')].map(x => x.dataset.v).join(', '); }
+    else { $('opEtapa').querySelectorAll('.op').forEach(x => x.classList.remove('on')); b.classList.add('on'); $('etapa').value = b.dataset.v; setTimeout(() => irPasso(3), 180); }
+  });
+  const v = $('perfil').value;
+  $('p3Titulo').textContent = v === 'outro' ? 'De onde você fala?' : (v === 'estudante' ? 'Em qual escola você estuda?' : 'Qual é a sua escola?');
+  $('lEscola').textContent = v === 'outro' ? 'Instituição ou empresa (opcional)' : 'Nome da escola';
+  $('cResp').hidden = v !== 'estudante';
+}
+$('opPerfil').querySelectorAll('.op').forEach(b => b.onclick = () => {
+  $('opPerfil').querySelectorAll('.op').forEach(x => x.classList.remove('on')); b.classList.add('on');
+  $('perfil').value = b.dataset.v; montaEtapa(); setTimeout(() => irPasso(2), 180);
+});
+$('bVoltar').onclick = () => irPasso(Math.max(1, p - 1));
+function validaPasso() {
+  const v = $('perfil').value;
+  if (p === 2 && !$('etapa').value) return 'Escolha pelo menos uma opção.';
+  if (p === 3) { if (v !== 'outro' && $('escola').value.trim().length < 3) return 'Digite o nome da escola.'; if ($('cidade').value.trim().length < 2) return 'Digite a cidade.'; if (!$('uf').value) return 'Escolha o estado (UF).'; }
+  if (p === 4) {
+    if ($('nome').value.trim().split(/\s+/).length < 2) return 'Digite o seu nome completo.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('email2').value.trim())) return 'Digite um e-mail válido.';
+    const t = $('tel').value.replace(/\D/g, ''); if (t && (t.length < 10 || t.length > 13)) return 'Confira o número de WhatsApp, com DDD.';
+    if ($('senha2').value.length < 6) return 'A senha precisa ter pelo menos 6 caracteres.';
+    if (v === 'estudante' && !$('responsavel').checked) return 'Confirme que você tem 18 anos ou que o seu responsável autorizou o cadastro.';
+    if (!$('consentimento').checked) return 'Para criar o acesso, é preciso autorizar o uso dos dados.';
+  }
+  return '';
+}
+$('fCad').onsubmit = async e => {
+  e.preventDefault();
+  const erro = validaPasso(); if (erro) return msg($('mCad'), erro, 'erro');
+  if (p < 4) return irPasso(p + 1);
+  $('bAvancar').disabled = true; $('bAvancar').textContent = 'Criando o seu acesso...';
+  const d = await api('cadastro', {perfil: $('perfil').value, etapa: $('etapa').value, escola: $('escola').value, cidade: $('cidade').value, uf: $('uf').value,
+    nome: $('nome').value, email: $('email2').value, telefone: $('tel').value, senha: $('senha2').value, responsavel: $('responsavel').checked, consentimento: $('consentimento').checked, site: $('site').value});
+  $('bAvancar').disabled = false; $('bAvancar').textContent = 'Criar meu acesso';
+  if (d.ok) { dataLayer.push({event: 'generate_lead', form: 'portal-imersao-azul', perfil: $('perfil').value}); entrar(d, true); }
+  else { msg($('mCad'), d.msg || 'Não foi possível criar o acesso.', 'erro'); if (/já tem cadastro/.test(d.msg || '')) { $('email').value = $('email2').value; } }
+};
+document.querySelectorAll('#fCad input').forEach(i => i.addEventListener('keydown', ev => { if (ev.key === 'Enter' && i.type !== 'checkbox') { ev.preventDefault(); $('fCad').requestSubmit(); } }));
+function abaAcesso(cad) { $('tCad').classList.toggle('on', cad); $('tLog').classList.toggle('on', !cad); $('telaCadastro').hidden = !cad; $('telaLogin').hidden = cad; }
+$('tCad').onclick = () => abaAcesso(true); $('tLog').onclick = () => abaAcesso(false);
+if (/[?&]entrar/.test(location.search)) abaAcesso(false);
+
+/* ---------- login e senha ---------- */
+$('fLogin').onsubmit = async e => {
+  e.preventDefault(); $('bLogin').disabled = true; $('bLogin').textContent = 'Entrando...';
+  const d = await api('login', {email: $('email').value, senha: $('senha').value});
+  $('bLogin').disabled = false; $('bLogin').textContent = 'Entrar';
+  if (d.ok) { $('mLogin').className = 'msg'; entrar(d); } else msg($('mLogin'), d.msg || 'Não foi possível entrar.', 'erro');
+};
+$('fSenha').onsubmit = async e => {
+  e.preventDefault();
+  if ($('sNova').value !== $('sNova2').value) return msg($('mSenha'), 'As duas senhas novas não são iguais.', 'erro');
+  $('bSenha').disabled = true;
+  const d = await api('trocar_senha', {token: localStorage.getItem(K), atual: $('sAtual').value, nova: $('sNova').value});
+  $('bSenha').disabled = false;
+  if (d.ok) { msg($('mSenha'), 'Senha salva. Abrindo o portal...', 'ok'); usuario.trocar_senha = false; setTimeout(() => { $('fSenha').reset(); $('mSenha').className = 'msg'; tela('telaPortal'); rota(); }, 900); }
+  else msg($('mSenha'), d.msg || 'Não foi possível salvar.', 'erro');
+};
+$('bPular').onclick = () => { tela('telaPortal'); rota(); };
+$('bTrocar').onclick = () => { $('senhaSub').textContent = 'Digite a senha atual e escolha uma nova.'; tela('telaSenha'); };
+$('sair').onclick = () => { localStorage.removeItem(K); location.hash = ''; location.reload(); };
+
+/* ---------- conteúdos ---------- */
+function estante() {
+  const grupos = {}; C.livros.forEach(l => (grupos[l.grupo] = grupos[l.grupo] || []).push(l));
+  $('estante').innerHTML = Object.entries(grupos).map(([g, ls]) => '<div class="grupo">' + esc(g) + '</div><div class="grid">' +
+    ls.map(l => '<button class="livro" data-id="' + esc(l.id) + '"><img loading="lazy" src="' + esc(l.capa) + '" alt="Capa ' + esc(l.titulo) + '"/><div><b>' + esc(l.titulo) + '</b><small>Ler o livro</small></div></button>').join('') + '</div>').join('');
+  document.querySelectorAll('.livro').forEach(b => b.onclick = () => {
+    const l = C.livros.find(x => x.id === b.dataset.id);
+    $('lTitulo').textContent = l.grupo + ' · ' + l.titulo; $('lFrame').src = embed(l.url); $('lNova').href = l.url; $('leitor').hidden = false;
+    api('abriu', {token: localStorage.getItem(K), livro: l.id});
+  });
+}
+const pronto = v => v.status === 'disponivel' && v.youtube;
+function gradeVideos() {
+  $('gradeVideos').innerHTML = C.videos.map(v => '<a class="vcard" href="#video/' + esc(v.id) + '"><div class="tela"><span class="selo' + (pronto(v) ? ' ok">Assistir' : '">Em breve') + '</span>' +
+    (pronto(v) ? '<img loading="lazy" src="https://i.ytimg.com/vi/' + esc(v.youtube) + '/hqdefault.jpg" alt=""/>' : '<b>360°</b>') + '</div><div class="txt"><b>' + esc(v.titulo) + '</b><span>' + esc(v.introducao) + '</span></div></a>').join('') ||
+    '<p class="vazio">Os vídeos 360° serão publicados aqui em breve.</p>';
+}
+function lista(itens, vazio) {
+  return itens && itens.length ? '<ul>' + itens.map(i => '<li>' + (i.url ? '<a href="' + esc(i.url) + '" target="_blank" rel="noopener">' + esc(i.titulo) + '</a>' : esc(i.titulo || i)) + '</li>').join('') + '</ul>' : '<p class="vazio">' + vazio + '</p>';
+}
+function fichario(id) {
+  const v = C.videos.find(x => x.id === id); if (!v) { location.hash = '#videos'; return; }
+  $('videosLista').hidden = true; $('videoFichario').hidden = false;
+  $('videoFichario').innerHTML = '<a class="voltar-link" href="#videos">← Todos os vídeos 360°</a><div class="cab"><div><h2>' + esc(v.titulo) + '</h2></div></div><div class="fichario"><div>' +
+    '<div class="player" id="f-video">' + (pronto(v) ? '<iframe src="https://www.youtube-nocookie.com/embed/' + esc(v.youtube) + '?rel=0" title="' + esc(v.titulo) + '" allow="accelerometer; gyroscope; fullscreen; picture-in-picture" allowfullscreen></iframe>' :
+      '<div><b>Este mergulho em 360° chega em breve</b><span>Assim que o vídeo for publicado, ele aparece aqui, junto com a lição e a ficha de atividade.</span></div>') + '</div>' +
+    '<div class="bloco" id="f-intro"><h3>Introdução</h3><p>' + esc(v.introducao) + '</p></div>' +
+    '<div class="bloco" id="f-info"><h3>Informações complementares</h3>' + lista(v.info, 'As informações sobre o local, os animais e o ambiente deste vídeo serão publicadas junto com ele.') + '</div>' +
+    '<div class="bloco" id="f-licoes"><h3>Lições</h3>' + lista(v.licoes, 'A lição relacionada a este vídeo está em preparação.') + '</div>' +
+    '<div class="bloco" id="f-fichas"><h3>Fichas de atividades</h3>' + lista(v.fichas, 'A ficha de atividade deste vídeo está em preparação.') + '</div>' +
+    '</div><aside class="lado"><h4>Neste fichário</h4><a href="#f-video" data-ancora>Vídeo 360°<small>' + (pronto(v) ? 'disponível' : 'em breve') + '</small></a><a href="#f-intro" data-ancora>Introdução</a><a href="#f-info" data-ancora>Informações complementares</a><a href="#f-licoes" data-ancora>Lições<small>' + (v.licoes || []).length + '</small></a><a href="#f-fichas" data-ancora>Fichas de atividades<small>' + (v.fichas || []).length + '</small></a></aside></div>';
+  document.querySelectorAll('[data-ancora]').forEach(a => a.onclick = ev => { ev.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior: 'smooth', block: 'center'}); });
+  if (pronto(v)) api('abriu', {token: localStorage.getItem(K), livro: v.id});
+}
+function licoes() {
+  $('listaLicoes').innerHTML = C.licoes.length ? '<div class="fichas">' + C.licoes.map(l => '<div class="ficha"><b>' + esc(l.titulo) + '</b><p>' + esc(l.resumo || '') + '</p>' + (l.url ? '<a class="btn" href="' + esc(l.url) + '" target="_blank" rel="noopener">Abrir a lição</a>' : '') + '</div>').join('') + '</div>'
+    : '<p class="vazio">As primeiras lições estão sendo preparadas a partir da revisão da coleção, pelo menos uma para cada eixo temático. Elas aparecem aqui assim que forem publicadas.</p>';
+}
+function fichas() {
+  $('gradeFichas').innerHTML = C.fichas.map(f => '<div class="ficha"><span class="estado"' + (f.url ? ' style="color:#1d6b4f;background:#e6f6f1">Disponível' : '>Em preparação') + '</span><b>' + esc(f.titulo) + '</b><p><strong>Atividade:</strong> ' + esc(f.atividade) + '</p><p><strong>Conexão com o território:</strong> ' + esc(f.conexao) + '</p>' +
+    (f.url ? '<a class="btn" href="' + esc(f.url) + '" target="_blank" rel="noopener">Baixar a ficha</a>' : '') + '</div>').join('');
+}
+function meusDados() {
+  const P = {professor: 'Professor(a)', estudante: 'Estudante', gestao: 'Coordenação ou gestão escolar', outro: 'Outro interesse'};
+  const L = [['Nome', usuario.nome], ['E-mail', usuario.email], ['Perfil', P[usuario.perfil] || ''], ['Etapa', usuario.etapa], ['Escola', usuario.escola], ['Cidade', [usuario.cidade, usuario.uf].filter(Boolean).join(' · ')]];
+  $('meusDados').innerHTML = L.filter(x => x[1]).map(x => '<dt>' + x[0] + '</dt><dd>' + esc(x[1]) + '</dd>').join('');
+}
+function contar() {
+  const disp = C.videos.filter(pronto).length;
+  $('nLivros').textContent = C.livros.length + ' materiais · Ler agora';
+  $('nVideos').textContent = disp ? disp + ' vídeos · Assistir' : C.videos.length + ' vídeos · Em breve';
+  $('nLicoes').textContent = C.licoes.length ? C.licoes.length + ' lições' : 'Em preparação';
+  $('nFichas').textContent = C.fichas.length + ' propostas de oficina';
+}
+function rota() {
+  if ($('telaPortal').hidden) return;
+  const h = (location.hash || '#inicio').slice(1); const [s, id] = h.split('/');
+  const sec = s === 'video' ? 'videos' : (['inicio', 'ebooks', 'videos', 'licoes', 'fichas', 'conta'].includes(s) ? s : 'inicio');
+  document.querySelectorAll('.sec').forEach(x => x.classList.toggle('on', x.id === 's-' + sec));
+  document.querySelectorAll('[data-s]').forEach(a => a.classList.toggle('on', a.dataset.s === sec));
+  $('hero').classList.toggle('so-inicio', sec !== 'inicio');
+  if (sec === 'videos') { if (s === 'video') fichario(id); else { $('videosLista').hidden = false; $('videoFichario').hidden = true; } }
+  scrollTo({top: 0});
+}
+addEventListener('hashchange', rota);
+irPasso(1);
+document.querySelectorAll('#fCad input, #fCad select').forEach(i => i.addEventListener('input', () => { $('mCad').className = 'msg'; }));
+function entrar(d, novo) {
+  usuario = d.usuario; if (d.token) localStorage.setItem(K, d.token);
+  C = Object.assign({livros: d.livros || []}, d.conteudos || {});
+  $('heroBadge').textContent = '0 M · Portal Imersão Azul';
+  $('ola').innerHTML = (novo ? 'Boas-vindas, ' : 'Olá, ') + '<span>' + esc(primeiro(usuario.nome)) + '</span>';
+  $('heroTxt').textContent = 'Aqui está o acervo do Imersão Azul para trabalhar a Cultura Oceânica em sala de aula. Escolha por onde começar.';
+  estante(); gradeVideos(); licoes(); fichas(); meusDados(); contar();
+  if (usuario.trocar_senha) tela('telaSenha'); else { tela('telaPortal'); rota(); }
+}
+$('lFechar').onclick = () => { $('leitor').hidden = true; $('lFrame').src = 'about:blank'; };
+(async () => {
+  const t = localStorage.getItem(K); if (!t) return;
+  const d = await api('livros', {token: t});
+  if (d.ok) { d.token = t; d.usuario.trocar_senha = false; entrar(d); } else localStorage.removeItem(K);
+})();
+</script>
+</body>
+</html>

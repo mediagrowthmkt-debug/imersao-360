@@ -1,0 +1,35 @@
+/* Portal Imersão Azul · Padrão Fundo do Mar (Bebas Neue + Barlow, zonas luz/penumbra/profunda) */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--areia:#F4E9D8;--agua:#CDEEF1;--petroleo:#0F4C5C;--petroleo-2:#0B3B48;--penumbra:#1F5FAE;--marinho:#0A2E4D;--marinho-2:#082640;--claro:#E9F7FA;--texto:#0D1B2A;--ink-md:#2A5560;--ink-lt:#5D7E86;--t:'Bebas Neue',sans-serif;--c:'Barlow',sans-serif;
+  /* nomes antigos, mantidos para a página de gestão */
+  --deep:#0A2E4D;--deep2:#082640;--teal:#0F4C5C;--teal2:#0B3B48;--teal-lt:#CDEEF1;--fog:#F4E9D8;--ink:#0D1B2A;--fh:'Barlow',sans-serif;--fb:'Barlow',sans-serif}
+body{font-family:var(--c);background:var(--areia);color:var(--texto);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+.topbar{background:var(--marinho);padding:.7rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.topbar img{height:52px;display:block}
+.topbar .sair{color:#fff;font:700 .72rem var(--c);letter-spacing:.18em;text-transform:uppercase;background:none;border:1px solid rgba(255,255,255,.45);border-radius:2px;padding:.6rem .95rem;cursor:pointer}
+.hero{position:relative;overflow:hidden;background:url('../imagens/fundo-do-mar/agua-luz.webp') center 30%/cover;padding:3.4rem 1.6rem 3.4rem;color:var(--petroleo)}
+.hero::before{content:'';position:absolute;inset:0;background:url('../imagens/fundo-do-mar/batimetria-petroleo.svg') center/cover;opacity:.1}
+.hero>*{position:relative;max-width:1120px;margin-left:auto;margin-right:auto}
+.hero .badge{display:flex;align-items:center;gap:.8rem;font:600 .72rem var(--c);letter-spacing:.3em;text-transform:uppercase;color:var(--petroleo);margin-bottom:1rem}
+.hero .badge::before{content:'';width:34px;height:1px;background:currentColor}
+.hero h1{font-family:var(--t);font-weight:400;font-size:clamp(2.8rem,6.4vw,5rem);line-height:.93;text-transform:uppercase;margin-bottom:.9rem;color:var(--petroleo)}
+.hero h1 span{color:var(--petroleo)}
+.hero p{font-size:1.1rem;line-height:1.7;color:#2A5560}
+.hero #heroTxt,.hero>p{padding-right:max(0px,calc(100% - 640px))}
+main{flex:1;padding:3rem 1.4rem 4rem}
+.card{max-width:460px;margin:0 auto;background:#fff;border-top:3px solid var(--petroleo);padding:2rem}
+.card h2{font-family:var(--t);font-weight:400;font-size:2rem;line-height:1;color:var(--petroleo);margin-bottom:.4rem;text-transform:uppercase}
+.card p.sub{font-size:.95rem;color:var(--ink-md);line-height:1.6;margin-bottom:1.2rem}
+label{display:block;font:600 .74rem var(--c);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-md);margin:1rem 0 .4rem}
+input,select{width:100%;border:0;border-bottom:1.5px solid #B9CBCF;border-radius:0;padding:.8rem .1rem;font:500 1.02rem var(--c);color:var(--texto);outline:none;background:transparent}
+input:focus,select:focus{border-bottom-color:var(--petroleo)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;border:1.5px solid transparent;border-radius:2px;padding:1.05rem 1.1rem;background:var(--petroleo);color:#fff;font:700 .8rem var(--c);letter-spacing:.18em;text-transform:uppercase;cursor:pointer;margin-top:1.4rem;text-decoration:none}
+.btn:hover{background:var(--petroleo-2)}.btn:disabled{opacity:.7;cursor:wait}
+.btn.ghost{background:transparent;color:var(--petroleo);border-color:var(--petroleo)}
+.msg{margin-top:1rem;font-size:.92rem;line-height:1.55;padding:.8rem 0 .8rem .9rem;display:none;border-left:3px solid}
+.msg.erro{display:block;border-color:#9B2C22;color:#7A231B;background:rgba(155,44,34,.06)}.msg.ok{display:block;border-color:var(--petroleo);color:var(--petroleo);background:rgba(15,76,92,.06)}
+.ajuda{margin-top:1.2rem;font-size:.9rem;color:var(--ink-lt);text-align:center;line-height:1.6}
+.ajuda a{color:var(--petroleo);font-weight:700}
+footer{background:var(--marinho-2);color:rgba(255,255,255,.65);text-align:center;font-size:.85rem;padding:1.6rem;line-height:1.8}
+footer a{color:var(--agua);text-decoration:none}
+[hidden]{display:none!important}
