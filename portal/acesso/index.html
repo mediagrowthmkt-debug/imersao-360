@@ -225,7 +225,30 @@ footer .realiza img{height:34px;width:auto}
         <button class="btn" type="submit" id="bLogin">Entrar</button>
       </form>
       <div class="msg" id="mLogin"></div>
-      <p class="ajuda">Esqueceu a senha?<br><a href="https://wa.me/5571999972427?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20o%20acesso%20ao%20Portal%20Imers%C3%A3o%20Azul." target="_blank" rel="noopener">Fale com a equipe no WhatsApp</a></p>
+      <p class="ajuda">Esqueceu a senha?<br><a href="#" id="lEsqueci">Criar uma nova senha agora</a></p>
+    </div>
+
+    <div class="card" id="telaEsqueci" hidden>
+      <h2>Nova senha</h2>
+      <div id="eP1">
+        <p class="sub">Digite o e-mail do seu cadastro. Enviamos um código de 6 números para você criar uma senha nova em menos de 1 minuto.</p>
+        <form id="fEsq1" novalidate>
+          <label for="eEmail">E-mail</label><input id="eEmail" type="email" autocomplete="username" required/>
+          <button class="btn" type="submit" id="bEsq1">Enviar código</button>
+        </form>
+      </div>
+      <div id="eP2" hidden>
+        <p class="sub" id="eSub">Confira a sua caixa de entrada (e o spam). O código vale por 15 minutos.</p>
+        <form id="fEsq2" novalidate>
+          <label for="eCod">Código de 6 números</label><input id="eCod" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required/>
+          <label for="eNova">Nova senha (mínimo 6 caracteres)</label><input id="eNova" type="password" autocomplete="new-password"/>
+          <label for="eNova2">Repita a nova senha</label><input id="eNova2" type="password" autocomplete="new-password"/>
+          <button class="btn" type="submit" id="bEsq2">Salvar e entrar</button>
+        </form>
+        <p class="ajuda">Não chegou? <a href="#" id="lReenviar">Enviar outro código</a></p>
+      </div>
+      <div class="msg" id="mEsq"></div>
+      <p class="ajuda"><a href="#" id="lVoltarLogin">Voltar para o login</a></p>
     </div>
   </div>
 
@@ -410,7 +433,7 @@ $('fCad').onsubmit = async e => {
   else { msg($('mCad'), d.msg || 'Não foi possível criar o acesso.', 'erro'); if (/já tem cadastro/.test(d.msg || '')) { $('email').value = $('email2').value; } }
 };
 document.querySelectorAll('#fCad input').forEach(i => i.addEventListener('keydown', ev => { if (ev.key === 'Enter' && i.type !== 'checkbox') { ev.preventDefault(); $('fCad').requestSubmit(); } }));
-function abaAcesso(cad) { $('tCad').classList.toggle('on', cad); $('tLog').classList.toggle('on', !cad); $('telaCadastro').hidden = !cad; $('telaLogin').hidden = cad; }
+function abaAcesso(cad) { $('tCad').classList.toggle('on', cad); $('tLog').classList.toggle('on', !cad); $('telaCadastro').hidden = !cad; $('telaLogin').hidden = cad; $('telaEsqueci').hidden = true; }
 $('tCad').onclick = () => abaAcesso(true); $('tLog').onclick = () => abaAcesso(false);
 if (/[?&]entrar/.test(location.search)) abaAcesso(false);
 
@@ -429,6 +452,33 @@ $('fSenha').onsubmit = async e => {
   $('bSenha').disabled = false;
   if (d.ok) { msg($('mSenha'), 'Senha salva. Abrindo o portal...', 'ok'); usuario.trocar_senha = false; setTimeout(() => { $('fSenha').reset(); $('mSenha').className = 'msg'; tela('telaPortal'); rota(); }, 900); }
   else msg($('mSenha'), d.msg || 'Não foi possível salvar.', 'erro');
+};
+/* ---------- esqueci a senha (código por e-mail) ---------- */
+function esqueci(passo) { $('telaLogin').hidden = true; $('telaEsqueci').hidden = false; $('eP1').hidden = passo !== 1; $('eP2').hidden = passo !== 2; }
+$('lEsqueci').onclick = e => { e.preventDefault(); $('eEmail').value = $('email').value; $('mEsq').className = 'msg'; esqueci(1); $('eEmail').focus(); };
+$('lVoltarLogin').onclick = e => { e.preventDefault(); $('mEsq').className = 'msg'; abaAcesso(false); };
+async function pedirCodigo() {
+  const em = $('eEmail').value.trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) return msg($('mEsq'), 'Digite um e-mail válido.', 'erro');
+  $('bEsq1').disabled = true; $('bEsq1').textContent = 'Enviando...';
+  const d = await api('esqueci', {email: em});
+  $('bEsq1').disabled = false; $('bEsq1').textContent = 'Enviar código';
+  if (!d.ok) return msg($('mEsq'), d.msg || 'Não foi possível enviar o código.', 'erro');
+  $('eSub').textContent = 'Se ' + em + ' estiver cadastrado, o código chega em instantes. Confira a caixa de entrada e o spam. Ele vale por 15 minutos.';
+  $('mEsq').className = 'msg'; esqueci(2); $('eCod').focus();
+}
+$('fEsq1').onsubmit = e => { e.preventDefault(); pedirCodigo(); };
+$('lReenviar').onclick = e => { e.preventDefault(); esqueci(1); pedirCodigo(); };
+$('eCod').addEventListener('input', () => { $('eCod').value = $('eCod').value.replace(/\D/g, '').slice(0, 6); });
+$('fEsq2').onsubmit = async e => {
+  e.preventDefault();
+  if ($('eCod').value.length !== 6) return msg($('mEsq'), 'O código tem 6 números.', 'erro');
+  if ($('eNova').value.length < 6) return msg($('mEsq'), 'A senha precisa ter pelo menos 6 caracteres.', 'erro');
+  if ($('eNova').value !== $('eNova2').value) return msg($('mEsq'), 'As duas senhas não são iguais.', 'erro');
+  $('bEsq2').disabled = true; $('bEsq2').textContent = 'Salvando...';
+  const d = await api('redefinir', {email: $('eEmail').value.trim(), codigo: $('eCod').value, nova: $('eNova').value});
+  $('bEsq2').disabled = false; $('bEsq2').textContent = 'Salvar e entrar';
+  if (d.ok) { $('fEsq2').reset(); $('mEsq').className = 'msg'; entrar(d); } else msg($('mEsq'), d.msg || 'Não foi possível salvar.', 'erro');
 };
 $('bPular').onclick = () => { tela('telaPortal'); rota(); };
 $('bTrocar').onclick = () => { $('senhaSub').textContent = 'Digite a senha atual e escolha uma nova.'; tela('telaSenha'); };
